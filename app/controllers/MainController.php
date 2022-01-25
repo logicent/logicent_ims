@@ -5,7 +5,6 @@ namespace app\controllers;
 use app\models\Expense;
 use app\models\PurchaseInvoice;
 use app\models\SalesInvoice;
-use Yii;
 use yii\filters\AccessControl;
 
 class MainController extends \app\controllers\base\BaseController

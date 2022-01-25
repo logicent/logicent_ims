@@ -13,7 +13,7 @@ class PosProfileForm extends BaseSettingsForm
     public $warehouses;
     public $item_groups;
     public $default_item_view = Item_View::List;
-    public $default_sale_type = Type_Sale::CashSale;
+    public $default_sale_type = Type_Sale::Cash;
     public $hide_credit_sale;
     public $hide_hold_sale;
     public $show_sales_person = false;

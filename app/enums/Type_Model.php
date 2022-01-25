@@ -16,10 +16,11 @@ use app\models\setup\EmailQueue;
 use app\models\Expense;
 use app\models\Item;
 use app\models\ItemBundle;
+use app\models\ItemBundleItem;
 use app\models\ItemGroup;
 use app\models\ItemPrice;
 use app\models\ItemUom;
-// use app\models\ItemWarehouse;
+use app\models\ItemWarehouse;
 use app\models\PaymentMethod;
 use app\models\auth\People;
 use app\models\ExpenseType;
@@ -43,7 +44,7 @@ use app\models\SalesPerson;
 use app\models\SalesQuote;
 use app\models\SalesQuoteItem;
 use app\models\StockEntry;
-// use app\models\StockEntryItem;
+use app\models\StockEntryItem;
 use app\models\Supplier;
 use app\models\TaxCharge;
 use app\models\Warehouse;
@@ -63,7 +64,7 @@ class Type_Model
     const PriceList         = 'Price List';
     const ItemGroup         = 'Item Group';
     const ItemUom           = 'Item Uom';
-    // const ItemWarehouse           = 'Item Warehouse';
+    const ItemWarehouse     = 'Item Warehouse';
     // const PaymentEntry      = 'Payment Entry';
     const PaymentMethod     = 'Payment Method';
     const PurchaseOrder     = 'Purchase Order';
@@ -79,12 +80,13 @@ class Type_Model
     const TaxCharge         = 'Tax Charge';
     const Warehouse         = 'Warehouse';
 
+    const ItemBundleItem    =   'Item Bundle Item';
     const PurchaseOrderItem =   'Purchase Order Item';
     const PurchaseInvoiceItem   =   'Purchase Invoice Item';
     const SalesQuoteItem    =   'Sales Quote Item';
     const SalesOrderItem    =   'Sales Order Item';
     const SalesInvoiceItem  =   'Sales Invoice Item';
-    // const StockEntryItem    =   'Stock Entry Item';
+    const StockEntryItem    =   'Stock Entry Item';
     const ReportBuilderItem =   'Report Builder Item';
 
     const PurchaseOrderPayment =   'Purchase Order Payment';
@@ -97,7 +99,6 @@ class Type_Model
     const EmailQueue            = 'Email Queue';
     // const EmailTemplate         = 'Email Template';
     const ReportBuilder         = 'Report Builder';
-    // const ReportAutoEmail       = 'Report Auto Email';
     const Role                  = 'Role';
 
     // Page (non-CRUD) models
@@ -158,10 +159,8 @@ class Type_Model
             self::ExpenseType       => ExpenseType::class,
             self::Item              => Item::class,
             self::ItemBundle        => ItemBundle::class,
-            self::ItemPrice         => ItemPrice::class,
             self::ItemGroup         => ItemGroup::class,
             self::ItemUom           => ItemUom::class,
-            // self::ItemWarehouse     => ItemWarehouse::class,
             self::PaymentMethod     => PaymentMethod::class,
             self::PriceList         => PriceList::class,
             self::PurchaseOrder     => PurchaseOrder::class,
@@ -180,17 +179,15 @@ class Type_Model
     public static function domainModelSubclass()
     {
         return [
-            // self::ItemBundle        => ItemBundle::class,
-            // self::ItemPrice         => ItemPrice::class,
-            // self::ItemGroup         => ItemGroup::class,
-            // self::ItemUom           => ItemUom::class,
-            // self::ItemWarehouse     => ItemWarehouse::class,
+            self::ItemBundleItem        => ItemBundleItem::class,
+            self::ItemPrice             => ItemPrice::class,
+            self::ItemWarehouse         => ItemWarehouse::class,
             self::PurchaseOrderItem     => PurchaseOrderItem::class,
             self::PurchaseInvoiceItem   => PurchaseInvoiceItem::class,
             self::SalesQuoteItem        => SalesQuoteItem::class,
             self::SalesOrderItem        => SalesOrderItem::class,
             self::SalesInvoiceItem      => SalesInvoiceItem::class,
-            // self::StockEntryItem        => StockEntryItem::class,
+            self::StockEntryItem        => StockEntryItem::class,
             self::PurchaseOrderPayment     => PurchaseOrderPayment::class,
             self::PurchaseInvoicePayment   => PurchaseInvoicePayment::class,
             self::SalesOrderPayment        => SalesOrderPayment::class,

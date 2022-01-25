@@ -2,6 +2,8 @@
 
 use app\enums\Type_Model;
 use app\models\setup\ReportBuilderItem;
+use yii\helpers\StringHelper;
+use yii\helpers\Url;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\helpers\Size;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
@@ -38,28 +40,30 @@ $modal::end();
         </thead>
         <tbody>
         <?php
-            // if ($model->isNewRecord) :
-            //     echo $this->render('_form', [
-            //                         'model' => new ReportBuilderItem(),
-            //                         'itemModelClass' => null,
-            //                         'rowId' => '1'
-            //                     ]);
-            // else :
+            if ($model->isCopyRecord) :
+                // $columnModelClass = StringHelper::basename($this->context->columnModelClass);
+                // foreach ($model->copyDetailModels[$columnModelClass] as $id => $detailModel) :
+                //     echo $this->render('_form', [
+                //                         'model' => $detailModel,
+                //                         'rowId' => $id
+                //                     ]);
+                // endforeach;
+            elseif (!empty($model->reportBuilderItems)) :
                 foreach ($model->reportBuilderItems as $id => $column)
                     echo $this->render('_form', [
                                         'model' => $column,
-                                        'itemModelClass' => $model->model_name,
                                         'rowId' => $id
                                     ]);
-            // endif;
-            ?>
+            else : // $model->isNewRecord
+                echo $this->render('/_form_section/_no_data');
+            endif ?>
         </tbody>
     </table>
     <?= Elements::button('Delete', ['class' => 'compact red mini del-row', 'style' => 'display : none']) ?>
     <?= Elements::button('Add Row', [
             'class' => 'compact tiny add-row',
             'data'  => [
-                'url' => 'report-builder/add-item',
+                'url' => Url::to(['add-item']),
                 'model-class' => $this->context->modelClass . 'Item',
                 'form-view' => 'column/_form',
             ]

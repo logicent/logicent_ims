@@ -13,7 +13,6 @@ use app\enums\Type_View;
 use app\models\setup\GlobalSettingsForm;
 use app\models\setup\ListViewSettingsForm;
 use app\models\auth\Person;
-use app\models\auth\Role;
 use app\models\Setup;
 use app\workflows\WorkflowInterface;
 use Yii;

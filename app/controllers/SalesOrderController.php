@@ -8,7 +8,6 @@ use app\models\SalesOrderItem;
 use app\models\SalesOrderPayment;
 use app\models\SalesOrderSearch;
 
-
 class SalesOrderController extends BaseTransactionController
 {
     public function init()

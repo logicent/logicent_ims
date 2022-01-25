@@ -66,6 +66,11 @@ class ReportBuilder extends BaseActiveRecord
         ];
     }
 
+    public static function autoSuggestIdValue()
+    {
+        return false;
+    }
+
     public static function relations()
     {
         return [

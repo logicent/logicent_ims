@@ -3,7 +3,6 @@
 use yii\helpers\Html;
 use app\assets\AppAsset;
 use app\assets\PrintAsset;
-use yii\web\View;
 
 AppAsset::register($this);
 PrintAsset::register($this);

@@ -5,13 +5,13 @@ namespace app\enums;
 class Cart_Mode
 {
     const Sales    = 'Sales';
-    const Purchases    = 'Purchases';
+    const Purchase    = 'Purchase';
 
     public static function enums()
     {
         return [
             self::Sales => self::Sales,
-            self::Purchases => self::Purchases,
+            self::Purchase => self::Purchase,
         ];
     }
 }

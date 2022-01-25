@@ -3,8 +3,6 @@
 namespace app\controllers;
 
 use app\controllers\base\BaseController;
-use app\enums\Type_Model;
-use app\models\Report;
 use app\models\setup\ReportBuilder;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;

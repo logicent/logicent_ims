@@ -1,7 +1,5 @@
 <?php
 
-use app\enums\Type_Permission;
-use app\enums\Type_Model;
 use app\enums\Type_Module_Sub_Module;
 use app\enums\Type_Module;
 use app\enums\Type_Role;
@@ -110,7 +108,7 @@ return [
     [
         'route' => 'setup/business-profile/index',
         'label' => 'Business Profile',
-        'group' => Type_Module::System,
+        'group' => Type_Module::Accounting,
         'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
     [
@@ -130,12 +128,6 @@ return [
         'label' => 'SMTP Settings',
         'group' => Type_Module_Sub_Module::Tool,
         'visible' => Yii::$app->user->can(Type_Role::Administrator),
-    ],
-    [
-        'route' => 'setup/integration-settings/index',
-        'label' => 'Integration',
-        'group' => Type_Module_Sub_Module::Tool,
-        'visible' => false, //Yii::$app->user->can(Type_Role::Administrator),
     ],
     [
         'route' => 'setup/data-import-tool/index',
@@ -160,12 +152,6 @@ return [
         'label' => 'Email Queue',
         'group' => Type_Module::System,
         'visible' => Yii::$app->user->can(Type_Role::Administrator),
-    ],
-    [
-        'route' => 'setup/developer-settings/index',
-        'label' => 'Developer',
-        'group' => Type_Module::System,
-        'visible' => Yii::$app->user->can(Type_Role::Administrator),
-    ],
+    ]
 ];
 ?>

@@ -6,20 +6,20 @@ use Yii;
 
 class Type_Device
 {
-    const BarcodeScanner        = 'Barcode Scanner';
-    const ThermalPrinter        = 'Thermal Printer';
-    const FiscalPrinter         = 'Fiscal Printer';
-    const ElectronicSignatureDevice    = 'Electronic Signature Device';
-    const FingerPrintScanner    = 'Finger Print Scanner';
+    const BarcodeScanner        = 'BS';
+    const ThermalPrinter        = 'TP';
+    const FiscalPrinter         = 'FP';
+    const ElectronicSignatureDevice    = 'ESD';
+    const FingerPrintScanner    = 'FPS';
 
     public static function enums()
     {
         return [
-            self::BarcodeScanner        => self::BarcodeScanner,
-            self::ThermalPrinter        => self::ThermalPrinter,
-            self::FiscalPrinter         => self::FiscalPrinter,
-            self::ElectronicSignatureDevice     => self::ElectronicSignatureDevice,
-            self::FingerPrintScanner    => self::FingerPrintScanner,
+            self::BarcodeScanner        => Yii::t('app', 'Barcode Scanner'),
+            self::ThermalPrinter        => Yii::t('app', 'Thermal Printer'),
+            self::FiscalPrinter         => Yii::t('app', 'Fiscal Printer'),
+            self::ElectronicSignatureDevice     => Yii::t('app', 'Electronic Signature Device'),
+            self::FingerPrintScanner    => Yii::t('app', 'Finger Print Scanner'),
         ];
     }
 }

@@ -7,7 +7,6 @@ use app\models\SalesQuote;
 use app\models\SalesQuoteItem;
 use app\models\SalesQuoteSearch;
 
-
 class SalesQuoteController extends BaseTransactionController
 {
     public function init()

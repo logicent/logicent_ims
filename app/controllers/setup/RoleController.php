@@ -4,12 +4,12 @@ namespace app\controllers\setup;
 
 use app\controllers\base\BaseSetupCrudController;
 use app\enums\Type_Role;
+use app\models\auth\Role;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
-use app\models\auth\Role;
 
 class RoleController extends BaseSetupCrudController
 {

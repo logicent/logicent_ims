@@ -7,7 +7,7 @@ use Yii;
 // Custom Roles
 // ------------
 // Additional roles that may be defined by System Manager(s) and/or Administrator user
-// e.g. Enumerator
+// e.g. 
 
 class Type_Role
 {

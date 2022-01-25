@@ -1,6 +1,9 @@
 <?php
 
 // use app\models\SupplierType;
+
+use app\helpers\SelectableItems;
+use app\models\SupplierType;
 use yii\widgets\MaskedInput;
 use Zelenin\yii\SemanticUI\widgets\ActiveForm;
 
@@ -36,24 +39,17 @@ endif ?>
         </div>
     </div>
 
-    <!-- <div class="ui attached padded segment">
-        <div class="two fields"> -->
-            <?php /*= $form->field($model, 'supplier_type')->dropDownList(
-                    SelectableItems::get(SupplierType::class, $model, [
-                        'valueAttribute' => 'name'
-                    ])
-                )*/ ?>
-        <!-- </div>
-    </div> -->
-
     <div class="ui attached padded segment">
         <div class="two fields">
-            <div class="field">
-                <?= $form->field($model, 'supplier_details')->textarea(['rows' => 3]) ?>
-            </div>
-            <div class="field">
-                <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
-            </div>
+            <?= $form->field($model, 'supplier_type')->dropDownList(
+                    SelectableItems::get(SupplierType::class, $model, [
+                        'valueAttribute' => 'id'
+                    ])
+                ) ?>
+            <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="two fields">
+            <?= $form->field($model, 'supplier_details')->textarea(['rows' => 3]) ?>
         </div>
     </div>
 

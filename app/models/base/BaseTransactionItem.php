@@ -5,7 +5,6 @@ namespace app\models\base;
 use app\models\base\BaseActiveRecordDetail;
 use app\models\setup\ListViewSettingsForm;
 use app\models\Item;
-use app\models\ItemWarehouse;
 use Yii;
 
 class BaseTransactionItem extends BaseActiveRecordDetail implements PostingInterface

@@ -6,7 +6,6 @@ use app\controllers\base\BaseCrudController;
 use app\models\Item;
 use Yii;
 
-
 class BaseTransactionController extends BaseCrudController
 {
     public $itemModelClass;

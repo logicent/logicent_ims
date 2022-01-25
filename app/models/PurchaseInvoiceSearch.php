@@ -2,10 +2,8 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use yii\helpers\ArrayHelper;
 use app\models\PurchaseInvoice;
 
 class PurchaseInvoiceSearch extends PurchaseInvoice

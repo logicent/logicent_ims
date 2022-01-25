@@ -8,7 +8,6 @@ use app\models\PurchaseInvoiceItem;
 use app\models\PurchaseInvoicePayment;
 use app\models\PurchaseInvoiceSearch;
 
-
 class PurchaseInvoiceController extends BaseTransactionController
 {
     public function init()

@@ -29,7 +29,7 @@ class m220125_054523_046_create_table_supplier extends Migration
                 'credit_days_based_on' => $this->string(140),
                 'credit_limit' => $this->decimal(12, 4)->defaultValue('0.0000'),
                 'tax_Id' => $this->string(140),
-                'supplier_type' => $this->string(140)->defaultValue('Individual'),
+                'supplier_type' => $this->string(140),
                 'created_at' => $this->dateTime(),
                 'created_by' => $this->string(140),
                 'updated_at' => $this->dateTime(),

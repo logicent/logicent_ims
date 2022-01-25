@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\collections\Message;
 // use app\assets\SweetAlertAsset;
 
 // SweetAlertAsset::register($this);

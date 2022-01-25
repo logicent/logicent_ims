@@ -2,7 +2,6 @@
 
 use app\enums\Type_View;
 use yii\helpers\Html;
-use yii\helpers\Inflector;
 use Zelenin\yii\SemanticUI\Elements;
 
 ?>

@@ -5,7 +5,6 @@ namespace app\models;
 use app\enums\Status_Active;
 use app\models\base\BaseActiveRecord;
 use Yii;
-use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 
 /**

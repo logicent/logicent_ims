@@ -3,7 +3,6 @@
 namespace app\models;
 
 use app\enums\Type_Relation;
-use app\enums\Status_Transaction;
 use app\models\base\BaseTransactionDocument;
 use app\models\setup\ListViewSettingsForm;
 use Yii;

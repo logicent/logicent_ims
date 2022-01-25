@@ -5,7 +5,6 @@ namespace app\controllers\base;
 use Yii;
 use yii\data\ActiveDataProvider;
 
-
 abstract class BaseSetupCrudController extends BaseCrudController
 {
     public function init()

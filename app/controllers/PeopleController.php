@@ -4,16 +4,14 @@ namespace app\controllers;
 
 use app\controllers\base\BaseCrudController;
 use app\enums\Type_Form_View;
-use app\enums\Status_Person;
+use app\enums\Status_Party;
 use app\enums\Status_User;
 use app\models\auth\Auth;
 use app\models\auth\Person;
 use app\models\auth\PersonSearch;
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
-use yii\web\UploadedFile;
 
 class PeopleController extends BaseCrudController
 {
@@ -80,10 +78,10 @@ class PeopleController extends BaseCrudController
                                 $person->avatar = $this->uploadFile( $person );
 
                             if ($auth->status == Status_User::Active)
-                                $person->status = Status_Person::Active;
+                                $person->status = Status_Party::YesLabel;
 
                             if ($auth->status == Status_User::Deleted)
-                                $person->status = Status_Person::Inactive;
+                                $person->status = Status_Party::NoLabel;
 
                             if ($person->save(false)) {
                                 $authMan = Yii::$app->authManager;
@@ -145,10 +143,10 @@ class PeopleController extends BaseCrudController
                 $person->avatar = $this->uploadFile( $person );
 
             if ($auth->status == Status_User::Active)
-                $person->status = Status_Person::Active;
+                $person->status = Status_Party::YesLabel;
 
             if ($auth->status == Status_User::Deleted)
-                $person->status = Status_Person::Inactive;
+                $person->status = Status_Party::NoLabel;
 
             $person->save(false);
 
@@ -192,7 +190,7 @@ class PeopleController extends BaseCrudController
         }
 
         if ($person) {
-            $person->status = Status_Person::Inactive;
+            $person->status = Status_Party::NoLabel;
             $person->deleted_at = date('Y-m-d H:i:s');
             $person->save(false);
         }
@@ -216,7 +214,7 @@ class PeopleController extends BaseCrudController
             }
 
             if ($person) {
-                $person->status = Status_Person::Inactive;
+                $person->status = Status_Party::NoLabel;
                 $person->deleted_at = date('Y-m-d H:i:s');
                 $person->save(false);
             }

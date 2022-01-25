@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use app\enums\Permission_Group;
-use app\enums\Type_Model_Id;
 use app\enums\Status_Transaction;
 use app\enums\Type_Permission;
 use app\models\base\BaseActiveRecord;

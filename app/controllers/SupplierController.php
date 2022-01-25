@@ -2,9 +2,7 @@
 
 namespace app\controllers;
 
-use app\controllers\base\BaseController;
 use app\controllers\base\BaseCrudController;
-use Yii;
 use app\models\Supplier;
 use app\models\SupplierSearch;
 

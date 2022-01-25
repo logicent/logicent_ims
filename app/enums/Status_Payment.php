@@ -5,19 +5,23 @@ namespace app\enums;
 class Status_Payment
 {
     const Paid      = 'Paid';
+    const Partial   = 'Partial';
     const Unpaid    = 'Unpaid';
 
     const PaidColor     = 'green';
+    const PartialColor  = 'yellow';
     const UnpaidColor   = 'red';
 
     const PaidLabel     = 'Paid';
+    const PartialLabel  = 'Partial';
     const UnpaidLabel   = 'Not paid';
 
     public static function enums()
     {
         return [
-            self::Paid =>  self::PaidLabel,
-            self::Unpaid =>  self::UnpaidLabel,
+            self::Paid      =>  self::PaidLabel,
+            self::Partial   =>  self::PartialLabel,
+            self::Unpaid    =>  self::UnpaidLabel,
         ];
     }
 
@@ -25,6 +29,7 @@ class Status_Payment
     {
         return [
             self::Paid  =>  self::PaidColor,
+            self::Partial  =>  self::PartialColor,
             self::Unpaid   =>  self::UnpaidColor,
         ];
     }
@@ -33,6 +38,7 @@ class Status_Payment
     {
         return [
             self::Paid  =>  self::PaidLabel,
+            self::Partial  =>  self::PartialLabel,
             self::Unpaid   =>  self::UnpaidLabel,
         ];
     }

@@ -2,15 +2,8 @@
 
 namespace app\models\base;
 
-use app\enums\Type_Link;
-use app\enums\Type_Model_Id;
-use app\enums\Type_Permission;
-use app\enums\Type_Relation;
-use app\enums\Type_View;
 use yii\db\ActiveRecord;
-use yii\helpers\Inflector;
 use yii\helpers\Json;
-use yii\helpers\StringHelper;
 
 /**
  * This is the base model class for all other ActiveRecord models.

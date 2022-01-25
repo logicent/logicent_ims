@@ -44,7 +44,7 @@ class PosReceipt extends SalesInvoice
     {
         return ArrayHelper::merge([
             ['customer_id', 'required', 'when' => function() {
-                return $this->saleType == Type_Sale::CreditSale;
+                return $this->saleType == Type_Sale::Credit;
             }],
             [[
                 // 'activePosProfile',
@@ -147,7 +147,7 @@ class PosReceipt extends SalesInvoice
     public static function getSaleValuesBy($saleType)
     {
         switch ($saleType) {
-            case Type_Sale::CashSale:
+            case Type_Sale::Cash:
                 return [
                     'beforeChange' => [
                         'setCustomerAsRequired'   => "function() {
@@ -173,7 +173,7 @@ class PosReceipt extends SalesInvoice
                         }"
                     ]
                 ];
-            case Type_Sale::CreditSale:
+            case Type_Sale::Credit:
                 return [
                     'beforeChange' => [
                         'setCustomerAsRequired'   => "function() {
@@ -209,7 +209,7 @@ class PosReceipt extends SalesInvoice
                         }"
                     ]
                 ];
-            case Type_Sale::ReturnSale:
+            case Type_Sale::Return:
                 return [
                     'values' => [
                         'is_return'     => 1, // true

@@ -2,10 +2,10 @@
 
 namespace app\models\base;
 
+use app\models\Setup;
 use Yii;
 use yii\base\Model;
 use yii\web\UploadedFile;
-use app\models\Setup;
 
 abstract class BaseSettingsForm extends Model
 {

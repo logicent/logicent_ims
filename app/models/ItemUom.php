@@ -44,4 +44,9 @@ class ItemUom extends BaseActiveRecord
             'inactive' => Status_Active::class
         ];
     }
+
+    public static function autoSuggestIdValue()
+    {
+        return false;
+    }
 }

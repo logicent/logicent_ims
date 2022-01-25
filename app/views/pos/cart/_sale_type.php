@@ -12,14 +12,14 @@ use yii\helpers\Html;
     echo Html::a(Yii::t('app', 'Cash Sale'), null, [
                     'class' => 'item',
                     'id' => 'cash_sale__item',
-                    'data' => ['sale-type' => Type_Sale::CashSale]
+                    'data' => ['sale-type' => Type_Sale::Cash]
                 ]);
 
     if ( (bool) $pos_profile->hide_credit_sale === false ) :
         echo Html::a(Yii::t('app', 'Credit Sale'), null, [
                         'class' => 'item',
                         'id' => 'credit_sale__item',
-                        'data' => ['sale-type' => Type_Sale::CreditSale]
+                        'data' => ['sale-type' => Type_Sale::Credit]
                     ]);
     endif;
     echo Html::tag('div', null, ['role' => 'separator', 'class' => 'divider', 'style' => 'margin: 0']);
@@ -27,7 +27,7 @@ use yii\helpers\Html;
     echo Html::a(Yii::t('app', 'Return Sale'), null, [
                     'class' => 'item',
                     'id' => 'return_sale__item',
-                    'data' => ['sale-type' => Type_Sale::ReturnSale]
+                    'data' => ['sale-type' => Type_Sale::Return]
                 ]) ?>
     </div>
 </div>

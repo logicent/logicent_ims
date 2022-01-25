@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use app\enums\Type_Link;
-
 interface ActiveRecordInterface
 {
     // model class name

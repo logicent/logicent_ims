@@ -3,9 +3,9 @@
 namespace app\controllers\setup;
 
 use app\controllers\base\BaseSettingsController;
-use Yii;
 use app\models\Setup;
 use app\models\setup\SmtpSettingsForm;
+use Yii;
 
 class SmtpSettingsController extends BaseSettingsController
 {

@@ -8,7 +8,6 @@ use app\models\SalesInvoiceItem;
 use app\models\SalesInvoicePayment;
 use app\models\SalesInvoiceSearch;
 
-
 class SalesInvoiceController extends BaseTransactionController
 {
     public function init()

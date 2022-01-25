@@ -70,7 +70,7 @@ use Zelenin\yii\SemanticUI\Elements;
                 <span id="cart_total_amount"><?= number_format((float) $pos_receipt->total_amount, 2) ?></span>
             </td>
         </tr>
-        <?php $display = $pos_profile->default_sale_type == Type_Sale::CreditSale ? 'display: none' : '' ?>
+        <?php $display = $pos_profile->default_sale_type == Type_Sale::Credit ? 'display: none' : '' ?>
         <tr class="cash-sale__field" style="<?= $display ?>">
             <td>
                 <?= Html::a(Html::tag('span', Yii::t('app', 'PAID')) . '&ensp;' . Elements::icon('right small chevron'), '#', ['class' => 'payment-options']) ?>
@@ -87,7 +87,7 @@ use Zelenin\yii\SemanticUI\Elements;
             </td>
         </tr>
         <!-- show if sale type is Cash -->
-        <?php $display = $pos_profile->default_sale_type == Type_Sale::CreditSale ? 'display: none' : '' ?>
+        <?php $display = $pos_profile->default_sale_type == Type_Sale::Credit ? 'display: none' : '' ?>
         <tr class="cash-sale__field" style="<?= $display ?>">
             <td>
                 <span class="text-muted" style="font-weight: 500"><?= Yii::t('app', 'CHANGE') ?></span>
@@ -99,7 +99,7 @@ use Zelenin\yii\SemanticUI\Elements;
             </td>
         </tr>
         <!-- show if sale type is Credit -->
-        <?php $display = $pos_profile->default_sale_type == Type_Sale::CreditSale ? '': 'display: none' ?>
+        <?php $display = $pos_profile->default_sale_type == Type_Sale::Credit ? '': 'display: none' ?>
         <tr class="credit-sale__field" style="<?= $display ?>">
             <td>
                 <span class="text-muted" style="font-weight: 500"><?= Yii::t('app', 'BALANCE') ?></span>

@@ -1,6 +1,5 @@
 <?php
 
-use app\enums\Resource_Action;
 use yii\helpers\StringHelper;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\helpers\Size;
