@@ -55,12 +55,8 @@ endif ?>
 
     <!-- Currency & Price List -->
     <?= $this->render('/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
-
-    <div class="ui attached padded segment">
-        <div class="two fields">
-            <?= $form->field($model, 'credit_limit')->textInput() ?><br>
-        </div>
-    </div>
+    <!-- Credit Limit -->
+    <?= $this->render('/_form_field/credit_limit', ['model' => $model, 'form' => $form]) ?>
 
 <?php ActiveForm::end();
 echo $this->render('/_form/_footer', ['model' => $model]);

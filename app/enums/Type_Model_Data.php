@@ -5,7 +5,7 @@ namespace app\enums;
 
 class Type_Model_Data
 {
-    const Entity    = 'Entity';
+    const Entity    = 'Entity'; // Master
     const Transaction   = 'Transaction';
     const Settings  = 'Settings';
     const Page      = 'Page';

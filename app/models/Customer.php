@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\enums\Type_Module;
+use app\enums\Type_Party;
 use app\models\base\BasePartyDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -12,6 +14,16 @@ use yii\helpers\ArrayHelper;
 class Customer extends BasePartyDocument
 {
     const DOC_NUM_PREFIX = 'CUST-';
+
+    public static function partyType()
+    {
+        return Type_Party::Customer;
+    }
+
+    public static function moduleType()
+    {
+        return Type_Module::Selling;
+    }
 
     public static function tableName()
     {
@@ -61,11 +73,6 @@ class Customer extends BasePartyDocument
     public function getSalesInvoice()
     {
         return $this->hasMany(SalesInvoice::class, ['customer_id' => 'id']);
-    }
-
-    public function statusLabel()
-    {
-        return $this->inactive == '0' ? 'Active' : 'Inactive';
     }
 
     public function docNumPrefix()

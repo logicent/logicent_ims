@@ -93,6 +93,9 @@ $model = $this->context->model;
                     'style' => "display: $display",
                     'id'    => 'save_btn',
                 ]);
+                if (!$model->isNewRecord) :
+                    echo $this->render('/_form/_menu', ['model' => $model]);
+                endif;
             // read-only
             elseif ( $this->context->isReadonly ) :
                     if (! $model->isNewRecord) :

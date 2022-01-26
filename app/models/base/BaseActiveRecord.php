@@ -457,6 +457,12 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
         ];
     }
 
+    public static function moduleType()
+    {}
+
+    public static function moduleSubType()
+    {}
+
     // Workflow Interface
     public function workflows()
     {

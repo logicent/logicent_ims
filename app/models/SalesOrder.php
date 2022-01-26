@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\enums\Type_Module;
 use app\models\base\BaseTransactionDocument;
 use app\models\setup\ListViewSettingsForm;
 use Yii;
@@ -22,6 +23,11 @@ class SalesOrder extends BaseTransactionDocument
         $this->listSettings = new ListViewSettingsForm();
         $this->listSettings->listNameAttribute = 'customer_name'; // override in view index
         $this->listSettings->listIdAttribute = 'customer_phone'; // override in view index
+    }
+
+    public static function moduleType()
+    {
+        return Type_Module::Selling;
     }
 
     public static function tableName()
@@ -48,7 +54,8 @@ class SalesOrder extends BaseTransactionDocument
 
         return ArrayHelper::merge([
             'id' => Yii::t('app', 'Order No.'),
-            'po_reference' => Yii::t('app', 'PO reference'),
+            'po_reference' => Yii::t('app', "Customer's Purchase Order"),
+            'po_date' => Yii::t('app', "Customer's PO date"),
             'customer_id' => Yii::t('app', 'Customer'),
             'customer_name' => Yii::t('app', 'Customer name'),
             'order_type' => Yii::t('app', 'Order type'),

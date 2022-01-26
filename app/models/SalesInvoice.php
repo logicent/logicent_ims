@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\enums\Type_Module;
 use app\enums\Type_Relation;
 use app\models\base\BaseTransactionDocument;
 use app\models\setup\ListViewSettingsForm;
@@ -22,6 +23,11 @@ class SalesInvoice extends BaseTransactionDocument
         $this->listSettings = new ListViewSettingsForm();
         $this->listSettings->listNameAttribute = 'customer_name'; // override in view index
         $this->listSettings->listIdAttribute = 'customer_phone'; // override in view index
+    }
+
+    public static function moduleType()
+    {
+        return Type_Module::Selling;
     }
 
     public static function tableName()

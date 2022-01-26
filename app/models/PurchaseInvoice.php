@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\enums\Type_Module;
 use app\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -15,6 +16,11 @@ class PurchaseInvoice extends BaseTransactionDocument
 
     public $supplier_phone;
 
+    public static function moduleType()
+    {
+        return Type_Module::Buying;
+    }
+
     public static function tableName()
     {
         return 'purchase_invoice';
@@ -26,9 +32,8 @@ class PurchaseInvoice extends BaseTransactionDocument
 
         return ArrayHelper::merge([
             [['supplier_id', 'due_date'], 'required'],
-            [['supplier_id'], 'integer'],
             [[
-                'supplier_name', 'supplier_phone', 'order_type', 'si_reference', 'por_profile_id'
+                'supplier_id', 'supplier_name', 'supplier_phone', 'order_type', 'si_reference', 'por_profile_id'
             ], 'string'],
             [['is_por'], 'boolean'],
             [['si_date', 'due_date'], 'date', 'format' => 'php:Y-m-d'],

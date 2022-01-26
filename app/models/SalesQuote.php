@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\enums\Type_Module;
 use app\models\base\BaseActiveRecord;
 use app\models\setup\ListViewSettingsForm;
 use Yii;
@@ -22,6 +23,11 @@ class SalesQuote extends BaseActiveRecord
         $this->listSettings = new ListViewSettingsForm();
         $this->listSettings->listNameAttribute = 'customer_name'; // override in view index
         $this->listSettings->listIdAttribute = 'customer_phone'; // override in view index
+    }
+
+    public static function moduleType()
+    {
+        return Type_Module::Selling;
     }
 
     public static function tableName()

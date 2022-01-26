@@ -3,44 +3,40 @@
 use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\Elements;
 
-$sumOrderTotal = $model->getSalesOrder()->sum('total_amount');
-$sumInvoiceTotal = $model->getSalesInvoice()->sum('total_amount');
+$count_SO = $model->getSalesOrder()->count();
+$sumTotalAmount_SO = $model->getSalesOrder()->sum('total_amount');
+if ($sumTotalAmount_SO > 0)
+    $sumTotalAmount_SO = Yii::$app->formatter->asCurrency($sumTotalAmount_SO);
 
-if ($sumOrderTotal > 0)
-    $sumOrderTotal = Yii::$app->formatter->asCurrency($sumOrderTotal);
-
-if ($sumInvoiceTotal > 0)
-    $sumInvoiceTotal = Yii::$app->formatter->asCurrency($sumInvoiceTotal);
+$count_SI = $model->getSalesInvoice()->count();
+$sumTotalAmount_SI = $model->getSalesInvoice()->sum('total_amount');
+if ($sumTotalAmount_SI > 0)
+    $sumTotalAmount_SI = Yii::$app->formatter->asCurrency($sumTotalAmount_SI);
 ?>
 
 <div class="ui secondary top attached padded segment">
     <div class="two fields linked-data">
         <div class="field item">
-            <?= Html::a(Yii::t('app', 'Sales Order') . '&ensp;' .
-                    Elements::Label($model->getSalesOrder()->count(), ['class' => 'basic']), 
+        <?php
+            echo Html::a(Yii::t('app', 'Sales Order') . '&ensp;' .
+                    Elements::Label($count_SO . $sumTotalAmount_SO, ['class' => 'basic']),
                     ['sales-order/index', 'SalesOrderSearch' => ['customer_name' => $model->name]]
+                );
+            echo '&ensp;';
+            echo Html::a('+', ['sales-order/create', 'item_id' => $model->id],
+                        ['title' => 'New Sales Order', 'style' => 'font-size: 180%; vertical-align: middle']
                 ) ?>
         </div>
         <div class="field item">
-            <?= Html::a(Yii::t('app', 'Sales Invoice') . '&ensp;' .
-                    Elements::Label($model->getSalesInvoice()->count(), ['class' => 'basic']),
+        <?php
+            echo Html::a(Yii::t('app', 'Sales Invoice') . '&ensp;' .
+                    Elements::Label($count_SI . $sumTotalAmount_SI, ['class' => 'basic']),
                     ['sales-invoice/index', 'SalesInvoiceSearch' => ['customer_name' => $model->name]]
+                );
+            echo '&ensp;';
+            echo Html::a('+', ['sales-invoice/create', 'item_id' => $model->id],
+                        ['title' => 'New Sales Invoice', 'style' => 'font-size: 180%; vertical-align: middle']
                 ) ?>
         </div>
     </div>
 </div>
-
-<?php /* = Menu::widget([
-    'vertical' => true,
-    'items' => [
-        // [
-        //     'label' => Elements::input(\yii\helpers\Html::input('text', null, null, ['placeholder' => 'search'])),
-        //     'encode' => false
-        // ],
-        [
-            'label' => 'Sales Order' . Elements::label('7'),
-            'url' => ['/sales/sales-order'],
-            'encode' => false
-        ],
-    ]
-]); */ ?>

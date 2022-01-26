@@ -8,7 +8,7 @@ use app\models\setup\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-abstract class BasePartyDocument extends BaseActiveRecord implements AutoincrementIdInterface
+abstract class BasePartyDocument extends BaseActiveRecord implements AutoincrementIdInterface, PartyInterface
 {
     public $status;
 
@@ -49,7 +49,7 @@ abstract class BasePartyDocument extends BaseActiveRecord implements Autoincreme
             'credit_days'   => Yii::t('app', 'Credit days'),
             'credit_days_based_on'  => Yii::t('app', 'Credit days based on'),
             'credit_limit'  => Yii::t('app', 'Credit limit'),
-            'tax_Id'    => Yii::t('app', 'Tax ID'),
+            'tax_Id'    => Yii::t('app', 'Tax Id'),
             // 'is_frozen'     => Yii::t('app', 'Is frozen'),
         ];
     }
@@ -60,6 +60,9 @@ abstract class BasePartyDocument extends BaseActiveRecord implements Autoincreme
             'status' => Status_Party::class
         ];
     }
+
+    public static function partyType()
+    {}
 
     // public function lockUpdate()
     // {

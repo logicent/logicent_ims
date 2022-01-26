@@ -48,4 +48,8 @@ interface ActiveRecordInterface
     public static function allowListView();
     // supported Type_View
     public static function viewType();
+    // Type_Module
+    public static function moduleType();
+    // Type_Module_Sub_Module
+    public static function moduleSubType();
 }

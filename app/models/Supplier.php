@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\enums\Type_Module;
+use app\enums\Type_Party;
 use app\models\base\BasePartyDocument;
 use Yii;
 use yii\helpers\Html;
@@ -13,6 +15,16 @@ use yii\helpers\ArrayHelper;
 class Supplier extends BasePartyDocument
 {
     const DOC_NUM_PREFIX = 'SUPP-';
+
+    public static function partyType()
+    {
+        return Type_Party::Supplier;
+    }
+
+    public static function moduleType()
+    {
+        return Type_Module::Buying;
+    }
 
     public static function tableName()
     {
@@ -33,8 +45,8 @@ class Supplier extends BasePartyDocument
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge([
-            'supplier_details' => Yii::t('app', 'Supplier Details'),
-            'supplier_type' => Yii::t('app', 'Supplier Type'),
+            'supplier_details' => Yii::t('app', 'Supplier details'),
+            'supplier_type' => Yii::t('app', 'Supplier type'),
         ], $attributeLabels);
     }
 

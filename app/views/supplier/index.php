@@ -1,15 +1,9 @@
 <?php
 
-use app\enums\Type_Supplier;
-use yii\helpers\Html;
-
 $columns = [
     [
         'attribute' => 'supplier_type',
-        'value' => function($model) {
-            return Type_Supplier::enums()[$model->supplier_type];
-        },
-        'filter' => ['-1' => 'All']
+        'filter' => ['-1' => 'All'] // To-Do use SelectableItems with addFilterOptionAll
     ],
 ];
 

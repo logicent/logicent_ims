@@ -3,6 +3,7 @@
 namespace app\models\auth;
 
 use app\enums\Status_Person;
+use app\enums\Type_Party;
 use app\enums\Type_Role;
 use app\models\base\BaseActiveRecord;
 use app\models\UploadForm;
@@ -26,6 +27,11 @@ class Person extends BaseActiveRecord
         $this->uploadForm = new UploadForm();
         // $this->fileAttribute = 'avatar';
         return parent::init();
+    }
+
+    public static function partyType()
+    {
+        return Type_Party::Person;
     }
 
     public static function tableName()

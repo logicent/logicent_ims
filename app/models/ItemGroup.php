@@ -47,11 +47,6 @@ class ItemGroup extends BaseActiveRecord
         return self::find()->select('name')->where(['id' => $this->parent_item_group])->scalar();
     }
 
-    public function statusLabel()
-    {
-        return $this->disabled == '0' ? 'Active' : 'Inactive';
-    }
-
     public static function enums()
     {
         return [

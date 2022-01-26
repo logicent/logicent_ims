@@ -1,5 +1,7 @@
 <?php
 
+use app\enums\Type_Module;
+use app\enums\Type_Party;
 use app\helpers\SelectableItems;
 use app\models\Currency;
 use app\models\PriceList;
@@ -34,7 +36,8 @@ endif;
         <?= $form->field($model, $pricelistAttribute)->widget(Select::class, [
                 'search' => true,
                 'items' => SelectableItems::get(PriceList::class, $model, [
-                    'valueAttribute' => 'id'
+                    'valueAttribute' => 'id',
+                    'filters' => ['module' => Type_Module::enums()[$model::moduleType()]]
                 ]),
                 'disabled' => $this->context->isReadonly
             ]) ?>
