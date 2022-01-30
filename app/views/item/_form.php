@@ -18,24 +18,23 @@ $form = ActiveForm::begin( [
     'options' => [
         'enctype' => 'multipart/form-data',
         'autocomplete' => 'off',
-        'class' => 'ui form modal-form',
-        'data' => [
-            'modal_id' => 'modal__item'
-        ]
+        'class' => 'ui form',
     ],
 ]);
-
-
 echo $this->render('/_form/_header', ['model' => $model]);
 if (!$model->isNewRecord) :
-    echo $this->render('_linkedData', ['model' => $model]);
+    echo $this->render('_transaction', ['model' => $model]);
 endif ?>
 
 <!-- General -->
     <div class="ui attached padded segment">
         <?= Html::activeHiddenInput($model, 'status') ?>
         <?= Html::activeHiddenInput($model, 'item_type') ?>
-
+        <?= Html::activeFileInput($model->uploadForm, 'file_upload', [
+                'accept' => 'image/*', 'style' => 'display: none'
+            ]) ?>
+        <?php // echo Html::tag('div', Html::activeLabel($model, 'image_path'), ['class' => 'field']) ?>
+        <?= Html::activeHiddenInput($model, 'image_path', ['id' => 'file_path']) ?>
         <div class="two fields">
             <?= $form->field($model, 'id')->textInput(['maxlength' => true, 'readonly' => !$model->isNewRecord]) ?>
             <?= $form->field($model, 'barcode')->textInput(['maxlength' => true, 'readonly' => $isReadonly]) ?>
@@ -49,11 +48,14 @@ endif ?>
                 ) ?>
         </div>
         <div class="two fields">
-            <?= $form->field($model, 'description')->textArea(['rows' => 2, 'readonly' => $isReadonly]) ?>
+            <?= $form->field($model, 'description')->textArea([
+                    'rows' => 3,
+                    'readonly' => $isReadonly,
+                    'style' => 'min-height: 125px'
+                ]) ?>
             <?= $form->field($model, 'inactive')->checkbox()->label('&nbsp;') ?>
         </div>
     </div>
-
     <!-- Stock -->
     <div class="ui attached padded segment">
         <?= $form->field($model, 'is_stock_item')->checkbox() ?>

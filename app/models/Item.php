@@ -23,6 +23,12 @@ class Item extends BaseActiveRecord implements AutoincrementIdInterface
     {
         parent::init();
         $this->uploadForm = new UploadForm();
+        $this->fileAttribute = 'image_path';
+    }
+
+    public function allowFileUpload()
+    {
+        return true;
     }
 
     public static function tableName()
@@ -33,6 +39,7 @@ class Item extends BaseActiveRecord implements AutoincrementIdInterface
     public function rules()
     {
         return [
+            [['description'], 'string', 'max' => 280],
             [[
                  'has_variants', 'is_sales_item', 'is_stock_item', 'is_purchase_item', 'inactive'
                 ], 'boolean'],
@@ -42,8 +49,8 @@ class Item extends BaseActiveRecord implements AutoincrementIdInterface
                 ], 'number'],
             [['name'], 'required'],
             [[
-                'name', 'item_type', 'weight_uom', 'item_uom', 'sales_uom', 'purchase_uom', 'description',
-                'item_group', 'default_supplier', 'expense_account', 'income_account', 'brand_id', 'tax_code'
+                'name', 'item_type', 'weight_uom', 'item_uom', 'sales_uom', 'purchase_uom', 'item_group',
+                'default_supplier', 'expense_account', 'income_account', 'brand_id', 'tax_code', 'image_path'
             ], 'string', 'max' => 140],
         ];
     }
