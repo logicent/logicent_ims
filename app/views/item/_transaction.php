@@ -30,51 +30,52 @@ if ($purchaseInvoiceTotalAmountSum > 0)
 ?>
 
 <div class="ui secondary top attached padded segment">
-    <div class="two fields linked-data">
-        <div class="field item">
+    <div class="ui two column grid linked-data">
+        <div class="column item">
         <?php
             echo Html::a(Yii::t('app', 'Sales Order') . '&ensp;' .
                     Elements::Label($salesOrderCount . $salesOrderTotalAmountSum, ['class' => 'basic']),
                     null
                 );
             echo '&ensp;';
-            echo Html::a('+', ['sales-order/create', 'item_id' => $model->id],
-                        ['title' => 'New Sales Order', 'style' => 'font-size: 180%; vertical-align: middle']
+            echo Html::a(Elements::icon('plus'), ['sales-order/create', 'item_id' => $model->id],
+                        ['title' => 'New Sales Order', 'class' => 'compact ui basic tiny icon button right floated']
                 ) ?>
         </div>
-        <div class="field item">
+        <div class="column item">
         <?php
             echo Html::a(Yii::t('app', 'Sales Invoice') . '&ensp;' .
                     Elements::Label($salesInvoiceCount . $salesInvoiceTotalAmountSum, ['class' => 'basic']), 
                     null
             );
             echo '&ensp;';
-            echo Html::a('+', ['sales-invoice/create', 'item_id' => $model->id],
-                    ['title' => 'New Sales Invoice', 'style' => 'font-size: 180%; vertical-align: middle']
+            echo Html::a(Elements::icon('plus'), ['sales-invoice/create', 'item_id' => $model->id],
+                    ['title' => 'New Sales Invoice', 'class' => 'compact ui basic tiny icon button right floated']
                 ) ?>
         </div>
     </div>
-    <div class="two fields linked-data">
-        <div class="field item">
+    <div class="ui two column grid linked-data">
+        <div class="column item">
         <?php
             echo Html::a(Yii::t('app', 'Purchase Order') . '&ensp;' .
-                    Elements::Label($purchaseOrderCount . $purchaseOrderTotalAmountSum, ['class' => 'basic']),
-                    null
-            );
+                        Elements::Label($purchaseOrderCount . $purchaseOrderTotalAmountSum, ['class' => 'basic']),
+                        null
+                    );
             echo '&ensp;';
-            echo Html::a('+', ['purchase-order/create', 'item_id' => $model->id],
-                        ['title' => 'New Purchase Order', 'style' => 'font-size: 180%; vertical-align: middle']
-                ) ?>
+            echo Html::a(Elements::icon('plus'), 
+                        ['purchase-order/create', 'item_id' => $model->id],
+                        ['title' => 'New Purchase Order', 'class' => 'compact ui basic tiny icon button right floated']
+                    ) ?>
         </div>
-        <div class="field item">
+        <div class="column item">
         <?php
             echo Html::a(Yii::t('app', 'Purchases Invoice') . '&ensp;' .
                     Elements::Label($purchaseInvoiceCount . $purchaseInvoiceTotalAmountSum, ['class' => 'basic']),
                     null
             );
             echo '&ensp;';
-            echo Html::a('+', ['purchase-invoice/create', 'item_id' => $model->id],
-                        ['title' => 'New Purchase Invoice', 'style' => 'font-size: 180%; vertical-align: middle']
+            echo Html::a(Elements::icon('plus'), ['purchase-invoice/create', 'item_id' => $model->id],
+                        ['title' => 'New Purchase Invoice', 'class' => 'compact ui basic tiny icon button right floated']
                 ) ?>
         </div>
     </div>

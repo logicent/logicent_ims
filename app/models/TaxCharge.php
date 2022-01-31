@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "tax_charge".
  */
-class TaxCharge extends BaseActiveRecord
+class TaxCharge extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -23,9 +22,8 @@ class TaxCharge extends BaseActiveRecord
 
         return ArrayHelper::merge($rules, [
             [['rate'], 'number'],
-            [['id'], 'required'],
-            [['tax_included', 'inactive'], 'boolean'],
-            [['id', 'name', 'type'], 'string', 'max' => 140],
+            [['tax_included'], 'boolean'],
+            [['name', 'type'], 'string', 'max' => 140],
         ]);
     }
 
@@ -37,7 +35,6 @@ class TaxCharge extends BaseActiveRecord
             'id' => Yii::t('app', 'Code'),
             'rate' => Yii::t('app', 'Rate'),
             'type' => Yii::t('app', 'Type'),
-            'inactive' => Yii::t('app', 'Inactive'),
             'tax_included' => Yii::t('app', 'Tax included'),
         ]);
     }
@@ -45,17 +42,5 @@ class TaxCharge extends BaseActiveRecord
     public function getCustomers()
     {
         return $this->hasMany(Customer::class, ['customer_group' => 'id']);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 }

@@ -158,12 +158,21 @@ class PosController extends BaseTransactionController
             $pos_receipt = new PosReceipt();
 		}
 
-		return $this->renderAjax('cart/item/_form', [
+        $image = $this->renderAjax('cart/item/_image', [
             'stock_item' => $stock_item,
             'pos_receipt_item' => $pos_item,
             'pos_profile' => $pos_receipt->posProfile,
             'rowId' => Yii::$app->request->get('nextRowId')
         ]);
+
+		$item = $this->renderAjax('cart/item/_form', [
+            'stock_item' => $stock_item,
+            'pos_receipt_item' => $pos_item,
+            'pos_profile' => $pos_receipt->posProfile,
+            'rowId' => Yii::$app->request->get('nextRowId')
+        ]);
+
+        return $this->asJson(['item' => $item, 'image' => $image]);
     }
 
     public function actionItemGroupFilter()

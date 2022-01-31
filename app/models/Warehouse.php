@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "warehouse".
  */
-class Warehouse extends BaseActiveRecord
+class Warehouse extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -22,11 +21,8 @@ class Warehouse extends BaseActiveRecord
         $rules = parent::rules();
 
         return ArrayHelper::merge($rules, [
-            [['id'], 'required'],
-            [['id'], 'unique'],
-            [['inactive'], 'integer'],
-            [[
-                'email_address', 'branch', 'id', 'physical_address' ], 'string', 'max' => 140],
+            [['email_address', 'branch', 'physical_address' ], 'string', 'max' => 140],
+            ['email_address', 'email'],
         ]);
     }
 
@@ -35,24 +31,10 @@ class Warehouse extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
             'branch' => Yii::t('app', 'Branch'),
-            'inactive' => Yii::t('app', 'Inactive'),
-            'email_address' => Yii::t('app', 'Email Address'),
-            'physical_address' => Yii::t('app', 'Physical Address'),
+            'email_address' => Yii::t('app', 'Email address'),
+            'physical_address' => Yii::t('app', 'Physical address'),
         ]);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 
     public function afterSave($insert, $changedAttributes)

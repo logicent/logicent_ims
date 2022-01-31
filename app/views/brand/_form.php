@@ -25,9 +25,9 @@ echo $this->render('/_form/_modal_header', ['model' => $model]) ?>
             <?= $form->field($model, 'inactive')->checkbox()->label('&nbsp;') ?>
         </div>
         <div class="two fields">
-            <?= $form->field($model, 'default_warehouse')->dropDownList(
-                    SelectableItems::get(Warehouse::class, $model, [
-                        'valueAttribute' => 'id',
+            <?= $form->field($model, 'default_supplier')->dropDownList(
+                    SelectableItems::get(Supplier::class, $model, [
+                        'valueAttribute' => 'name',
                         'filters' => ['inactive' => false]
                     ])
                 ) ?>
@@ -41,9 +41,9 @@ echo $this->render('/_form/_modal_header', ['model' => $model]) ?>
                 ) ?>
         </div>
         <div class="two fields">
-            <?= $form->field($model, 'default_supplier')->dropDownList(
-                    SelectableItems::get(Supplier::class, $model, [
-                        'valueAttribute' => 'name',
+            <?= $form->field($model, 'default_warehouse')->dropDownList(
+                    SelectableItems::get(Warehouse::class, $model, [
+                        'valueAttribute' => 'id',
                         'filters' => ['inactive' => false]
                     ])
                 ) ?>

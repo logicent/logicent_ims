@@ -43,8 +43,6 @@ $form = ActiveForm::begin([
             <?= $form->field( $model, 'from_address' )->textInput( ['maxlength' => true] ) ?>
             <?= $form->field( $model, 'from_name' )->textInput( ['maxlength' => true] ) ?>
         </div>
-    </div>
-    <div class="ui secondary bottom attached padded segment">
         <div class="field">
             <?= Html::a(Yii::t('app', 'Test connection'), ['test-connection'],
                     [

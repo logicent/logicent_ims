@@ -6,6 +6,7 @@ $('#pos__item-search').on('change',
         if (item_id == '')
 			return false;
 
+        el_image_grid = $('#cart_images');
         el_table_body = $('#cart_items').find('tbody');
         // el_list_table = $('#list').find('tbody');
         // el_grid_thumbs = $('#grid').find('.row');
@@ -20,22 +21,25 @@ $('#pos__item-search').on('change',
                 'itemId': item_id,
                 'nextRowId': last_row_id + 1,
             },
-            success: function(item) 
+            success: function(result)
             {
 				if (has_no_items) {
 					$('#no_items').remove();
+					$('#no_image').remove();
 					$('#cancel_sale__btn').addClass('red');
 					$('#cancel_sale__btn').removeClass('disabled');
 				}
 
 				$('.payment-entry').attr('readonly', false);
-
-				el_table_body.append(item);
+				// add selected item to table
+				el_table_body.append(result.item);
 				// get all inputs from list after add
 				linesInputs = getLinesInputs();
 				docTotalInputs = getDocTotalInputs();
 				// update cart_total amounts
                 recalculateDocTotals(linesInputs, docTotalInputs);
+				// add selected item to grid
+				el_image_grid.append(result.image);
 				// clear selected item in search
 				el_item.dropdown('clear');
 				el_table_body.find('td.qty > input:last').focus().select();

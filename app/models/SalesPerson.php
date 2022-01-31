@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "sales_person".
  */
-class SalesPerson extends BaseActiveRecord
+class SalesPerson extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -22,8 +21,6 @@ class SalesPerson extends BaseActiveRecord
         $rules = parent::rules();
 
         return ArrayHelper::merge($rules, [
-            ['id', 'required'],
-            ['inactive', 'boolean'],
             [['employee_name'], 'string', 'max' => 140],
         ]);
     }
@@ -33,21 +30,7 @@ class SalesPerson extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
-            'inactive'     => Yii::t('app', 'Inactive'),
             'employee_name'   => Yii::t('app', 'Employee name'),
         ]);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 }

@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "supplier_type".
  */
-class SupplierType extends BaseActiveRecord
+class SupplierType extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -39,12 +38,5 @@ class SupplierType extends BaseActiveRecord
     public function getPurchaseOrder()
     {
         return $this->hasMany(PurchaseOrder::class, ['supplier_id' => 'id']);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
     }
 }
