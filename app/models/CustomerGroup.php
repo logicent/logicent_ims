@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -12,7 +11,7 @@ use yii\helpers\ArrayHelper;
  *
  * @property Customer[] $customers
  */
-class CustomerGroup extends BaseActiveRecord
+class CustomerGroup extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -26,8 +25,7 @@ class CustomerGroup extends BaseActiveRecord
         return ArrayHelper::merge($rules, [
             [['credit_days'], 'integer'],
             [['credit_limit'], 'number'],
-            [['id'], 'required'],
-            [['id', 'default_price_list', 'credit_days_based_on'], 'string', 'max' => 140],
+            [['default_price_list', 'credit_days_based_on'], 'string', 'max' => 140],
         ]);
     }
 
@@ -36,7 +34,6 @@ class CustomerGroup extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
             'credit_limit' => Yii::t('app', 'Credit Limit'),
             'credit_days_based_on' => Yii::t('app', 'Credit Days Based On'),
             'default_price_list' => Yii::t('app', 'Default Price List'),
@@ -47,17 +44,5 @@ class CustomerGroup extends BaseActiveRecord
     public function getCustomers()
     {
         return $this->hasMany(Customer::class, ['customer_group' => 'id']);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 }

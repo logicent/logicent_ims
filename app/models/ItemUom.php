@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "item_uom".
  */
-class ItemUom extends BaseActiveRecord
+class ItemUom extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -23,8 +22,6 @@ class ItemUom extends BaseActiveRecord
 
         return ArrayHelper::merge($rules, [
             [['must_be_whole_number'], 'integer'],
-            [['id'], 'required'],
-            [['id'], 'string', 'max' => 140],
         ]);
     }
 
@@ -33,20 +30,7 @@ class ItemUom extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
             'must_be_whole_number' => Yii::t('app', 'Must be whole number'),
         ]);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 }

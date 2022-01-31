@@ -1,10 +1,12 @@
 <?php
 
+use app\enums\Item_View;
 use app\helpers\SelectableItems;
 use app\models\Customer;
 use app\models\Item;
 use app\models\SalesPerson;
 use app\models\Warehouse;
+use PHPUnit\Util\Log\JSON;
 use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Select;
@@ -19,7 +21,6 @@ $form = ActiveForm::begin([
     ]
 ])
 ?>
-
 <div class="ui attached padded segment">
     <div class="ui two column grid">
         <div class="eleven wide column">
@@ -58,23 +59,7 @@ $form = ActiveForm::begin([
                     ]) ?>
                 </div>
             </div>
-            <div class="ui basic buttons">
-                <?= Html::a(Elements::icon('th list', ['style' => 'color: #8D99A6']), '#list',  [
-                        'class' => 'text-muted ui large icon button',
-                        'style' => 'padding: 0.58em;',
-                        'title' => 'List', 
-                        'id' => 'item_list',
-                        'data-toggle' => 'tab'
-                    ]) ?>
-                <?= Html::a(Elements::icon('th grid', ['style' => 'color: #8D99A6']), '#grid', [
-                        'class' => 'text-muted ui large icon button',
-                        'style' => 'padding: 0.58em;',
-                        'title' => 'Image',
-                        'id' => 'item_grid',
-                        'data-toggle' => 'tab'
-                    ]) ?>
-            </div>
-            <?= $this->render('item/list', [
+            <?= $this->render('item/index', [
                     'pos_profile' => $pos_profile,
                     'pos_receipt_items' => $pos_receipt_item
                 ]) ?>
@@ -170,4 +155,4 @@ $form = ActiveForm::begin([
     <?= Html::activeHiddenInput($pos_receipt, 'balance_amount', ['id' => 'pos__balance_amount']) ?>
 
 <?php ActiveForm::end();
-$this->registerJs( $this->render('item_search.js') ) ?>
+$this->registerJs( $this->render('item_search.js') );

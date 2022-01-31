@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "item_group".
  */
-class ItemGroup extends BaseActiveRecord
+class ItemGroup extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -19,11 +18,11 @@ class ItemGroup extends BaseActiveRecord
 
     public function rules()
     {
-        return [
-            [['id'], 'required'],
-            [['inactive'], 'boolean'],
-            [['id', 'description'], 'string', 'max' => 140],
-        ];
+        $rules = parent::rules();
+
+        return ArrayHelper::merge($rules, [
+            [['is_group'], 'boolean'],
+        ]);
     }
 
     public function attributeLabels()
@@ -31,9 +30,7 @@ class ItemGroup extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
-            'inactive' => Yii::t('app', 'Inactive'),
-            'description' => Yii::t('app', 'Description'),
+            'is_group' => Yii::t('app', 'Is group'),
         ]);
     }
 
@@ -45,17 +42,5 @@ class ItemGroup extends BaseActiveRecord
     public function getParentItemGroup()
     {
         return self::find()->select('name')->where(['id' => $this->parent_item_group])->scalar();
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 }

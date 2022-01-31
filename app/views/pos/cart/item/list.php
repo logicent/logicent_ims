@@ -25,19 +25,18 @@
 	<tbody id="cart_detail">
 <?php
 	if ($pos_receipt_items) :
-        foreach ($pos_receipt_items as $rowId => $pos_receipt_item) :
+		foreach ($pos_receipt_items as $rowId => $pos_receipt_item) :
 			echo $this->render('_form', [
 							'pos_receipt_item' => $pos_receipt_item,
 							'pos_profile' => $pos_profile,
 							'rowId' => $rowId
 				]);
-        endforeach;
+		endforeach;
 	else :
 		echo $this->render('_no_item', [
 			'pos_profile' => $pos_profile
 		]);
-    endif ?>
+	endif ?>
 	</tbody>
 </table>
-
 <?php $this->registerJs( $this->render('list.js') ) ?>

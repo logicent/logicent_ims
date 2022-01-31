@@ -13,6 +13,8 @@ $('tbody#cart_detail').on('focusout', 'td.qty > input',
 // fetch edited line item detail to update totals if qty/price/discount changes
 $('tbody#cart_detail').on('change', 'td.qty > input, td.price > input.unit-price, td.discount > input', 
     function(e) {
+        rowId = $(this).closest('tr').attr('id');
+
         qty = parseFloat($(this).val());
         if (qty == 0 || isNaN(qty))
             $(this).val('1');
@@ -25,14 +27,17 @@ $('tbody#cart_detail').on('change', 'td.qty > input, td.price > input.unit-price
         lineInputs[5].text(lineInputs[4].val());
 
         recalculateDocTotals(linesInputs, docTotalInputs);
+        refreshImageDisplayValues(rowId, lineInputs);
     });
 
-// function getLineTotals(el) 
-// {
-// 	el_tbody = el.closest('tbody');
-// 	// fetch all line item amount column values
-// 	return el_tbody.find('.item-total > input');
-// }
+function refreshImageDisplayValues(rowId, lineInputs)
+{
+    el_image = $('div#cart_images').find('div#' + rowId);
+
+    el_image.find('span.qty').text(lineInputs[0].val());
+    el_image.find('span.price').text(lineInputs[1].val());
+    el_image.find('span.item-total').text(lineInputs[4].val());
+}
 
 function getLinesInputs() 
 {
@@ -156,7 +161,12 @@ $('#cart_detail').on('click', '.del-item',
 function(e) {
     el_table_body = $('#cart_items').find('tbody')
     el_table_row = $(this).closest('tr');
+    el_table_row_id = el_table_row.attr('id');
     el_table_row.remove();
+
+    el_image = $('#cart_images').find('div#' + el_table_row_id);
+    el_image.remove();
+
     rowCount = el_table_body.find('tr').length;
     if (rowCount == 0) { //  then append #no_items and set .payment-entry as readonly
         $.ajax({
@@ -182,26 +192,6 @@ function(e) {
             }
         });
     }
-
-    // TO-DO: Only if tracking committed_qty in stock location
-    // deleteUrl = $(this).data('url');
-    // el_id = el_table_row.find('td > .item-id');
-    // if (el_id.val() != '')
-    // {
-    // 	$.ajax({
-    // 		url: deleteUrl,
-    // 		type: 'post',
-    // 		data: {
-    // 			'id': el_id.val(),
-    // 		},
-    // 		success: function(response) {							
-    // 			// alert(response);
-    // 		},
-    // 		error: function(jqXhr, textStatus, errorThrown) {
-    // 			console.log(errorThrown);
-    // 		}
-    // 	});
-    // }
 
     // update sale_total amounts
     lineInputs = getLineInputs(el_table_body);

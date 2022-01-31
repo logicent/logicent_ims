@@ -1,5 +1,7 @@
 <?php
 
+use app\helpers\SelectableItems;
+use app\models\ItemGroup;
 use Zelenin\yii\SemanticUI\widgets\ActiveForm;
 
 
@@ -14,13 +16,22 @@ $form = ActiveForm::begin([
 
 echo $this->render('/_form/_modal_header', ['model' => $model]) ?>
 
-    <div class="ui bottom attached padded segment">
+    <div class="ui attached padded segment">
         <div class="two fields">
             <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'inactive')->checkbox()->label('&nbsp;') ?>
         </div>
+        <?= $form->field($model, 'description')->textArea(['rows' => 2, 'style' => 'min-height: 124px']) ?>
+    </div>
+    <div class="ui bottom attached padded segment">
+        <?= $form->field($model, 'is_group')->checkbox() ?>
         <div class="two fields">
-            <?= $form->field($model, 'description')->textArea(['rows' => 2]) ?>
+            <?= $form->field($model, 'parent_group')->dropDownList(
+                    SelectableItems::get(ItemGroup::class, $model, [
+                        'valueAttribute' => 'id',
+                        'filters' => ['is_group' => true]
+                    ])
+                ) ?>
         </div>
     </div>
 

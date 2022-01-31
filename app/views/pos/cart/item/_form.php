@@ -32,7 +32,7 @@ use Zelenin\yii\SemanticUI\Elements;
 				'class' => 'unit-price right aligned',
 				'value' => number_format($pos_receipt_item->unit_price, 2, '.', ''),
 				'style' => 'border: none; border-radius: 0px; height: 54px',
-				'readonly' => (bool) $pos_profile->allow_user_price_edit
+				'readonly' => !(bool) $pos_profile->allow_user_price_edit
 			]) ?>
 		<?= Html::activeHiddenInput($pos_receipt_item, "[$rowId]tax_percent", [
 				'class' => 'tax-percent'

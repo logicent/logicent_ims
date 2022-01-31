@@ -2,9 +2,9 @@
 
 use app\helpers\SelectableItems;
 use app\models\Item;
+use app\models\ItemUom;
 use yii\helpers\Html;
 
-$isReadonly = $this->context->isReadonly;
 ?>
 <tr id="<?= $model->formName() ?>_<?= $rowId ?>">
     <td class="one wide column center aligned select-row">
@@ -12,21 +12,20 @@ $isReadonly = $this->context->isReadonly;
         <?= Html::checkbox($rowId, false, ['value' => $model->id]) ?>
     </td>
     <td class="five wide column">
-    <?php
-        if ($model->isNewRecord) : ?>
-            <?= Html::activeDropDownList($model, "[{$rowId}]item_id",
-                                        SelectableItems::get(Item::class, $model, [
-                                            'valueAttribute' => 'name',
-                                        ]),
-                                        ['class' => 'list-option']);
-        else :
-            echo Html::activeTextInput($model, "[{$rowId}]item_id", ['class' => 'right aligned', 'readonly' => $isReadonly]);
-        endif ?>
+        <?= Html::activeDropDownList($model, "[{$rowId}]item_id",
+                                    SelectableItems::get(Item::class, $model, [
+                                        'valueAttribute' => 'name',
+                                    ]),
+                                    ['class' => 'list-option']) ?>
     </td>
     <td class="two wide column item-qty">
-        <?= Html::activeTextInput($model, "[{$rowId}]quantity", ['class' => 'right aligned', 'readonly' => !$model->isNewRecord]) ?>
+        <?= Html::activeTextInput($model, "[{$rowId}]quantity", ['class' => 'right aligned']) ?>
     </td>
     <td class="three wide column item-uom">
-        <?= Html::activeTextInput($model, "[{$rowId}]uom", ['class' => 'right aligned', 'readonly' => $isReadonly]) ?>
+        <?= Html::activeDropDownList($model, "[{$rowId}]uom",
+                                        SelectableItems::get(ItemUom::class, $model, [
+                                            'valueAttribute' => 'id',
+                                        ]),
+                                        ['class' => 'list-option']) ?>
     </td>
 </tr>

@@ -42,7 +42,7 @@ class SalesInvoice extends BaseTransactionDocument
         return ArrayHelper::merge([
             [['customer_id', 'due_date'], 'required'],
             [[
-                'customer_id', 'customer_name', 'order_type', 'po_reference', 'pos_profile_id',
+                'sales_person_id', 'customer_id', 'customer_name', 'order_type', 'po_reference', 'pos_profile_id',
             ], 'string'],
             [['is_pos'], 'boolean'],
             [['po_date', 'due_date'], 'date', 'format' => 'php:Y-m-d'],
@@ -61,6 +61,7 @@ class SalesInvoice extends BaseTransactionDocument
             'customer_name' => Yii::t('app', 'Customer name'),
             'due_date' => Yii::t('app', 'Payment due date'),
             'order_type' => Yii::t('app', 'Order type'),
+            'sales_person_id' => Yii::t('app', 'Sales person'),
             'pos_profile_id' => Yii::t('app', 'POS profile'),
             'is_pos' => Yii::t('app', 'Include payment (POS)'),
             'is_return' => Yii::t('app', 'Is return (Credit note)'),

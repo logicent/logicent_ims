@@ -2,15 +2,14 @@
 
 namespace app\models;
 
-use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "payment_method".
  */
-class PaymentMethod extends BaseActiveRecord
+class PaymentMethod extends BaseSetupMasterData
 {
     public static function tableName()
     {
@@ -22,9 +21,7 @@ class PaymentMethod extends BaseActiveRecord
         $rules = parent::rules();
 
         return ArrayHelper::merge($rules, [
-            [['id'], 'required'],
-            [['description'], 'string'],
-            [['inactive', 'is_default'], 'boolean']
+            ['is_default', 'boolean']
         ]);
     }
 
@@ -33,23 +30,7 @@ class PaymentMethod extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
-            'description' => Yii::t('app', 'Description'),
-            'inactive' => Yii::t('app', 'Inactive'),
             'is_default' => Yii::t('app', 'Is default'),
-            // 'account_id' => Yii::t('app', 'GL Account'),
         ]);
-    }
-
-    public static function enums()
-    {
-        return [
-            'inactive' => Status_Active::class
-        ];
-    }
-
-    public static function autoSuggestIdValue()
-    {
-        return false;
     }
 }
