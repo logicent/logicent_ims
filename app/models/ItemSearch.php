@@ -40,7 +40,7 @@ class ItemSearch extends Item
 
     public function search($params)
     {
-        $query = Item::find();
+        $query = Item::find()->where(['deleted_at' => null]);
 
         // add conditions that should always apply here
 

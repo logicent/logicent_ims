@@ -11,6 +11,11 @@ use yii\data\ActiveDataProvider;
  */
 class ExpenseSearch extends Expense
 {
+    public function rules()
+    {
+        return [];
+    }
+
     public function scenarios()
     {
         // bypass scenarios() implementation in the parent class

@@ -4,9 +4,9 @@ use yii\helpers\Html;
 
 return [
     [
-        'attribute' => 'issued_at',
+        'attribute' => 'posting_date',
         'value' => function ( $model ) {
-            return Yii::$app->formatter->asDate($model->issued_at);
+            return Yii::$app->formatter->asDate($model->posting_date);
         },
         'filterInputOptions' => [
             'class' => 'pikaday'

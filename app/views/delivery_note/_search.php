@@ -1,49 +1,23 @@
 <?php
 
+use app\helpers\SelectableItems;
+use app\models\Warehouse;
 use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use Zelenin\yii\SemanticUI\modules\Select;
 
-?>
-
-<div class="delivery-note-search">
-
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'reference') ?>
-
-    <?= $form->field($model, 'doc_status') ?>
-
-    <?= $form->field($model, 'posted_on') ?>
-
-    <?= $form->field($model, 'customer_id') ?>
-
-    <?php // echo $form->field($model, 'sales_order_id') ?>
-
-    <?php // echo $form->field($model, 'delivery_address') ?>
-
-    <?php // echo $form->field($model, 'notes') ?>
-
-    <?php // echo $form->field($model, 'created_at') ?>
-
-    <?php // echo $form->field($model, 'updated_at') ?>
-
-    <?php // echo $form->field($model, 'created_by') ?>
-
-    <?php // echo $form->field($model, 'updated_by') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+$form = ActiveForm::begin([
+    'action' => ['index'],
+    'method' => 'get',
+    'options' => [
+        'class' => 'ui form',
+        'autocomplete' => 'off'
+    ]
+]) ?>
+    <div class="four fields">
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?= Html::resetButton(Yii::t('app', 'Clear'), ['class' => 'compact ui basic small grey button']) ?>
+    <?= Html::submitButton(Yii::t('app', 'Apply Filter'), ['class' => 'compact ui basic small primary button']) ?>
 
-</div>
+<?php ActiveForm::end();

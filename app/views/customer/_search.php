@@ -1,25 +1,50 @@
 <?php
 
+use app\helpers\SelectableItems;
+use app\models\CustomerGroup;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use Zelenin\yii\SemanticUI\modules\Select;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\CustomerSearch */
-/* @var $form yii\widgets\ActiveForm */
-?>
-
-<div class="customer-search">
-
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+$form = ActiveForm::begin([
+    'action' => ['index'],
+    'method' => 'get',
+    'options' => [
+        'class' => 'ui form',
+        'autocomplete' => 'off'
+    ]
+]) ?>
+    <div class="four fields">
+        <?= $form
+                ->field( $searchModel, 'phone_number' )
+                ->textInput( ['placeholder' => $searchModel->getAttributeLabel('phone_number')] )
+                ->label(false) ?>
+        <?= $form
+                ->field( $searchModel, 'email_address' )
+                ->textInput( ['placeholder' => $searchModel->getAttributeLabel('email_address')] )
+                ->label(false) ?>
+        <?= $form
+                ->field( $searchModel, 'party_group' )
+                ->widget( Select::class, [
+                    'search' => true,
+                    'items' => SelectableItems::get(CustomerGroup::class, $searchModel, [
+                                    'valueAttribute' => 'id',
+                                    'addEmptyFirstItem' => false,
+                                ]),
+                    'options' => ['prompt' => $searchModel->getAttributeLabel('party_group')],
+                ])
+                ->label(false) ?>
+        <?= $form
+                ->field( $searchModel, 'tax_Id' )
+                ->textInput( ['placeholder' => $searchModel->getAttributeLabel('tax_Id')] )
+                ->label(false) ?>
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?= Html::resetButton(Yii::t('app', 'Clear'), ['class' => 'compact ui basic small grey button']) ?>
+    <?= Html::submitButton(Yii::t('app', 'Apply Filter'), ['class' => 'compact ui basic small primary button']) ?>
 
-</div>
+<?php ActiveForm::end(); 
+$this->registerJs(<<<JS
+    $('.inline.fields').removeClass('grouped');
+JS)
+?>

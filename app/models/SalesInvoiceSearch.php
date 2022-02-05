@@ -18,7 +18,7 @@ class SalesInvoiceSearch extends SalesInvoice
     {
         return [
             [[
-                'id', 'po_reference', 'status', 'issued_at', 'authorized_by', 'customer_name',
+                'id', 'po_no', 'status', 'posting_date', 'authorized_by', 'customer_name',
                 'total_in_words'
             ], 'string'],
             [['created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at'], 'safe'],
@@ -62,9 +62,9 @@ class SalesInvoiceSearch extends SalesInvoice
         // grid filtering conditions
         $query->andFilterWhere([
             'customer_id' => $this->customer_id,
-            'po_reference' => $this->po_reference,
+            'po_no' => $this->po_no,
             'po_date' => $this->po_date,
-            'issued_at' => $this->issued_at,
+            'posting_date' => $this->posting_date,
             'due_date' => $this->due_date,
             'update_stock' => $this->update_stock,
             'is_return' => $this->is_return,

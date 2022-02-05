@@ -15,6 +15,8 @@ use yii\helpers\ArrayHelper;
 class Supplier extends BasePartyDocument
 {
     const DOC_NUM_PREFIX = 'SUPP-';
+    // Allow Purchase Invoice Creation Without Purchase Order
+    // Allow Purchase Invoice Creation Without Purchase Receipt
 
     public static function partyType()
     {
@@ -31,22 +33,22 @@ class Supplier extends BasePartyDocument
         return 'supplier';
     }
 
-    public function rules()
-    {
-        $rules = parent::rules();
+    // public function rules()
+    // {
+    //     $rules = parent::rules();
 
-        return ArrayHelper::merge([
-            [['supplier_details', 'supplier_type'], 'string'],
-        ], $rules);
-    }
+    //     return ArrayHelper::merge([
+    //     ], $rules);
+    // }
 
     public function attributeLabels()
     {
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge([
-            'supplier_details' => Yii::t('app', 'Supplier details'),
-            'supplier_type' => Yii::t('app', 'Supplier type'),
+            'party_details' => Yii::t('app', 'Supplier details'),
+            'party_type' => Yii::t('app', 'Supplier type'),
+            'party_group' => Yii::t('app', 'Supplier group'),
         ], $attributeLabels);
     }
 

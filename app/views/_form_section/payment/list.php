@@ -1,12 +1,13 @@
 <?php
 
+use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
 
 ?>
 
-<div class="ui secondary attached segment centered sub header">
+<div class="ui secondary attached padded segment sub header">
     <?= Yii::t('app', 'Payment') ?>
 </div>
 <div id="_payment" class="ui attached padded segment">
@@ -15,15 +16,20 @@ use Zelenin\yii\SemanticUI\modules\Checkbox;
             <tr>
             <?php
             if (!$this->context->isReadonly) : ?>
-                <th class="one wide center aligned select-all-rows">
-                    <?= Checkbox::widget(['name' => 'select_all_rows', 'labelOptions' => ['label' => false]]) ?>
+                <th class="select-all-rows" width="8%">
+                    <?= Checkbox::widget(['name' => 'select_all_rows', 'options' => ['style' => 'vertical-align: text-top']]) ?>
+                    <?= Yii::t('app', 'No.') ?>
                 </th>
             <?php
             endif ?>
-                <th class="six wide"><?= Yii::t('app', 'Payment method') ?></th>
+                <th class="five wide"><?= Yii::t('app', 'Payment method') ?></th>
                 <th class="four wide"><?= Yii::t('app', 'Date paid') ?></th>
-                <th class="four wide right aligned"><?= Yii::t('app', 'Amount') ?></th>
-                <th class="one wide"></th>
+                <th class="three wide right aligned"><?= Yii::t('app', 'Amount') ?></th>
+                <th class="one wide center aligned">
+                    <?= Html::a(Elements::icon('cog', ['class' => 'basic grey', 'style' => 'margin-right: 0em']),
+                                false,
+                                ['class' => 'compact ui icon']) ?>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +46,7 @@ use Zelenin\yii\SemanticUI\modules\Checkbox;
                 foreach ($model->payments as $id => $paymentModel) :
                     echo $this->render('_form', [
                                         'model' => $paymentModel,
-                                        'rowId' => $id
+                                        'rowId' => $id + 1
                                     ]);
                 endforeach;
             else : // $model->isNewRecord

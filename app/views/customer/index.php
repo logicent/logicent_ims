@@ -1,16 +1,14 @@
 <?php
 
-use app\enums\Status_Party;
-use app\enums\Type_Customer;
-use app\helpers\StatusMarker;
+use app\enums\Type_Party_Sub_Type;
 
 $columns = [
     [
-        'attribute' => 'customer_type',
+        'attribute' => 'party_type',
         'value' => function($model) {
-            return Type_Customer::enums()[$model->customer_type];
+            return Type_Party_Sub_Type::enums()[$model->party_type];
         },
-        'filter' => ['-1' => 'All', 'Individual' => 'Individual', 'Company' => 'Company', 'Non-profit' => 'Non-profit']
+        'filter' => array_merge(['-1' => 'All'], Type_Party_Sub_Type::enums())
     ],
 ];
 

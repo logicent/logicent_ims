@@ -2,7 +2,8 @@
 
 namespace app\models\auth;
 
-use app\enums\Status_Person;
+use app\enums\Status_Active;
+use app\enums\Status_Party;
 use app\enums\Type_Party;
 use app\enums\Type_Role;
 use app\models\base\BaseActiveRecord;
@@ -198,7 +199,7 @@ class Person extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'status' => Status_Person::class,
+            'status' => Status_Active::class,
         ];
     }
 
@@ -208,6 +209,11 @@ class Person extends BaseActiveRecord
     }
 
     // Workflow Interface
+    public function hasWorkflow()
+    {
+        return true;
+    }
+
     public function lockUpdate()
     {
         return false;

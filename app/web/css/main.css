@@ -321,7 +321,7 @@ body::-webkit-scrollbar-thumb {
 
 .ui.form input[readonly], .ui.form textarea[readonly],
 .ui.form .ui.selection.dropdown.disabled {
-    border: none;
+    /* border: none; */
     box-shadow: none;
 }
 
@@ -680,12 +680,13 @@ body::-webkit-scrollbar-thumb {
     font-weight: 500;
 }
 
-#cart_items > #cart_detail > td {
+#cart_items > #cart_detail > td, .in-form.table td {
     padding: 0em !important
 }
 
 .in-form.table th {
     color: #6c7680 !important;
+    font-weight: normal !important;
 }
 
 #pos__payment_detail td {
@@ -696,3 +697,7 @@ body::-webkit-scrollbar-thumb {
 #pos__payment_detail td:not(:last-child) {
     padding-bottom: 6px;
 }
+
+/* select.list-option:focus, .list-option:focus-visible {
+    border: 2px solid #6c7680 !important;
+} */

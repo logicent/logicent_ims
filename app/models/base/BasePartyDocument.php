@@ -27,12 +27,16 @@ abstract class BasePartyDocument extends BaseActiveRecord implements Autoincreme
         return ArrayHelper::merge([
             [['phone_number', 'name'], 'required'],
             [['email_address'], 'email'],
+            [['phone_number', 'email_address', 'name'], 'unique'],
             [['credit_days', 'credit_limit'], 'number'],
             ['inactive', 'boolean'],
             [['default_currency', 'salutation'], 'string', 'max' => 5],
             [[
                 'email_address', 'phone_number', 'default_price_list', 'credit_days_based_on', 'name', 'tax_Id'
             ], 'string', 'max' => 140],
+            [['party_details', 'party_group', 'party_type'], 'string'],
+            [['party_group'], 'exist', 'skipOnError' => true, 
+                'targetClass' => CustomerGroup::class, 'targetAttribute' => ['party_group' => 'id']],
         ], $rules);
     }
 

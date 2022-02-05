@@ -1,25 +1,23 @@
 <?php
 
+use app\helpers\SelectableItems;
+use app\models\Warehouse;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use Zelenin\yii\SemanticUI\modules\Select;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\SalesOrderSearch */
-/* @var $form yii\widgets\ActiveForm */
-?>
-
-<div class="sales-order-search">
-
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-    ]); ?>
-
-    <div class="form-group">
-        <?php // Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?php // Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
+$form = ActiveForm::begin([
+    'action' => ['index'],
+    'method' => 'get',
+    'options' => [
+        'class' => 'ui form',
+        'autocomplete' => 'off'
+    ]
+]) ?>
+    <div class="four fields">
     </div>
 
-    <?php ActiveForm::end(); ?>
+    <?= Html::resetButton(Yii::t('app', 'Clear'), ['class' => 'compact ui basic small grey button']) ?>
+    <?= Html::submitButton(Yii::t('app', 'Apply Filter'), ['class' => 'compact ui basic small primary button']) ?>
 
-</div>
+<?php ActiveForm::end();

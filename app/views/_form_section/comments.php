@@ -25,11 +25,12 @@ if (!$model->isNewRecord) :
                     <?= Yii::t('app', 'Add a comment') ?>
                 </div>
             </div>
-            <div class="right aligned column">
+            <div class="right aligned column" style="padding-top: 0.5rem; padding-bottom: 0.5rem">
                 <!-- Avoid button element it will cause page refresh -->
                 <?= Elements::button(Yii::t('app', 'Comment'), [
                         'id' => 'submit_comment',
                         'class' => 'compact small',
+                        'style' => 'margin-right: 0em',
                         'data' => [
                             'url' => Url::to([
                                 'save-comment',

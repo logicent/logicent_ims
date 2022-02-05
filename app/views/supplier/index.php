@@ -1,9 +1,14 @@
 <?php
 
+use app\enums\Type_Party_Sub_Type;
+
 $columns = [
     [
-        'attribute' => 'supplier_type',
-        'filter' => ['-1' => 'All'] // To-Do use SelectableItems with addFilterOptionAll
+        'attribute' => 'party_group',
+        'value' => function($model) {
+            return Type_Party_Sub_Type::enums()[$model->party_group];
+        },
+        'filter' => array_merge(['-1' => 'All'], Type_Party_Sub_Type::enums())
     ],
 ];
 

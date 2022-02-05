@@ -1,8 +1,12 @@
 <?php
 
+use app\helpers\SelectableItems;
+use app\models\Warehouse;
 use yii\helpers\Html;
+use Zelenin\yii\SemanticUI\modules\Select;
 use Zelenin\yii\SemanticUI\widgets\ActiveForm;
 
+$isReadonly = $this->context->isReadonly;
 
 $form = ActiveForm::begin( [
     'id' => $model->formName(),
@@ -14,58 +18,41 @@ $form = ActiveForm::begin( [
 ]);
 
 echo $this->render('/_form/_header', ['model' => $model]) ?>
+
     <div class="ui attached padded segment">
-
         <?= Html::activeHiddenInput($model, 'title') ?>
-        <?= Html::activeHiddenInput($model, 'doc_status') ?>
-        <?= Html::activeHiddenInput($model, 'delivery_note_no') ?>
-        <?= Html::activeHiddenInput($model, 'naming_series') ?>
-        <?= Html::activeHiddenInput($model, 'customer') ?>
-        <?= Html::activeHiddenInput($model, 'customer_name') ?>
-        <?= Html::activeHiddenInput($model, 'customer_address') ?>
-        <?= Html::activeHiddenInput($model, 'supplier') ?>
-        <?= Html::activeHiddenInput($model, 'supplier_name') ?>
-        <?= Html::activeHiddenInput($model, 'purchase_order') ?>
-        <?= Html::activeHiddenInput($model, 'address_display') ?>
-        <?= Html::activeHiddenInput($model, 'credit_note') ?>
-        <?= Html::activeHiddenInput($model, 'sales_invoice_no') ?>
-        <?= Html::activeHiddenInput($model, 'project') ?>
-        <?= Html::activeHiddenInput($model, 'production_order') ?>
-
-        <div class="ui two column stackable grid">
-            <div class="column">
-                <?= $form->field($model, 'purpose')->dropDownList([
-
+        <?= Html::activeHiddenInput($model, 'status') ?>
+        <?php //= $form->field($model, 'source_type')->dropDownList([]) ?>
+        <?php //= $form->field($model, 'source_id')->dropDownList([]) ?>
+        <?php //= $form->field($model, 'party')->dropDownList([]) ?>
+        <?php //= $form->field($model, 'party_id')->dropDownList([]) ?>
+        <div class="two fields">
+            <?= $form->field($model, 'from_warehouse')->widget(Select::class, [
+                    'search' => true,
+                    'items' => SelectableItems::get(Warehouse::class, $model, ['valueAttribute' => 'id']),
+                    'disabled' => $isReadonly,
                 ]) ?>
-                <?= $form->field($model, 'from_warehouse')->dropDownList([
-                    
+            <?= $form->field($model, 'to_warehouse')->widget(Select::class, [
+                    'search' => true,
+                    'items' => SelectableItems::get(Warehouse::class, $model, ['valueAttribute' => 'id']),
+                    'disabled' => $isReadonly,
                 ]) ?>
-                <?= $form->field($model, 'to_warehouse')->dropDownList([
-                    
-                ]) ?>
-            </div>
-
-            <div class="column">
-                <?= $form->field($model, 'posting_date')->textInput(['class' => 'pikaday']) ?>
-                <?= $form->field($model, 'posting_time')->textInput(['readonly' => true, 'class' => 'pikatime']) ?>
-                <?= $form->field($model, 'set_posting_time')->checkbox() ?>
-            </div>
+        </div>
+        <div class="two fields">
+            <?= $form->field($model, 'id')->textInput(['readonly' => true]) ?>
+            <?= $this->render('/_form_field/datetime_input', ['model' => $model, 'form' => $form, 'attribute' => 'issued_at']) ?>
+        </div>
+        <div class="two fields">
+            <?= $form->field($model, 'total_quantity')->textInput(['readonly' => true]) ?>
+            <?= $form->field($model, 'total_amount')->textInput(['readonly' => true]) ?>
         </div>
     </div>
-
+    <?= $this->render('item/list', [
+        'model' => $model
+    ]) ?>
     <div class="ui attached padded segment">
-        <div class="ui two column stackable grid">
-            <div class="column">
-                <?= $form->field($model, 'total_amount')->textInput(['readonly' => true]) ?>
-                <?= $form->field($model, 'total_additional_costs')->textInput(['maxlength' => true]) ?>
-                <?= $form->field($model, 'remarks')->textarea(['rows' => 6]) ?>
-            </div>
-
-            <div class="column ui transparent input">
-                <?= $form->field($model, 'total_incoming_value')->textInput(['readonly' => true]) ?>
-                <?= $form->field($model, 'total_outgoing_value')->textInput(['readonly' => true]) ?>
-                <?= $form->field($model, 'value_difference')->textInput(['readonly' => true]) ?>
-            </div>        
+        <div class="two fields">
+            <?= $form->field($model, 'remarks')->textarea(['rows' => 3, 'readonly' => $isReadonly]) ?>
         </div>
     </div>
 

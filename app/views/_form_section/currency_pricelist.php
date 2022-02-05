@@ -20,8 +20,9 @@ else :
 endif;
 ?>
 <div class="ui attached padded segment">
-    <div class="two fields">
-        <?= $form->field($model, $currencyAttribute)->widget(Select::class, [
+    <div class="ui two column grid">
+        <div class="column">
+            <?= $form->field($model, $currencyAttribute)->widget(Select::class, [
                     'search' => true,
                     'items' => SelectableItems::get(
                                     Currency::class,
@@ -31,15 +32,17 @@ endif;
                                         'filters' => ['enabled' => true]
                                     ]),
                     'disabled' => $this->context->isReadonly
-                ])
-            ?>
-        <?= $form->field($model, $pricelistAttribute)->widget(Select::class, [
-                'search' => true,
-                'items' => SelectableItems::get(PriceList::class, $model, [
-                    'valueAttribute' => 'id',
-                    'filters' => ['module' => Type_Module::enums()[$model::moduleType()]]
-                ]),
-                'disabled' => $this->context->isReadonly
-            ]) ?>
+                ]) ?>
+        </div>
+        <div class="column">
+            <?= $form->field($model, $pricelistAttribute)->widget(Select::class, [
+                    'search' => true,
+                    'items' => SelectableItems::get(PriceList::class, $model, [
+                        'valueAttribute' => 'id',
+                        'filters' => ['module' => Type_Module::enums()[$model::moduleType()]]
+                    ]),
+                    'disabled' => $this->context->isReadonly
+                ]) ?>
+        </div>
     </div>
 </div>

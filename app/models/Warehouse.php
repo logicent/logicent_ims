@@ -21,7 +21,8 @@ class Warehouse extends BaseSetupMasterData
         $rules = parent::rules();
 
         return ArrayHelper::merge($rules, [
-            [['email_address', 'branch', 'physical_address' ], 'string', 'max' => 140],
+            [['parent_warehouse', 'email_address', 'branch', 'physical_address' ], 'string', 'max' => 140],
+            ['is_group', 'boolean'],
             ['email_address', 'email'],
         ]);
     }
@@ -31,6 +32,8 @@ class Warehouse extends BaseSetupMasterData
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
+            'is_group' => Yii::t('app', 'Is group'),
+            'parent_warehouse' => Yii::t('app', 'Parent warehouse'),
             'branch' => Yii::t('app', 'Branch'),
             'email_address' => Yii::t('app', 'Email address'),
             'physical_address' => Yii::t('app', 'Physical address'),
