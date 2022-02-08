@@ -1,6 +1,6 @@
 <?php
 
-use app\enums\Status_Person;
+use app\enums\Status_Active;
 use app\enums\Type_Role;
 use app\models\auth\Person;
 use yii\helpers\Html;
@@ -57,7 +57,7 @@ $this->title = Yii::t('app', 'Role');
                 $listNames = '';
                 foreach ( $userIds as $userId )
                 {
-                    $user = Person::findOne(['id' => $userId, 'status' => Status_Person::Active]);
+                    $user = Person::findOne(['id' => $userId, 'status' => Status_Active::Yes]);
                     if (!$user)
                         continue;
 

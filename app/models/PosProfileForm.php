@@ -33,6 +33,8 @@ class PosProfileForm extends BaseSettingsForm
     // public $persist_pos_state_for_current_user = false; // i.e. show last item_group, warehouse, customer etc.???
     // public $default_valid_days_in_sales_quote = 30;
     // public $use_sales_order_in_credit_sale = false;
+    // public $item_search_order_preference; // item_id/barcode/item_name
+    // public $gift_voucher_number; // generate series/random
 
     // warehouse_id
     // branch_id

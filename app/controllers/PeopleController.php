@@ -78,10 +78,10 @@ class PeopleController extends BaseCrudController
                                 $person->avatar = $this->uploadFile( $person );
 
                             if ($auth->status == Status_User::Active)
-                                $person->status = Status_Party::YesLabel;
+                                $person->status = Status_Party::Yes;
 
                             if ($auth->status == Status_User::Deleted)
-                                $person->status = Status_Party::NoLabel;
+                                $person->status = Status_Party::No;
 
                             if ($person->save(false)) {
                                 $authMan = Yii::$app->authManager;
@@ -143,10 +143,10 @@ class PeopleController extends BaseCrudController
                 $person->avatar = $this->uploadFile( $person );
 
             if ($auth->status == Status_User::Active)
-                $person->status = Status_Party::YesLabel;
+                $person->status = Status_Party::Yes;
 
             if ($auth->status == Status_User::Deleted)
-                $person->status = Status_Party::NoLabel;
+                $person->status = Status_Party::No;
 
             $person->save(false);
 
@@ -190,7 +190,7 @@ class PeopleController extends BaseCrudController
         }
 
         if ($person) {
-            $person->status = Status_Party::NoLabel;
+            $person->status = Status_Party::No;
             $person->deleted_at = date('Y-m-d H:i:s');
             $person->save(false);
         }
@@ -214,7 +214,7 @@ class PeopleController extends BaseCrudController
             }
 
             if ($person) {
-                $person->status = Status_Party::NoLabel;
+                $person->status = Status_Party::No;
                 $person->deleted_at = date('Y-m-d H:i:s');
                 $person->save(false);
             }

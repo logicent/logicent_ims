@@ -34,6 +34,8 @@ use app\models\PurchaseOrderItem;
 use app\models\PurchaseOrderPayment;
 use app\models\setup\ReportBuilder;
 use app\models\setup\ReportBuilderItem;
+use app\models\setup\PrintFormat;
+use app\models\setup\PrintStyle;
 use app\models\SalesInvoice;
 use app\models\SalesInvoiceItem;
 use app\models\SalesInvoicePayment;
@@ -46,6 +48,7 @@ use app\models\SalesQuoteItem;
 use app\models\StockEntry;
 use app\models\StockEntryItem;
 use app\models\Supplier;
+use app\models\SupplierGroup;
 use app\models\TaxCharge;
 use app\models\Warehouse;
 
@@ -77,6 +80,7 @@ class Type_Model
     const SalesReturn       = 'Sales Return';
     const StockEntry        = 'Stock Entry';
     const Supplier          = 'Supplier';
+    const SupplierGroup     = 'Supplier Group';
     const TaxCharge         = 'Tax Charge';
     const Warehouse         = 'Warehouse';
 
@@ -100,6 +104,8 @@ class Type_Model
     // const EmailTemplate         = 'Email Template';
     const ReportBuilder         = 'Report Builder';
     const Role                  = 'Role';
+    const PrintFormat           = 'Print Format';
+    const PrintStyle            = 'Print Style';
 
     // Page (non-CRUD) models
     // const Help                  = 'Help';
@@ -131,6 +137,7 @@ class Type_Model
             self::SalesInvoice      => self::SalesInvoice,
             self::StockEntry        => self::StockEntry,
             self::Supplier          => self::Supplier,
+            self::SupplierGroup     => self::SupplierGroup,
             self::TaxCharge         => self::TaxCharge,
             self::Warehouse         => self::Warehouse,
 
@@ -139,6 +146,8 @@ class Type_Model
             self::People                => self::People,
             self::ReportBuilder         => self::ReportBuilder,
             self::Role                  => self::Role,
+            self::PrintFormat           => self::PrintFormat,
+            self::PrintStyle            => self::PrintStyle,
             self::Setup                 => self::Setup,
         ];
     }
@@ -171,6 +180,7 @@ class Type_Model
             self::SalesInvoice      => SalesInvoice::class,
             self::StockEntry        => StockEntry::class,
             self::Supplier          => Supplier::class,
+            self::SupplierGroup     => SupplierGroup::class,
             self::TaxCharge         => TaxCharge::class,
             self::Warehouse         => Warehouse::class,
         ];
@@ -202,6 +212,8 @@ class Type_Model
             self::EmailQueue        => EmailQueue::class,
             self::People            => People::class,
             self::Report            => Report::class,
+            self::PrintFormat       => PrintFormat::class,
+            self::PrintStyle        => PrintStyle::class,
             self::ReportBuilder     => ReportBuilder::class,
             self::Setup             => Setup::class,
         ];

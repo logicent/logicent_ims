@@ -18,8 +18,7 @@ $reportGroups = ArrayHelper::map($reports, 'id', 'id', 'group');
                     'showSortButtons' => false,
                     'showGroupButton' => true
                 ]) ?>
-
-    <div id="report_list" class="ui secondary vertical pointing menu">
+    <div id="menu_list" class="ui secondary vertical pointing menu">
     <?php
         foreach ($reportGroups as $groupName => $groupList) :
             echo Html::tag('div', $groupName, [

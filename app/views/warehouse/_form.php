@@ -35,19 +35,26 @@ echo $this->render('/_form/_modal_header', ['model' => $model]) ?>
     <div class="ui attached padded segment">
         <div class="ui two column stackable grid">
             <div class="column">
+                <?= $form->field($model, 'email_address')->widget(
+                        MaskedInput::class, [
+                            'clientOptions' => ['alias' =>  'email']
+                        ]) ?>    
+                <?= $form->field($model, 'physical_address')->textArea(['rows' => 2]) ?>
+            </div>
+            <div class="column">
                 <?= $form->field($model, 'branch')->dropDownList(SelectableItems::get(
                         Branch::class, $model, [
                             'valueAttribute' => 'id',
                             'filters' => ['inactive' => false]
                         ])
                     ) ?>
-            </div>
-            <div class="column">
-                <?= $form->field($model, 'email_address')->widget(
-                        MaskedInput::class, [
-                            'clientOptions' => ['alias' =>  'email']
-                        ]) ?>    
-                <?= $form->field($model, 'physical_address')->textArea(['rows' => 3]) ?>
+                <?= $form->field($model, 'parent_warehouse')->dropDownList(
+                        SelectableItems::get(Warehouse::class, $model, [
+                            'valueAttribute' => 'id',
+                            'filters' => ['is_group' => true]
+                        ])
+                    ) ?>
+                <?= $form->field($model, 'is_group')->checkbox() ?>
             </div>
         </div>
     </div>

@@ -14,6 +14,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 use yii\helpers\Json;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
@@ -525,6 +526,7 @@ abstract class BaseCrudController extends BaseController
                                         'itemModelClass' => !empty($itemModelClass) ? $itemModelClass : null,
                                         'rowId' => Yii::$app->request->get('nextRowId'),
                                         'model' => $model,
+                                        'formData' => null
                                     ]);
         }
         // else
@@ -538,9 +540,18 @@ abstract class BaseCrudController extends BaseController
             $modelClass = Yii::$app->request->get('modelClass');
             $modelId = Yii::$app->request->get('modelId');
             $model = $modelClass::findOne($modelId);
+            if (!$model)
+                $model = new $modelClass();
 
+            $formData = Yii::$app->request->get('formData');
+            $formData = ArrayHelper::map($formData, 'name', 'value');
             $formView = Yii::$app->request->get('formView');
-            return $this->renderAjax($formView, ['model' => $model]);
+            return $this->renderAjax($formView, [
+                        'model' => $model,
+                        'modelClass' => StringHelper::basename($modelClass),
+                        'formData' => $formData,
+                        'rowId' => trim(Yii::$app->request->get('rowId')),
+                    ]);
         }
         // else
         Yii::$app->end();

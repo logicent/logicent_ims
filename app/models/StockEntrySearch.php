@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\stock;
+namespace app\models;
 
 use Yii;
 use yii\base\Model;
@@ -12,12 +12,12 @@ class StockEntrySearch extends StockEntry
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
             [[
-                'created_at', 'updated_at', 'updated_by', 'created_by', 'from_warehouse', 'amended_from',
-                'to_warehouse', 'supplier_name', 'remarks', 'title'], 'safe'],
-            [[
-                'total_amount', 'total_quantity'], 'number'],
+                'id', 'status', 'from_warehouse', 'amended_from', 'to_warehouse', 'party_id', 'remarks',
+                'title'
+            ], 'string'],
+            [['created_at', 'updated_at', 'updated_by', 'created_by', ], 'safe'],
+            [['total_amount', 'total_quantity'], 'number'],
         ];
     }
 
@@ -53,11 +53,15 @@ class StockEntrySearch extends StockEntry
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'status' => $this->status,
+            'party' => $this->party,
+            'party_id' => $this->party_id,
+            'source_id' => $this->source_id,
+            'source_type' => $this->source_type,
+            'total_quantity' => $this->total_quantity,
+            'total_amount' => $this->total_amount,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'status' => $this->status,
-            'total_quantity' => $this->total_quantity,
-            'total_total' => $this->total_total,
         ]);
 
         $query->andFilterWhere(['like', 'updated_by', $this->updated_by])

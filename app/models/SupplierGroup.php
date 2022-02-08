@@ -7,13 +7,13 @@ use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "supplier_type".
+ * This is the model class for table "supplier_group".
  */
-class SupplierType extends BaseSetupMasterData
+class SupplierGroup extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'supplier_type';
+        return 'supplier_group';
     }
 
     public function rules()
@@ -21,7 +21,7 @@ class SupplierType extends BaseSetupMasterData
         $rules = parent::rules();
 
         return ArrayHelper::merge($rules, [
-            [['supplier_details', 'supplier_type'], 'string'],
+            [['supplier_details', 'supplier_group'], 'string'],
         ]);
     }
 
@@ -31,12 +31,12 @@ class SupplierType extends BaseSetupMasterData
 
         return ArrayHelper::merge($attributeLabels, [
             'supplier_details' => Yii::t('app', 'Supplier Details'),
-            'supplier_type' => Yii::t('app', 'Supplier Type'),
+            'supplier_group' => Yii::t('app', 'Supplier Group'),
         ]);
     }
 
-    public function getPurchaseOrder()
+    public function getSuppliers()
     {
-        return $this->hasMany(PurchaseOrder::class, ['supplier_id' => 'id']);
+        return $this->hasMany(Supplier::class, ['supplier_group' => 'id']);
     }
 }

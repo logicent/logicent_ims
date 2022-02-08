@@ -11,8 +11,6 @@ class GlobalSettingsForm extends BaseSettingsForm
     public $defaultTimeZone     = 'Africa/Nairobi';
     public $defaultTimeFormat   = 'HH:mm';
     public $defaultDateFormat   = 'yyyy-mm-dd'; // dd/mm/yy
-    public $defaultGeoMapLat    = '-0.023559';
-    public $defaultGeoMapLng    = '37.90619300000003';
     public $firstDayOfTheWeek   = 'Sun'; // or Mon
     public $showViewCaptions    = true;
     public $bgImagePath         = null;
@@ -35,8 +33,6 @@ class GlobalSettingsForm extends BaseSettingsForm
                 'defaultTimeZone',
                 'defaultTimeFormat',
                 'defaultDateFormat',
-                'defaultGeoMapLat',
-                'defaultGeoMapLng',
                 'firstDayOfTheWeek',
                 'showViewCaptions',
                 'bgImagePath',
@@ -53,8 +49,6 @@ class GlobalSettingsForm extends BaseSettingsForm
             'defaultTimeZone'   =>  Yii::t('app', 'Default timezone'),
             'defaultTimeFormat' =>  Yii::t('app', 'Default time format'),
             'defaultDateFormat' =>  Yii::t('app', 'Default date format'),
-            'defaultGeoMapLat' =>  Yii::t('app', 'Default geo map latitude'),
-            'defaultGeoMapLng' =>  Yii::t('app', 'Default geo map longitude'),
             'firstDayOfTheWeek' =>  Yii::t('app', 'First day of the week'),
             'showViewCaptions'  =>  Yii::t('app', 'Show list view captions'),
             'bgImagePath'       =>  Yii::t('app', "Background image"),

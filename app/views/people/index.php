@@ -11,11 +11,10 @@ use Zelenin\yii\SemanticUI\Elements;
 use app\models\auth\Person;
 use app\helpers\StatusMarker;
 
-
 $this->title = Yii::t('app', 'People');
 $this->params['breadcrumbs'][] = ['label' => $this->title, 'url' => ['index']];
 
-Pjax::begin();
+// Pjax::begin();
     echo GridView::widget([
         'layout' => "{items}\n{pager}", // {summary} {errors} {sorter}
         'dataProvider' => $dataProvider,
@@ -56,10 +55,8 @@ Pjax::begin();
                 'format' => 'raw',
                 'value' => function ($model)
                 {
-                    if (!empty($model->status)) :
-                        $marker = StatusMarker::icon('check circle', $model, 'status');
-                        return $marker .'&nbsp;'. $model->status;
-                    endif;
+                    $marker = StatusMarker::icon('check circle', $model, 'status');
+                    return $marker .'&nbsp;'. StatusMarker::label($model, 'status');
                 },
                 'contentOptions' => [
                     'style' => 'font-weight: 500',
@@ -116,7 +113,7 @@ Pjax::begin();
             ],
         ],
     ]);
-Pjax::end();
+// Pjax::end();
 
 $this->registerJs(<<<JS
     $('.grid-view').on('click', '.ui.checkbox', function(e) 

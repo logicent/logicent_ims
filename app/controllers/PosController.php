@@ -7,6 +7,7 @@ use app\enums\Type_Model;
 use app\enums\Type_Permission;
 use app\enums\Status_Transaction;
 use app\models\Item;
+use app\models\ItemWarehouse;
 use app\models\PosProfileForm;
 use app\models\PosReceipt;
 use app\models\PosReceiptItem;
@@ -17,6 +18,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 class PosController extends BaseTransactionController
 {
@@ -140,39 +142,62 @@ class PosController extends BaseTransactionController
     {
         if (Yii::$app->request->isAjax)
         {
-            $stock_item = Item::find()
-                            // ->where(['inactive' => false, 'is_sales_item' => true])
-                            ->orWhere(['id' => Yii::$app->request->get('itemId')])
-                            // ->orWhere(['item_group' => Yii::$app->request->get('itemGroupId')])
-                            // ->orWhere(['like', 'name', Yii::$app->request->get('itemId')])
-                            // ->asArray()
-                            ->one();
-            $pos_item = new PosReceiptItem();
-            $pos_item->item_id = $stock_item->id;
-            $pos_item->item_name = $stock_item->name;
-            $pos_item->unit_price = $stock_item->standard_rate;
-            $pos_item->quantity = 1;
-            $pos_item->tax_percent = $stock_item->tax_rate;
-            $pos_item->total_amount = $pos_item->unit_price * $pos_item->quantity;
+            // $pos_receipt = new PosReceipt();
+            // $itemGroups = $pos_receipt->posProfile->itemGroups;
+            $items = (new \yii\db\Query())
+                        ->select(['i.id', 'i.name'])
+                        ->from('item_warehouse iw')
+                        ->join('RIGHT JOIN', 'item i', 'i.id = iw.item_id')
+                        ->where([
+                            'i.inactive' => false,
+                            'i.is_sales_item' => true,
+                            'iw.warehouse_id' => Yii::$app->request->get('itemWarehouse')
+                        ])
+                        //   ->andWhere(['in', 'i.item_group', $itemGroups])
+                          ->andWhere(['like', 'i.barcode', Yii::$app->request->get('itemSearch')])
+                        //   ->limit(100)
+                          ->all();
+            if (empty($items))
+                $items = (new \yii\db\Query())
+                            ->select(['i.id', 'i.name'])
+                            ->from('item_warehouse iw')
+                            ->join('RIGHT JOIN', 'item i', 'i.id = iw.item_id')
+                            ->where([
+                                'i.inactive' => false,
+                                'i.is_sales_item' => true,
+                                'iw.warehouse_id' => Yii::$app->request->get('itemWarehouse')
+                            ])
+                            ->andWhere(['like', 'item_id', Yii::$app->request->get('itemSearch')])
+                            // ->limit(100)
+                            ->all();
+            if (empty($items))
+                $items = (new \yii\db\Query())
+                            ->select(['i.id', 'i.name'])
+                            ->from('item_warehouse iw')
+                            ->join('RIGHT JOIN', 'item i', 'i.id = iw.item_id')
+                            ->where([
+                                'i.inactive' => false,
+                                'i.is_sales_item' => true,
+                                'iw.warehouse_id' => Yii::$app->request->get('itemWarehouse')
+                            ])
+                            ->andWhere(['like', 'i.name', Yii::$app->request->get('itemSearch')])
+                            // ->limit(100)
+                            ->all();
+            $results = [];
+            foreach ($items as $item) {
+                $results[] =
+                    Html::a(
+                        Html::tag('div', $item['id'], ['class' => 'right floated content']) .
+                            Html::tag('div', $item['name'], ['class' => 'content']),
+                        Url::to(['pos/add-cart-item', 'id' => $item['id']]),
+                        [
+                            'class' => 'item',
+                            'id' => $item['id'],
+                        ]);
+            }
 
-            $pos_receipt = new PosReceipt();
+            return $this->asJson(['result' => $results]);
 		}
-
-        $image = $this->renderAjax('cart/item/_image', [
-            'stock_item' => $stock_item,
-            'pos_receipt_item' => $pos_item,
-            'pos_profile' => $pos_receipt->posProfile,
-            'rowId' => Yii::$app->request->get('nextRowId')
-        ]);
-
-		$item = $this->renderAjax('cart/item/_form', [
-            'stock_item' => $stock_item,
-            'pos_receipt_item' => $pos_item,
-            'pos_profile' => $pos_receipt->posProfile,
-            'rowId' => Yii::$app->request->get('nextRowId')
-        ]);
-
-        return $this->asJson(['item' => $item, 'image' => $image]);
     }
 
     public function actionItemGroupFilter()
@@ -208,7 +233,34 @@ class PosController extends BaseTransactionController
     {
         if ( Yii::$app->request->isAjax )
         {
-            return $this->renderAjax('cart/item/_form');
+            $stock_item = Item::findOne(Yii::$app->request->post('itemId'));
+
+            $pos_item = new PosReceiptItem();
+            $pos_item->item_id = $stock_item->id;
+            $pos_item->warehouse_id = Yii::$app->request->post('warehouseId');
+            $pos_item->item_name = $stock_item->name;
+            $pos_item->unit_price = $stock_item->standard_rate;
+            $pos_item->quantity = 1; // default value
+            $pos_item->tax_percent = $stock_item->tax_rate;
+            $pos_item->total_amount = $pos_item->unit_price * $pos_item->quantity;
+
+            $pos_receipt = new PosReceipt();
+
+            $image = $this->renderAjax('cart/item/_image', [
+                'stock_item' => $stock_item,
+                'pos_receipt_item' => $pos_item,
+                'pos_profile' => $pos_receipt->posProfile,
+                'rowId' => Yii::$app->request->post('nextRowId')
+            ]);
+
+            $item = $this->renderAjax('cart/item/_form', [
+                'stock_item' => $stock_item,
+                'pos_receipt_item' => $pos_item,
+                'pos_profile' => $pos_receipt->posProfile,
+                'rowId' => Yii::$app->request->post('nextRowId')
+            ]);
+
+            return $this->asJson(['item' => $item, 'image' => $image]);
         }
         // else
         Yii::$app->end();

@@ -34,11 +34,14 @@ via CLI
 
 **Modules**
 - Buying (Purchases)
-  - Purchase Order
+  - Purchase Order [+ Goods Receipt]
+  <!-- - Landed Cost Voucher -->
 
 - Stock (Item)
   - Stock Entry (Item Movement)
-  - Item
+  - Purchase (Material) Request
+  - Delivery Note
+  - Item + Item Warehouse
   - Item Group
   - Item UoM
   - Brand
@@ -46,7 +49,7 @@ via CLI
   - Warehouse  (Locations)
 
 - Selling (Sales)
-  - Sales Quote
+  - Quotation
   - Sales Order
   - Customer Group
   - POS Profile (single)
@@ -74,10 +77,9 @@ via CLI
 
 - Data import
 - Database backup
-<!--
-- Integration
+- Integration (Enterprise only)
   - Mobile money payment
-  - SMS Gateway -->
+  - SMS Gateway
 - Report builder
 - SMTP settings
 

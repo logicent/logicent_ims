@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models\stock;
+namespace app\models;
 
+use app\enums\Type_Relation;
 use app\models\base\BaseActiveRecordDetail;
 use Yii;
 
@@ -15,9 +16,11 @@ class StockEntryItem extends BaseActiveRecordDetail
     public function rules()
     {
         return [
-            [['quantity', 'item_id', 'item_rate', 'item_amount'], 'number'],
-            [[ 'item_name', 'serial_no', 'batch_no', 'description'], 'string'],
-            [['from_warehouse', 'to_warehouse', 'uom', 'barcode', 'batch_no'], 'string', 'max' => 140],
+            [[
+                'item_id', 'item_name', 'serial_no', 'batch_no', 'from_warehouse', 'to_warehouse', 'uom',
+                'barcode'
+            ], 'string', 'max' => 140],
+            [['quantity', 'item_rate', 'item_total'], 'number'],
         ];
     }
 
@@ -35,5 +38,34 @@ class StockEntryItem extends BaseActiveRecordDetail
             'batch_no' => Yii::t('app', 'Batch no.'),
             'serial_no' => Yii::t('app', 'Serial no.'),
         ];
+    }
+
+    public static function relations()
+    {
+        return [
+            'stockEntry'     => [
+                'class' => StockEntry::class,
+                'type' => Type_Relation::ParentModel
+            ],
+            'item'     => [
+                'class' => Item::class,
+                'type' => Type_Relation::SiblingModel
+            ],
+        ];
+    }
+
+    public function getStockEntry()
+    {
+        return $this->hasOne(StockEntry::class, ['id' => 'stock_entry_id']);
+    }
+
+    public function getItem()
+    {
+        return $this->hasOne(Item::class, ['item_id' => 'id']);
+    }
+
+    public static function foreignKeyAttribute()
+    {
+        return 'stock_entry_id';
     }
 }

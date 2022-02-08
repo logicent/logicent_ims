@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\helpers\Size;
@@ -14,27 +15,35 @@ $modal = Modal::begin([
 $modal::end();
 ?>
 
-<div class="ui secondary attached segment centered sub header">
-    <?= Yii::t('app', 'Item') ?>
-</div>
 <div id="_item" class="ui attached padded segment">
+<?php
+    if (in_array('update_stock', array_keys($model->attributes))) :
+        echo $form->field($model, 'update_stock')->checkbox(['class' => $this->context->isReadonly ? 'read-only' : '']);
+    endif ?>
+
     <table class="in-form ui celled table">
         <thead>
-            <tr>
-        <?php 
+            <tr style="font-size: 110%">
+        <?php
             if (!$this->context->isReadonly) : ?>
-                <th class="one wide column center aligned select-all-rows">
-                    <?= Checkbox::widget(['name' => 'select_all_rows', 'labelOptions' => ['label' => false]]) ?>
+                <th class="select-all-rows" width="8%">
+                    <?= Checkbox::widget(['name' => 'select_all_rows', 'options' => ['style' => 'vertical-align: text-top']]) ?>
+                    <?= Yii::t('app', 'No.') ?>
                 </th>
         <?php
             endif ?>
-                <th class="five wide column"><?= Yii::t('app', 'Item') ?></th>
-                <th class="two wide column right aligned"><?= Yii::t('app', 'Qty') ?></th>
-                <th class="three wide column right aligned"><?= Yii::t('app', 'Unit price') ?></th>
-                <th class="two wide column right aligned" style="display: none"><?= Yii::t('app', 'Disc. amt') ?></th>
+                <th class="three wide"><?= Yii::t('app', 'Item') ?></th>
+                <th class="two wide right aligned"><?= Yii::t('app', 'Qty') ?></th>
+                <th class="two wide"><?= Yii::t('app', 'UoM') ?></th>
+                <th class="two wide right aligned"><?= Yii::t('app', 'Price') ?></th>
+                <th class="two wide right aligned" style="display: none"><?= Yii::t('app', 'Disc. amt') ?></th>
                 <th style="display:none;"><?= Yii::t('app', 'Tax rate') ?></th>
-                <th class="three wide column right aligned"><?= Yii::t('app', 'Total') ?></th>
-                <th width="5%"></th>
+                <th class="two wide right aligned"><?= Yii::t('app', 'Amount') ?></th>
+                <th class="one wide center aligned">
+                    <?= Html::a(Elements::icon('ellipsis horizontal', ['class' => 'grey', 'style' => 'margin-right: 0em']),
+                                false,
+                                ['class' => 'compact ui icon']) ?>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +60,7 @@ $modal::end();
                 foreach ($model->items as $id => $itemModel) :
                     echo $this->render('_form', [
                                         'model' => $itemModel,
-                                        'rowId' => $id
+                                        'rowId' => $id + 1
                                     ]);
                 endforeach;
             else : // $model->isNewRecord

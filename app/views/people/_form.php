@@ -14,7 +14,7 @@ use Zelenin\yii\SemanticUI\helpers\Size;
 use Zelenin\yii\SemanticUI\modules\Modal;
 
 // $rolesCount = !empty($person->user_role) ? count($person->user_role) : '0';
-$isReadonly = $this->context->action->id == 'read' || $this->context->action->id == 'print-preview';
+$isReadonly = $this->context->isReadonly || $this->context->action->id == 'print-preview';
 
 $form = ActiveForm::begin([
     'enableClientValidation' => false,

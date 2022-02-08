@@ -29,10 +29,6 @@ $form = ActiveForm::begin([
             <?= $form->field($model, 'defaultDateFormat')->textInput(['readonly' => true, 'class' => 'datePicker']) ?>
             <?= $form->field($model, 'defaultTimeFormat')->textInput(['readonly' => true, 'class' => 'timePicker']) ?>
         </div>
-        <div class="two fields">
-            <?= $form->field($model, 'defaultGeoMapLat')->textInput(['readonly' => true]) ?>
-            <?= $form->field($model, 'defaultGeoMapLng')->textInput(['readonly' => true]) ?>
-        </div>
         <?= $form->field($model, 'showViewCaptions')->checkbox() ?>
     </div>
 

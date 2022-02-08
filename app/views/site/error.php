@@ -1,10 +1,16 @@
 <?php
 
+use app\models\Setup;
+use app\models\setup\BusinessProfileForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use Zelenin\yii\SemanticUI\Elements;
 
 $this->title = $name;
+
+$businessProfile = Setup::getSettings( BusinessProfileForm::class );
+$this->params['businessLogo'] = $businessProfile->logoPath;
+$this->params['businessName'] = $businessProfile->name;
 ?>
 
 <div class="site-error">

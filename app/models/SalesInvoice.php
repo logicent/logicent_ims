@@ -40,9 +40,11 @@ class SalesInvoice extends BaseTransactionDocument
         $rules = parent::rules();
 
         return ArrayHelper::merge([
+            ['naming_series', 'default', 'value' => self::DOC_NUM_PREFIX],
+            ['posting_time', 'default', 'value' => date('H:i:s', time())],
             [['customer_id', 'due_date'], 'required'],
             [[
-                'sales_person_id', 'customer_id', 'customer_name', 'order_type', 'po_reference', 'pos_profile_id',
+                'sales_person_id', 'customer_id', 'customer_name', 'po_no', 'pos_profile_id',
             ], 'string'],
             [['is_pos'], 'boolean'],
             [['po_date', 'due_date'], 'date', 'format' => 'php:Y-m-d'],
@@ -55,12 +57,11 @@ class SalesInvoice extends BaseTransactionDocument
 
         return ArrayHelper::merge([
             'id' => Yii::t('app', 'Invoice No.'),
-            'po_reference' => Yii::t('app', "Customer's Purchase Order"),
+            'po_no' => Yii::t('app', "Customer's Purchase Order"),
             'po_date' => Yii::t('app', "Customer's PO date"),
             'customer_id' => Yii::t('app', 'Customer'),
             'customer_name' => Yii::t('app', 'Customer name'),
             'due_date' => Yii::t('app', 'Payment due date'),
-            'order_type' => Yii::t('app', 'Order type'),
             'sales_person_id' => Yii::t('app', 'Sales person'),
             'pos_profile_id' => Yii::t('app', 'POS profile'),
             'is_pos' => Yii::t('app', 'Include payment (POS)'),

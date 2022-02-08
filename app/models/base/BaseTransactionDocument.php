@@ -22,8 +22,9 @@ abstract class BaseTransactionDocument extends BaseActiveRecord implements Posti
         $rules = parent::rules();
 
         return ArrayHelper::merge([
+            ['id', 'unique'],
             ['status', 'default', 'value' => Status_Transaction::Draft],
-            [['status', 'issued_at'], 'required'],
+            [['status', 'posting_date'], 'required'],
             [['update_stock', 'amounts_tax_inclusive'], 'boolean'],
             ['total_quantity', 'integer'],
             [['title', 'amended_from', 'authorized_by'], 'string', 'max' => 140],
@@ -35,7 +36,7 @@ abstract class BaseTransactionDocument extends BaseActiveRecord implements Posti
                 'net_total', 'change_amount', 'deposit_amount', 'paid_amount', 'balance_amount',
                 'total_amount', 'tax_amount', 'rounding_adjustment', 'rounded_total'
             ], 'default', 'value' => '0.00'],
-            [['issued_at'], 'datetime', 'format' => 'php:Y-m-d H:i:s'],
+            [['posting_date'], 'datetime', 'format' => 'php:Y-m-d'],
         ], $rules);
     }
 
@@ -46,8 +47,9 @@ abstract class BaseTransactionDocument extends BaseActiveRecord implements Posti
         return ArrayHelper::merge([
             'title' => Yii::t('app', 'Title'),
             'branch_id' => Yii::t('app', 'Branch'),
-            'issued_at' => Yii::t('app', 'Issued at'),
+            'posting_date' => Yii::t('app', 'Issue date'),
             'is_return' => Yii::t('app', 'Is return'),
+            'is_debit_note' => Yii::t('app', 'Is debit note'),
             'return_against' => Yii::t('app', 'Return against'),
             'amended_from' => Yii::t('app', 'Amended from'),
             'is_discounted' => Yii::t('app', 'Is discounted'),

@@ -35,10 +35,7 @@ class Customer extends BasePartyDocument
         $rules = parent::rules();
 
         return ArrayHelper::merge([
-            [['customer_details', 'customer_group', 'customer_type'], 'string'],
             [['customer_pos_Id'], 'string', 'max' => 140],
-            [['customer_group'], 'exist', 'skipOnError' => true, 
-                'targetClass' => CustomerGroup::class, 'targetAttribute' => ['customer_group' => 'id']],
         ], $rules);
     }
 
@@ -48,9 +45,9 @@ class Customer extends BasePartyDocument
 
         return ArrayHelper::merge([
             'lead_name'     => Yii::t('app', 'Lead name'),
-            'customer_details'  => Yii::t('app', 'Customer details'),
-            'customer_group'    => Yii::t('app', 'Customer group'),
-            'customer_type'     => Yii::t('app', 'Customer type'),
+            'party_details'  => Yii::t('app', 'Customer details'),
+            'party_group'    => Yii::t('app', 'Customer group'),
+            'party_type'     => Yii::t('app', 'Customer type'),
             'customer_pos_Id'   => Yii::t('app', 'Customer POS ID'),
         ], $attributeLabels);
     }

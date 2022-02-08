@@ -205,7 +205,18 @@ if (file_exists($searchForm)) : ?>
 
 <?php
 $this->registerJs(<<<JS
-    // $('.row-detail').popup();
+    // $(document).on('pjax:send', function() {
+    //     $('#loading').show()
+    // })
+    $(document).on('pjax:complete', function() {
+        if (window.location.search) {
+            $('.filters').show();
+
+            $('#hide_filters').show();
+            $('#show_filters').hide();
+        }
+        // $('#loading').hide()
+    })
 
     $('.grid-view').on('click', '.ui.checkbox', function(e) 
     {

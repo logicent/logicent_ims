@@ -30,7 +30,7 @@ class MainController extends \app\controllers\base\BaseController
     {
         $stats = [];
         $totalSales = SalesInvoice::find()
-                        ->where(['like', 'issued_at', date('Y-m-d')])
+                        ->where(['like', 'posting_date', date('Y-m-d')])
                         ->sum('total_amount');
         $stats['totalSales'] = empty($totalSales) ? 0 : $totalSales;
         // add sales this month

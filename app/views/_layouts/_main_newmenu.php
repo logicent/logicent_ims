@@ -20,9 +20,9 @@ use Zelenin\yii\SemanticUI\Elements;
             <?= Html::a(Elements::icon('grey horizontal flipped truck') .
                         Yii::t('app', 'Purchases'), ['purchase-invoice/index'], ['class' => 'item']) ?>
             <div class="divider" style="margin: 0"></div>
-            <?php /*= Html::a(Elements::icon('grey book') .
-                        Yii::t('app', 'Stock Entry'), ['stock-entry/index'], ['class' => 'item']) */?>
-            <!-- <div class="divider" style="margin: 0"></div> -->
+            <?= Html::a(Elements::icon('grey book') .
+                        Yii::t('app', 'Stock Entry'), ['stock-entry/index'], ['class' => 'item']) ?>
+            <div class="divider" style="margin: 0"></div>
             <?= Html::a(Elements::icon('grey briefcase') .
                         Yii::t('app', 'Suppliers'), ['supplier/index'], ['class' => 'item']) ?>
         </div>

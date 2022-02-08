@@ -1,6 +1,11 @@
 $(itemDoc.table).on('click', '.edit-item--btn',
     function (e) {
         el_edit_btn = $(this);
+        rowInputs = $(this).parent('td').parent('tr').children('td').children('input');
+        el_table_row = $(this).closest('tr');
+        el_id = el_table_row.find('td.select-row');
+        // formData = $('#content .ui.form');
+        // formData = new FormData(formData);
 
         $.ajax({
             url: 'edit-item',
@@ -9,6 +14,8 @@ $(itemDoc.table).on('click', '.edit-item--btn',
                 'modelClass': $(this).data('model-class'),
                 'modelId': $(this).data('model-id'),
                 'formView': $(this).data('form-view'),
+                'formData': rowInputs.serializeArray(),
+                'rowId': el_id.text(),
             },
             success: function( response )
             {
@@ -42,6 +49,8 @@ $(itemDoc.section + ' .add-row').on('click',
         e.stopPropagation(); // !! DO NOT use return false it stops execution
         el_table_body = $(itemDoc.table + ' tbody');
         has_no_data = el_table_body.find('tr#no_data').length == 1;
+        if (has_no_data)
+            el_table_body.find('tr#no_data').hide();
 
         $.ajax({
             url: itemDoc.addItemUrl,
@@ -50,17 +59,16 @@ $(itemDoc.section + ' .add-row').on('click',
                 'modelClass': $(this).data('model-class'),
                 'itemModelClass': null, // Item
                 'formView': $(this).data('form-view'),
-                'nextRowId': el_table_body.find('tr').length + 1
+                'nextRowId': el_table_body.find('tr').not('#no_data').length + 1
             },
             success: function(response) {
-                if (has_no_data)
-                    el_table_body.find('tr#no_data').remove();
                 el_table_body.append(response);
 
                 $('#submit_btn').hide();
                 $('#save_btn').show();
 
-                displaySelectAllCheckboxIf()
+                rowCount = el_table_body.find('tr').not('#no_data').length;
+                displaySelectAllCheckboxIf(rowCount);
             },
             error: function(jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown);
@@ -170,16 +178,14 @@ $(itemDoc.section + ' .del-row').on('click',
     function(e) {
         $(this).css('display', 'none');
         modelClass = $(this).data('model-class');
+        selectedRows = $(itemDoc.table + ' td.select-row > .ui.checkbox > input:checked');
 
-        $(itemDoc.table + ' td.select-row > .ui.checkbox > input:checkbox').each(
+        selectedRows.each(
             function(e) {
                 el_table_row = $(this).closest('tr');
-                el_id = el_table_row.find('td.item > input');
+                el_id = el_table_row.find('td.select-row > input.row-id');
 
-                if (el_id.val() == '')
-                {
-                    el_table_row.remove();
-                } else {
+                if (el_id.val() !== '')
                     $.ajax({
                         url: itemDoc.deleteItemUrl,
                         type: 'post',
@@ -189,25 +195,34 @@ $(itemDoc.section + ' .del-row').on('click',
                             'modelType': 'Item'
                         },
                         success: function(response) {
-                            el_table_row.remove();
                         },
                         error: function(jqXhr, textStatus, errorThrown) {
                             console.log(errorThrown);
                         }
                     });
-                }
+                el_table_row.remove();
             });
+        rowCount = $(itemDoc.table + ' tbody > tr').not('#no_data').length;
+        if (rowCount == 0) {
+            $('tr#no_data').show();
+            el_checkbox_all = $(itemDoc.table + ' th.select-all-rows input');
+            el_checkbox_all.prop('checked', false);
+
+            if (rowCount > 0)
+                el_checkbox_all.parent('.ui.checkbox').css('display', '');
+            else
+                el_checkbox_all.parent('.ui.checkbox').css('display', 'none');
+            // displaySelectAllCheckboxIf(rowCount);
+        }
         // Re-calculate the Document totals
         recalculateDocumentTotals();
-        displaySelectAllCheckboxIf()
     });
 
-function displaySelectAllCheckboxIf()
+function displaySelectAllCheckboxIf(rowCount)
 {
-    el_checkbox_all = $(itemDoc.table + ' th.select-all-rows > .ui.checkbox > input:checkbox');
+    el_checkbox_all = $(itemDoc.table + ' th.select-all-rows input');
     el_checkbox_all.prop('checked', false);
 
-    rowCount = $(itemDoc.table + ' tbody > tr').length;
     if (rowCount > 0)
         el_checkbox_all.parent('.ui.checkbox').css('display', '');
     else
@@ -222,7 +237,7 @@ function recalculateDocumentTotals()
     $(itemDoc.table + ' td.item-total > input').each(
         function() {
             item_total = $(this).val();
-            if (item_total == null)
+            if (item_total == '')
                 return false;
 
             sum_item_total += parseFloat(item_total);

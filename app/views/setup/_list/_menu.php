@@ -94,10 +94,58 @@ return [
         'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
     [
+        'route' => 'supplier-settings/index',
+        'label' => 'Supplier Settings',
+        'group' => Type_Module::Buying,
+        'visible' => Yii::$app->user->can(Type_Role::SupplierMaster),
+    ],
+    [
+        'route' => 'setup/print-style/index',
+        'label' => 'Print Style',
+        'group' => Type_Module::System,
+        'visible' => Yii::$app->user->can(Type_Role::SystemManager),
+    ],
+    [
+        'route' => 'setup/print-format/index',
+        'label' => 'Print Format',
+        'group' => Type_Module::System,
+        'visible' => Yii::$app->user->can(Type_Role::SystemManager),
+    ],
+    [
+        'route' => 'setup/printer-settings/index',
+        'label' => 'Printer Settings',
+        'group' => Type_Module::System,
+        'visible' => Yii::$app->user->can(Type_Role::SystemManager),
+    ],
+    [
+        'route' => 'setup/print-settings/index',
+        'label' => 'Print Settings',
+        'group' => Type_Module::System,
+        'visible' => Yii::$app->user->can(Type_Role::SystemManager),
+    ],
+    [
+        'route' => 'customer-settings/index',
+        'label' => 'Customer Settings',
+        'group' => Type_Module::Selling,
+        'visible' => Yii::$app->user->can(Type_Role::CustomerMaster),
+    ],
+    [
+        'route' => 'stock-settings/index',
+        'label' => 'Stock Settings',
+        'group' => Type_Module::Stock,
+        'visible' => Yii::$app->user->can(Type_Role::ItemMaster),
+    ],
+    [
         'route' => 'customer-group/index',
         'label' => 'Customer Group',
         'group' => Type_Module::Selling,
         'visible' => Yii::$app->user->can(Type_Role::CustomerMaster),
+    ],
+    [
+        'route' => 'supplier-group/index',
+        'label' => 'Supplier Group',
+        'group' => Type_Module::Buying,
+        'visible' => Yii::$app->user->can(Type_Role::SupplierMaster),
     ],
     [
         'route' => 'setup/global-settings/index',

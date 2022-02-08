@@ -321,7 +321,7 @@ body::-webkit-scrollbar-thumb {
 
 .ui.form input[readonly], .ui.form textarea[readonly],
 .ui.form .ui.selection.dropdown.disabled {
-    border: none;
+    /* border: none; */
     box-shadow: none;
 }
 
@@ -680,12 +680,13 @@ body::-webkit-scrollbar-thumb {
     font-weight: 500;
 }
 
-#cart_items > #cart_detail > td {
+#cart_items > #cart_detail > td, .in-form.table td {
     padding: 0em !important
 }
 
 .in-form.table th {
     color: #6c7680 !important;
+    font-weight: normal !important;
 }
 
 #pos__payment_detail td {
@@ -695,4 +696,22 @@ body::-webkit-scrollbar-thumb {
 
 #pos__payment_detail td:not(:last-child) {
     padding-bottom: 6px;
+}
+
+#pos__search_result.relaxed {
+    /* padding: 1rem; */
+    margin: 0em;
+}
+
+#pos__search_result.relaxed a {
+    padding: 1rem;
+}
+
+#pos__search_result {
+    border: 1px solid #dee5e7;
+    background: aliceblue;
+    position: absolute;
+    max-width: 501px;
+    width: 100%;
+    z-index: 9;
 }

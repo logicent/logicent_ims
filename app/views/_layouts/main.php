@@ -46,7 +46,6 @@ $this->beginPage() ?>
                             // action id
                             if (    $this->context->action->id !== 'index'
                                 &&  $this->context->action->id !== 'file-upload'
-                                &&  $this->context->action->id !== 'calendar'
                             )
                             {
                                 if (file_exists($this->context->viewPath . '/_sidebar.php')) {
@@ -57,7 +56,6 @@ $this->beginPage() ?>
                             }
                             // controller id
                             elseif ($this->context->id == 'report'
-                                ||  $this->context->id == 'lesson'
                                 ||  $this->context->id == 'setup'
                             ) {
                                 if (file_exists($this->context->viewPath . '/_sidebar.php')) {

@@ -9,7 +9,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_quote".
+ * This is the model class for table "quotation".
  */
 class SalesQuote extends BaseActiveRecord
 {
@@ -32,7 +32,7 @@ class SalesQuote extends BaseActiveRecord
 
     public static function tableName()
     {
-        return 'sales_quote';
+        return 'quotation';
     }
 
     public function rules()
@@ -65,7 +65,7 @@ class SalesQuote extends BaseActiveRecord
 
     public function getItems()
     {
-        return $this->hasMany(SalesQuoteItem::class, ['sales_quote_id' => 'id']);
+        return $this->hasMany(SalesQuoteItem::class, ['quotation_id' => 'id']);
     }
 
     public function getEmailAddress()

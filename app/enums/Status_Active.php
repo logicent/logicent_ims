@@ -4,6 +4,9 @@ namespace app\enums;
 
 class Status_Active
 {
+    const Yes   = 0;
+    const No    = 1;
+
     const YesLabel   = 'Active';
     const NoLabel    = 'Inactive';
 

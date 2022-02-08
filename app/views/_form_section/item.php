@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 
 ?>
+
 <!-- Item list -->
 <?= $this->render('item/list', ['model' => $model, 'form' => $form]) ?>
 

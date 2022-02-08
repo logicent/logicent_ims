@@ -57,7 +57,6 @@ class BaseTransactionItemSearch extends BaseTransactionItem
             'net_amount' => $this->net_amount,
             'total_amount' => $this->total_amount,
             'gross_profit' => $this->gross_profit,
-            'account_id' => $this->account_id,
         ]);
 
         $query

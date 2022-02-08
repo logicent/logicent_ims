@@ -1,9 +1,8 @@
 <?php
 
-// use app\models\SupplierType;
-
+use app\enums\Type_Party_Sub_Type;
 use app\helpers\SelectableItems;
-use app\models\SupplierType;
+use app\models\SupplierGroup;
 use yii\widgets\MaskedInput;
 use Zelenin\yii\SemanticUI\widgets\ActiveForm;
 
@@ -22,7 +21,7 @@ $form = ActiveForm::begin( [
 
 echo $this->render('/_form/_header', ['model' => $model]);
 if (!$model->isNewRecord) :
-    echo $this->render('_linkedData', ['model' => $model]);
+    echo $this->render('_transaction', ['model' => $model]);
 endif ?>
     <div class="ui attached padded segment">
         <div class="two fields">
@@ -41,15 +40,16 @@ endif ?>
 
     <div class="ui attached padded segment">
         <div class="two fields">
-            <?= $form->field($model, 'supplier_type')->dropDownList(
-                    SelectableItems::get(SupplierType::class, $model, [
+            <?= $form->field($model, 'party_type')->dropDownList(Type_Party_Sub_Type::enums()) ?>
+            <?= $form->field($model, 'party_group')->dropDownList(
+                    SelectableItems::get(SupplierGroup::class, $model, [
                         'valueAttribute' => 'id'
                     ])
                 ) ?>
-            <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="two fields">
-            <?= $form->field($model, 'supplier_details')->textarea(['rows' => 3]) ?>
+            <?= $form->field($model, 'party_details')->textarea(['rows' => 3]) ?>
+            <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 

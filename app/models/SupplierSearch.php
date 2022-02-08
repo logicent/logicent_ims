@@ -15,12 +15,12 @@ class SupplierSearch extends Supplier
     public function rules()
     {
         return [
+            [['id', 'default_currency', 'default_price_list', 'party_group'], 'string'],
+            [['credit_days', 'credit_days_based_on'], 'integer'],
+            [['inactive'], 'boolean'],
             [[
-                'id', 'inactive', 'default_currency', 'default_price_list', 'credit_days', 'credit_days_based_on'
-            ], 'integer'],
-            [[
-                'updated_by', 'created_by', 'phone_number', 'name', 'comments', 'tags', 'supplier_details',
-                'tax_Id', 'gender', 'supplier_type', 'created_at', 'updated_at'
+                'updated_by', 'created_by', 'salutation', 'lead_name', 'phone_number', 'name',
+                'party_details', 'tax_Id', 'party_type', 'created_at', 'updated_at'
             ], 'safe'],
             [['credit_limit'], 'number'],
         ];
@@ -34,7 +34,7 @@ class SupplierSearch extends Supplier
 
     public function search($params)
     {
-        $query = Supplier::find();
+        $query = Supplier::find()->where(['deleted_at' => null]);
 
         // add conditions that should always apply here
 
@@ -47,8 +47,8 @@ class SupplierSearch extends Supplier
         if ($this->inactive == '-1')
             $this->inactive = null;
 
-        if ($this->supplier_type == '-1')
-            $this->supplier_type = null;
+        if ($this->party_group == '-1')
+            $this->party_group = null;
         
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -65,6 +65,7 @@ class SupplierSearch extends Supplier
             'credit_days' => $this->credit_days,
             'credit_days_based_on' => $this->credit_days_based_on,
             'credit_limit' => $this->credit_limit,
+            'party_type' => $this->party_type,
             // 'is_frozen' => $this->is_frozen,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
@@ -74,9 +75,9 @@ class SupplierSearch extends Supplier
             ->andFilterWhere(['like', 'created_by', $this->created_by])
             ->andFilterWhere(['like', 'phone_number', $this->phone_number])
             ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'supplier_details', $this->supplier_details])
+            ->andFilterWhere(['like', 'party_details', $this->party_details])
             ->andFilterWhere(['like', 'tax_Id', $this->tax_Id])
-            ->andFilterWhere(['like', 'supplier_type', $this->supplier_type]);
+            ->andFilterWhere(['like', 'party_group', $this->party_group]);
 
         return $dataProvider;
     }
