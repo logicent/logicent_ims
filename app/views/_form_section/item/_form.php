@@ -39,7 +39,7 @@ $rowInputStyle = 'border: none; border-radius: 0px; height: 43px';
                                             'style' => $rowInputStyle
                                         ]);
         else :
-            echo Html::activeTextInput($model, "[{$rowId}]item_name", ['readonly' => true]);
+            echo Html::activeTextInput($model, "[{$rowId}]item_name", ['readonly' => true, 'style' => $rowInputStyle]);
             echo Html::activeHiddenInput($model, "[{$rowId}]item_id");
         endif ?>
     </td>

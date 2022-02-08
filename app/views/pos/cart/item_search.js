@@ -1,48 +1,46 @@
 // search for item and add to list with totals update
-$('#pos__item-search').on('change',
+$('#pos__item-search').on('keyup',
     function(e) {
 		el_item = $(this);
 		item_id = e.target.value;
-        if (item_id == '')
+        if (item_id == '') {
+			// force hide if visible
+			$('#pos__search_result').hide();
 			return false;
+		}
 
-        el_image_grid = $('#cart_images');
-        el_table_body = $('#cart_items').find('tbody');
-        // el_list_table = $('#list').find('tbody');
-        // el_grid_thumbs = $('#grid').find('.row');
-        last_row_id = el_table_body.find('tr').not('#no_items').length;
-        has_no_items = el_table_body.find('tr#no_items').length == 1;
+		if (item_id.length < 2)
+			return false;
 
         $.ajax({
             type: 'get',
             url: '/pos/item-search',
             data: {
-				'itemGroupId': $('#pos__item-group').val(),
-                'itemId': item_id,
-                'nextRowId': last_row_id + 1,
+                'itemSearch': item_id, // $('#pos__item-search').val()
+				'itemWarehouse': $('#pos__item-warehouse').val(),
+				// 'itemGroup': $('#pos__item-group').val(),
             },
-            success: function(result)
+            success: function(response)
             {
-				if (has_no_items) {
-					$('#no_items').remove();
-					$('#no_image').remove();
-					$('#cancel_sale__btn').addClass('red');
-					$('#cancel_sale__btn').removeClass('disabled');
-				}
+				$('#pos__search_result').show();
 
-				$('.payment-entry').attr('readonly', false);
-				// add selected item to table
-				el_table_body.append(result.item);
-				// get all inputs from list after add
-				linesInputs = getLinesInputs();
-				docTotalInputs = getDocTotalInputs();
-				// update cart_total amounts
-                recalculateDocTotals(linesInputs, docTotalInputs);
-				// add selected item to grid
-				el_image_grid.append(result.image);
-				// clear selected item in search
-				el_item.dropdown('clear');
-				el_table_body.find('td.qty > input:last').focus().select();
+				if (response.result.length > 0) { // To-Do: check if empty array
+					// cache the no item element
+					noItemFound = $('#no_item_found');
+					// force hide on no item
+					noItemFound.hide();
+					// overwrite result since the query is updated
+					$('#pos__search_result').html(response.result);
+					// restore the hidden no item element
+					$('#pos__search_result').append(noItemFound);
+				}
+				else {
+					// remove previous search result
+					$('#pos__search_result').find('a').not('#no_item_found').remove();
+					// showthe no item element
+					$('#no_item_found').show();
+				}
+				// el_item.val();
             },
             error: function(jqXhr, textStatus, errorThrown) {
                 console.log(errorThrown)
@@ -50,29 +48,82 @@ $('#pos__item-search').on('change',
         });
 	});
 
-	$('#pos__item-group').on('change',
-		function() {
-			el_group = $(this);
-			group_id = el_group.val();
+// add item found to cart and recalculate the sale total
+$('#pos__search_result').on('click', 'a.item',
+    function(e) {
+		e.preventDefault();
+		el_item = $(this);
 
-			$.ajax({
-				type: 'get',
-				url: '/pos/item-group-filter',
-				data: {
-					'group_id': group_id,
-				},
-				success: function(items)
-				{
-					el_item_search = $('#pos__item-search');
-					// replace list options
-					el_item_search.html(items);
-					el_item_search.focus();
-				},
-				error: function(jqXhr, textStatus, errorThrown) {
-					console.log(errorThrown)
+        el_image_grid = $('#cart_images');
+        el_table_body = $('#cart_items').find('tbody');
+
+        rowCount = el_table_body.find('tr').not('#no_items').length;
+        hasNoItems = el_table_body.find('tr#no_items').length == 1;
+
+        $.ajax({
+            type: 'post',
+            url: $(this).attr('href'),
+            data: {
+                'itemId': $(this).attr('id'),
+				'warehouseId': $('#pos__item-warehouse').val(),
+                'nextRowId': rowCount + 1,
+            },
+            success: function(response)
+            {
+				$('#pos__item-search').val('');
+				$('#pos__search_result').hide();
+
+				if (hasNoItems) {
+					$('#no_items').remove();
+					$('#no_image').remove();
+					$('#cancel_sale__btn').addClass('red');
+					$('#cancel_sale__btn').removeClass('disabled');
 				}
-			});
-		});
+
+				$('.payment-entry').attr('readonly', false);
+
+				// add selected item to table
+				el_table_body.append(response.item);
+				// get all inputs from list after add
+				linesInputs = getLinesInputs();
+				docTotalInputs = getDocTotalInputs();
+				// update cart_total amounts
+                recalculateDocTotals(linesInputs, docTotalInputs);
+				// add selected item to grid
+				el_image_grid.append(response.image);
+				// clear selected item in search
+				el_table_body.find('td.qty > input:last').focus().select();
+            },
+            error: function(jqXhr, textStatus, errorThrown) {
+                console.log(errorThrown)
+            }
+        });
+		return false;
+	});
+
+	// $('#pos__item-warehouse').on('change',
+	// 	function() {
+	// 		el_location = $(this);
+	// 		location_id = el_location.val();
+
+	// 		$.ajax({
+	// 			type: 'get',
+	// 			url: '/pos/item-location-filter',
+	// 			data: {
+	// 				'location_id': location_id,
+	// 			},
+	// 			success: function(items)
+	// 			{
+	// 				el_item_search = $('#pos__item-search');
+	// 				// replace list options
+	// 				el_item_search.html(items);
+	// 				el_item_search.focus();
+	// 			},
+	// 			error: function(jqXhr, textStatus, errorThrown) {
+	// 				console.log(errorThrown)
+	// 			}
+	// 		});
+	// 	});
 
 	// display item images 
 	$('#item_grid').on('click', function() {

@@ -698,6 +698,20 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 6px;
 }
 
-/* select.list-option:focus, .list-option:focus-visible {
-    border: 2px solid #6c7680 !important;
-} */
+#pos__search_result.relaxed {
+    /* padding: 1rem; */
+    margin: 0em;
+}
+
+#pos__search_result.relaxed a {
+    padding: 1rem;
+}
+
+#pos__search_result {
+    border: 1px solid #dee5e7;
+    background: aliceblue;
+    position: absolute;
+    max-width: 501px;
+    width: 100%;
+    z-index: 9;
+}

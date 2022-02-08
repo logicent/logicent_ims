@@ -20,7 +20,7 @@ else :
 endif;
 ?>
 <div class="ui attached padded segment">
-    <div class="ui two column grid">
+    <div class="ui two column stackable grid">
         <div class="column">
             <?= $form->field($model, $currencyAttribute)->widget(Select::class, [
                     'search' => true,

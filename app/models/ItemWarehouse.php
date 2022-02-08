@@ -43,6 +43,11 @@ class ItemWarehouse extends BaseActiveRecord
         ]);
     }
 
+    public function getItem()
+    {
+        return $this->hasOne(Item::class, ['id' => 'item_id']);
+    }
+
     public static function enums()
     {
         return [

@@ -37,7 +37,7 @@ $form = ActiveForm::begin([
                 ) ?>
         </div>
         <?= $form->field($model, 'maintain_same_rate_in_sales_cycle')->checkbox() ?>
-        <?= $form->field($model, 'validate_selling_price_for_item_against_purchase_rate_or_valuation_rate')->checkbox() ?>
+        <?= $form->field($model, 'check_item_selling_price_against_purchase_or_valuation_rate')->checkbox() ?>
         <?= $form->field($model, 'allow_user_to_edit_price_list_rate_in_transactions')->checkbox() ?>
         <?= $form->field($model, 'calculate_item_bundle_price_based_on_child_items_rates')->checkbox() ?>
         <?= $form->field($model, 'hide_customers_tax_ID_from_sales_transaction')->checkbox() ?>

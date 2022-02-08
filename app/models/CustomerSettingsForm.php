@@ -17,7 +17,7 @@ class CustomerSettingsForm extends BaseSettingsForm
     public $hide_customers_tax_ID_from_sales_transaction = false;
     public $maintain_same_rate_in_sales_cycle = false;
     public $allow_user_to_edit_price_list_rate_in_transactions = false;
-    public $validate_selling_price_for_item_against_purchase_rate_or_valuation_rate = false;
+    public $check_item_selling_price_against_purchase_or_valuation_rate = false;
     public $calculate_item_bundle_price_based_on_child_items_rates = false;
 
     public function rules()
@@ -34,7 +34,7 @@ class CustomerSettingsForm extends BaseSettingsForm
                 'hide_customers_tax_ID_from_sales_transaction',
                 'maintain_same_rate_in_sales_cycle',
                 'allow_user_to_edit_price_list_rate_in_transactions',
-                'validate_selling_price_for_item_against_purchase_rate_or_valuation_rate',
+                'check_item_selling_price_against_purchase_or_valuation_rate',
                 'calculate_item_bundle_price_based_on_child_items_rates',
             ], 'safe']
         ];
@@ -53,7 +53,7 @@ class CustomerSettingsForm extends BaseSettingsForm
             'hide_customers_tax_ID_from_sales_transaction' => Yii::t('app', 'Hide customers tax ID from sales transaction'),
             'maintain_same_rate_in_sales_cycle' => Yii::t('app','Maintain same rate in sales cycle'),
             'allow_user_to_edit_price_list_rate_in_transactions' => Yii::t('app','Allow user to edit price list rate in transactions'),
-            'validate_selling_price_for_item_against_purchase_rate_or_valuation_rate' => Yii::t('app','Validate selling price for item against purchase rate or valuation rate'),
+            'check_item_selling_price_against_purchase_or_valuation_rate' => Yii::t('app','Check selling price of item against purchase or valuation rate'),
             'calculate_item_bundle_price_based_on_child_items_rates' => Yii::t('app','Calculate item bundle price based on child items rates'),
         ];
     }

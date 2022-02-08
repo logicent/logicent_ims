@@ -41,7 +41,7 @@ $rowInputStyle = 'border: none; border-radius: 0px; height: 43px';
                 ]
             );
     else :
-        echo Html::activeTextInput($model, "[{$rowId}]payment_method", ['readonly' => true]);
+        echo Html::activeTextInput($model, "[{$rowId}]payment_method", ['readonly' => true, 'style' => $rowInputStyle]);
     endif ?>
     </td>
     <td class="four wide paid-at">
@@ -73,3 +73,9 @@ $rowInputStyle = 'border: none; border-radius: 0px; height: 43px';
     endif ?>
     </td>
 </tr>
+
+<?php $this->registerJs(<<<JS
+    isReadonly = $('.pikadaytime').attr('readonly') == 'readonly';
+    if (isReadonly)
+        $('.pikadaytime').removeClass('pikadaytime');
+JS);

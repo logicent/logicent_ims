@@ -22,6 +22,7 @@ abstract class BaseTransactionDocument extends BaseActiveRecord implements Posti
         $rules = parent::rules();
 
         return ArrayHelper::merge([
+            ['id', 'unique'],
             ['status', 'default', 'value' => Status_Transaction::Draft],
             [['status', 'posting_date'], 'required'],
             [['update_stock', 'amounts_tax_inclusive'], 'boolean'],

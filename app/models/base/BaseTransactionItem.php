@@ -19,13 +19,13 @@ class BaseTransactionItem extends BaseActiveRecordDetail implements PostingInter
     public function rules()
     {
         return [
-            [['item_id', 'quantity', 'unit_price', 'total_amount'], 'required'],
+            [['item_id', 'warehouse_id', 'quantity', 'unit_price', 'total_amount'], 'required'],
             [[
                 'quantity', 'unit_price', 'discount_percent', 'discount_amount', 'tax_percent', 'tax_amount',
                 'net_amount', 'total_amount', 'gross_profit'
             ], 'number'],
             [[
-                'item_id', 'item_uom', 'item_name', 'item_status', 'description', 'account_id'
+                'item_id', 'item_uom', 'item_name', 'item_status', 'description', 'warehouse_id'
             ], 'string', 'max' => 140],
             ['is_free_item', 'boolean'],
         ];
@@ -39,6 +39,7 @@ class BaseTransactionItem extends BaseActiveRecordDetail implements PostingInter
             'item_name' => Yii::t('app', 'Name'),
             'item_status' => Yii::t('app', 'Status'),
             'description' => Yii::t('app', 'Description'),
+            'warehouse_id' => Yii::t('app', 'Warehouse'),
             'quantity' => Yii::t('app', 'Qty'),
             'item_uom' => Yii::t('app', 'UoM'),
             'unit_price' => Yii::t('app', 'Price'),
@@ -50,7 +51,6 @@ class BaseTransactionItem extends BaseActiveRecordDetail implements PostingInter
             'net_amount' => Yii::t('app', 'Net amt'),
             'total_amount' => Yii::t('app', 'Total'),
             'gross_profit' => Yii::t('app', 'GP'),
-            'account_id' => Yii::t('app', 'COGS account'),
         ];
     }
 

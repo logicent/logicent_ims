@@ -46,10 +46,10 @@ endif ?>
                         'valueAttribute' => 'id'
                     ])
                 ) ?>
-            <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="two fields">
             <?= $form->field($model, 'party_details')->textarea(['rows' => 3]) ?>
+            <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
 

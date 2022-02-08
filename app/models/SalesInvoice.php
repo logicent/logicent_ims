@@ -40,6 +40,8 @@ class SalesInvoice extends BaseTransactionDocument
         $rules = parent::rules();
 
         return ArrayHelper::merge([
+            ['naming_series', 'default', 'value' => self::DOC_NUM_PREFIX],
+            ['posting_time', 'default', 'value' => date('H:i:s', time())],
             [['customer_id', 'due_date'], 'required'],
             [[
                 'sales_person_id', 'customer_id', 'customer_name', 'po_no', 'pos_profile_id',

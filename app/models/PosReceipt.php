@@ -63,7 +63,7 @@ class PosReceipt extends SalesInvoice
     {
         $attributeLabels = parent::attributeLabels();
 
-        return ArrayHelper::merge([
+        return ArrayHelper::merge($attributeLabels, [
             // 'activePosProfile'  => Yii::t('app', 'Active profile'),
             'cartMode'      => Yii::t('app', 'Cart mode'),
             'saleType'      => Yii::t('app', 'Sale type'),
@@ -72,7 +72,7 @@ class PosReceipt extends SalesInvoice
             // 'printReceipt'      => Yii::t('app', 'Print receipt'),
             // 'printDeliveryNote' => Yii::t('app', 'Print delivery note'),
             // 'printCreditNote' => Yii::t('app', 'Print credit note'),
-        ], $attributeLabels);
+        ]);
     }
 
     public static function relations()

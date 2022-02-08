@@ -25,9 +25,9 @@ abstract class BasePartyDocument extends BaseActiveRecord implements Autoincreme
         $rules = parent::rules();
 
         return ArrayHelper::merge([
-            [['phone_number', 'name'], 'required'],
+            [['name', 'phone_number'], 'required'],
             [['email_address'], 'email'],
-            [['phone_number', 'email_address', 'name'], 'unique'],
+            [['name', 'phone_number', 'email_address'], 'unique'],
             [['credit_days', 'credit_limit'], 'number'],
             ['inactive', 'boolean'],
             [['default_currency', 'salutation'], 'string', 'max' => 5],

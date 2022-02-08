@@ -24,32 +24,35 @@ if (!$model->isNewRecord) :
     echo $this->render('_transaction', ['model' => $model]);
 endif ?>
     <div class="ui attached padded segment">
-        <div class="two fields">
-            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'inactive')->checkbox()->label('&nbsp;') ?>
-        </div>
-        <div class="two fields">
-            <?= $form->field($model, 'phone_number')->widget(MaskedInput::class, [
-                                        'mask' => ['020 999 9999', '0799 999 999', '0199 999 9999'],
-                                    ]) ?>
-            <?= $form->field($model, 'email_address')->widget(MaskedInput::class, [
-                                'clientOptions' => ['alias' =>  'email']
-                            ]) ?>
+        <div class="ui two column stackable grid">
+            <div class="column">
+                <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                <?= $form->field($model, 'phone_number')->widget(MaskedInput::class, [
+                        'mask' => ['020 999 9999', '0799 999 999', '0199 999 9999'],
+                    ]) ?>
+            </div>
+            <div class="column">
+                <?= $form->field($model, 'inactive')->checkbox(['style' => 'min-height: 42px;'])->label('&nbsp;') ?>
+                <?= $form->field($model, 'email_address')->widget(MaskedInput::class, [
+                        'clientOptions' => ['alias' =>  'email']
+                    ]) ?>
+            </div>
         </div>
     </div>
-
     <div class="ui attached padded segment">
-        <div class="two fields">
-            <?= $form->field($model, 'party_type')->dropDownList(Type_Party_Sub_Type::enums()) ?>
-            <?= $form->field($model, 'party_group')->dropDownList(
-                    SelectableItems::get(CustomerGroup::class, $model, [
-                        'valueAttribute' => 'id'
-                    ])
-                ) ?>
-        </div>
-        <div class="two fields">
-            <?= $form->field($model, 'party_details')->textarea(['rows' => 2]) ?>
-            <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
+        <div class="ui two column stackable grid">
+            <div class="column">
+                <?= $form->field($model, 'party_group')->dropDownList(
+                        SelectableItems::get(CustomerGroup::class, $model, [
+                            'valueAttribute' => 'id'
+                        ])
+                    ) ?>
+                <?= $form->field($model, 'party_details')->textarea(['rows' => 3]) ?>
+            </div>
+            <div class="column">
+                <?= $form->field($model, 'party_type')->dropDownList(Type_Party_Sub_Type::enums()) ?>
+                <?= $form->field($model, 'tax_Id')->textInput(['maxlength' => true]) ?>
+            </div>
         </div>
     </div>
 

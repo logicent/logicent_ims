@@ -25,11 +25,11 @@ echo $this->render('/_form/_header', ['model' => $model]) ?>
                             'ACC-SINV-.YYYY.-' => 'ACC-SINV-.YYYY.-',
                             'ACC-SINV-RET-.YYYY.-' => 'ACC-SINV-RET-.YYYY.-',
                         ],
-                        ['maxlength' => true, 'readonly' => $isReadonly]
+                        ['maxlength' => true, 'disabled' => $isReadonly]
                     ) ?>
                 <?= $this->render('/_form_field/customer', ['model' => $model, 'form' => $form]) ?>
                 <?= $form->field($model, 'po_no')->textInput(['maxlength' => true, 'readonly' => $isReadonly]) ?>
-                <?= $form->field($model, 'is_pos')->checkbox(['readonly' => $isReadonly]) ?>
+                <?= $form->field($model, 'is_pos')->checkbox(['class' => $isReadonly ? 'read-only' : '']) ?>
                 <?php /*= $this->render('/_form_field/dropdown', [
                         'model' => $model,
                         'form' => $form,
@@ -37,8 +37,8 @@ echo $this->render('/_form/_header', ['model' => $model]) ?>
                         'listModelClass' => PosProfile::class,
                         'valueAttribute' => 'id'
                     ]) */ ?>
-                <?php //= $form->field($model, 'is_debit_note')->checkbox(['readonly' => $isReadonly]) ?>
-                <?= $form->field($model, 'is_return')->checkbox(['readonly' => $isReadonly]) ?>
+                <?php //= $form->field($model, 'is_debit_note')->checkbox(['class' => $isReadonly ? 'read-only' : '']) ?>
+                <?= $form->field($model, 'is_return')->checkbox(['class' => $isReadonly ? 'read-only' : '']) ?>
                 <?php /*= $this->render('/_form_field/dropdown', [
                         'model' => $model,
                         'form' => $form,

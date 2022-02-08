@@ -11,6 +11,7 @@ use Zelenin\yii\SemanticUI\Elements;
 				'style' => 'margin: 0em;'
 			]) ?>
 		<?= Html::activeHiddenInput($pos_receipt_item, "[$rowId]id", ['class' => 'item-id']); ?>
+		<?= Html::activeHiddenInput($pos_receipt_item, "[$rowId]warehouse_id") ?>
 	</td>
 	<td class="item" style="vertical-align: middle">
 		<div class="ten wide column item item-name">

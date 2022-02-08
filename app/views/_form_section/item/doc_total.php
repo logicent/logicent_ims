@@ -2,7 +2,7 @@
     <div class="ui two column grid">
         <div class="ui transparent input column">
             <?= $form->field($model, 'total_quantity')->textInput(['readonly' => true]) ?>
-            <?= $form->field($model, 'amounts_tax_inclusive')->checkbox(['class' => 'read-only']) ?>
+            <?= $form->field($model, 'amounts_tax_inclusive')->checkbox(['class' => $this->context->isReadonly ? 'read-only' : '']) ?>
         </div>
         <div class="ui transparent number input emphasis column">
             <?= $form->field($model, 'net_total')->textInput(['readonly' => true]) ?>

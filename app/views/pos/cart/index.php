@@ -6,7 +6,6 @@ use app\models\Customer;
 use app\models\Item;
 use app\models\SalesPerson;
 use app\models\Warehouse;
-use PHPUnit\Util\Log\JSON;
 use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Select;
@@ -26,37 +25,37 @@ $form = ActiveForm::begin([
         <div class="eleven wide column">
             <div class="two fields">
                 <div class="eleven wide field">
-                <?= $form->field($pos_receipt, 'itemSearch')->widget(Select::class, [
-                        'search' => true,
-                        'items' => SelectableItems::get( Item::class, $pos_receipt, [
-                                        'valueAttribute' => 'name',
-                                        'filters' => [
-                                            ['inactive' => false],
-                                            ['is_sales_item' => true],
-                                        ],
-                                        // 'addEmptyFirstItem' => true,
-                                    ]),
-                        'options' => [
-                            'id' => 'pos__item-search'
-                        ],
-                    ]) ?>
+                    <?= $form
+                            ->field($pos_receipt, 'itemSearch')
+                            ->textInput([
+                                'id' => 'pos__item-search',
+                                'placeholder' => Yii::t('app', 'Scan barcode or enter item code or name...')
+                            ])
+                            ->label(Yii::t('app', 'Find item')) ?>
+
+                    <div id="pos__search_result" class="ui middle aligned divided selection relaxed link list" style="display: none;">
+                        <a id="no_item_found" class="item" style="display:none">
+                            <div class="right floated content"></div>
+                            <div class="content"><?= Yii::t('app', 'No item found') ?></div>
+                        </a>
+                    </div>
                 </div>
                 <div class="five wide field">
-                <?= $form->field($pos_receipt, 'itemWarehouse')->widget(Select::class, [
-                        'search' => true,
-                        'items' => SelectableItems::get( Warehouse::class, $pos_receipt, [
-                                        'keyAttribute' => 'id',
-                                        'valueAttribute' => 'id',
-                                        'filters' => [
-                                            ['inactive' => false]
-                                        ],
-                                    ]),
-                        'options' => [
-                            'id' => 'pos__warehouses',
-                            'class' => 'select-from-list text-required',
-                            'value' => $pos_profile->default_warehouse
-                        ],
-                    ]) ?>
+                    <?= $form->field($pos_receipt, 'itemWarehouse')->widget(Select::class, [
+                            'search' => true,
+                            'items' => SelectableItems::get( Warehouse::class, $pos_receipt, [
+                                            'keyAttribute' => 'id',
+                                            'valueAttribute' => 'id',
+                                            'filters' => [
+                                                ['inactive' => false]
+                                            ],
+                                        ]),
+                            'options' => [
+                                'id' => 'pos__item-warehouse',
+                                'class' => 'select-from-list text-required',
+                                'value' => $pos_profile->default_warehouse
+                            ],
+                        ])->label(Yii::t('app', 'In location')) ?>
                 </div>
             </div>
             <?= $this->render('item/index', [
@@ -77,7 +76,7 @@ $form = ActiveForm::begin([
                         'class' => 'select-from-list text-required',
                         'value' => $pos_profile->default_customer
                     ]
-                ])->label(Yii::t('app', 'Customer')) ?>
+                ])->label(Yii::t('app', 'Sell to customer')) ?>
                 <!-- <button class="compact ui icon button" style="max-height: 3em; margin-top: 1.7em;"><?= Elements::icon('plus') ?></button> -->
             <!-- </div> -->
             <div class="fluid ui buttons">
@@ -132,7 +131,7 @@ $form = ActiveForm::begin([
 </div>
     <!-- Master form (POS Invoice) -->
     <?= Html::activeHiddenInput($pos_receipt, 'id') ?>
-    <?= Html::activeHiddenInput($pos_receipt, 'issued_at', ['value' => date('Y-m-d H:i:s')]) ?>
+    <?= Html::activeHiddenInput($pos_receipt, 'posting_date', ['value' => date('Y-m-d')]) ?>
     <?= Html::activeHiddenInput($pos_receipt, 'due_date', ['id' => 'pos__due_date', 'value' => date('Y-m-d')]) ?>
     <?= Html::activeHiddenInput($pos_receipt, 'customer_name') ?>
     <?= Html::activeHiddenInput($pos_receipt, 'branch_id'); ?>

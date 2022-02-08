@@ -7,10 +7,16 @@ FlatpickrAsset::register($this);
 ?>
 
 <?= $form->field($model, $attribute)->textInput([
-        'class' => 'selected-date pikaday'
+        'class' => 'selected-date pikaday',
+        'readonly' => $this->context->isReadonly,
     ]) ?>
 
-<?php $this->registerJs(<<<JS
+<?php
+$this->registerJs(<<<JS
+    isReadonly = $('.selected-date').attr('readonly') == 'readonly';
+    if (isReadonly)
+        $('.selected-date').removeClass('pikaday');
+
     $('.pikaday').flatpickr({
         // minDate : null,
         // maxDate : null,
