@@ -48,15 +48,19 @@ $form = ActiveForm::begin([
 		</div>
         <?= $form->field( $model, 'hide_credit_sale')->checkbox() ?>
         <?= $form->field( $model, 'hide_hold_sale')->checkbox() ?>
+        <div class="ui hidden divider"></div>
         <?= $form->field( $model, 'allow_user_price_edit')->checkbox() ?>
-        <?= $form->field( $model, 'show_shipping')->checkbox() ?>
-        <?= $form->field( $model, 'show_discount')->checkbox() ?>
-        <?= $form->field( $model, 'allow_user_discount_edit')->checkbox() ?>
+        <?php //= $form->field( $model, 'show_shipping')->checkbox() ?>
+        <?php //= $form->field( $model, 'show_discount')->checkbox(['class' => 'disabled']) ?>
+        <?php //= $form->field( $model, 'allow_user_discount_edit')->checkbox() ?>
+        <!-- <div class="ui hidden divider"></div> -->
+        <?= $form->field( $model, 'amounts_tax_inclusive')->checkbox() ?>
         <?php //= $form->field( $model, 'allow_negative_stock')->checkbox() ?>
+        <div class="ui hidden divider"></div>
         <?= $form->field( $model, 'show_sales_person')->checkbox() ?>
         <?= $form->field( $model, 'require_sales_person')->checkbox() ?>
+        <div class="ui hidden divider"></div>
         <?= $form->field( $model, 'require_sales_return_reason')->checkbox() ?>
-        <?= $form->field( $model, 'amounts_tax_inclusive')->checkbox() ?>
     </div>
 <?php 
 ActiveForm::end();

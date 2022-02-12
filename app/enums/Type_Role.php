@@ -15,17 +15,14 @@ class Type_Role
     const Administrator = 'Administrator'; // disallow visibility, rename and/or delete
     const SystemManager = 'System Manager'; // disallow rename and/or delete
     // business domain roles
-    const SalesUser = 'Sales Assistant';
-    const SalesManager = 'Sales Manager';
-    const CustomerMaster = 'Customer Master';
-    const StockUser = 'Stock Assistant';
-    const ItemMaster = 'Item Master';
-    const StockManager = 'Stock Manager';
-    const PurchaseUser = 'Purchase Assistant';
-    const PurchaseManager = 'Purchase Manager';
-    const SupplierMaster = 'Supplier Master';
-    // const AccountsUser = 'Accounts Assistant';
-    // const AccountsManager = 'Accounts Manager';
+    const SalesPerson = 'Sales Person'; // Purchase Assistant
+    const Cashier = 'Cashier'; // Sales Assistant
+    const SalesManager = 'Sales Manager'; // Purchase Manager
+    const Storekeeper = 'Storekeeper'; // Stores Assistant
+    const StoresManager = 'Stores Manager';
+    const CustomerService = 'Customer Service';
+    // const Bookkeeper = 'Bookkeeper'; // Accounts Assistant
+    // const Accountant = 'Accountant'; // Accounts Manager
 
     public static function enums()
     {
@@ -38,17 +35,14 @@ class Type_Role
     public static function domainRoles()
     {
         return [
-            self::SalesUser     => Yii::t('app', 'Sales Assistant'),
+            self::SalesPerson     => Yii::t('app', 'Sales Person'),
+            self::Cashier     => Yii::t('app', 'Cashier'),
             self::SalesManager  => Yii::t('app', 'Sales Manager'),
-            self::PurchaseUser  => Yii::t('app', 'Purchase Assistant'),
-            self::PurchaseManager   => Yii::t('app', 'Purchase Manager'),
-            self::StockUser     => Yii::t('app', 'Stock Assistant'),
-            self::StockManager  => Yii::t('app', 'Stock Manager'),
-            self::ItemMaster    => Yii::t('app', 'Item Master'),
-            self::CustomerMaster    => Yii::t('app', 'Customer Master'),
-            self::SupplierMaster    => Yii::t('app', 'Supplier Master'),
-            // self::AccountsUser  => Yii::t('app', 'Accounts Assistant'),
-            // self::AccountsManager   => Yii::t('app', 'Accounts Manager'),
+            self::Storekeeper     => Yii::t('app', 'Storekeeper'),
+            self::StoresManager  => Yii::t('app', 'Stores Manager'),
+            self::CustomerService    => Yii::t('app', 'Customer Service'),
+            // self::Bookkeeper  => Yii::t('app', 'Bookkeeper'),
+            // self::Accountant   => Yii::t('app', 'Accountant'),
         ];
     }
 }

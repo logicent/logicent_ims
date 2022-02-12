@@ -11,8 +11,7 @@ use app\models\PosReceiptPayment;
 <table id="payments" class="ui very basic table">
 	<!-- <thead>
 		<tr>
-			<th class="column"><?php //= Yii::t('app', 'Ref.') ?></th>
-			<th class="column right aligned" colspan="2"><?php //= Yii::t('app', 'Amount') ?></th>
+			<th class="ui small centered sub header text-muted" colspan="2"><?= Yii::t('app', 'Add Payment') ?></th>
 		</tr>
 	</thead> -->
 	<!-- Payment methods -->

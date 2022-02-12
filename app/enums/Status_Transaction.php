@@ -5,18 +5,19 @@ namespace app\enums;
 class Status_Transaction
 {
     const Draft   = 'Draft';
-    const Submit   = 'Submit';
-    const Cancel  = 'Cancel';
-    const Open  = 'Open';
-    const Close  = 'Close';
     const Submitted   = 'Submitted';
     const Canceled  = 'Cancelled';
+    const Submit   = 'Submit';
+    // const Cancel  = 'Cancel';
+    // const Amend  = 'Amend';
+    // const Open  = 'Open';
+    // const Close  = 'Close';
     const Closed  = 'Closed';
 
     const DraftColor    = 'red';
     const SubmittedColor= 'blue';
     const CanceledColor = 'brown';
-    const OpenColor = 'orange';
+    // const OpenColor = 'orange';
     const ClosedColor = 'green';
 
 
@@ -24,12 +25,12 @@ class Status_Transaction
     {
         return [
             self::Draft  =>  self::Draft,
-            self::Submit   =>  self::Submit,
-            self::Cancel =>  self::Cancel,
-            self::Open =>  self::Open,
-            self::Close =>  self::Close,
             self::Submitted   =>  self::Submitted,
             self::Canceled =>  self::Canceled,
+            self::Submit   =>  self::Submit,
+            // self::Cancel =>  self::Cancel,
+            // self::Open =>  self::Open,
+            // self::Close =>  self::Close,
             self::Closed =>  self::Closed,
         ];
     }
@@ -40,8 +41,8 @@ class Status_Transaction
             self::Draft  =>  self::DraftColor,
             self::Submitted   =>  self::SubmittedColor,
             self::Canceled  =>  self::CanceledColor,
-            self::Open  =>  self::OpenColor,
-            self::Closed  =>  self::ClosedColor,
+            // self::Open  =>  self::OpenColor,
+            // self::Closed  =>  self::ClosedColor,
         ];
     }
 }
