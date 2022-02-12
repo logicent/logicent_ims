@@ -691,11 +691,17 @@ body::-webkit-scrollbar-thumb {
 
 #pos__payment_detail td {
     border: 0px;
-    padding: 6px 6px 0px 6px;
+    padding: 0em;
 }
 
-#pos__payment_detail td:not(:last-child) {
-    padding-bottom: 6px;
+#pos__payment_detail td > label {
+    padding-left: 0.35em;
+}
+
+#pos__payment_detail td > input {
+    font-size: inherit;
+    border-radius: 0px;
+    padding-right: 0.75em;
 }
 
 #pos__search_result.relaxed {

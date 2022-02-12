@@ -10,7 +10,7 @@
 // F9 - Hold / Continue
 // F10 - Pay Now or Pay Later
 // F11 - Minimal screen (Cashier mode)
-// F12 - 
-// End - 
+// F12 - Switch User/Profile
 // Home - Cashier, Storekeeper or Dashboard
+// End - 
 // Esc - Cancel sale

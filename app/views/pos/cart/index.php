@@ -101,7 +101,6 @@ $form = ActiveForm::begin([
             <?= $this->render('_sale_action', [
                     'pos_profile' => $pos_profile
                 ]) ?>
-        <br>
         <?php
         if ( (bool) $pos_profile->show_sales_person ) :
             echo $form->field($pos_receipt, 'sales_person_id')->dropDownList(

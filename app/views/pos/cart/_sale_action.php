@@ -14,7 +14,7 @@ $modal::end();
 echo Html::submitButton(Yii::t('app', ''), [
         'id' => 'pos__submit',
         'class' => 'compact fluid ui button',
-        'style' => "color: #fff; font-size: 125%;",
+        'style' => "color: #fff; font-size: 125%; margin-bottom: 1em",
         'data' => ['require-reason' => $pos_profile->require_sales_return_reason]
     ])
 ?>

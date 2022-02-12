@@ -18,7 +18,7 @@ use Zelenin\yii\SemanticUI\Elements;
 			<?= Html::activeHiddenInput($pos_receipt_item, "[$rowId]description", ['class' => 'item-description']); ?>
 			<?= strtoupper($pos_receipt_item->item_name) ?>&emsp;
 			<div class="text-muted qty-in-stock" style="float: right;">(<?= $stock_item->qty_in_stock ?>)</div>
-			<div class="text-muted">#<?= strtoupper($pos_receipt_item->item_id) ?></div>
+			<div class="text-muted" style="font-size: 87.5%"> <?= strtoupper($pos_receipt_item->item_id) ?></div>
 		</div>
 		<?= Html::activeHiddenInput($pos_receipt_item, "[$rowId]item_id"); ?>
 	</td>
@@ -40,11 +40,11 @@ use Zelenin\yii\SemanticUI\Elements;
 			]) ?>
 	</td>
 	<?php if ((bool) $pos_profile->show_discount) : ?>
-	<td class='discount'>
+	<td class="discount" style="padding: 0px">
 		<?= Html::activeTextInput($pos_receipt_item, "[$rowId]discount_amount", [ 
 				'value' => number_format($pos_receipt_item->discount_amount, 0.0, '.', ''),
 				'class' => 'right aligned',
-				'style' => 'padding: 0.4em;',
+				'style' => 'border: none; border-radius: 0px; height: 54px',
 				'readonly' => (bool) $pos_profile->allow_user_discount_edit === false
 			]) ?>
 		<?= Html::activeHiddenInput($pos_receipt_item, "[$rowId]discount_percent", ['value' => number_format($pos_receipt_item->discount_percent, 0, '.', '')]); ?>

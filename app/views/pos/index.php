@@ -3,6 +3,7 @@
 // To-Do: title as New Sale or Sale #{posReceiptId}
 $this->title = Yii::t('app', 'Sales');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Sales'), 'url' => ['/pos']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'New Sale'), 'url' => false];
 
 ?>
 

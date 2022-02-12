@@ -18,7 +18,7 @@ return [
         'iconPath' => null,
         'iconColor' => 'yellow',
         'group' => Type_Module::Selling,
-        'visible' => Yii::$app->user->can(Type_Role::CustomerMaster),
+        'visible' => Yii::$app->user->can(Type_Role::SalesManager),
     ],
     [
         'route' => 'report/index',
@@ -36,7 +36,7 @@ return [
         'iconPath' => null,
         'iconColor' => 'orange',
         'group' => Type_Module_Sub_Module::PoS,
-        'visible' => Yii::$app->user->can(Type_Role::SalesUser),
+        'visible' => Yii::$app->user->can(Type_Role::Cashier),
     ],
     [
         'route' => 'item/index',
@@ -54,7 +54,7 @@ return [
         'iconPath' => null,
         'iconColor' => 'orange',
         'group' => Type_Module_Sub_Module::PoS,
-        'visible' => Yii::$app->user->can(Type_Role::PurchaseUser),
+        'visible' => Yii::$app->user->can(Type_Role::StoresManager),
     ],
     [
         'route' => 'setup/index',

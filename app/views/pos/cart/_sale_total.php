@@ -29,13 +29,17 @@ use Zelenin\yii\SemanticUI\Elements;
         </tr>
         <?php if ((bool) $pos_profile->show_discount) : ?>
         <tr>
-            <td>
+            <td style="padding: 0em 0.78571429em;">
                 <span><?= Yii::t('app', 'Discount') ?></span>
                 <span id="discount_rate" class="small"><?= $pos_receipt->discount_percent ?></span>
                 <?= Html::activeHiddenInput($pos_receipt, 'discount_percent', ['id' => 'pos__discount_percent']) ?>
             </td>
-            <td class="right aligned">
-                <?= Html::activeTextInput($pos_receipt, 'discount_amount', ['class' => 'right aligned', 'id' => 'pos__discount_amount']) ?>
+            <td class="eight wide right aligned" style="padding: 0em;">
+                <?= Html::activeTextInput($pos_receipt, 'discount_amount', [
+                        'class' => 'right aligned',
+                        'id' => 'pos__discount_amount',
+                        'style' => 'border-radius: 0px; padding-right: 0.75em;'
+                    ]) ?>
             </td>
         </tr>
         <?php endif ?>
@@ -62,11 +66,11 @@ use Zelenin\yii\SemanticUI\Elements;
             </td>
         </tr> -->
         <?php // endif ?>
-        <tr class="ui sub header" style="font-size: 150%; font-weight: 400; height: 98px" >
-            <td style="padding-left: 0.45em">
+        <tr class="ui sub header" style="font-size: 150%; font-weight: 400; height: 76px" >
+            <td style="padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.45em">
                 <span class="text-muted"><?= Yii::t('app', 'TOTAL') ?></span>
             </td>
-            <td style="padding-right: 0.45em; vertical-align: middle" class="right aligned">
+            <td style="padding-top: 0.5em; padding-bottom: 0.5em; padding-right: 0.45em; vertical-align: middle" class="right aligned">
                 <span id="cart_total_amount"><?= number_format((float) $pos_receipt->total_amount, 2) ?></span>
             </td>
         </tr>
@@ -80,7 +84,7 @@ use Zelenin\yii\SemanticUI\Elements;
             </td>
         </tr>
         <tr id="payment_options" class="cash-sale__field" style="display: none;">
-            <td colspan="2" style="padding: 0; padding-left: 0.45em">
+            <td colspan="2" style="padding: 0em; padding-left: 0.45em">
                 <div class="inline-table">
                     <?= $this->render('payment/index', ['pos_receipt_payments' => $pos_receipt_payment]) ?>
                 </div>

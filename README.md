@@ -34,19 +34,19 @@ via CLI
 
 **Modules**
 - Buying (Purchases)
-  - Purchase Order [+ Goods Receipt]
-  <!-- - Landed Cost Voucher -->
+  - Purchase Order
 
 - Stock (Item)
-  - Stock Entry (Item Movement)
   - Purchase (Material) Request
+  - Purchase (Goods) Receipt
+  - Stock Entry (Item Movement)
   - Delivery Note
   - Item + Item Warehouse
   - Item Group
   - Item UoM
   - Brand
   - Item Bundle (Item Kit)
-  - Warehouse  (Locations)
+  - Warehouse (Locations)
 
 - Selling (Sales)
   - Quotation
@@ -55,7 +55,7 @@ via CLI
   - POS Profile (single)
   - Sales Person
 
-- Accounting (_a basic, functional, but limited implementation_)
+- Accounting _(a basic, functional, but limited implementation)_
   - Sales Invoice (A/R)
   - Sales Return (Credit Note)
   - Purchase Invoice (A/P)
@@ -77,7 +77,7 @@ via CLI
 
 - Data import
 - Database backup
-- Integration (Enterprise only)
+- Integration _(Enterprise only)_
   - Mobile money payment
   - SMS Gateway
 - Report builder
@@ -88,7 +88,7 @@ via CLI
 _Now:_
 
 - [ ] Add direct printing support with default/user-defined settings
-- [ ] Re-implement item search to use a custom search bar (input term + dropdown list of search result)
+- [x] Re-implement item search to use a custom search bar (input term + dropdown list of search result)
 - [ ] Email sending with attachment option for documents and reports
 - [ ] Refactor all business domain "modules" above as Yii modules
 
