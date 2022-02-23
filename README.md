@@ -2,7 +2,7 @@
 
 **Overview**
 
-A free and open-source point-of-sale (POS) system for retail and wholesale businesses with support for multiple branches, stockkeeping locations, POS profiles and price lists.
+A free and open-source accounting and production system for businesses and non-profits with support for multiple users and varied integrations.
 
 **Installation**
 
@@ -12,7 +12,7 @@ Prerequisites
 - NPM
 
 via CLI
-- Clone the github repo `git@github.com:mwaigichuhi/ajabu-pos.git && cd ajabu-pos`
+- Clone the github repo `git@github.com:mwaigichuhi/logicent.git && cd logicent`
 - Run `composer install`
 - Run `npm install -g bower && npm install -g bower-npm-resolver`
 - Run `bower install`
@@ -33,7 +33,7 @@ via CLI
 - SweetAlert 2.1
 
 **Modules**
-- Buying (Purchases)
+- Purchase
   - Purchase Order
 
 - Stock (Item)
@@ -48,7 +48,7 @@ via CLI
   - Item Bundle (Item Kit)
   - Warehouse (Locations)
 
-- Selling (Sales)
+- Sales
   - Quotation
   - Sales Order
   - Customer Group
@@ -90,7 +90,7 @@ _Now:_
 - [ ] Add direct printing support with default/user-defined settings
 - [x] Re-implement item search to use a custom search bar (input term + dropdown list of search result)
 - [ ] Email sending with attachment option for documents and reports
-- [ ] Refactor all business domain "modules" above as Yii modules
+- [x] Refactor all business domain "modules" above as Yii modules
 
 Enterprise only
 - [ ] Email templates and email digest of recent business activity
@@ -115,8 +115,8 @@ _Later:_
 - [ ] Test and prefer RoadRunner over Nginx for production in Ubuntu 20.04+
 
 **Want to contribute?**
-Thank you for considering to make a contribution to Ajabu POS.
+Thank you for considering to make a contribution to Logicent.
 New contributors to improve the solution further or help provide support to issues are most welcome.
 
 **License**
-Ajabu POS is released under the [BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause).
+Logicent is released under the [BSD-3-Clause](https://opensource.org/licenses/BSD-3-Clause).

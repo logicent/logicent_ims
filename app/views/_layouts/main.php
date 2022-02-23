@@ -25,11 +25,11 @@ $this->beginPage() ?>
 
     <div id="header_wrapper">
     <?php
-        echo $this->render('/_layouts/_main_navbar', ['context' => $this->context]);
+        echo $this->render('//_layouts/_main_navbar', ['context' => $this->context]);
         if ($this->context->id !== 'main' &&
             $this->context->id !== 'pos' &&
             $this->context->id !== 'setup') :
-            echo $this->render('/_layouts/_view_header', ['context' => $this->context]);
+            echo $this->render('//_layouts/_view_header', ['context' => $this->context]);
         endif ?>
     </div>
 
@@ -52,7 +52,7 @@ $this->beginPage() ?>
                                     echo $this->context->renderPartial('_sidebar', ['context' => $this->context]);
                                 }
                                 else
-                                    echo $this->context->renderPartial('/_form/_sidebar', ['context' => $this->context]);
+                                    echo $this->context->renderPartial('//_form/_sidebar', ['context' => $this->context]);
                             }
                             // controller id
                             elseif ($this->context->id == 'report'
@@ -75,7 +75,7 @@ $this->beginPage() ?>
             <?php endif ?>
 
             <div id="content" class="<?= $this->context->id !== 'main' && $this->context->sidebar !== false ? $this->context->mainWidth : $this->context->fullWidth ?> wide column">
-                <?= $this->render('/_layouts/_flash_message', ['context' => $this->context]) ?>
+                <?= $this->render('//_layouts/_flash_message', ['context' => $this->context]) ?>
                 <?= $content ?>
             </div>
         </div>

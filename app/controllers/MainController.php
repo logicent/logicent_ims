@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use app\models\Expense;
-use app\models\PurchaseInvoice;
-use app\models\SalesInvoice;
+use logicent\accounts\models\Expense;
+use logicent\accounts\models\PurchaseInvoice;
+use logicent\accounts\models\SalesInvoice;
 use yii\filters\AccessControl;
 
 class MainController extends \app\controllers\base\BaseController
@@ -28,7 +28,7 @@ class MainController extends \app\controllers\base\BaseController
 
     public function actionIndex()
     {
-        $stats = [];
+        $stats = [];$totalSales=null;$totalPurchases=null;
         $totalSales = SalesInvoice::find()
                         ->where(['like', 'posting_date', date('Y-m-d')])
                         ->sum('total_amount');

@@ -7,7 +7,7 @@ use app\enums\Status_Queue;
 use app\models\CommentForm;
 use app\models\setup\EmailNotificationSettingsForm;
 use app\models\setup\EmailQueue;
-use app\models\Setup;
+use app\modules\setup\models\Setup;
 use app\models\setup\SmtpSettingsForm;
 use Yii;
 use yii\helpers\Json;

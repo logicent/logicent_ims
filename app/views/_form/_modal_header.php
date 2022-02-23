@@ -24,9 +24,9 @@ DirrtyAsset::register($this);
         <?php
             if ( $this->context->formViewType == Type_Form_View::Multiple ) :
                 echo Html::a( Elements::icon('arrow up') . Yii::t('app', 'Back'),
-                            ['/' . $this->context->id . '/index'],
+                            ['/' . $this->context->module->id . '/' . $this->context->id . '/index'],
                             ['class' => 'compact ui button show-list-form']);
-                $this->registerJs( $this->render( '/setup/_form.js' ) );
+                $this->registerJs( $this->render( '@setup/views/setup/_form.js' ) );
             endif;
             if ( $this->context->formViewType == Type_Form_View::Single
                 || ($this->context->formViewType == Type_Form_View::Multiple &&
@@ -40,7 +40,7 @@ DirrtyAsset::register($this);
 </div><!-- ./ui top segment -->
 
 <?php
-$this->render('/_layouts/_flash_message', ['context' => $this->context]);
+$this->render('//_layouts/_flash_message', ['context' => $this->context]);
 
 if ( $this->context->action->id != 'read') :
     $this->registerJs(<<<JS

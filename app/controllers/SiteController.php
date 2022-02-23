@@ -8,6 +8,8 @@ use app\models\auth\ResetPasswordForm;
 use app\models\auth\Auth;
 use app\models\auth\User;
 use app\models\auth\UserLog;
+use app\modules\setup\models\Setup;
+use app\modules\setup\models\SmtpSettingsForm;
 use Yii;
 use yii\helpers\Html;
 use yii\filters\AccessControl;
@@ -191,7 +193,7 @@ class SiteController extends Controller
 
     public function getMailer()
     {
-        $model = \app\models\Setup::getSettings(\app\models\setup\SmtpSettingsForm::class);
+        $model = Setup::getSettings(SmtpSettingsForm::class);
 
         $config = [
                     'class' => 'yii\swiftmailer\Mailer',

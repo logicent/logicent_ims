@@ -8,6 +8,8 @@ use app\enums\Type_View;
 use app\helpers\PdfCreator;
 use app\helpers\PdfHelper;
 use app\helpers\SendNotification;
+use app\modules\setup\models\Setup;
+use app\modules\setup\models\SmtpSettingsForm;
 use Yii;
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
@@ -47,8 +49,14 @@ abstract class BaseController extends Controller
 
     public function init()
     {
+        $resourceId = null;
+        if ($this->module->id !== 'logicent-web')
+            $baseViewPath = Yii::getAlias('@modules/') . $this->module->id . '/views';
+        else
+            $baseViewPath = Yii::getAlias('@app/views');
+
         if ($this->sharedViewPath == false)
-            $this->viewPath = Yii::getAlias('@app/views') . '/' . Inflector::underscore(
+            $this->viewPath = $baseViewPath . '/' . Inflector::underscore(
                 Inflector::id2camel($this->id)
             );
         else
@@ -399,7 +407,7 @@ abstract class BaseController extends Controller
 
     public function getMailer()
     {
-        $model = \app\models\Setup::getSettings(\app\models\setup\SmtpSettingsForm::class);
+        $model = Setup::getSettings(SmtpSettingsForm::class);
 
         $config = [
             'class' => 'yii\swiftmailer\Mailer',

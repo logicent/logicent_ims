@@ -14,17 +14,17 @@ use Zelenin\yii\SemanticUI\Elements;
 
         <div class="menu">
             <?= Html::a(Elements::icon('grey shopping basket') .
-                        Yii::t('app', 'Sales'), ['sales-invoice/index'], ['class' => 'item']) ?>
+                        Yii::t('app', 'Sales'), ['/accounts/sales-invoice/index'], ['class' => 'item']) ?>
             <?= Html::a(Elements::icon('grey money') .
-                        Yii::t('app', 'Expenses'), ['expense/index'], ['class' => 'item']) ?>
+                        Yii::t('app', 'Expenses'), ['/accounts/expense/index'], ['class' => 'item']) ?>
             <?= Html::a(Elements::icon('grey horizontal flipped truck') .
-                        Yii::t('app', 'Purchases'), ['purchase-invoice/index'], ['class' => 'item']) ?>
+                        Yii::t('app', 'Purchases'), ['/accounts/purchase-invoice/index'], ['class' => 'item']) ?>
             <div class="divider" style="margin: 0"></div>
             <?= Html::a(Elements::icon('grey book') .
-                        Yii::t('app', 'Stock Entry'), ['stock-entry/index'], ['class' => 'item']) ?>
+                        Yii::t('app', 'Stock Entry'), ['/stock/stock-entry/index'], ['class' => 'item']) ?>
             <div class="divider" style="margin: 0"></div>
             <?= Html::a(Elements::icon('grey briefcase') .
-                        Yii::t('app', 'Suppliers'), ['supplier/index'], ['class' => 'item']) ?>
+                        Yii::t('app', 'Suppliers'), ['/purchase/supplier/index'], ['class' => 'item']) ?>
         </div>
     </div>
 <!-- </div> -->
