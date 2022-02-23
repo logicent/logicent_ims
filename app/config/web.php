@@ -11,9 +11,13 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $url = require __DIR__ . '/url.php';
 
+Yii::setAlias('@setup', dirname( __DIR__ ) . '/modules/setup');
+// Set a @modules alias pointed to the modules/ directory
+Yii::setAlias('@modules', dirname (dirname( __DIR__ )) . '/modules');
+
 $config = [
-    'id' => 'ajabu-pos-web',
-    // 'name' => 'Ajabu POS',
+    'id' => 'logicent-web',
+    // 'name' => 'Logicent web',
     'runtimePath' => dirname( dirname( __DIR__ ) ) . '/storage/runtime',
     'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
     'basePath' => dirname( __DIR__ ),
@@ -79,9 +83,24 @@ $config = [
         'formatter' => [
             'defaultTimeZone' => 'Africa/Nairobi',
         ],
-    ], /*
+    ],
     'modules' => [
-    ], */
+        'setup' => [
+            'class' => \app\modules\setup\Module::class,
+        ],
+        'accounts' => [
+            'class' => logicent\accounts\Module::class,
+        ],
+        'purchase' => [
+            'class' => logicent\purchase\Module::class,
+        ],
+        'sales' => [
+            'class' => logicent\sales\Module::class,
+        ],
+        'stock' => [
+            'class' => logicent\stock\Module::class,
+        ],
+    ],
     'params' => $params,
 ];
 

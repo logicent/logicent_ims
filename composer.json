@@ -1,21 +1,30 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
+    "name": "logicent/logicent",
+    "description": "Logicent",
+    "version": "1.0.0-beta",
     "keywords": [
-        "yii2",
-        "framework",
-        "basic",
-        "project template"
+        "erp",
+        "accounting",
+        "production",
+        "wholesale",
+        "retail",
+        "point-of-sale",
+        "yii2"
     ],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "https://demo.appsoft.co.ke/logicent",
     "type": "project",
     "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Appsoft",
+            "homepage": "https://appsoft.co.ke/"
+        }
+    ],
     "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
+        "email": "support@appsoft.co.ke",
+        "issues": "https://github.com/logicent/logicent/issues?state=open",
+        "source": "https://github.com/logicent/logicent",
+        "docs": "https://appsoft.co.ke/logicent/docs/1.x/"
     },
     "minimum-stability": "stable",
     "require": {
@@ -27,27 +36,15 @@
         "yiisoft/yii2-redis": "^2.0",
         "yiisoft/yii2-imagine": "^2.3",
         "yiisoft/yii2-shell": "^2.0",
-        "foil/foil": "^0.6.6",
-        "nesbot/carbon": "^2.0.0",
-        "hellogerard/jobby": "^3.2",
         "league/flysystem": "^1.0",
         "mikehaertl/phpwkhtmltopdf": "^2.2",
         "jonnyw/php-phantomjs": "^4.5",
         "yiisoft/yii2-jui": "^2.0",
         "kint-php/kint": "^1.1",
-        "2amigos/mailer": "^1.0",
         "bizley/migration": "^4.1",
         "spatie/db-dumper": "^2.21",
         "thamtech/yii2-yaml": "^0.3.2",
         "thamtech/yii2-uuid": "^1.2",
-        "yii2tech/filedb": "^1.0",
-        "yii2tech/ar-softdelete": "^1.0",
-        "yii2tech/crontab": "^1.0",
-        "yii2tech/activemail": "^1.0",
-        "yii2tech/ar-file": "^1.0",
-        "yii2tech/csv-grid": "^1.0",
-        "yii2tech/html2pdf": "^1.0",
-        "yii2tech/spreadsheet": "^1.0",
         "yii2mod/yii2-enum": "*",
         "league/csv": "^9.7",
         "myclabs/php-enum": "^1.8",
@@ -60,9 +57,14 @@
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
         "codeception/specify": "~0.4.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\setup\\": "app/modules/",
+            "logicent\\": "modules/"
+        }
     },
     "config": {
         "process-timeout": 1800,
@@ -80,7 +82,7 @@
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-          ]
+        ]
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {

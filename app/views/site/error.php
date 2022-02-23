@@ -1,7 +1,7 @@
 <?php
 
-use app\models\Setup;
-use app\models\setup\BusinessProfileForm;
+use app\modules\setup\models\Setup;
+use app\modules\setup\models\BusinessProfileForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use Zelenin\yii\SemanticUI\Elements;

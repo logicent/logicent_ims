@@ -1,7 +1,7 @@
 <?php
 
 use app\helpers\SelectableItems;
-use app\models\Supplier;
+use logicent\purchase\models\Supplier;
 use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\helpers\Size;
 use Zelenin\yii\SemanticUI\modules\Modal;

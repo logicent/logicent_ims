@@ -1,7 +1,7 @@
 <?php
 
 use app\models\setup\BusinessProfileForm;
-use app\models\Setup;
+use app\modules\setup\models\Setup;
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View view component instance */

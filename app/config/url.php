@@ -5,7 +5,6 @@ return [
     // 'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        // 'blog' => 'site/index',
         'login' => 'site/login',
         'logout' => 'site/logout',
         'forgot-password' => 'site/request-password-reset',
@@ -25,21 +24,12 @@ return [
         // 'Report/<controller>' => '<controller>/report-builder',
 
         // route standard and custom reports
-        'query-report/<\w+>' => 'report/query/<\w+>',
+        // 'query-report/<\w+>' => 'report/query/<\w+>',
 
         // generic rule goes last
         '<controller>/List' => '<controller>/index',
 
-        'Setup' => 'setup',
-        'Setup/<controller>' => 'setup/<controller>/index',
-
-        // REST API rules
-        // ['class' => 'yii\rest\UrlRule', 'controller' => 'api/user'],
-        // [
-        //     'class' => 'yii\rest\UrlRule',
-        //     'controller' => 'api/project',
-        //     // 'only' => ['index', 'view'],
-        //     // 'except' => ['delete', 'create', 'update'],
-        // ],
+        // 'Setup' => 'setup',
+        // 'Setup/<controller>' => 'setup/<controller>/index',
     ],
 ];

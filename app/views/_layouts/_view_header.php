@@ -48,7 +48,7 @@ $model = $this->context->model;
                         'class' => 'compact ui filter button',
                         'style' => 'display: none'
                     ]);
-                // echo $this->render('/_list/_menu');
+                // echo $this->render('//_list/_menu');
 
                 if ( Yii::$app->user->can(Type_Permission::Create .' '. $this->context->resourceName) ) :
                     echo Html::a(Yii::t('app', 'New'), ['create'], [
@@ -94,7 +94,7 @@ $model = $this->context->model;
                     'id'    => 'save_btn',
                 ]);
                 if (!$model->isNewRecord) :
-                    echo $this->render('/_form/_menu', ['model' => $model]);
+                    echo $this->render('//_form/_menu', ['model' => $model]);
                 endif;
             // read-only
             elseif ( $this->context->isReadonly ) :
@@ -121,7 +121,7 @@ $model = $this->context->model;
                                             'target' => '_blank',
                                         ]);
                         endif;
-                        echo $this->render('/_form/_menu', ['model' => $model]);
+                        echo $this->render('//_form/_menu', ['model' => $model]);
                     endif;
                     if ($model->lockUpdate() &&
                         $model->userCan( Type_Permission::Cancel, Yii::$app->user->id ) &&
@@ -169,8 +169,8 @@ if ($this->context->action->id == Resource_Action::Create ||
             });
         JS);
 endif;
-echo $this->render('/_form/_confirm', ['action' => Status_Transaction::Submit]);
-echo $this->render('/_list/_delete');
+echo $this->render('//_form/_confirm', ['action' => Status_Transaction::Submit]);
+echo $this->render('//_list/_delete');
 
 $this->registerJs(<<<JS
     $('.ui.dropdown').dropdown();

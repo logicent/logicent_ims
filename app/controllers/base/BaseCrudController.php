@@ -40,7 +40,7 @@ abstract class BaseCrudController extends BaseController
                     [
                         'actions' => ['index', 'list'],
                         'allow' => true,
-                        'roles' => [ Type_Permission::List .' '. $this->resourceName ],
+                        // 'roles' => [ Type_Permission::List .' '. $this->resourceName ],
                     ],
                     [
                         'actions' => ['read'], // view

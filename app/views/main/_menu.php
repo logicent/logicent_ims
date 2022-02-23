@@ -5,14 +5,14 @@ use app\enums\Type_Model;
 use app\enums\Type_Module_Sub_Module;
 use app\enums\Type_Module;
 use app\enums\Type_Role;
-use app\models\setup\DeveloperSettingsForm;
-use app\models\Setup;
+use app\modules\setup\models\DeveloperSettingsForm;
+use app\modules\setup\models\Setup;
 
-$deployedSettings = Setup::getSettings( DeveloperSettingsForm::class );
+// $deployedSettings = Setup::getSettings( DeveloperSettingsForm::class );
 
 return [
     [
-        'route' => 'customer/index',
+        'route' => 'sales/customer/index',
         'label' => 'Customer',
         'icon' => 'user',
         'iconPath' => null,
@@ -30,8 +30,8 @@ return [
         'visible' => true, // which permissions?
     ],
     [
-        'route' => '/pos',
-        'label' => 'Sales',
+        'route' => 'sales/pos/index',
+        'label' => 'POS',
         'icon' => 'shopping basket',
         'iconPath' => null,
         'iconColor' => 'orange',
@@ -39,7 +39,7 @@ return [
         'visible' => Yii::$app->user->can(Type_Role::Cashier),
     ],
     [
-        'route' => 'item/index',
+        'route' => 'stock/item/index',
         'label' => 'Item',
         'icon' => 'box',
         'iconPath' => null,
@@ -48,7 +48,7 @@ return [
         'visible' => Yii::$app->user->can(Type_Permission::List .' '. Type_Model::Item),
     ],
     [
-        'route' => 'purchase-invoice/index',
+        'route' => 'accounts/purchase-invoice/index',
         'label' => 'Purchases',
         'icon' => 'horizontally flipped truck',
         'iconPath' => null,
@@ -57,7 +57,7 @@ return [
         'visible' => Yii::$app->user->can(Type_Role::StoresManager),
     ],
     [
-        'route' => 'setup/index',
+        'route' => 'setup/setup/index',
         'label' => Type_Model::Setup,
         'icon' => 'cog',
         'iconPath' => null,

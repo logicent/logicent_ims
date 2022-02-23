@@ -3,8 +3,8 @@
 use app\enums\Type_Module;
 use app\enums\Type_Party;
 use app\helpers\SelectableItems;
-use app\models\Currency;
-use app\models\PriceList;
+use logicent\accounts\models\Currency;
+use logicent\accounts\models\PriceList;
 use Zelenin\yii\SemanticUI\modules\Select;
 
 if (in_array('currency', array_keys($model->attributes))) :

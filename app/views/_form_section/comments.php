@@ -58,7 +58,7 @@ if (!$model->isNewRecord) :
     <div class="ui threaded comments" id="comment_timeline">
 <?php 
     if ( is_array( $model->comments )) :
-        echo $this->render('/_layouts/_comments', ['comments' => $model->comments]);
+        echo $this->render('//_layouts/_comments', ['comments' => $model->comments]);
     endif ?>
     </div>
 <?php

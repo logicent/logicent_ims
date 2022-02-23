@@ -34,7 +34,7 @@ function confirmAction(url, data = null) {
             },
             onApprove : function() {
                 $(this).modal('hide'); // close the dialog
-console.log(url);
+                console.log(url);
                 $.ajax({
                     url: url,
                     type: 'post',
