@@ -166,8 +166,8 @@ return [
         'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
     [
-        'route' => 'setup/role/index',
-        'label' => 'Role',
+        'route' => 'setup/role-permission/index',
+        'label' => 'Role & Permission',
         'group' => Type_Module::System,
         'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
