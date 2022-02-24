@@ -1,7 +1,7 @@
 <?php
 
 use app\enums\Type_Module;
-use app\enums\Type_Party;
+use logicent\accounts\enums\Type_Party;
 use app\helpers\SelectableItems;
 use logicent\accounts\models\Currency;
 use logicent\accounts\models\PriceList;

@@ -1,6 +1,6 @@
 <?php
 
-use app\enums\Type_Party_Sub_Type;
+use logicent\accounts\enums\Type_Party_Sub_Type;
 
 $columns = [
     [

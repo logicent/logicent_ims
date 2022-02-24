@@ -193,7 +193,7 @@ return [
         'route' => 'setup/email-notification/index',
         'label' => 'Email Notification',
         'group' => Type_Module::System,
-        'visible' => Yii::$app->user->can(Type_Role::SalesManager),
+        'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
     [
         'route' => 'setup/email-queue/index',

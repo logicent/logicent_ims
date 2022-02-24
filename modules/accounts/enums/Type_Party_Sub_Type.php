@@ -1,6 +1,6 @@
 <?php
 
-namespace app\enums;
+namespace logicent\accounts\enums;
 
 use Yii;
 

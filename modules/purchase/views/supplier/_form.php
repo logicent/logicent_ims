@@ -1,6 +1,6 @@
 <?php
 
-use app\enums\Type_Party_Sub_Type;
+use logicent\accounts\enums\Type_Party_Sub_Type;
 use app\helpers\SelectableItems;
 use logicent\purchase\models\SupplierGroup;
 use yii\widgets\MaskedInput;

@@ -2,7 +2,7 @@
 
 namespace logicent\accounts\models\base;
 
-use app\enums\Status_Party;
+use logicent\accounts\enums\Status_Party;
 use app\models\base\AutoincrementIdInterface;
 use app\models\base\BaseActiveRecord;
 use app\modules\setup\models\ListViewSettingsForm;

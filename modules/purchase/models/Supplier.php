@@ -3,7 +3,7 @@
 namespace logicent\purchase\models;
 
 use app\enums\Type_Module;
-use app\enums\Type_Party;
+use logicent\accounts\enums\Type_Party;
 use logicent\accounts\models\base\BasePartyDocument;
 use logicent\accounts\models\PurchaseInvoice;
 use Yii;

@@ -12,7 +12,7 @@ Prerequisites
 - NPM
 
 via CLI
-- Clone the github repo `git@github.com:mwaigichuhi/logicent.git && cd logicent`
+- Clone the github repo `git@github.com:logicent/logicent.git && cd logicent`
 - Run `composer install`
 - Run `npm install -g bower && npm install -g bower-npm-resolver`
 - Run `bower install`
@@ -89,20 +89,11 @@ _Now:_
 
 - [ ] Add direct printing support with default/user-defined settings
 - [x] Re-implement item search to use a custom search bar (input term + dropdown list of search result)
-- [ ] Email sending with attachment option for documents and reports
 - [x] Refactor all business domain "modules" above as Yii modules
-
-Enterprise only
-- [ ] Email templates and email digest of recent business activity
 
 _Next:_
 
-- [ ] Improve all the end-user system tools options and performance
 - [ ] Add support for keyboard shortcuts in the POS/POR transactions
-- [ ] Upgrade to latest Yii2 using PHP 8+ and MySQL 8+ with Fomantic UI 2.8+
-- [ ] Change the UI layout to full-width with primary and secondary sidebars
-- [ ] Create Yii extensions for the tools and starter kit as composer packages
-
 Enterprise only
 - [ ] Add multiple POS profile support with active profile switcher
 - [ ] Add integration for mobile money payments and SMS gateways
@@ -110,9 +101,6 @@ Enterprise only
 - [ ] Add Customer Loyalty points tracker and promotions messages
 
 _Later:_
-
-- [ ] Upgrade to Yii3 (with CycleORM datamapper) using Bulma and AlpineJS
-- [ ] Test and prefer RoadRunner over Nginx for production in Ubuntu 20.04+
 
 **Want to contribute?**
 Thank you for considering to make a contribution to Logicent.

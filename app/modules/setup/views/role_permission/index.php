@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\widgets\GridView;
 
-$this->title = Yii::t('app', 'Role');
+$this->title = Yii::t('app', 'Role & Permission');
 ?>
 <?= $this->render('/setup/_list/_header', ['context_id' => 'role/']) ?>
 
@@ -27,7 +27,7 @@ $this->title = Yii::t('app', 'Role');
             'value' => function ($model) {
                 return 
                     Html::a($model->name, 
-                            ['setup/role/update', 'id' => $model->name], 
+                            ['/setup/role-permission/update', 'id' => $model->name], 
                             [
                                 'class' => 'show-list-form',
                                 'data' => [

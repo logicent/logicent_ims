@@ -1,6 +1,6 @@
 <?php
 
-namespace app\enums;
+namespace logicent\sales\enums;
 
 class Type_Order
 {
