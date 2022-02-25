@@ -166,8 +166,8 @@ return [
         'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
     [
-        'route' => 'setup/role/index',
-        'label' => 'Role',
+        'route' => 'setup/role-permission/index',
+        'label' => 'Role & Permission',
         'group' => Type_Module::System,
         'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
@@ -193,7 +193,7 @@ return [
         'route' => 'setup/email-notification/index',
         'label' => 'Email Notification',
         'group' => Type_Module::System,
-        'visible' => Yii::$app->user->can(Type_Role::SalesManager),
+        'visible' => Yii::$app->user->can(Type_Role::SystemManager),
     ],
     [
         'route' => 'setup/email-queue/index',

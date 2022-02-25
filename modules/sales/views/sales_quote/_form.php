@@ -1,6 +1,6 @@
 <?php
 
-use app\enums\Type_Order;
+use logicent\accounts\enums\Type_Order;
 use Zelenin\yii\SemanticUI\widgets\ActiveForm;
 
 

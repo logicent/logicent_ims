@@ -11,7 +11,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
 
-class RoleController extends BaseSetupCrudController
+class RolePermissionController extends BaseSetupCrudController
 {
     public function init()
     {

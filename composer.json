@@ -3,7 +3,7 @@
     "description": "Logicent",
     "version": "1.0.0-beta",
     "keywords": [
-        "erp",
+        "enterprise",
         "accounting",
         "production",
         "wholesale",
@@ -38,7 +38,6 @@
         "yiisoft/yii2-shell": "^2.0",
         "league/flysystem": "^1.0",
         "mikehaertl/phpwkhtmltopdf": "^2.2",
-        "jonnyw/php-phantomjs": "^4.5",
         "yiisoft/yii2-jui": "^2.0",
         "kint-php/kint": "^1.1",
         "bizley/migration": "^4.1",
