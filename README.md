@@ -2,7 +2,7 @@
 
 **Overview**
 
-A free and open-source accounting and production system for businesses and non-profits with support for multiple users and varied integrations.
+A free and open-source enterprise software application for your accounting and/or production needs in tiny to small business, institutional and non-profit organizations with useful tools and integrations.
 
 **Installation**
 
@@ -11,8 +11,13 @@ Prerequisites
 - Composer
 - NPM
 
-via CLI
-- Clone the github repo `git@github.com:logicent/logicent.git && cd logicent`
+Option 1: via Composer
+- Run `composer create-project logicent/logicent && cd logicent`
+
+Option 2: via CLI
+- Clone this repo `git@github.com:logicent/logicent.git && cd logicent`
+
+Continue:
 - Run `composer install`
 - Run `npm install -g bower && npm install -g bower-npm-resolver`
 - Run `bower install`
@@ -26,14 +31,10 @@ via CLI
 
 - PHP 7.4 using Yii2 (latest) and JavaScript using jQuery (latest)
 - MySQL 5.7
-- Semantic UI 2.4
-- jQuery
-- Datatables 1.10
-- Flatpickr 4.6
-- SweetAlert 2.1
 
 **Modules**
 - Purchase
+  - Purchase Request
   - Purchase Order
 
 - Stock (Item)
@@ -52,13 +53,13 @@ via CLI
   - Quotation
   - Sales Order
   - Customer Group
-  - POS Profile (single)
+  - POS Profile
   - Sales Person
 
 - Accounting _(a basic, functional, but limited implementation)_
-  - Sales Invoice (A/R)
+  - Sales (A/R) Invoice
   - Sales Return (Credit Note)
-  - Purchase Invoice (A/P)
+  - Purchase (A/P) Invoice
   - Purchase Return (Debit Note)
   - Expenses (Petty Cash Voucher)
   - Branch
@@ -66,22 +67,18 @@ via CLI
   - Price list & Item price
   - Tax & Charge (Sales and Purchases)
 
-**Setup (Settings)**
-  - Business profile
-  - Email notifications
-  - Email queue
-  - General settings
-  - Role & permissions
+**Setup**
+
+- Accounts Settings
+- Stock Settings
+- Customer Settings
+- Supplier Settings
 
 **Tools**
-
-- Data import
-- Database backup
-- Integration _(Enterprise only)_
+_(Enterprise only)_
+- Integration
   - Mobile money payment
   - SMS Gateway
-- Report builder
-- SMTP settings
 
 **Roadmap**
 
@@ -93,14 +90,14 @@ _Now:_
 
 _Next:_
 
-- [ ] Add support for keyboard shortcuts in the POS/POR transactions
-Enterprise only
-- [ ] Add multiple POS profile support with active profile switcher
 - [ ] Add integration for mobile money payments and SMS gateways
-- [ ] Add Coupon discount in sale and Gift Voucher as payment method
-- [ ] Add Customer Loyalty points tracker and promotions messages
+- [ ] Add multiple POS profile support with active profile switcher
 
 _Later:_
+
+- [ ] Add support for keyboard shortcuts in the POS/POR transactions
+- [ ] Add Coupon discount in sale and Gift Voucher as payment method
+- [ ] Add Customer Loyalty points tracker and promotions messages
 
 **Want to contribute?**
 Thank you for considering to make a contribution to Logicent.
