@@ -75,7 +75,7 @@ Continue:
 - Supplier Settings
 
 **Tools**
-_(Enterprise only)_
+
 - Integration
   - Mobile money payment
   - SMS Gateway
