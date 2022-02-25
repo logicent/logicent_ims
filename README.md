@@ -15,8 +15,9 @@ Option 1: via Composer
 - Run `composer create-project logicent/logicent && cd logicent`
 
 Option 2: via CLI
-- Clone the github repo `git@github.com:logicent/logicent.git && cd logicent`
+- Clone this repo `git@github.com:logicent/logicent.git && cd logicent`
 
+Continue:
 - Run `composer install`
 - Run `npm install -g bower && npm install -g bower-npm-resolver`
 - Run `bower install`
