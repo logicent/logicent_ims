@@ -11,9 +11,10 @@ Prerequisites
 - Composer
 - NPM
 
-via Composer
+Option 1: via Composer
 - Run `composer create-project logicent/logicent && cd logicent`
-via CLI
+
+Option 2: via CLI
 - Clone the github repo `git@github.com:logicent/logicent.git && cd logicent`
 
 - Run `composer install`
