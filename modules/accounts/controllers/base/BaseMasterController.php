@@ -15,7 +15,7 @@ class DefaultController extends BaseCrudController
     {
         parent::init();
 
-        $this->viewPath = Yii::getAlias('@modules/accounts/views') . '/' . Inflector::underscore(
+        $this->viewPath = Yii::getAlias('@system_modules/accounts/views') . '/' . Inflector::underscore(
             Inflector::id2camel($this->id)
         );
     }

@@ -2,14 +2,16 @@
 
 namespace logicent\accounts\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use app\controllers\base\BaseCrudController;
 use logicent\accounts\models\PriceList;
+use logicent\accounts\models\PriceListSearch;
 
-class PriceListController extends BaseSetupCrudController
+class PriceListController extends BaseCrudController
 {
     public function init()
     {
         $this->modelClass = PriceList::class;
+        $this->modelSearchClass = PriceListSearch::class;
 
         return parent::init();
     }

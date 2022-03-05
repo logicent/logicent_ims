@@ -12,7 +12,7 @@ $form = ActiveForm::begin([
     ],
 ]);
 
-echo $this->render('//_form/_modal_header', ['model' => $model]) ?>
+echo $this->render('//_form/_header', ['model' => $model]) ?>
 
     <div class="ui attached padded segment">
         <div class="two fields">

@@ -15,7 +15,7 @@ class DefaultController extends BaseCrudController
     {
         parent::init();
 
-        $this->viewPath = Yii::getAlias('@modules/purchase/views') . '/' . Inflector::underscore(
+        $this->viewPath = Yii::getAlias('@system_modules/purchase/views') . '/' . Inflector::underscore(
             Inflector::id2camel($this->id)
         );
     }
@@ -26,6 +26,8 @@ class DefaultController extends BaseCrudController
      */
     public function actionIndex()
     {
+        $this->sidebar = false;
+
         return $this->render('index');
     }
 }

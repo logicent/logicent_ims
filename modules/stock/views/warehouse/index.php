@@ -6,7 +6,7 @@ $columns = [
 
 $controller = $this->context->id;
 
-echo $this->render('@setup/views/setup/_list/GridView', [
+echo $this->render('@app_setup/views/setup/_list/GridView', [
     'hideId'        => false,
     'columns'       => $columns,
     'dataProvider'  => $dataProvider,

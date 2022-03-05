@@ -9,6 +9,13 @@ class Type_Module
     const Stock             = 'Stock';
     const Selling           = 'Selling';
     const System            = 'System';
+    const HR                = 'HR';
+    const Bakery            = 'Bakery';
+    const Production        = 'Production';
+    const Fleet             = 'Fleet';
+    const Customize         = 'Customize';
+    const POS               = 'POS';
+    const Website           = 'Website';
 
     public static function enums()
     {
@@ -18,6 +25,11 @@ class Type_Module
             self::Stock             => self::Stock,
             self::Selling           => self::Selling,
             self::System            => self::System,
+            self::HR                => self::HR,
+            self::Bakery            => self::Bakery,
+            self::Production        => self::Production,
+            self::Customize         => self::Customize,
+            self::Website           => self::Website,
         ];
     }
 }

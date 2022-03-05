@@ -134,7 +134,7 @@ abstract class BaseTransactionDocument extends BaseActiveRecord implements Posti
                 break;
             case Status_Transaction::Submitted:
                 return [
-                    Status_Transaction::Cancel,
+                    Status_Transaction::Canceled,
                 ];
                 break;
             default:

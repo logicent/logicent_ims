@@ -19,7 +19,7 @@ $form = ActiveForm::begin( [
     ],
 ]);
 
-echo $this->render('///_form/_header', ['model' => $model]);
+echo $this->render('//_form/_header', ['model' => $model]);
 if (!$model->isNewRecord) :
     echo $this->render('_transaction', ['model' => $model]);
 endif ?>
@@ -57,9 +57,9 @@ endif ?>
     </div>
 
     <!-- Currency & Price List -->
-    <?= $this->render('///_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
+    <?= $this->render('@system_modules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
     <!-- Credit Limit -->
-    <?= $this->render('///_form_field/credit_limit', ['model' => $model, 'form' => $form]) ?>
+    <?= $this->render('@system_modules/accounts/views/_form_field/credit_limit', ['model' => $model, 'form' => $form]) ?>
 
 <?php ActiveForm::end();
-echo $this->render('///_form/_footer', ['model' => $model]);
+echo $this->render('//_form/_footer', ['model' => $model]);

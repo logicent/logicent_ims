@@ -30,7 +30,7 @@ return [
         'visible' => true, // which permissions?
     ],
     [
-        'route' => 'sales/pos/index',
+        'route' => 'pos/pos/index',
         'label' => 'POS',
         'icon' => 'shopping basket',
         'iconPath' => null,
@@ -57,7 +57,7 @@ return [
         'visible' => Yii::$app->user->can(Type_Role::StoresManager),
     ],
     [
-        'route' => 'setup/setup/index',
+        'route' => '/setup',
         'label' => Type_Model::Setup,
         'icon' => 'cog',
         'iconPath' => null,

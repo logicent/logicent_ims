@@ -2,7 +2,7 @@
 
 namespace logicent\accounts\models;
 
-use app\models\base\BaseTransactionItemSearch;
+use logicent\accounts\models\base\BaseTransactionItemSearch;
 
 class PurchaseInvoiceItemSearch extends BaseTransactionItemSearch
 {
