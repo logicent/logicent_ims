@@ -40,7 +40,7 @@ use Zelenin\yii\SemanticUI\Elements;
                                     ]);
                 endforeach;
             else : // $model->isNewRecord
-                echo $this->render('//_form_section/_no_data');
+                echo $this->render('@system_modules/accounts/views/_form_section/_no_data');
             endif ?>
         </tbody>
     <?php 

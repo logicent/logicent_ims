@@ -21,8 +21,8 @@ class Type_Role
     const Storekeeper = 'Storekeeper'; // Stores Assistant
     const StoresManager = 'Stores Manager';
     const CustomerService = 'Customer Service';
-    // const Bookkeeper = 'Bookkeeper'; // Accounts Assistant
-    // const Accountant = 'Accountant'; // Accounts Manager
+    const Bookkeeper = 'Bookkeeper'; // Accounts Assistant
+    const Accountant = 'Accountant'; // Accounts Manager
 
     public static function enums()
     {
@@ -41,8 +41,8 @@ class Type_Role
             self::Storekeeper     => Yii::t('app', 'Storekeeper'),
             self::StoresManager  => Yii::t('app', 'Stores Manager'),
             self::CustomerService    => Yii::t('app', 'Customer Service'),
-            // self::Bookkeeper  => Yii::t('app', 'Bookkeeper'),
-            // self::Accountant   => Yii::t('app', 'Accountant'),
+            self::Bookkeeper  => Yii::t('app', 'Bookkeeper'),
+            self::Accountant   => Yii::t('app', 'Accountant'),
         ];
     }
 }

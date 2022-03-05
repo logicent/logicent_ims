@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 
+$this->title = Yii::t('app', 'Expense');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Accounts'), 'url' => ['/accounts']];
+
 $columns = [
     'date:date',
     [

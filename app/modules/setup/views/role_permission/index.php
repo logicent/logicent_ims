@@ -8,19 +8,9 @@ use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\widgets\GridView;
 
 $this->title = Yii::t('app', 'Role & Permission');
-?>
-<?= $this->render('/setup/_list/_header', ['context_id' => 'role/']) ?>
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Setup'), 'url' => ['/setup']];
 
-<div class="ui bottom attached padded segment">
-
-<?= GridView::widget([
-    'layout' => "{items}\n{pager}",
-    'tableOptions' => [
-        'class' => 'ui very basic table'
-    ],
-    'dataProvider' => $dataProvider,
-    'columns' => [
-        // ['class' => 'Zelenin\yii\SemanticUI\widgets\CheckboxColumn'],
+$columns = [
         [
             'attribute' => 'name',
             'format' => 'raw',
@@ -83,6 +73,10 @@ $this->title = Yii::t('app', 'Role & Permission');
                 'class' => 'right aligned text-muted'
             ]
         ]
-    ],
+    ];
+
+echo $this->render('//_list/GridView', [
+    'dataProvider'  => $dataProvider, 
+    'searchModel'   => $searchModel,
+    'columns'       => $columns
 ]) ?>
-</div>

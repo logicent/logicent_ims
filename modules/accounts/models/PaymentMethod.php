@@ -11,6 +11,9 @@ use yii\helpers\ArrayHelper;
  */
 class PaymentMethod extends BaseSetupMasterData
 {
+    // gl_account
+    // bank_account
+
     public static function tableName()
     {
         return 'payment_method';

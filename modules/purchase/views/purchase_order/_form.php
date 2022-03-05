@@ -30,7 +30,7 @@ echo $this->render('//_form/_header', ['model' => $model]) ?>
     </div>
 
     <!-- Currency & Price List -->
-    <?= $this->render('//_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
+    <?= $this->render('@system_modules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
 
     <!-- Item table & Document totals -->
     <?= $this->render('//_form_section/item', ['model' => $model, 'form' => $form]) ?>

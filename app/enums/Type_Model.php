@@ -15,6 +15,8 @@ use app\modules\setup\models\ReportBuilderItem;
 use app\modules\setup\models\PrintFormat;
 use app\modules\setup\models\PrintStyle;
 
+use app\modules\customize\models\DocType;
+
 // Data Model
 // use app\models\PaymentEntry;
 use logicent\accounts\models\Branch;
@@ -22,7 +24,8 @@ use logicent\accounts\models\Expense;
 use logicent\accounts\models\ExpenseType;
 use logicent\accounts\models\PaymentMethod;
 use logicent\accounts\models\PriceList;
-use logicent\accounts\models\TaxCharge;
+use logicent\accounts\models\PurchaseTaxCharge;
+use logicent\accounts\models\SalesTaxCharge;
 use logicent\accounts\models\PurchaseInvoice;
 use logicent\accounts\models\PurchaseInvoiceItem;
 use logicent\accounts\models\PurchaseInvoicePayment;
@@ -40,8 +43,8 @@ use logicent\sales\models\SalesOrder;
 use logicent\sales\models\SalesOrderItem;
 use logicent\sales\models\SalesOrderPayment;
 use logicent\sales\models\SalesPerson;
-use logicent\sales\models\SalesQuote;
-use logicent\sales\models\SalesQuoteItem;
+use logicent\sales\models\Quotation;
+use logicent\sales\models\QuotationItem;
 use logicent\stock\models\Brand;
 use logicent\stock\models\Item;
 use logicent\stock\models\ItemBundle;
@@ -75,7 +78,7 @@ class Type_Model
     const PurchaseOrder     = 'Purchase Order';
     const PurchaseInvoice   = 'Purchase Invoice';
     const PurchaseReturn    = 'Purchase Return';
-    const SalesQuote        = 'Sales Quote';
+    const Quotation        = 'Quotation';
     const SalesOrder        = 'Sales Order';
     const SalesPerson       = 'Sales Person';
     const SalesInvoice      = 'Sales Invoice';
@@ -83,13 +86,14 @@ class Type_Model
     const StockEntry        = 'Stock Entry';
     const Supplier          = 'Supplier';
     const SupplierGroup     = 'Supplier Group';
-    const TaxCharge         = 'Tax Charge';
+    const SalesTaxCharge    = 'Sales Tax Charge';
+    const PurchaseTaxCharge = 'Purchase Tax Charge';
     const Warehouse         = 'Warehouse';
 
     const ItemBundleItem    =   'Item Bundle Item';
     const PurchaseOrderItem =   'Purchase Order Item';
     const PurchaseInvoiceItem   =   'Purchase Invoice Item';
-    const SalesQuoteItem    =   'Sales Quote Item';
+    const QuotationItem    =   'Quotation Item';
     const SalesOrderItem    =   'Sales Order Item';
     const SalesInvoiceItem  =   'Sales Invoice Item';
     const StockEntryItem    =   'Stock Entry Item';
@@ -100,6 +104,7 @@ class Type_Model
     const SalesOrderPayment    =   'Sales Order Payment';
     const SalesInvoicePayment  =   'Sales Invoice Payment';
 
+    const DocType               = 'Doc Type';
     // const EmailDigest           = 'Email Digest';
     const EmailNotification     = 'Email Notification';
     const EmailQueue            = 'Email Queue';
@@ -133,16 +138,18 @@ class Type_Model
             self::PaymentMethod     => self::PaymentMethod,
             self::PurchaseOrder     => self::PurchaseOrder,
             self::PurchaseInvoice   => self::PurchaseInvoice,
-            self::SalesQuote        => self::SalesQuote,
+            self::Quotation        => self::Quotation,
             self::SalesOrder        => self::SalesOrder,
             self::SalesPerson       => self::SalesPerson,
             self::SalesInvoice      => self::SalesInvoice,
             self::StockEntry        => self::StockEntry,
             self::Supplier          => self::Supplier,
             self::SupplierGroup     => self::SupplierGroup,
-            self::TaxCharge         => self::TaxCharge,
+            self::PurchaseTaxCharge => self::PurchaseTaxCharge,
+            self::SalesTaxCharge    => self::SalesTaxCharge,
             self::Warehouse         => self::Warehouse,
 
+            self::DocType            => self::DocType,
             self::EmailNotification     => self::EmailNotification,
             self::EmailQueue            => self::EmailQueue,
             self::People                => self::People,
@@ -176,14 +183,15 @@ class Type_Model
             self::PriceList         => PriceList::class,
             self::PurchaseOrder     => PurchaseOrder::class,
             self::PurchaseInvoice   => PurchaseInvoice::class,
-            self::SalesQuote        => SalesQuote::class,
+            self::Quotation        => Quotation::class,
             self::SalesOrder        => SalesOrder::class,
             self::SalesPerson       => SalesPerson::class,
             self::SalesInvoice      => SalesInvoice::class,
             self::StockEntry        => StockEntry::class,
             self::Supplier          => Supplier::class,
             self::SupplierGroup     => SupplierGroup::class,
-            self::TaxCharge         => TaxCharge::class,
+            self::PurchaseTaxCharge => PurchaseTaxCharge::class,
+            self::SalesTaxCharge    => SalesTaxCharge::class,
             self::Warehouse         => Warehouse::class,
         ];
     }
@@ -196,7 +204,7 @@ class Type_Model
             self::ItemWarehouse         => ItemWarehouse::class,
             self::PurchaseOrderItem     => PurchaseOrderItem::class,
             self::PurchaseInvoiceItem   => PurchaseInvoiceItem::class,
-            self::SalesQuoteItem        => SalesQuoteItem::class,
+            self::QuotationItem        => QuotationItem::class,
             self::SalesOrderItem        => SalesOrderItem::class,
             self::SalesInvoiceItem      => SalesInvoiceItem::class,
             self::StockEntryItem        => StockEntryItem::class,
@@ -210,6 +218,7 @@ class Type_Model
     public static function coreModelClass()
     {
         return [
+            self::DocType        => DocType::class,
             self::EmailNotification => EmailNotification::class,
             self::EmailQueue        => EmailQueue::class,
             self::People            => People::class,

@@ -23,7 +23,7 @@ $columns = [
 
 $controller = $this->context->id;
 
-echo $this->render('@setup/views/setup/_list/GridView', [
+echo $this->render('@app_setup/views/setup/_list/GridView', [
     'hideId'        => true,
     'columns'       => $columns,
     'dataProvider'  => $dataProvider,

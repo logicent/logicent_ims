@@ -3,6 +3,7 @@
 namespace logicent\accounts\models;
 
 use logicent\accounts\models\base\BaseTransactionItem;
+use logicent\stock\models\ItemWarehouse;
 use Yii;
 use yii\helpers\ArrayHelper;
 

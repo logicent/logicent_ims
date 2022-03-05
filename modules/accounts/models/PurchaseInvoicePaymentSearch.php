@@ -2,8 +2,8 @@
 
 namespace logicent\accounts\models;
 
-use app\models\base\BaseTransactionPaymentSearch;
 use app\models\PurchaseInvoicePayment;
+use logicent\accounts\models\base\BaseTransactionPaymentSearch;
 
 class PurchaseInvoicePaymentSearch extends BaseTransactionPaymentSearch
 {

@@ -8,7 +8,7 @@ use logicent\stock\models\ItemGroup;
 use logicent\stock\models\ItemUom;
 use logicent\stock\models\Warehouse;
 use logicent\purchase\models\Supplier;
-use logicent\accounts\models\TaxCharge;
+use logicent\accounts\models\SalesTaxCharge;
 
 $isReadonly = $this->context->isReadonly;
 
@@ -21,7 +21,7 @@ $form = ActiveForm::begin( [
         'class' => 'ui form',
     ],
 ]);
-echo $this->render('///_form/_header', ['model' => $model]);
+echo $this->render('//_form/_header', ['model' => $model]);
 if (!$model->isNewRecord) :
     echo $this->render('_transaction', ['model' => $model]);
 endif ?>
@@ -121,11 +121,11 @@ endif ?>
     <div class="ui attached padded segment">
         <div class="two fields">
             <?= $form->field($model, 'tax_code')->dropDownList(
-                    SelectableItems::get(TaxCharge::class, $model, ['valueAttribute' => 'id'])
+                    SelectableItems::get(SalesTaxCharge::class, $model, ['valueAttribute' => 'id'])
                 ) ?>
             <?= $form->field($model, 'tax_rate')->textInput(['maxlength' => true, 'readonly' => $isReadonly]) ?>
         </div>
     </div>
 <?php ActiveForm::end(); ?>
 
-<?= $this->context->renderPartial('///_form/_footer', ['model' => $model]) ?>
+<?= $this->context->renderPartial('//_form/_footer', ['model' => $model]) ?>

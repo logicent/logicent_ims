@@ -2,14 +2,16 @@
 
 namespace logicent\sales\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use app\controllers\base\BaseCrudController;
 use logicent\sales\models\SalesPerson;
+use logicent\sales\models\SalesPersonSearch;
 
-class SalesPersonController extends BaseSetupCrudController
+class SalesPersonController extends BaseCrudController
 {
     public function init()
     {
         $this->modelClass = SalesPerson::class;
+        $this->modelSearchClass = SalesPersonSearch::class;
 
         return parent::init();
     }

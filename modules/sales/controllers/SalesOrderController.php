@@ -2,11 +2,11 @@
 
 namespace logicent\sales\controllers;
 
-use app\controllers\base\BaseTransactionController;
-use app\models\SalesOrder;
-use app\models\SalesOrderItem;
-use app\models\SalesOrderPayment;
-use app\models\SalesOrderSearch;
+use logicent\sales\models\SalesOrder;
+use logicent\sales\models\SalesOrderItem;
+use logicent\sales\models\SalesOrderPayment;
+use logicent\sales\models\SalesOrderSearch;
+use logicent\accounts\controllers\base\BaseTransactionController;
 
 class SalesOrderController extends BaseTransactionController
 {
