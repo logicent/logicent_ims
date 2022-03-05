@@ -12,7 +12,7 @@ use app\modules\setup\models\Setup;
 
 return [
     [
-        'route' => 'sales/customer/index',
+        'route' => '/sales/customer',
         'label' => 'Customer',
         'icon' => 'user',
         'iconPath' => null,
@@ -26,8 +26,8 @@ return [
         'icon' => 'line chart',
         'iconPath' => null,
         'iconColor' => 'blue',
-        'group' => Type_Module_Sub_Module::PoS,
-        'visible' => true, // which permissions?
+        'group' => Type_Module::System,
+        'visible' => true,
     ],
     [
         'route' => 'pos/pos/index',

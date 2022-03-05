@@ -28,9 +28,7 @@ $this->beginPage() ?>
     <?php
         echo $this->render('//_layouts/_main_navbar', ['context' => $this->context]);
         if (
-            $this->context->id !== 'main' &&
-            $this->context->id !== 'pos' &&
-            $this->context->id !== 'setup'
+            $this->context->id !== 'main' && $this->context->id !== 'pos'
         ) :
             echo $this->render('//_layouts/_view_header', ['context' => $this->context]);
         endif ?>

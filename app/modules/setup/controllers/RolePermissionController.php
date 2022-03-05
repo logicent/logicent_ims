@@ -93,7 +93,7 @@ class RolePermissionController extends BaseCrudController
         $model->loadDefaultValues();
         $model->type = Role::TYPE_ROLE;
 
-        return $this->renderAjax('create', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -151,7 +151,7 @@ class RolePermissionController extends BaseCrudController
                 return $this->asJson(['validation' => $result]);
             }
 
-        return $this->renderAjax('update', [
+        return $this->render('update', [
             'model' => $model,
         ]);
     }

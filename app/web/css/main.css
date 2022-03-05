@@ -465,24 +465,6 @@ body::-webkit-scrollbar-thumb {
     font-weight: normal;
 }
 
-.me-grid table {
-    border-radius: 0.28571429rem 0.28571429rem 0em 0em;
-}
-
-.me-grid .ui.table tbody td .header {
-    font-weight: 500;
-}
-
-.me-grid .ui.table tbody td {
-    color: #555;
-}
-
-.me-grid .ui.table thead th {
-    font-size: 12px;
-    font-weight: 500;
-    color: #6c7680;
-}
-
 .ui.basic.grey.button:hover, .ui.basic.primary.button:hover {
     background: #F8F8F8 !important;
 }
@@ -616,11 +598,6 @@ body::-webkit-scrollbar-thumb {
 .description, span.date {
     color: #555;
     /* font-size: 12px; */
-}
-
-#map {
-    min-height: 424.767px;
-    max-height: 424.767px;
 }
 
 .ui.form input[type="file"], .ui.form .field.error input[type="file"] {

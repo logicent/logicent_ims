@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\website;
+namespace app\modules\website;
 
 /**
  * website module definition class
@@ -10,7 +10,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\website\controllers';
+    public $controllerNamespace = 'app\modules\website\controllers';
 
     /**
      * {@inheritdoc}

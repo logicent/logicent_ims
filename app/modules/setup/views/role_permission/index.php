@@ -5,28 +5,11 @@ use app\enums\Type_Role;
 use app\models\auth\Person;
 use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\Elements;
-use Zelenin\yii\SemanticUI\widgets\GridView;
 
 $this->title = Yii::t('app', 'Role & Permission');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Setup'), 'url' => ['/setup']];
 
 $columns = [
-        [
-            'attribute' => 'name',
-            'format' => 'raw',
-            'value' => function ($model) {
-                return 
-                    Html::a($model->name, 
-                            ['/setup/role-permission/update', 'id' => $model->name], 
-                            [
-                                'class' => 'show-list-form',
-                                'data' => [
-                                    'id' => $model->name,
-                                ],
-                                'style' => 'font-weight: 500',
-                            ]);
-            }
-        ],
         [
             'attribute' => 'description',
             'contentOptions' => [
