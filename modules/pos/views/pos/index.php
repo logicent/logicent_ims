@@ -7,7 +7,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'New Sale'), 'url' =>
 
 ?>
 
-<div id="pos_page" style="margin-top: -40px;">
+<div id="pos_page" style="margin-top: -56px;">
     <?= $this->render('cart/index', [
             'pos_profile' => $this->context->model->posProfile,
             'pos_receipt' => $this->context->model,

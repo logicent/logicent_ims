@@ -14,15 +14,15 @@ return [
 
     'appName' => App::env('APP_NAME'),
     'appShortName' => '',
-    'appDescription' => 'Retail point-of-sale software for small businesses',
-    'appWebsite' => 'https://github.com/mwaigichuhi/ajabu-pos',
+    'appDescription' => 'Enterprise application software for small businesses and non-profits',
+    'appWebsite' => 'https://github.com/logicent/logicent',
     'appCopyright' => '&copy; 2020 Appsoft',
 
     'appVersion' => '1.0.0-beta',
     'mobileAppVersion' => 'N/A',
     'appDeveloper' => '@mwaigichuhi',
 
-    'helpUrl' => 'https://github.com/mwaigichuhi/ajabu-pos/wiki',
+    'helpUrl' => 'https://github.com/logicent/logicent/wiki',
 
     'flashMessagePositionY' => 'bottom',
     'flashMessagePositionX' => 'right',

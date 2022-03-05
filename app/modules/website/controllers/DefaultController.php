@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\website\controllers;
+namespace app\modules\website\controllers;
 
 use app\controllers\base\BaseCrudController;
 use Yii;
@@ -15,7 +15,7 @@ class DefaultController extends BaseCrudController
     {
         parent::init();
 
-        $this->viewPath = Yii::getAlias('@system_modules/website/views') . '/' . Inflector::underscore(
+        $this->viewPath = Yii::getAlias('@app_website/views') . '/' . Inflector::underscore(
             Inflector::id2camel($this->id)
         );
     }

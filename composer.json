@@ -61,7 +61,6 @@
     },
     "autoload": {
         "psr-4": {
-            "app\\setup\\": "app/modules/",
             "logicent\\": "modules/"
         }
     },

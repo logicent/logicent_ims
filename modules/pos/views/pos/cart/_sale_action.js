@@ -51,7 +51,7 @@ function () {
         // Check if draft POS Invoices for current user + TODAY date exist in DB
         // If found show list to allow Cashier selection of Sale Invoice
         $.ajax({
-            url: '/sales/pos/on-hold-sale',
+            url: '/pos/pos/on-hold-sale',
             type: 'post',
             data: {
             },

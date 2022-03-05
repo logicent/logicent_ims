@@ -14,7 +14,7 @@ $('#pos__item-search').on('keyup',
 
         $.ajax({
             type: 'get',
-            url: '/sales/pos/item-search',
+            url: '/pos/pos/item-search',
             data: {
                 'itemSearch': item_id, // $('#pos__item-search').val()
 				'itemWarehouse': $('#pos__item-warehouse').val(),
@@ -137,7 +137,7 @@ $('#pos__search_result').on('click', 'a.item',
 		});
 
 		$.ajax({
-			url: 'pos/item-image-view',
+			url: '/pos/pos/item-image-view',
 			type: 'post',
 			data: {
 				'item_ids': item_ids,

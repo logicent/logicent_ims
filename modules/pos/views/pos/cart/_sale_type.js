@@ -1,7 +1,7 @@
 $(window).on('load', function(e) {
     // $('#sale_type__menu > .menu > a:first').trigger('click');
     $.ajax({
-        url: '/sales/pos/default-sale-type',
+        url: '/pos/pos/default-sale-type',
         type: 'get',
         data: {
         },
@@ -25,7 +25,7 @@ function(e) {
     e.stopPropagation();
 
     $.ajax({
-        url: '/sales/pos/change-sale-type',
+        url: '/pos/pos/change-sale-type',
         type: 'get',
         data: {
             'saleType': $(this).data('sale-type'),
