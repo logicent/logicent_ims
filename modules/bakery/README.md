@@ -1,98 +1,44 @@
-**Context**
+Balance of Inventory
+Ending Inventory = Beginning Balance + Purchases – Cost of Goods Sold
 
-Yii2 Crudle (CRUD logic engine) is a meta framework for rapid application development and customization using a modified (basic) template, predefined coding conventions and fully-fledged admin backend based on Semantic UI.
+Inventory Valuation
 
-**Containers**
+Bakery inputs as Ingredients Inventory for production (baking and/or decoration)
+Bakery goods as Sales Inventory for purchase by Customer
 
-- backend   (App)
-- builder   (Kit)
-- modules   (Ext)
+Item-by-Item method using (last_purchase) cost price
 
-**Components**
+Broken, damaged, lost goods and returned items vs sellable items
 
-- app
-  - config
-    - app
-    - db
-    - url
-  - controllers
-    - MainController
-  - enums
-  - helpers
-  - models
-  - views
-    - main
-  - widgets
+Expense = Petty Cash Voucher (EXP/PCV)
 
-- kit
-  - config
-    - kit
-  - controllers
-    - DataModelController
-    - DataModelFieldController
-  - enums
-    - DataType
-    - ModelType
-  - helpers
-  - models
-    - DataModel
-    - DataModelField
-  - views
-    - data_model
-        - field
-  - widgets
+Date
+Starting (Opening) Balance
 
-- ext
-  
-**Code**
+* Paid to or Rec'd from
+* Purpose = Narration
+* Balance
 
-**System Requirements**
+Prepared by (created_by)
+Approved by (approved_by)
 
-**Domain-driven**
+Period Costs
 
-Use domain-driven project structure that maps to modified Yii2 modules and extensions
+Product Costs
+- Direct material (DM)
+- Direct labour (DL)
+- Manufacturing overhead (MOH) - Indirect materials and indirect labour
 
-- Domain/
-  - Actions/
-  - Enums/
-  - Exceptions/
-  - Models/
-  - Rules/
-  - Status/
-  - ValueObject/
+Per unit cost
 
-**Context**
-- Content (Input/Output)
-- Reports (Output)
-- Settings (Parameters)
-- Tools
+Reporting Period
+- Daily
+- Monthly
 
-**UI Components**
 
-- Forms
-- Panel (Containers)
-- Data
-- Overlay
-- Menu
-- Charts
-- Button
-- File
-- Multimedia
-- Messages
-- Miscellaneous
+Net Income (or Bottom Line) = Gross Sales (or Top Line) – Total Expenses
 
-**Data Storage**
+VAT / GST
+A consumption tax that is assessed on products at each stage of the production process
 
-- Yaml  (predefined values)
-- Json  (app/user data)
-- Csv   (import/export)
-- Md    (Page content)
-- Sqlite
-- Redis/MySQL
-
-**Authentication**
-
-- Hybrid of Php Auth Manager and Db Auth Manager
-- Administrator and System roles are predefined
-  
-**Roadmap**
+Sales Tax - once at final stage of purchase

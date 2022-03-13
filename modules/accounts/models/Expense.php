@@ -16,6 +16,7 @@ use yii\helpers\ArrayHelper;
  */
 class Expense extends BaseActiveRecord implements AutoincrementIdInterface
 {
+    // Petty Cash Vouchers
     const DOC_NUM_PREFIX = 'EXP-';
 
     public function init()

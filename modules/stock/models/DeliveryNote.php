@@ -6,13 +6,11 @@ use app\modules\customize\models\DocType;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class PurchaseReceipt extends DocType
+class DeliveryNote extends DocType
 {
-    // Goods Receipt
-    // Goods Return?
     public static function tableName()
     {
-        return 'purchase_receipt';
+        return 'delivery_note';
     }
 
     public function rules()

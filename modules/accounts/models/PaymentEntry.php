@@ -2,10 +2,13 @@
 
 namespace app\models\accounts;
 
+use app\modules\customize\models\DocType;
 use Yii;
 
-class PaymentEntry extends \app\models\DocType
+class PaymentEntry extends DocType
 {
+    // (Incoming/Outgoing)
+    // Sales/Purchase Invoice Payment
     public static function tableName()
     {
         return 'payment_entry';

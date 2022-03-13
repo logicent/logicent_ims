@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  */
 class StockEntry extends BaseActiveRecord implements PostingInterface, AutoincrementIdInterface
 {
+    // (Item Movement)
     const DOC_NUM_PREFIX = 'STE-';
 
     public $party_name;
@@ -164,7 +165,7 @@ class StockEntry extends BaseActiveRecord implements PostingInterface, Autoincre
                 break;
             case Status_Transaction::Submitted:
                 return [
-                    Status_Transaction::Cancel,
+                    Status_Transaction::Canceled,
                 ];
                 break;
             default:

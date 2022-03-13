@@ -27,7 +27,7 @@ class Type_Transaction
             // self::Advance => Yii::t('app', 'Pay&ensp;Early'),
             self::Cash => Yii::t('app', 'Pay Now'),
             self::Credit => Yii::t('app', 'Pay Later'),
-            self::Return => Yii::t('app', 'Pay Back'),
+            self::Return => Yii::t('app', 'Pay Back'), // Take Back if no payment included?
         ];
     }
 
