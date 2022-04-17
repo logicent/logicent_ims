@@ -2,82 +2,31 @@
 
 namespace app\controllers;
 
-use app\controllers\base\BaseCrudController;
-use app\models\BakeryOrder;
-use app\models\BakeryOrderSearch;
+use app\modules\main\controllers\base\BaseCrudController;
+use app\modules\main\models\auth\Person;
+use logicent\bakery\models\BakeryOrder;
+use logicent\bakery\models\BakeryOrderSearch;
+use logicent\sales\models\SalesOrderItem;
 use Yii;
-use app\models\StockItem;
-use app\models\SalesOrderItem;
 use yii\data\ArrayDataProvider;
 
 class BakeryOrderController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = BakeryOrder::class;
-        $this->modelSearchClass = BakeryOrderSearch::class;
-
-        return parent::init();
+        return BakeryOrder::class;
     }
 
-    public function actionUpdate($id)
+    public function searchModelClass(): string
     {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) 
-        {
-            $model->save();
-            // check if deco is required for this cake
-            if ($model->bake_status == 'Finished' && $model->deco_status == 'Finished')
-            {
-                // deduct qty_reserved for all ingredients used
-                if ($model->salesDoc->is_combined) 
-                {
-                    $items = explode(',', $model->item_id);
-                    foreach ($items as $item) 
-                    {
-                        $makeItem = StockItem::findOne((int) $item);
-                        foreach ($makeItem->ingredients as $ingredient)
-                        {
-                            $usedItem = StockItem::findOne($ingredient->ingredient_id);
-                            $usedItem->qty_reserved -= $ingredient->qty_required;
-                            $usedItem->save();
-                        }
-                        // add qty_in_stock for order item made
-                        $makeItem->qty_in_stock += $model->qty;
-                        $makeItem->save();                        
-                    }
-                }
-                else
-                {
-                    foreach ($model->stockItem->ingredients as $ingredient)
-                    {
-                        $usedItem = StockItem::findOne($ingredient->ingredient_id);
-                        $usedItem->qty_reserved -= $ingredient->qty_required;
-                        $usedItem->save();
-                    }
-                    // add qty_in_stock for order item made
-                    $model->stockItem->qty_in_stock += $model->qty;
-                    $model->stockItem->save();
-                }
-
-                $model->salesDoc->doc_status = 'Completed';
-                $model->salesDoc->save();
-            }
-
-            return $this->redirect(['index']);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return BakeryOrderSearch::class;
     }
 
     public function actionStaffWiseOrderSummary($staff = null)
     {
         $this->sidebar = false;
         
-        $search = \app\models\Person::find();
+        $search = Person::find();
 
         if (!empty($staff))
             $employees = $search->andWhere(['auth_id' => $staff]);
@@ -95,9 +44,6 @@ class BakeryOrderController extends BaseCrudController
             $cakesDecorated = SalesOrderItem::find()
                                         ->where(['deco_status' => 'Finished', 'decorated_by' => $employee->auth_id])
                                         ->all();
-            // if (empty($cakesBaked))
-            //     continue;
-
             $empStat = [
                 'employee' => $employee->description,
                 // 'date_of_month' => Yii::$app->formatter->asDate($cakesBaked->delivery_at),
@@ -107,7 +53,6 @@ class BakeryOrderController extends BaseCrudController
                 'deco_rate' => '',
                 'total_earned' => '',
             ];
-
             $empStats[] = $empStat;
         }
 
@@ -120,7 +65,6 @@ class BakeryOrderController extends BaseCrudController
                 'attributes' => ['date_of_month', 'employee'],
             ],
         ]);
-
         return $this->render('summary-index', [
             'dataProvider' => $provider
         ]);
@@ -133,7 +77,7 @@ class BakeryOrderController extends BaseCrudController
         if (empty($date))
             $date = date('Y-m-d');
         
-        $employees = \app\models\Person::find()->orderBy('firstname, surname')->all();;
+        $employees = Person::find()->orderBy('firstname, surname')->all();;
 
         $empStats = [];
 
@@ -156,7 +100,6 @@ class BakeryOrderController extends BaseCrudController
                 'deco_rate' => '',
                 'total_earned' => '',
             ];
-
             $empStats[] = $empStat;
         }
 
@@ -169,7 +112,6 @@ class BakeryOrderController extends BaseCrudController
                 'attributes' => ['date_of_month', 'employee'],
             ],
         ]);
-
         return $this->render('summary-index', [
             'dataProvider' => $provider
         ]);

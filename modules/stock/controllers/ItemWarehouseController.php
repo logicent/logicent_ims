@@ -2,15 +2,18 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemWarehouse;
 
-class ItemWarehouseController extends BaseSetupCrudController
+class ItemWarehouseController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = ItemWarehouse::class;
+        return ItemWarehouse::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return ItemWarehouseSearch::class;
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace app\models\stock;
+namespace logicent\stock\models;
 
-use app\modules\customize\models\DocType;
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class PurchaseReceipt extends DocType
+class PurchaseReceipt extends BaseActiveRecord
 {
     // Goods Receipt
     // Goods Return?

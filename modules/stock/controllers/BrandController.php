@@ -2,15 +2,13 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\stock\models\Brand;
 
-class BrandController extends BaseSetupCrudController
+class BrandController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = Brand::class;
-
-        return parent::init();
+        return Brand::class;
     }
 }

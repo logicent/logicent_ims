@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class EmployeeTimesheetItem extends \app\models\DocType
+class EmployeeTimesheetItem extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -20,7 +21,7 @@ class EmployeeTimesheetItem extends \app\models\DocType
             [['expected_hours', 'actual_hours', 'billable_hours', 'billing_rate', 'billed_amount', 'costing_rate', 'costing_amount'], 'number'],
             [['activity_type'], 'string', 'max' => 140],
             [['completed', 'billable'], 'string', 'max' => 1],
-            [['employee_timesheet'], 'exist', 'skipOnError' => true, 'targetClass' => EmployeeTimesheet::className(), 'targetAttribute' => ['employee_timesheet' => 'id']],
+            [['employee_timesheet'], 'exist', 'skipOnError' => true, 'targetClass' => EmployeeTimesheet::class, 'targetAttribute' => ['employee_timesheet' => 'id']],
         ];
     }
 
@@ -45,6 +46,6 @@ class EmployeeTimesheetItem extends \app\models\DocType
 
     public function getEmployeeTimesheet()
     {
-        return $this->hasOne(EmployeeTimesheet::className(), ['id' => 'employee_timesheet']);
+        return $this->hasOne(EmployeeTimesheet::class, ['id' => 'employee_timesheet']);
     }
 }

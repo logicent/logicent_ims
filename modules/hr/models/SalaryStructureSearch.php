@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\hr\SalaryStructure;
 
 class SalaryStructureSearch extends SalaryStructure
 {

@@ -2,18 +2,20 @@
 
 namespace app\controllers;
 
-use app\controllers\base\BaseSetupCrudController;
 use app\models\BakeryIngredient;
-use Yii;
 use app\models\RecipeSearch;
+use app\modules\main\controllers\base\BaseCrudController;
+use Yii;
 
-class RecipeController extends BaseSetupCrudController
+class RecipeController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = BakeryIngredient::class;
-        $this->modelSearchClass = RecipeSearch::class;
+        return BakeryIngredient::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return RecipeSearch::class;
     }
 }

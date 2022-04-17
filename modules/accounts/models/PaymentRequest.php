@@ -2,7 +2,7 @@
 
 namespace logicent\accounts\models;
 
-use app\models\base\BaseActiveRecord;
+use app\modules\main\models\base\BaseActiveRecord;
 
 /**
  * This is the model class for table "payment_request".

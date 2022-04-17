@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models\stock;
+namespace logicent\stock\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\stock\PurchaseReceipt;
 
 class PurchaseReceiptSearch extends PurchaseReceipt
 {

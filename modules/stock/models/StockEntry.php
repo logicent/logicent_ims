@@ -2,12 +2,12 @@
 
 namespace logicent\stock\models;
 
-use app\enums\Status_Transaction;
 use app\enums\Type_Module;
-use app\enums\Type_Permission;
-use app\enums\Type_Relation;
-use app\models\base\AutoincrementIdInterface;
-use app\models\base\BaseActiveRecord;
+use app\modules\main\enums\Type_Relation;
+use app\modules\main\models\base\AutoincrementIdInterface;
+use app\modules\main\models\base\BaseActiveRecord;
+use app\modules\setup\enums\Status_Transaction;
+use app\modules\setup\enums\Type_Permission;
 use logicent\accounts\models\base\PostingInterface;
 use app\modules\setup\models\ListViewSettingsForm;
 use Yii;

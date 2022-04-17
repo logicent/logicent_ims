@@ -2,15 +2,13 @@
 
 namespace logicent\purchase\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\purchase\models\SupplierGroup;
 
-class SupplierGroupController extends BaseSetupCrudController
+class SupplierGroupController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = SupplierGroup::class;
-
-        return parent::init();
+        return SupplierGroup::class;
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models\fleet;
+namespace logicent\fleet\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\fleet\VehicleService;
 
 class VehicleServiceSearch extends VehicleService
 {

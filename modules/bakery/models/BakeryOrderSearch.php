@@ -1,12 +1,12 @@
 <?php
-namespace app\models;
+namespace logicent\bakery\models;
 
+use logicent\sales\models\SalesOrder;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
-use app\models\SalesOrder;
-use app\models\SalesOrderItem;
+use logicent\sales\models\SalesOrderItem;
 
 class BakeryOrderSearch extends SalesOrderItem
 {

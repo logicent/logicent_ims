@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class LeaveApplication extends \app\models\DocType
+class LeaveApplication extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -19,7 +20,7 @@ class LeaveApplication extends \app\models\DocType
             [['start_date', 'end_date'], 'safe'],
             [['status', 'reason', 'leave_type'], 'string'],
             [['employee_name'], 'string', 'max' => 140],
-            [['employee_id'], 'exist', 'skipOnError' => true, 'targetClass' => Employee::className(), 'targetAttribute' => ['employee_id' => 'id']],
+            [['employee_id'], 'exist', 'skipOnError' => true, 'targetClass' => Employee::class, 'targetAttribute' => ['employee_id' => 'id']],
         ];
     }
 
@@ -38,6 +39,6 @@ class LeaveApplication extends \app\models\DocType
 
     public function getEmployee()
     {
-        return $this->hasOne(Employee::className(), ['id' => 'employee_id']);
+        return $this->hasOne(Employee::class, ['id' => 'employee_id']);
     }
 }

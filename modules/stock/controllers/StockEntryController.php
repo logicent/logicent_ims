@@ -2,7 +2,7 @@
 
 namespace logicent\stock\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\stock\models\StockEntry;
 use logicent\stock\models\StockEntryItem;
 use logicent\stock\models\StockEntrySearch;
@@ -11,12 +11,13 @@ class StockEntryController extends BaseCrudController
 {
     public $itemModelClass;
 
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = StockEntry::class;
-        $this->modelSearchClass = StockEntrySearch::class;
-        $this->itemModelClass = StockEntryItem::class;
+        return StockEntry::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return StockEntrySearch::class;
     }
 }

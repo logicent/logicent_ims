@@ -1,17 +1,13 @@
 {
-    "name": "logicent/logicent",
-    "description": "Logicent",
+    "name": "logicent/yii2-crudle",
+    "description": "Yii2 Crudle",
     "version": "1.0.0-beta",
     "keywords": [
         "enterprise",
-        "accounting",
-        "production",
-        "wholesale",
-        "retail",
-        "point-of-sale",
+        "starter-kit",
         "yii2"
     ],
-    "homepage": "https://demo.appsoft.co.ke/logicent",
+    "homepage": "https://github.com/logicent/yii2-crudle",
     "type": "project",
     "license": "BSD-3-Clause",
     "authors": [
@@ -21,10 +17,10 @@
         }
     ],
     "support": {
-        "email": "support@appsoft.co.ke",
-        "issues": "https://github.com/logicent/logicent/issues?state=open",
-        "source": "https://github.com/logicent/logicent",
-        "docs": "https://appsoft.co.ke/logicent/docs/1.x/"
+        "email": "logicent.africa@gmail.com",
+        "issues": "https://github.com/logicent/yii2-crudle/issues?state=open",
+        "source": "https://github.com/logicent/yii2-crudle",
+        "docs": "https://github.com/logicent/yii2-crudle/wiki/1.x/"
     },
     "minimum-stability": "stable",
     "require": {
@@ -61,6 +57,7 @@
     },
     "autoload": {
         "psr-4": {
+            "website\\": "modules/website",
             "logicent\\": "modules/"
         }
     },

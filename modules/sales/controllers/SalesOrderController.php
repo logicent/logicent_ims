@@ -10,13 +10,13 @@ use logicent\accounts\controllers\base\BaseTransactionController;
 
 class SalesOrderController extends BaseTransactionController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = SalesOrder::class;
-        $this->modelSearchClass = SalesOrderSearch::class;
-        $this->itemModelClass = SalesOrderItem::class;
-        $this->paymentModelClass = SalesOrderPayment::class;
+        return SalesOrder::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return SalesOrderSearch::class;
     }
 }

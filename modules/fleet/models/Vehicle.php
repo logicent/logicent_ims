@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\fleet;
+namespace logicent\fleet\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class Vehicle extends \app\models\DocType
+class Vehicle extends BaseActiveRecord
 {
     public static function tableName()
     {

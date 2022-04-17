@@ -2,18 +2,16 @@
 
 namespace app\modules\setup\models;
 
-use app\enums\Status_Active;
-use app\enums\Status_Transaction;
-use app\enums\Type_Relation;
-use app\models\base\BaseActiveRecord;
+use app\modules\setup\enums\Status_Transaction;
+use app\modules\main\models\base\BaseActiveRecord;
+use app\modules\setup\enums\Permission_Group;
+use app\modules\setup\enums\Type_Permission;
+use app\modules\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 
 /**
- * This is the model class for table "report_builder".
- *
- * @property ReportBuilderItem[] $reportBuilderItems
+ * This is the model class for table "print_style".
  */
 class PrintStyle extends BaseActiveRecord
 {
@@ -37,6 +35,7 @@ class PrintStyle extends BaseActiveRecord
             [['id'], 'string', 'max' => 140],
             [['inactive', 'standard'], 'boolean'],
             [['css', 'preview'], 'string'],
+            [['status'], 'default', 'value' => Status_Transaction::Draft],
         ], $rules);
     }
 
@@ -51,6 +50,14 @@ class PrintStyle extends BaseActiveRecord
             'css' => Yii::t('app', 'CSS'),
             'preview' => Yii::t('app', 'Preview'),
         ]);
+    }
+
+    public static function permissions()
+    {
+        return array_merge(
+            Type_Permission::enums(Permission_Group::Crud),
+            Type_Permission::enums(Permission_Group::Data),
+        );
     }
 
     public static function enums()

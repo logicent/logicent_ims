@@ -3,7 +3,8 @@
 namespace logicent\accounts\models\base;
 
 use app\enums\Status_Active;
-use app\models\base\BaseActiveRecord;
+use app\modules\main\models\base\BaseActiveRecord;
+use app\modules\setup\enums\Status_Transaction;
 use app\modules\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -45,7 +46,8 @@ class BaseSetupMasterData extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'inactive' => Status_Active::class
+            'status' => Status_Transaction::class,
+            // 'inactive' => Status_Active::class
         ];
     }
 

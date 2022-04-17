@@ -10,13 +10,13 @@ use logicent\accounts\models\SalesInvoiceSearch;
 
 class SalesInvoiceController extends BaseTransactionController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = SalesInvoice::class;
-        $this->modelSearchClass = SalesInvoiceSearch::class;
-        $this->itemModelClass = SalesInvoiceItem::class;
-        $this->paymentModelClass = SalesInvoicePayment::class;
+        return SalesInvoice::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return SalesInvoiceSearch::class;
     }
 }

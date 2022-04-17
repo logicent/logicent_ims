@@ -26,7 +26,7 @@ use app\models\hr\Employee;
             <div class="column">
                 <?= Html::activeHiddenInput($model, 'doc_status') ?>
 
-                <?= $form->field($model, 'license_plate')->widget(MaskedInput::className(), [
+                <?= $form->field($model, 'license_plate')->widget(MaskedInput::class, [
                     'mask' => 'KAA 999A']) ?>
 
                 <?= $form->field($model, 'acquisition_date')->textInput(['class' => 'pikaday']) ?>

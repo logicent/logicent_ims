@@ -1,15 +1,15 @@
 <?php
 
-namespace app\models;
+namespace logicent\bakery\models;
 
-use Yii;
+use logicent\stock\models\Item;
 
 /**
  * This is the model sub class of class "StockItem".
  *
  * @property StockItemGroup $itemGroup
  */
-class BakeryItem extends StockItem
+class BakeryItem extends Item
 {
     public function rules()
     {

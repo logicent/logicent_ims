@@ -3,7 +3,7 @@
 namespace logicent\sales\models;
 
 use app\enums\Type_Module;
-use app\models\base\BaseActiveRecord;
+use app\modules\main\models\base\BaseActiveRecord;
 use app\modules\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;

@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../helpers/App.php';
 
 use app\helpers\App;
+use app\modules\main\models\auth\User;
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
 $dotenv->load();
@@ -13,17 +14,17 @@ $url = require __DIR__ . '/url.php';
 $modules = require __DIR__ . '/modules.php';
 
 $config = [
-    'id' => 'logicent-web',
-    // 'name' => 'Logicent web',
+    'id' => 'yii2-crudle-web',
+    // 'name' => 'Yii2 Crudle Web',
     'runtimePath' => dirname( dirname( __DIR__ ) ) . '/storage/runtime',
     'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
     'basePath' => dirname( __DIR__ ),
-    'layoutPath' =>  '@app/views/_layouts',
+    'layoutPath' =>  '@app_main/views/_layouts',
 
     'bootstrap' => ['log'],
 
     'timeZone' => 'Africa/Nairobi',
-    'defaultRoute' => 'main',
+    // 'defaultRoute' => 'main/app/index',
 
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -48,11 +49,12 @@ $config = [
             'class' => 'yii\rbac\DbManager',
         ],
         'user' => [
-            'identityClass' => 'app\models\auth\User',
+            'identityClass' => User::class,
             'enableAutoLogin' => true,
+            // 'loginUrl' => 'app/login'
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'main/app/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

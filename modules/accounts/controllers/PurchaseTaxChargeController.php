@@ -2,17 +2,19 @@
 
 namespace logicent\accounts\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\accounts\models\PurchaseTaxCharge;
 use logicent\accounts\models\PurchaseTaxChargeSearch;
 
 class PurchaseTaxChargeController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PurchaseTaxCharge::class;
-        $this->modelSearchClass = PurchaseTaxChargeSearch::class;
+        return PurchaseTaxCharge::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PurchaseTaxChargeSearch::class;
     }
 }

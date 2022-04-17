@@ -2,18 +2,19 @@
 
 namespace app\modules\setup\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use app\modules\setup\models\EmailQueue;
 use app\modules\setup\models\EmailQueueSearch;
-use yii\data\ActiveDataProvider;
 
 class EmailQueueController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = EmailQueue::class;
-        $this->modelSearchClass = EmailQueueSearch::class;
+        return EmailQueue::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return EmailQueueSearch::class;
     }
 }

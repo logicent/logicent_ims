@@ -9,13 +9,13 @@ use logicent\accounts\controllers\base\BaseTransactionController;
 
 class QuotationController extends BaseTransactionController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = Quotation::class;
-        $this->modelSearchClass = QuotationSearch::class;
-        $this->itemModelClass = QuotationItem::class;
-
-        return parent::init();
+        return Quotation::class;
     }
 
+    public function searchModelClass(): string
+    {
+        return QuotationSearch::class;
+    }
 }

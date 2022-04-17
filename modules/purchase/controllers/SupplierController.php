@@ -2,17 +2,19 @@
 
 namespace logicent\purchase\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\purchase\models\Supplier;
 use logicent\purchase\models\SupplierSearch;
 
 class SupplierController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = Supplier::class;
-        $this->modelSearchClass = SupplierSearch::class;
+        return Supplier::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return SupplierSearch::class;
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii2tech\filedb\Query as FileDbQuery;
 
-class Employee extends \app\models\DocType
+class Employee extends BaseActiveRecord
 {
     public $full_name;
 
@@ -86,17 +86,17 @@ class Employee extends \app\models\DocType
 
     public function getEmployeeAttendances()
     {
-        return $this->hasMany(EmployeeAttendance::className(), ['employee_id' => 'id']);
+        return $this->hasMany(EmployeeAttendance::class, ['employee_id' => 'id']);
     }
 
     public function getLeaveApplications()
     {
-        return $this->hasMany(LeaveApplication::className(), ['employee_id' => 'id']);
+        return $this->hasMany(LeaveApplication::class, ['employee_id' => 'id']);
     }
 
     public function getSalaryStructureEmployees()
     {
-        return $this->hasMany(SalaryStructureEmployee::className(), ['employee_id' => 'id']);
+        return $this->hasMany(SalaryStructureEmployee::class, ['employee_id' => 'id']);
     }
 
     public function statusLabel()

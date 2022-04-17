@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace logicent\hr\models;
 
 use Yii;
 

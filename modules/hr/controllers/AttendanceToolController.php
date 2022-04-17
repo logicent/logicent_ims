@@ -2,24 +2,18 @@
 
 namespace app\controllers\hr;
 
-use Yii;
 use app\models\hr\AttendanceTool;
+use app\modules\main\controllers\base\BaseCrudController;
 
-class AttendanceToolController extends \app\controllers\LayoutController
+class AttendanceToolController extends BaseCrudController
 {
-    public function actionIndex()
+    public function modelClass(): string
     {
-        $model = new AttendanceTool();
-
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-
-        return $this->render('index', [
-            'model' => $model,
-        ]);
+        return AttendanceTool::class;
     }
+
+    // public function searchModelClass(): string
+    // {
+    //     return AttendanceToolSearch::class;
+    // }
 }

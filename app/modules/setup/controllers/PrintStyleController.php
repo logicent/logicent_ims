@@ -2,17 +2,19 @@
 
 namespace app\modules\setup\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use app\modules\setup\models\PrintStyle;
 use app\modules\setup\models\PrintStyleSearch;
 
 class PrintStyleController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PrintStyle::class;
-        $this->modelSearchClass = PrintStyleSearch::class;
+        return PrintStyle::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PrintStyleSearch::class;
     }
 }

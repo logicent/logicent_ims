@@ -3,9 +3,9 @@
 namespace logicent\stock\models;
 
 use app\enums\Status_Active;
-use app\models\base\AutoincrementIdInterface;
-use app\models\base\BaseActiveRecord;
-use app\models\UploadForm;
+use app\modules\main\models\base\BaseActiveRecord;
+use app\modules\main\models\base\AutoincrementIdInterface;
+use app\modules\main\models\UploadForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 

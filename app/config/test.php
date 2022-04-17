@@ -6,7 +6,7 @@ $db = require __DIR__ . '/test_db.php';
  * Application configuration shared by all test types
  */
 return [
-    'id' => 'logicent-tests',
+    'id' => 'yii2-crudle-tests',
     'basePath' => dirname(__DIR__),
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -25,7 +25,7 @@ return [
             'showScriptName' => true,
         ],
         'user' => [
-            'identityClass' => 'app\models\auth\User',
+            'identityClass' => 'app\modules\main\models\auth\User',
         ],
         'request' => [
             'cookieValidationKey' => 'test',

@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\production;
+namespace logicent\production\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class ProductionLineStage extends \app\models\DocType
+class ProductionLineStage extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -40,6 +41,6 @@ class ProductionLineStage extends \app\models\DocType
 
     public function getStage()
     {
-        return $this->hasOne(ProductionStage::className(), ['id' => 'production_stage_id']);
+        return $this->hasOne(ProductionStage::class, ['id' => 'production_stage_id']);
     }
 }

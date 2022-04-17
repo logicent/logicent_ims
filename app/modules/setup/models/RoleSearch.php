@@ -2,7 +2,7 @@
 
 namespace app\modules\setup\models;
 
-use app\enums\Type_Role;
+use app\modules\setup\enums\Type_Role;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;

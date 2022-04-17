@@ -2,7 +2,7 @@
 
 namespace app\modules\setup\models;
 
-use Yii;
+use app\modules\setup\models\ReportBuilder;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 

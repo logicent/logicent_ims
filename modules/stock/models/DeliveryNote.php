@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models\stock;
+namespace logicent\stock\models;
 
 use app\modules\customize\models\DocType;
 use Yii;

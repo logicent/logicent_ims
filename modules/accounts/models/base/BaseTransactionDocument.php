@@ -2,10 +2,10 @@
 
 namespace logicent\accounts\models\base;
 
-use app\enums\Status_Transaction;
-use app\enums\Type_Permission;
-use app\models\base\AutoincrementIdInterface;
-use app\models\base\BaseActiveRecord;
+use app\modules\main\models\base\AutoincrementIdInterface;
+use app\modules\main\models\base\BaseActiveRecord;
+use app\modules\setup\enums\Status_Transaction;
+use app\modules\setup\enums\Type_Permission;
 use app\modules\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;

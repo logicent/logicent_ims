@@ -14,15 +14,15 @@ return [
 
     'appName' => App::env('APP_NAME'),
     'appShortName' => '',
-    'appDescription' => 'Enterprise application software for small businesses and non-profits',
-    'appWebsite' => 'https://github.com/logicent/logicent',
+    'appDescription' => 'Enterprise application web development starter kit',
+    'appWebsite' => 'https://github.com/logicent/yii2-crudle',
     'appCopyright' => '&copy; 2020 Appsoft',
 
     'appVersion' => '1.0.0-beta',
     'mobileAppVersion' => 'N/A',
     'appDeveloper' => '@mwaigichuhi',
 
-    'helpUrl' => 'https://github.com/logicent/logicent/wiki',
+    'helpUrl' => 'https://github.com/logicent/yii2-crudle/wiki',
 
     'flashMessagePositionY' => 'bottom',
     'flashMessagePositionX' => 'right',

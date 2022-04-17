@@ -2,15 +2,18 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemGroup;
 
-class ItemGroupController extends BaseSetupCrudController
+class ItemGroupController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = ItemGroup::class;
+        return ItemGroup::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return ItemGroupSearch::class;
     }
 }

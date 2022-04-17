@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class SalaryStructureEmployee extends \app\models\DocType
+class SalaryStructureEmployee extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -19,8 +20,8 @@ class SalaryStructureEmployee extends \app\models\DocType
             [['from_period', 'to_period'], 'safe'],
             [['base', 'variable'], 'number'],
             [['employee_name'], 'string', 'max' => 140],
-            [['employee_id'], 'exist', 'skipOnError' => true, 'targetClass' => Employee::className(), 'targetAttribute' => ['employee_id' => 'id']],
-            [['salary_structure'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryStructure::className(), 'targetAttribute' => ['salary_structure' => 'id']],
+            [['employee_id'], 'exist', 'skipOnError' => true, 'targetClass' => Employee::class, 'targetAttribute' => ['employee_id' => 'id']],
+            [['salary_structure'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryStructure::class, 'targetAttribute' => ['salary_structure' => 'id']],
         ];
     }
 
@@ -39,11 +40,11 @@ class SalaryStructureEmployee extends \app\models\DocType
 
     public function getEmployee()
     {
-        return $this->hasOne(Employee::className(), ['id' => 'employee_id']);
+        return $this->hasOne(Employee::class, ['id' => 'employee_id']);
     }
 
     public function getSalaryStructure()
     {
-        return $this->hasOne(SalaryStructure::className(), ['id' => 'salary_structure']);
+        return $this->hasOne(SalaryStructure::class, ['id' => 'salary_structure']);
     }
 }

@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class SalaryComponent extends \app\models\DocType
+class SalaryComponent extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -34,7 +35,7 @@ class SalaryComponent extends \app\models\DocType
 
     public function getSalaryStructureItems()
     {
-        return $this->hasMany(SalaryStructureItem::className(), ['salary_component' => 'id']);
+        return $this->hasMany(SalaryStructureItem::class, ['salary_component' => 'id']);
     }
 
     public function statusLabel()

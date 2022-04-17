@@ -2,15 +2,18 @@
 
 namespace logicent\stock\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemPrice;
 
 class ItemPriceController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = ItemPrice::class;
+        return ItemPrice::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return ItemPriceSearch::class;
     }
 }

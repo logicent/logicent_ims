@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class EmployeeTimesheet extends \app\models\DocType
+class EmployeeTimesheet extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -38,6 +39,6 @@ class EmployeeTimesheet extends \app\models\DocType
 
     public function getEmployeeTimesheetItems()
     {
-        return $this->hasMany(EmployeeTimesheetItem::className(), ['employee_timesheet' => 'id']);
+        return $this->hasMany(EmployeeTimesheetItem::class, ['employee_timesheet' => 'id']);
     }
 }

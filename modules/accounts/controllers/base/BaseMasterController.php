@@ -2,7 +2,7 @@
 
 namespace logicent\accounts\controllers;
 
-use app\controllers\base\BaseCrudController;
+use app\modules\main\controllers\base\BaseCrudController;
 use Yii;
 use yii\helpers\Inflector;
 

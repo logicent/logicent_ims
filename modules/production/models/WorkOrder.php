@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\production;
+namespace logicent\production\models;
 
+use app\modules\main\models\base\BaseActiveRecord;
 use Yii;
 
-class WorkOrder extends \app\models\DocType
+class WorkOrder extends BaseActiveRecord
 {
     public static function tableName()
     {

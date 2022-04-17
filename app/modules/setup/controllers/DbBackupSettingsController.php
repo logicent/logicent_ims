@@ -3,18 +3,18 @@
 namespace app\modules\setup\controllers;
 
 use app\modules\setup\controllers\base\BaseSettingsController;
-use app\enums\Type_Model;
-use app\enums\Type_Relation;
+use app\modules\main\enums\Type_Model;
+use app\modules\main\enums\Type_Relation;
 use app\helpers\DbDumper;
 // use app\helpers\DbRestore;
-use app\models\auth\Auth;
-use app\models\auth\Assignment;
-use app\models\auth\Item;
-use app\models\auth\ItemChild;
+use app\modules\main\models\auth\Auth;
+use app\modules\main\models\auth\Assignment;
+use app\modules\main\models\auth\Item;
+use app\modules\main\models\auth\ItemChild;
 use app\modules\setup\models\DbBackupSettingsForm;
-use app\enums\Type_Role;
-use app\models\auth\Person;
-use app\models\auth\UserLog;
+use app\modules\setup\enums\Type_Role;
+use app\modules\main\models\auth\Person;
+use app\modules\main\models\auth\UserLog;
 use app\modules\setup\models\Settings;
 use Yii;
 use yii\filters\AccessControl;
@@ -26,7 +26,6 @@ class DbBackupSettingsController extends BaseSettingsController
 
     public function init()
     {
-        $this->modelClass = DbBackupSettingsForm::class;
         $this->backups = FileHelper::findFiles(Yii::getAlias('@app/../storage/backups'));
 
         return parent::init();
@@ -146,5 +145,11 @@ class DbBackupSettingsController extends BaseSettingsController
         }
 
         return $this->redirect(['/setup']);
+    }
+
+    // Interface
+    public function modelClass(): string
+    {
+        return DbBackupSettingsForm::class;
     }
 }
