@@ -9,36 +9,20 @@ Yii::setAlias('@app_website', '@system_modules/website');
 // Yii::setAlias('@custom_modules', dirname (__DIR__, 2) . '/user_modules');
 
 return [
+    // core modules
     'main'      => app\modules\main\Module::class,
-    'setup'     => [
-        'class' => app\modules\setup\Module::class,
-    ],
+    'setup'     => app\modules\setup\Module::class,
+    // standard modules
+    'accounts'  => logicent\accounts\Module::class,
+    'bakery'    => logicent\bakery\Module::class,
+    'fleet'     => logicent\fleet\Module::class,
+    'hr'        => logicent\hr\Module::class,
+    'pos'       => logicent\pos\Module::class,
+    'production' => logicent\production\Module::class,
+    'purchase'  => logicent\purchase\Module::class,
+    'sales'     => logicent\sales\Module::class,
+    'stock'     => logicent\stock\Module::class,
     'website'   => website\Module::class,
-    'accounts' => [
-        'class' => logicent\accounts\Module::class,
-    ],
-    'purchase' => [
-        'class' => logicent\purchase\Module::class,
-    ],
-    'fleet' => [
-        'class' => logicent\fleet\Module::class,
-    ],
-    'sales' => [
-        'class' => logicent\sales\Module::class,
-    ],
-    'hr' => [
-        'class' => logicent\hr\Module::class,
-    ],
-    'production' => [
-        'class' => logicent\production\Module::class,
-    ],
-    'bakery' => [
-        'class' => logicent\bakery\Module::class,
-    ],
-    'pos' => [
-        'class' => logicent\pos\Module::class,
-    ],
-    'stock' => [
-        'class' => logicent\stock\Module::class,
-    ],
+    // custom modules
+
 ];

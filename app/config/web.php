@@ -14,8 +14,8 @@ $url = require __DIR__ . '/url.php';
 $modules = require __DIR__ . '/modules.php';
 
 $config = [
-    'id' => 'yii2-crudle-web',
-    // 'name' => 'Yii2 Crudle Web',
+    'id' => 'logicent-web',
+    // 'name' => 'Logicent Web',
     'runtimePath' => dirname( dirname( __DIR__ ) ) . '/storage/runtime',
     'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
     'basePath' => dirname( __DIR__ ),
