@@ -4,7 +4,7 @@ namespace logicent\pos\models;
 
 use logicent\stock\enums\Item_View;
 use logicent\accounts\enums\Type_Sale;
-use app\modules\setup\models\base\BaseSettingsForm;
+use crudle\setup\models\base\BaseSettingsForm;
 use Yii;
 
 class PosProfileForm extends BaseSettingsForm

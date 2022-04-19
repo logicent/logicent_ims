@@ -2,64 +2,19 @@
 
 namespace app\controllers\hr;
 
-use Yii;
 use app\models\hr\PayrollEntry;
 use app\models\hr\PayrollEntrySearch;
-use app\controllers\BreadController;
+use crudle\main\controllers\base\BaseCrudController;
 
-
-class PayrollEntryController extends BreadController
+class PayrollEntryController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelNamespace = 'app\models\hr';
-
-        parent::init();
+        return PayrollEntry::class;
     }
 
-    public function actionCreate()
+    public function searchModelClass(): string
     {
-        $model = new PayrollEntry();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['read', 'id' => $model->id]);
-        }
-
-        $model->loadDefaultValues();
-
-        return $this->render('create', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['read', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionDelete($id)
-    {
-        $model = $this->findModel($id);
-        // check relation dependencies first and either block or allow
-        $model->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = PayrollEntry::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException(Yii::t('app', 'The requested record does not exist.'));
+        return PayrollEntrySearch::class;
     }
 }

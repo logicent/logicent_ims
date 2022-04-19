@@ -2,15 +2,19 @@
 
 namespace logicent\purchase\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\purchase\models\SupplierGroup;
+use logicent\purchase\models\SupplierGroupSearch;
 
-class SupplierGroupController extends BaseSetupCrudController
+class SupplierGroupController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = SupplierGroup::class;
+        return SupplierGroup::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return SupplierGroupSearch::class;
     }
 }

@@ -1,29 +1,32 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\modules\setup\controllers\base\BaseSettingsController;
-use app\modules\setup\models\GlobalSettingsForm;
-use app\modules\setup\models\Setup;
+use crudle\main\controllers\base\BaseViewController;
+use crudle\main\enums\Type_View;
 
-class SetupController extends BaseSettingsController
+/**
+ * Setup controller for the `setup` module
+ */
+class SetupController extends BaseViewController
 {
-    public function init()
-    {
-        $this->sidebar = true;
-        $this->sidebarWidth = 'three';
-        $this->mainWidth = 'thirteen';
-
-        return parent::init();
-    }
-
+    /**
+     * Renders the index view for the module
+     * @return string
+     */
     public function actionIndex()
     {
-        // load the default settings tab
-        $model = Setup::getSettings( GlobalSettingsForm::class );
+        return $this->render('index');
+    }
 
-        return $this->render('index', [
-            'model' => $model
-        ]);
+    // ViewInterface
+    public function currentViewType()
+    {
+        return Type_View::Workspace;
+    }
+
+    public function showViewSidebar(): bool
+    {
+        return false;
     }
 }

@@ -2,10 +2,10 @@
 
 namespace logicent\accounts\models\base;
 
+use crudle\main\models\base\AutoincrementIdInterface;
 use logicent\accounts\enums\Status_Party;
-use app\models\base\AutoincrementIdInterface;
-use app\models\base\BaseActiveRecord;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 

@@ -2,14 +2,14 @@
 
 namespace logicent\stock\models;
 
-use app\enums\Status_Transaction;
 use app\enums\Type_Module;
-use app\enums\Type_Permission;
-use app\enums\Type_Relation;
-use app\models\base\AutoincrementIdInterface;
-use app\models\base\BaseActiveRecord;
+use crudle\main\enums\Type_Relation;
+use crudle\main\models\base\AutoincrementIdInterface;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\enums\Status_Transaction;
+use crudle\setup\enums\Type_Permission;
 use logicent\accounts\models\base\PostingInterface;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  */
 class StockEntry extends BaseActiveRecord implements PostingInterface, AutoincrementIdInterface
 {
+    // (Item Movement)
     const DOC_NUM_PREFIX = 'STE-';
 
     public $party_name;
@@ -164,7 +165,7 @@ class StockEntry extends BaseActiveRecord implements PostingInterface, Autoincre
                 break;
             case Status_Transaction::Submitted:
                 return [
-                    Status_Transaction::Cancel,
+                    Status_Transaction::Canceled,
                 ];
                 break;
             default:

@@ -2,17 +2,19 @@
 
 namespace logicent\accounts\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\accounts\models\Branch;
 use logicent\accounts\models\BranchSearch;
 
 class BranchController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = Branch::class;
-        $this->modelSearchClass = BranchSearch::class;
+        return Branch::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return BranchSearch::class;
     }
 }

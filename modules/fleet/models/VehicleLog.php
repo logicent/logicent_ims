@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\fleet;
+namespace logicent\fleet\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class VehicleLog extends \app\models\DocType
+class VehicleLog extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -50,7 +51,7 @@ class VehicleLog extends \app\models\DocType
 
     public function getVehicle()
     {
-        return $this->hasOne(Vehicle::className(), ['id' => 'vehicle_id']);
+        return $this->hasOne(Vehicle::class, ['id' => 'vehicle_id']);
     }
 
 }

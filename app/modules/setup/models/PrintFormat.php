@@ -1,14 +1,14 @@
 <?php
 
-namespace app\modules\setup\models;
+namespace crudle\setup\models;
 
-use app\enums\Status_Active;
-use app\enums\Status_Transaction;
-use app\enums\Type_Relation;
-use app\models\base\BaseActiveRecord;
+use crudle\setup\enums\Status_Transaction;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\enums\Permission_Group;
+use crudle\setup\enums\Type_Permission;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Json;
 
 /**
  * This is the model class for table "print_format".
@@ -34,6 +34,7 @@ class PrintFormat extends BaseActiveRecord
             [['id'], 'required'], // name
             [['id', 'model_name', 'module', 'default_print_language'], 'string', 'max' => 140],
             [['inactive', 'custom_format'], 'boolean'],
+            [['status'], 'default', 'value' => Status_Transaction::Draft],
             ['font', 'safe'],
             // Align Labels to the Right
             // Show Section Headings
@@ -56,6 +57,14 @@ class PrintFormat extends BaseActiveRecord
             'inactive' => Yii::t('app', 'Hidden'),
             'custom_format' => Yii::t('app', 'Custom format'),
         ]);
+    }
+
+    public static function permissions()
+    {
+        return array_merge(
+            Type_Permission::enums(Permission_Group::Crud),
+            Type_Permission::enums(Permission_Group::Data),
+        );
     }
 
     public static function enums()

@@ -6,6 +6,8 @@ use Yii;
 
 class Type_Sale extends Type_Transaction
 {
+    // Sales Receipt - Cash/Credit Sale
+    // Sales Return - Credit Note
     public static function enumsHeaderLabel()
     {
         return [

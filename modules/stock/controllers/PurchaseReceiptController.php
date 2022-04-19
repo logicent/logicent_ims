@@ -2,17 +2,19 @@
 
 namespace logicent\stock\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\PurchaseReceipt;
 use logicent\stock\models\PurchaseReceiptSearch;
 
 class PurchaseReceiptController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PurchaseReceipt::class;
-        $this->modelSearchClass = PurchaseReceiptSearch::class;
+        return PurchaseReceipt::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PurchaseReceiptSearch::class;
     }
 }

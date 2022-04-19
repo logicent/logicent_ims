@@ -2,8 +2,8 @@
 
 namespace logicent\accounts\models\base;
 
-use app\models\base\BaseActiveRecordDetail;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\main\models\base\BaseActiveRecordDetail;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 
 /**

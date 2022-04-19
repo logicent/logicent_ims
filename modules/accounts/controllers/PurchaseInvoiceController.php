@@ -10,13 +10,13 @@ use logicent\accounts\models\PurchaseInvoiceSearch;
 
 class PurchaseInvoiceController extends BaseTransactionController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PurchaseInvoice::class;
-        $this->modelSearchClass = PurchaseInvoiceSearch::class;
-        $this->itemModelClass = PurchaseInvoiceItem::class;
-        $this->paymentModelClass = PurchaseInvoicePayment::class;
+        return PurchaseInvoice::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PurchaseInvoiceSearch::class;
     }
 }

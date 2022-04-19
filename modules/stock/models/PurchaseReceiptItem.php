@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\stock;
+namespace logicent\stock\models;
 
+use crudle\main\models\base\BaseActiveRecordDetail;
 use Yii;
 
-class PurchaseReceiptItem extends \app\models\DocType
+class PurchaseReceiptItem extends BaseActiveRecordDetail
 {
     public static function tableName()
     {

@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models;
+namespace logicent\bakery\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\CakeFlavour;
 
 /**
  * CakeFlavourSearch represents the model behind the search form of `app\models\CakeFlavour`.

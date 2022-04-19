@@ -2,10 +2,10 @@
 
 namespace logicent\accounts\models;
 
-use app\enums\Status_Transaction;
-use app\models\base\AutoincrementIdInterface;
-use app\models\base\BaseActiveRecord;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\main\models\base\AutoincrementIdInterface;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\enums\Status_Transaction;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -16,6 +16,7 @@ use yii\helpers\ArrayHelper;
  */
 class Expense extends BaseActiveRecord implements AutoincrementIdInterface
 {
+    // Petty Cash Vouchers
     const DOC_NUM_PREFIX = 'EXP-';
 
     public function init()

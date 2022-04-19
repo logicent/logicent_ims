@@ -1,18 +1,20 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\controllers\base\BaseCrudController;
-use app\modules\setup\models\EmailNotification;
-use app\modules\setup\models\EmailNotificationSearch;
+use crudle\main\controllers\base\BaseCrudController;
+use crudle\setup\models\EmailNotification;
+use crudle\setup\models\EmailNotificationSearch;
 
 class EmailNotificationController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = EmailNotification::class;
-        $this->modelSearchClass = EmailNotificationSearch::class;
-        
-        return parent::init();
+        return EmailNotification::class;
+    }
+
+    public function searchModelClass(): string
+    {
+        return EmailNotificationSearch::class;
     }
 }

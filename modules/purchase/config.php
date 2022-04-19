@@ -1,0 +1,5 @@
+<?php
+
+return [
+    'defaultRoute' => 'purchase',
+];

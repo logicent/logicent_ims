@@ -6,7 +6,7 @@ use yii\helpers\Html;
 use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
 
-$isReadonly = $this->context->isReadonly;
+$isReadonly = $this->context->isReadonly();
 $rowInputStyle = 'border: none; border-radius: 0px; height: 43px';
 
 ?>

@@ -1,16 +1,14 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\modules\setup\controllers\base\BaseSettingsController;
-use app\modules\setup\models\PrintSettingsForm;
+use crudle\setup\controllers\base\BaseSettingsController;
+use crudle\setup\models\PrintSettingsForm;
 
 class PrintSettingsController extends BaseSettingsController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PrintSettingsForm::class;
-
-        return parent::init();
+        return PrintSettingsForm::class;
     }
 }

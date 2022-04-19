@@ -1,12 +1,11 @@
 <?php
 
-namespace app\models;
+namespace logicent\bakery\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
-use app\models\BakeryIngredient;
 
 class RecipeSearch extends BakeryIngredient
 {

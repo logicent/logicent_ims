@@ -3,7 +3,7 @@
 namespace logicent\stock\models;
 
 use app\enums\Type_Relation;
-use app\models\base\BaseActiveRecordDetail;
+use crudle\main\models\base\BaseActiveRecordDetail;
 use Yii;
 
 class StockEntryItem extends BaseActiveRecordDetail

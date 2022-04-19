@@ -1,11 +1,10 @@
 <?php
 
-namespace app\models\production;
+namespace logicent\production\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\production\ProductionStage;
 
 class ProductionStageSearch extends ProductionStage
 {

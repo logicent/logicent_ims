@@ -1,18 +1,15 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\controllers\base\BaseCrudController;
-use app\modules\setup\models\EmailForm;
+use crudle\main\controllers\base\BaseFormController;
+use crudle\setup\models\EmailForm;
 
-class EmailController extends BaseCrudController
+class EmailController extends BaseFormController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = EmailForm::class;
-        $this->modelSearchClass = EmailSearch::class;
-
-        return parent::init();
+        return EmailForm::class;
     }
 
     public function actionIndex()

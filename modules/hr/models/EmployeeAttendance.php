@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class EmployeeAttendance extends \app\models\DocType
+class EmployeeAttendance extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -19,7 +20,7 @@ class EmployeeAttendance extends \app\models\DocType
             [['workday'], 'safe'],
             [['status'], 'string'],
             [['employee_name'], 'string', 'max' => 140],
-            [['employee_id'], 'exist', 'skipOnError' => true, 'targetClass' => Employee::className(), 'targetAttribute' => ['employee_id' => 'id']],
+            [['employee_id'], 'exist', 'skipOnError' => true, 'targetClass' => Employee::class, 'targetAttribute' => ['employee_id' => 'id']],
         ];
     }
 
@@ -35,6 +36,6 @@ class EmployeeAttendance extends \app\models\DocType
 
     public function getEmployee()
     {
-        return $this->hasOne(Employee::className(), ['id' => 'employee_id']);
+        return $this->hasOne(Employee::class, ['id' => 'employee_id']);
     }
 }

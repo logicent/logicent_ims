@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class SalarySlip extends \app\models\DocType
+class SalarySlip extends BaseActiveRecord
 {
     public static function tableName()
     {

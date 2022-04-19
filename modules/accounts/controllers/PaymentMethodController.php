@@ -2,17 +2,19 @@
 
 namespace logicent\accounts\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\accounts\models\PaymentMethod;
 use logicent\accounts\models\PaymentMethodSearch;
 
 class PaymentMethodController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PaymentMethod::class;
-        $this->modelSearchClass = PaymentMethodSearch::class;
+        return PaymentMethod::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PaymentMethodSearch::class;
     }
 }

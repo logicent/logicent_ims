@@ -1,8 +1,8 @@
 <?php
 
-namespace app\models;
+namespace logicent\bakery\models;
 
-use app\models\base\BaseActiveRecord;
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;

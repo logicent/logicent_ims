@@ -1,18 +1,20 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\controllers\base\BaseCrudController;
-use app\modules\setup\models\PrintFormat;
-use app\modules\setup\models\PrintFormatSearch;
+use crudle\main\controllers\base\BaseCrudController;
+use crudle\setup\models\PrintFormat;
+use crudle\setup\models\PrintFormatSearch;
 
 class PrintFormatController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PrintFormat::class;
-        $this->modelSearchClass = PrintFormatSearch::class;
+        return PrintFormat::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PrintFormatSearch::class;
     }
 }

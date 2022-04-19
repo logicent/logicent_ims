@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class SalaryStructure extends \app\models\DocType
+class SalaryStructure extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -45,17 +46,17 @@ class SalaryStructure extends \app\models\DocType
 
     public function getPayrollEntries()
     {
-        return $this->hasMany(PayrollEntry::className(), ['salary_structure' => 'id']);
+        return $this->hasMany(PayrollEntry::class, ['salary_structure' => 'id']);
     }
 
     public function getSalaryStructureEmployees()
     {
-        return $this->hasMany(SalaryStructureEmployee::className(), ['salary_structure' => 'id']);
+        return $this->hasMany(SalaryStructureEmployee::class, ['salary_structure' => 'id']);
     }
 
     public function getSalaryStructureItems()
     {
-        return $this->hasMany(SalaryStructureItem::className(), ['salary_structure' => 'id']);
+        return $this->hasMany(SalaryStructureItem::class, ['salary_structure' => 'id']);
     }
 
     public function statusLabel()

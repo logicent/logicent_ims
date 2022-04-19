@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class PayrollEntry extends \app\models\DocType
+class PayrollEntry extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -18,7 +19,7 @@ class PayrollEntry extends \app\models\DocType
             [['posting_date', 'start_period', 'end_period'], 'required'],
             [['posting_date', 'start_period', 'end_period'], 'safe'],
             [['payroll_frequency'], 'string'],
-            [['salary_structure'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryStructure::className(), 'targetAttribute' => ['salary_structure' => 'id']],
+            [['salary_structure'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryStructure::class, 'targetAttribute' => ['salary_structure' => 'id']],
         ];
     }
 
@@ -35,6 +36,6 @@ class PayrollEntry extends \app\models\DocType
 
     public function getSalaryStructure()
     {
-        return $this->hasOne(SalaryStructure::className(), ['id' => 'salary_structure']);
+        return $this->hasOne(SalaryStructure::class, ['id' => 'salary_structure']);
     }
 }

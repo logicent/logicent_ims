@@ -1,12 +1,15 @@
 <?php
 
-namespace app\models\stock;
+namespace logicent\stock\models;
 
+use logicent\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class PurchaseReceipt extends \app\models\DocType
+class PurchaseReceipt extends BaseTransactionDocument
 {
+    // Goods Receipt
+    // Goods Return?
     public static function tableName()
     {
         return 'purchase_receipt';

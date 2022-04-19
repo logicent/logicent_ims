@@ -2,17 +2,19 @@
 
 namespace logicent\accounts\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\accounts\models\PriceList;
 use logicent\accounts\models\PriceListSearch;
 
 class PriceListController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PriceList::class;
-        $this->modelSearchClass = PriceListSearch::class;
+        return PriceList::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PriceListSearch::class;
     }
 }

@@ -2,15 +2,19 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemUom;
+use logicent\stock\models\ItemUomSearch;
 
-class ItemUomController extends BaseSetupCrudController
+class ItemUomController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = ItemUom::class;
+        return ItemUom::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return ItemUomSearch::class;
     }
 }

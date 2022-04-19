@@ -2,17 +2,19 @@
 
 namespace logicent\stock\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\DeliveryNote;
 use logicent\stock\models\DeliveryNoteSearch;
 
 class DeliveryNoteController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = DeliveryNote::class;
-        $this->modelSearchClass = DeliveryNoteSearch::class;
+        return DeliveryNote::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return DeliveryNoteSearch::class;
     }
 }

@@ -1,10 +1,13 @@
 <?php
 
-namespace app\modules\setup\models;
+namespace crudle\setup\models;
 
 use app\enums\Status_Active;
-use app\enums\Type_Relation;
-use app\models\base\BaseActiveRecord;
+use crudle\main\enums\Type_Relation;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\enums\Permission_Group;
+use crudle\setup\enums\Type_Permission;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -57,6 +60,14 @@ class ReportBuilder extends BaseActiveRecord
             'subtitle' => Yii::t('app', 'Subtitle'),
             'roles' => Yii::t('app', 'Roles'),
         ]);
+    }
+
+    public static function permissions()
+    {
+        return array_merge(
+            Type_Permission::enums(Permission_Group::Crud),
+            Type_Permission::enums(Permission_Group::Data),
+        );
     }
 
     public static function enums()

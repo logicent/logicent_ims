@@ -2,17 +2,19 @@
 
 namespace logicent\accounts\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\accounts\models\Expense;
 use logicent\accounts\models\ExpenseSearch;
 
 class ExpenseController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = Expense::class;
-        $this->modelSearchClass = ExpenseSearch::class;
+        return Expense::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return ExpenseSearch::class;
     }
 }

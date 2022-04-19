@@ -2,17 +2,19 @@
 
 namespace logicent\sales\controllers;
 
-use app\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\sales\models\SalesPerson;
 use logicent\sales\models\SalesPersonSearch;
 
 class SalesPersonController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = SalesPerson::class;
-        $this->modelSearchClass = SalesPersonSearch::class;
+        return SalesPerson::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return SalesPersonSearch::class;
     }
 }

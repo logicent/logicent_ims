@@ -1,47 +1,34 @@
 <?php
 
 Yii::setAlias('@app_modules', dirname( __DIR__ ) . '/modules');
-Yii::setAlias('@app_customize', dirname( __DIR__ ) . '/modules/customize');
-Yii::setAlias('@app_setup', dirname( __DIR__ ) . '/modules/setup');
-Yii::setAlias('@app_website', dirname( __DIR__ ) . '/modules/website');
-Yii::setAlias('@system_modules', dirname (dirname( __DIR__ )) . '/modules');
-// Yii::setAlias('@custom_modules', dirname (dirname( __DIR__ )) . '/user_modules');
+Yii::setAlias('@app_main', '@app_modules/main');
+Yii::setAlias('@app_setup', '@app_modules/setup');
+// @app_settings GeneralSettings + Layout Settings
+Yii::setAlias('@system_modules', dirname (__DIR__, 2) . '/modules');
+Yii::setAlias('@app_website', '@system_modules/website');
+// Yii::setAlias('@custom_modules', dirname (__DIR__, 2) . '/user_modules');
 
 return [
-    'setup' => [
-        'class' => \app\modules\setup\Module::class,
-    ],
-    'customize' => [
-        'class' => app\modules\customize\Module::class,
-    ],
-    'website' => [
-        'class' => app\modules\website\Module::class,
-    ],
-    'accounts' => [
-        'class' => logicent\accounts\Module::class,
-    ],
-    'purchase' => [
-        'class' => logicent\purchase\Module::class,
-    ],
-    'fleet' => [
-        'class' => logicent\fleet\Module::class,
-    ],
-    'sales' => [
-        'class' => logicent\sales\Module::class,
-    ],
-    'hr' => [
-        'class' => logicent\hr\Module::class,
-    ],
-    'production' => [
-        'class' => logicent\production\Module::class,
-    ],
-    'bakery' => [
-        'class' => logicent\bakery\Module::class,
-    ],
-    'pos' => [
-        'class' => logicent\pos\Module::class,
-    ],
-    'stock' => [
-        'class' => logicent\stock\Module::class,
-    ],
+    // core modules
+    'main'      => crudle\main\Module::class,
+    'setup'     => crudle\setup\Module::class,
+    'website'   => website\Module::class,
+
+    // standard modules
+    'accounts'  => logicent\accounts\Module::class,
+    'hr'        => logicent\hr\Module::class,
+    // 'payroll'   => logicent\payroll\Module::class,
+    'pos'       => logicent\pos\Module::class,
+    'purchase'  => logicent\purchase\Module::class,
+    'sales'     => logicent\sales\Module::class,
+    'stock'     => logicent\stock\Module::class,
+
+    'bakery'    => logicent\bakery\Module::class,
+    // 'facility'  => logicent\facility\Module::class,
+    'fleet'     => logicent\fleet\Module::class,
+    // 'nonprofit'=> logicent\nonprofit\Module::class,
+    'production'=> logicent\production\Module::class,
+    // 'property'  => logicent\property\Module::class,
+
+    // custom modules
 ];

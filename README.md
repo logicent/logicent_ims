@@ -1,5 +1,7 @@
 **_Note: This is a beta version of the software. You are advised to proceed with caution!_**
 
+### Introduction
+
 **Overview**
 
 A free and open-source enterprise software application for your accounting and/or production needs in tiny to small business, institutional and non-profit organizations with useful tools and integrations.
@@ -27,15 +29,10 @@ Continue:
 - Run `./yii user/create-superuser "my_password"` and `./yii rbac/init`
 - Run `./yii serve` in local environment or use preferred web server in production
 
-**System Requirements**
-
-- PHP 7.4 using Yii2 (latest) and JavaScript using jQuery (latest)
-- MySQL 5.7
-
 **Modules**
 - Purchase
-  - Purchase Request
-  - Purchase Order
+  - Purchase Request (Requisition)
+  - Purchase Order (LPO)
 
 - Stock (Item)
   - Purchase (Material) Request
@@ -83,18 +80,15 @@ Continue:
 **Roadmap**
 
 _Now:_
-
 - [ ] Add direct printing support with default/user-defined settings
 - [x] Re-implement item search to use a custom search bar (input term + dropdown list of search result)
 - [x] Refactor all business domain "modules" above as Yii modules
 
 _Next:_
-
 - [ ] Add integration for mobile money payments and SMS gateways
 - [ ] Add multiple POS profile support with active profile switcher
 
 _Later:_
-
 - [ ] Add support for keyboard shortcuts in the POS/POR transactions
 - [ ] Add Coupon discount in sale and Gift Voucher as payment method
 - [ ] Add Customer Loyalty points tracker and promotions messages

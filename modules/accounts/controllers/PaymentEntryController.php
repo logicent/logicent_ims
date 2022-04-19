@@ -8,11 +8,13 @@ use logicent\accounts\controllers\base\BaseTransactionController;
 
 class PaymentEntryController extends BaseTransactionController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = PaymentEntry::class;
-        $this->modelSearchClass = PaymentEntrySearch::class;
+        return PaymentEntry::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return PaymentEntrySearch::class;
     }
 }

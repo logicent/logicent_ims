@@ -1,35 +1,57 @@
 <?php
 
+// use yii\web\GroupUrlRule;
+
+// new GroupUrlRule([
+//     'prefix' => 'app',
+//     'rules' => [
+//         'main' => 'main',
+//         'setup' => 'setup',
+//         'website' => 'website',
+//     ],
+// ]),
 return [
     'enablePrettyUrl' => true,
     // 'enableStrictParsing' => true,
     'showScriptName' => false,
     'rules' => [
-        'login' => 'site/login',
-        'logout' => 'site/logout',
-        'forgot-password' => 'site/request-password-reset',
-        'reset-password' => 'site/reset-password',
-        'User Manual' => 'main/user-manual',
-        'Search' => 'main/global-search',
-        'About' => 'main/about',
+        // ** website routes
+        // '' or '/' routes
+        '/' => 'website/site/home/index',
+        '/home' => 'website/site/home/index',
+        '/about' => 'website/site/about/index',
+        '/contact' => 'website/site/contact/index',
+        '/blog' => 'website/site/blog-article/index',
+        '/writer' => 'website/site/blog-writer/index',
+        '/category' => 'website/site/blog-category/index',
+        // ** end website
+        // ** app routes
+        'app' => 'main/app/index', // defaultRoute requires this rule
+        'app/login' => 'main/app/login',
+        'app/logout' => 'main/app/logout',
+        'app/forgot-password' => 'main/app/request-password-reset',
+        'app/reset-password' => 'main/app/reset-password',
 
-        // Match menu titles and button labels in URL stubs
-        '<controller>/New' => '<controller>/create',
-        '<controller>/<id:>/Read' => '<controller>/read',
-        '<controller>/<id:\w+>/Edit' => '<controller>/update',
+        'app/home' => '/main/home/index',
+        'app/dashboard' => '/main/dashboard/index',
+        'app/report' => '/main/report/index',
 
-        'My Account/<id:\w+>' => 'people/update',
+        // ** app modules, std modules
+        'app/<module>' => '/<module>',
 
-        // Prettify document URL here with params etc
-        // 'Report/<controller>' => '<controller>/report-builder',
+        // ** Crud action routes
+        'app/<module>/<controller>/New' => '<module>/<controller>/create',
+        // 'app/<module>/<controller>/<id:\w+>' => '<module>/<controller>/read',
+        // 'app/<module>/<controller>/<id:\w+>' => '<module>/<controller>/update',
 
-        // route standard and custom reports
+        'app/setup/user/my-account' => 'setup/user/update',
+        'app/setup/user/my-preferences' => 'setup/user/edit-preferences',
+
+        // Standard/custom reports routes
         // 'query-report/<\w+>' => 'report/query/<\w+>',
 
-        // generic rule goes last
-        '<controller>/List' => '<controller>/index',
-
-        // 'Setup' => 'setup',
-        // 'Setup/<controller>' => 'setup/<controller>/index',
+        // Generic view-specific (generic) routes
+        'app/<module>/<controller>' => '<module>/<controller>/index',
+        // ***end app
     ],
 ];

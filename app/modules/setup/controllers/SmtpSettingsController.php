@@ -1,19 +1,17 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\modules\setup\controllers\base\BaseSettingsController;
-use app\modules\setup\models\Setup;
-use app\modules\setup\models\SmtpSettingsForm;
+use crudle\setup\controllers\base\BaseSettingsController;
+use crudle\setup\models\Setup;
+use crudle\setup\models\SmtpSettingsForm;
 use Yii;
 
 class SmtpSettingsController extends BaseSettingsController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = SmtpSettingsForm::class;
-
-        return parent::init();
+        return SmtpSettingsForm::class;
     }
 
     public function actionTestConnection()

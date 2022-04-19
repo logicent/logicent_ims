@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\production;
+namespace logicent\production\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class ProductionLine extends \app\models\DocType
+class ProductionLine extends BaseActiveRecord
 {
     public static function tableName()
     {

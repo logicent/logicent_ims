@@ -2,15 +2,19 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\setup\controllers\base\BaseSetupCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\Brand;
+use logicent\stock\models\BrandSearch;
 
-class BrandController extends BaseSetupCrudController
+class BrandController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = Brand::class;
+        return Brand::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return BrandSearch::class;
     }
 }

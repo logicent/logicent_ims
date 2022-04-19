@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace logicent\bakery\models;
 
 use Yii;
 

@@ -1,10 +1,11 @@
 <?php
 
-namespace app\models\hr;
+namespace logicent\hr\models;
 
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
-class SalaryStructureItem extends \app\models\DocType
+class SalaryStructureItem extends BaseActiveRecord
 {
     public static function tableName()
     {
@@ -20,8 +21,8 @@ class SalaryStructureItem extends \app\models\DocType
             [['amount'], 'number'],
             [['abbr', 'statistical_component'], 'string', 'max' => 140],
             [['do_not_include_in_total', 'amount_based_on_formula'], 'string', 'max' => 1],
-            [['salary_structure'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryStructure::className(), 'targetAttribute' => ['salary_structure' => 'id']],
-            [['salary_component'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryComponent::className(), 'targetAttribute' => ['salary_component' => 'id']],
+            [['salary_structure'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryStructure::class, 'targetAttribute' => ['salary_structure' => 'id']],
+            [['salary_component'], 'exist', 'skipOnError' => true, 'targetClass' => SalaryComponent::class, 'targetAttribute' => ['salary_component' => 'id']],
         ];
     }
 
@@ -42,11 +43,11 @@ class SalaryStructureItem extends \app\models\DocType
 
     public function getSalaryStructure()
     {
-        return $this->hasOne(SalaryStructure::className(), ['id' => 'salary_structure']);
+        return $this->hasOne(SalaryStructure::class, ['id' => 'salary_structure']);
     }
 
     public function getSalaryComponent()
     {
-        return $this->hasOne(SalaryComponent::className(), ['id' => 'salary_component']);
+        return $this->hasOne(SalaryComponent::class, ['id' => 'salary_component']);
     }
 }

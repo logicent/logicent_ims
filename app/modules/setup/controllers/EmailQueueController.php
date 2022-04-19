@@ -1,19 +1,20 @@
 <?php
 
-namespace app\modules\setup\controllers;
+namespace crudle\setup\controllers;
 
-use app\controllers\base\BaseCrudController;
-use app\modules\setup\models\EmailQueue;
-use app\modules\setup\models\EmailQueueSearch;
-use yii\data\ActiveDataProvider;
+use crudle\main\controllers\base\BaseCrudController;
+use crudle\setup\models\EmailQueue;
+use crudle\setup\models\EmailQueueSearch;
 
 class EmailQueueController extends BaseCrudController
 {
-    public function init()
+    public function modelClass(): string
     {
-        $this->modelClass = EmailQueue::class;
-        $this->modelSearchClass = EmailQueueSearch::class;
+        return EmailQueue::class;
+    }
 
-        return parent::init();
+    public function searchModelClass(): string
+    {
+        return EmailQueueSearch::class;
     }
 }
