@@ -1,12 +1,12 @@
 <?php
 
-use app\modules\setup\enums\Type_Menu_Group;
+use crudle\setup\enums\Type_Menu_Group;
 
 $this->params['menuGroupClass'] = Type_Menu_Group::class;
 
 return [
     [
-        'route' => '/bakery/cake-order',
+        'route' => '/bakery/cake-order/index',
         'label' => 'Cake Order',
         'icon' => 'user',
         'iconPath' => null,
@@ -15,7 +15,7 @@ return [
         'visible' => true, // Yii::$app->user->can(Type_Role::Baker),
     ],
     [
-        'route' => '/bakery/bakery-order',
+        'route' => '/bakery/bakery-order/index',
         'label' => 'Bakery Order',
         'icon' => 'user',
         'iconPath' => null,
@@ -24,7 +24,7 @@ return [
         'visible' => true, // Yii::$app->user->can(Type_Role::Baker),
     ],
     [
-        'route' => '/bakery/ingredient',
+        'route' => '/bakery/ingredient/index',
         'label' => 'Ingredient',
         'icon' => 'line chart',
         'iconPath' => null,
@@ -33,7 +33,7 @@ return [
         'visible' => true,
     ],
     [
-        'route' => '/bakery/product',
+        'route' => '/bakery/product/index',
         'label' => 'Product',
         'icon' => 'shopping basket',
         'iconPath' => null,
@@ -42,7 +42,7 @@ return [
         'visible' => true, // Yii::$app->user->can(Type_Role::Baker),
     ],
     [
-        'route' => '/bakery/recipe',
+        'route' => '/bakery/recipe/index',
         'label' => 'Recipe',
         'icon' => 'box',
         'iconPath' => null,

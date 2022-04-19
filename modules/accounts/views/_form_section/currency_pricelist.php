@@ -31,7 +31,7 @@ endif;
                                         'valueAttribute' => 'name',
                                         'filters' => ['enabled' => true]
                                     ]),
-                    'disabled' => $this->context->isReadonly
+                    'disabled' => $this->context->isReadonly()
                 ]) ?>
         </div>
         <div class="column">
@@ -39,9 +39,9 @@ endif;
                     'search' => true,
                     'items' => SelectableItems::get(PriceList::class, $model, [
                         'valueAttribute' => 'id',
-                        'filters' => ['module' => Type_Module::enums()[$model::moduleType()]]
+                        // 'filters' => ['module' => Type_Module::enums()[$model::moduleType()]]
                     ]),
-                    'disabled' => $this->context->isReadonly
+                    'disabled' => $this->context->isReadonly()
                 ]) ?>
         </div>
     </div>

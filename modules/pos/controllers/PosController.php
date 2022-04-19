@@ -2,8 +2,8 @@
 
 namespace logicent\pos\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
-use app\modules\main\enums\Type_View;
+use crudle\main\controllers\base\BaseCrudController;
+use crudle\main\enums\Type_View;
 
 /**
  * Pos controller for the `sales` module

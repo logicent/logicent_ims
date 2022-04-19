@@ -18,14 +18,14 @@ $modal::end();
 <div id="_item" class="ui attached padded segment">
 <?php
     if (in_array('update_stock', array_keys($model->attributes))) :
-        echo $form->field($model, 'update_stock')->checkbox(['class' => $this->context->isReadonly ? 'read-only' : '']);
+        echo $form->field($model, 'update_stock')->checkbox(['class' => $this->context->isReadonly() ? 'read-only' : '']);
     endif ?>
 
     <table class="in-form ui celled table">
         <thead>
             <tr style="font-size: 110%">
         <?php
-            if (!$this->context->isReadonly) : ?>
+            if (!$this->context->isReadonly()) : ?>
                 <th class="select-all-rows" width="8%">
                     <?= Checkbox::widget(['name' => 'select_all_rows', 'options' => ['style' => 'vertical-align: text-top']]) ?>
                     <?= Yii::t('app', 'No.') ?>
@@ -74,7 +74,7 @@ $modal::end();
             echo Elements::button('Delete', [
                     'class' => 'compact red small del-row',
                     'data' => [
-                        'modelClass' => $this->context->modelClass . 'Item'
+                        'modelClass' => $this->context->modelClass() . 'Item'
                     ],
                     'style' => 'display : none'
                 ]);
@@ -82,7 +82,7 @@ $modal::end();
         echo Elements::button('Add Item', [
                 'class' => 'compact small add-row',
                 'data'  => [
-                    'model-class' => $this->context->modelClass . 'Item',
+                    'model-class' => $this->context->modelClass() . 'Item',
                     'form-view' => '/_form_section/item/_form',
                 ]
             ]);

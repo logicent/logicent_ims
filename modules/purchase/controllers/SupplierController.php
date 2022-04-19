@@ -2,7 +2,7 @@
 
 namespace logicent\purchase\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\purchase\models\Supplier;
 use logicent\purchase\models\SupplierSearch;
 

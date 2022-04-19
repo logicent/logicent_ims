@@ -4,7 +4,7 @@ namespace logicent\accounts\models;
 
 use app\enums\Type_Module;
 use app\enums\Type_Relation;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\setup\models\ListViewSettingsForm;
 use logicent\accounts\models\base\BaseTransactionDocument;
 use logicent\sales\models\Customer;
 use Yii;

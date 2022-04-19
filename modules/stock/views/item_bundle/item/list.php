@@ -29,7 +29,7 @@ use Zelenin\yii\SemanticUI\Elements;
         <tbody>
         <?php
             if ($model->isNewRecord || empty($model->items)) :
-                echo $this->render('//_form_section/_no_data');
+                echo $this->render('@system_modules/accounts/views/_form_section/_no_data');
             else :
                 foreach ($model->items as $id => $item)
                     echo $this->render('_form', [

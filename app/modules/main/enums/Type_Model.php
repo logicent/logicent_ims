@@ -1,20 +1,20 @@
 <?php
 
-namespace app\modules\main\enums;
+namespace crudle\main\enums;
 
 // Page
 
-// use app\modules\main\models\Help;
-use app\modules\main\models\auth\People;
-use app\modules\main\models\Report;
-use app\modules\setup\models\DataModel;
-use app\modules\setup\models\EmailNotification;
-use app\modules\setup\models\EmailQueue;
-use app\modules\setup\models\ReportBuilder;
-use app\modules\setup\models\ReportBuilderItem;
-use app\modules\setup\models\Setup;
-use app\modules\setup\models\PrintFormat;
-use app\modules\setup\models\PrintStyle;
+// use crudle\main\models\Help;
+use crudle\main\models\auth\People;
+use crudle\main\models\Report;
+use crudle\setup\models\DataModel;
+use crudle\setup\models\EmailNotification;
+use crudle\setup\models\EmailQueue;
+use crudle\setup\models\ReportBuilder;
+use crudle\setup\models\ReportBuilderItem;
+use crudle\setup\models\Setup;
+use crudle\setup\models\PrintFormat;
+use crudle\setup\models\PrintStyle;
 
 // Data Model
 // use app\models\PaymentEntry;

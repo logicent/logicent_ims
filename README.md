@@ -29,11 +29,10 @@ Continue:
 - Run `./yii user/create-superuser "my_password"` and `./yii rbac/init`
 - Run `./yii serve` in local environment or use preferred web server in production
 
-**System Requirements**
 **Modules**
 - Purchase
-  - Purchase Request
-  - Purchase Order
+  - Purchase Request (Requisition)
+  - Purchase Order (LPO)
 
 - Stock (Item)
   - Purchase (Material) Request

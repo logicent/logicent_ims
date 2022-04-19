@@ -2,7 +2,7 @@
 
 namespace logicent\accounts\controllers\base;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\Item;
 use Yii;
 

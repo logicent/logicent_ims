@@ -4,7 +4,7 @@ namespace app\controllers\hr;
 
 use app\models\hr\SalarySlip;
 use app\models\hr\SalarySlipSearch;
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 
 class SalarySlipController extends BaseCrudController
 {

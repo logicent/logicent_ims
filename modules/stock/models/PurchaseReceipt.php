@@ -2,11 +2,11 @@
 
 namespace logicent\stock\models;
 
-use app\modules\main\models\base\BaseActiveRecord;
+use logicent\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class PurchaseReceipt extends BaseActiveRecord
+class PurchaseReceipt extends BaseTransactionDocument
 {
     // Goods Receipt
     // Goods Return?

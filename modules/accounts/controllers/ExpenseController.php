@@ -2,7 +2,7 @@
 
 namespace logicent\accounts\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\accounts\models\Expense;
 use logicent\accounts\models\ExpenseSearch;
 

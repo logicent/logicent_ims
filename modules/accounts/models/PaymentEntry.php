@@ -2,7 +2,7 @@
 
 namespace app\models\accounts;
 
-use app\modules\customize\models\DocType;
+use crudle\customize\models\DocType;
 use Yii;
 
 class PaymentEntry extends DocType

@@ -3,8 +3,8 @@
 namespace logicent\sales\models;
 
 use app\enums\Type_Module;
-use app\modules\main\models\base\BaseActiveRecord;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 

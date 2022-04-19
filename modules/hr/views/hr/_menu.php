@@ -1,12 +1,12 @@
 <?php
 
-use app\modules\setup\enums\Type_Menu_Group;
+use crudle\setup\enums\Type_Menu_Group;
 
 $this->params['menuGroupClass'] = Type_Menu_Group::class;
 
 return [
     [
-        'route' => '/hr/employee',
+        'route' => '/hr/employee/index',
         'label' => 'Employee',
         'icon' => 'user',
         'iconPath' => null,
@@ -15,7 +15,7 @@ return [
         'visible' => true, // Yii::$app->user->can(Type_Role::Baker),
     ],
     [
-        'route' => '/hr/employee-attendance',
+        'route' => '/hr/employee-attendance/index',
         'label' => 'Employee Attendance',
         'icon' => 'user',
         'iconPath' => null,
@@ -24,7 +24,7 @@ return [
         'visible' => true, // Yii::$app->user->can(Type_Role::Baker),
     ],
     [
-        'route' => '/hr/employee-timesheet',
+        'route' => '/hr/employee-timesheet/index',
         'label' => 'Employee Timesheet',
         'icon' => 'line chart',
         'iconPath' => null,
@@ -33,7 +33,7 @@ return [
         'visible' => true,
     ],
     [
-        'route' => '/hr/leave-application',
+        'route' => '/hr/leave-application/index',
         'label' => 'Leave Application',
         'icon' => 'line chart',
         'iconPath' => null,

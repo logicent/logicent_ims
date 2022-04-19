@@ -2,7 +2,7 @@
 
 namespace logicent\stock\models;
 
-use app\modules\customize\models\DocType;
+use crudle\customize\models\DocType;
 use Yii;
 
 class DeliveryNoteItem extends DocType

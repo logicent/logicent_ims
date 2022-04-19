@@ -4,7 +4,7 @@ namespace logicent\purchase\models;
 
 use app\enums\Type_Module;
 use logicent\accounts\models\base\BaseTransactionDocument;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 

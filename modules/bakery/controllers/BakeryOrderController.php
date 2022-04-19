@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
-use app\modules\main\models\auth\Person;
+use crudle\main\controllers\base\BaseCrudController;
+use crudle\main\models\auth\Person;
 use logicent\bakery\models\BakeryOrder;
 use logicent\bakery\models\BakeryOrderSearch;
 use logicent\sales\models\SalesOrderItem;

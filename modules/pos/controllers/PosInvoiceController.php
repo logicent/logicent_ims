@@ -3,9 +3,9 @@
 namespace logicent\pos\controllers;
 
 use logicent\accounts\controllers\base\BaseTransactionController;
-use app\modules\setup\enums\Status_Transaction;
-use app\modules\setup\enums\Type_Permission;
-use app\modules\setup\models\Setup;
+use crudle\setup\enums\Status_Transaction;
+use crudle\setup\enums\Type_Permission;
+use crudle\setup\models\Setup;
 use logicent\stock\models\Item;
 use logicent\stock\models\ItemWarehouse;
 use logicent\pos\models\PosProfileForm;

@@ -2,8 +2,9 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemPrice;
+use logicent\stock\models\ItemPriceSearch;
 
 class ItemPriceController extends BaseCrudController
 {

@@ -2,7 +2,7 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\StockEntry;
 use logicent\stock\models\StockEntryItem;
 use logicent\stock\models\StockEntrySearch;

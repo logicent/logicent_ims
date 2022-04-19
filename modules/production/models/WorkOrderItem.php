@@ -2,7 +2,7 @@
 
 namespace logicent\production\models;
 
-use app\modules\main\models\base\BaseActiveRecord;
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 
 class WorkOrderItem extends BaseActiveRecord

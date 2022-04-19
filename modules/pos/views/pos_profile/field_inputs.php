@@ -1,6 +1,5 @@
 <?php
 
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
 use app\helpers\SelectableItems;
 use logicent\accounts\enums\Type_Sale;
 use logicent\sales\models\Customer;
@@ -8,6 +7,9 @@ use logicent\stock\enums\Item_View;
 use logicent\stock\models\Warehouse;
 
 $this->title = Yii::t('app', 'POS Profile');
+// clear breadcrumbs to overwrite
+unset($this->params['breadcrumbs']);
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'POS'), 'url' => ['/pos']];
 
 // Form Sections
 // (general)

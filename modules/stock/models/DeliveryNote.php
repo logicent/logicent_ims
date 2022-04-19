@@ -2,11 +2,11 @@
 
 namespace logicent\stock\models;
 
-use app\modules\customize\models\DocType;
+use logicent\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-class DeliveryNote extends DocType
+class DeliveryNote extends BaseTransactionDocument
 {
     public static function tableName()
     {

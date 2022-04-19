@@ -3,7 +3,7 @@
 namespace logicent\stock\models;
 
 use app\enums\Status_Active;
-use app\modules\main\models\base\BaseActiveRecord;
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -15,6 +15,11 @@ class ItemWarehouse extends BaseActiveRecord
     public static function tableName()
     {
         return 'item_warehouse';
+    }
+
+    public static function primaryKey()
+    {
+        return ['warehouse_id', 'item_id'];
     }
 
     public function rules()

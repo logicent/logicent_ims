@@ -2,7 +2,7 @@
 
 namespace logicent\hr\models;
 
-use app\modules\main\models\base\BaseActiveRecord;
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii2tech\filedb\Query as FileDbQuery;

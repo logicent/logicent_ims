@@ -4,7 +4,7 @@ namespace app\controllers\hr;
 
 use app\models\hr\PayrollEntry;
 use app\models\hr\PayrollEntrySearch;
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 
 class PayrollEntryController extends BaseCrudController
 {

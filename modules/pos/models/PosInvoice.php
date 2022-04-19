@@ -5,7 +5,7 @@ namespace logicent\pos\models;
 use logicent\accounts\enums\Cart_Mode;
 use app\enums\Status_Transaction;
 use app\enums\Type_Relation;
-use app\modules\setup\models\Setup;
+use crudle\setup\models\Setup;
 use logicent\accounts\enums\Status_Payment;
 use logicent\accounts\enums\Type_Sale;
 use logicent\pos\models\PosProfileForm;

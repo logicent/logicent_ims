@@ -2,11 +2,11 @@
 
 namespace logicent\accounts\models\base;
 
-use app\modules\main\models\base\AutoincrementIdInterface;
-use app\modules\main\models\base\BaseActiveRecord;
-use app\modules\setup\enums\Status_Transaction;
-use app\modules\setup\enums\Type_Permission;
-use app\modules\setup\models\ListViewSettingsForm;
+use crudle\main\models\base\AutoincrementIdInterface;
+use crudle\main\models\base\BaseActiveRecord;
+use crudle\setup\enums\Status_Transaction;
+use crudle\setup\enums\Type_Permission;
+use crudle\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 

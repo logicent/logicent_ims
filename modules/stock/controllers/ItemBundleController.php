@@ -2,9 +2,10 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemBundle;
 use logicent\stock\models\ItemBundleItem;
+use logicent\stock\models\ItemBundleSearch;
 
 class ItemBundleController extends BaseCrudController
 {

@@ -2,7 +2,7 @@
 
 namespace logicent\pos\controllers;
 
-use app\modules\setup\controllers\base\BaseSettingsController;
+use crudle\setup\controllers\base\BaseSettingsController;
 use logicent\pos\models\PosProfileForm;
 
 class PosProfileController extends BaseSettingsController

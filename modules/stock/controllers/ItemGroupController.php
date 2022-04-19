@@ -2,8 +2,9 @@
 
 namespace logicent\stock\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\stock\models\ItemGroup;
+use logicent\stock\models\ItemGroupSearch;
 
 class ItemGroupController extends BaseCrudController
 {

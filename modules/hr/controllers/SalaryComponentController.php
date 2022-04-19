@@ -4,7 +4,7 @@ namespace app\controllers\hr;
 
 use app\models\hr\SalaryComponent;
 use app\models\hr\SalaryComponentSearch;
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 
 class SalaryComponentController extends BaseCrudController
 {

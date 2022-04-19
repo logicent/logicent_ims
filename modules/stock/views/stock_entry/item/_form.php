@@ -5,7 +5,7 @@ use logicent\stock\models\Item;
 use logicent\stock\models\ItemUom;
 use yii\helpers\Html;
 
-$isReadonly = $this->context->isReadonly;
+$isReadonly = $this->context->isReadonly();
 
 ?>
 <tr id="<?= $model->formName() ?>_<?= $rowId ?>">

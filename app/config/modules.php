@@ -10,19 +10,25 @@ Yii::setAlias('@app_website', '@system_modules/website');
 
 return [
     // core modules
-    'main'      => app\modules\main\Module::class,
-    'setup'     => app\modules\setup\Module::class,
+    'main'      => crudle\main\Module::class,
+    'setup'     => crudle\setup\Module::class,
+    'website'   => website\Module::class,
+
     // standard modules
     'accounts'  => logicent\accounts\Module::class,
-    'bakery'    => logicent\bakery\Module::class,
-    'fleet'     => logicent\fleet\Module::class,
     'hr'        => logicent\hr\Module::class,
+    // 'payroll'   => logicent\payroll\Module::class,
     'pos'       => logicent\pos\Module::class,
-    'production' => logicent\production\Module::class,
     'purchase'  => logicent\purchase\Module::class,
     'sales'     => logicent\sales\Module::class,
     'stock'     => logicent\stock\Module::class,
-    'website'   => website\Module::class,
-    // custom modules
 
+    'bakery'    => logicent\bakery\Module::class,
+    // 'facility'  => logicent\facility\Module::class,
+    'fleet'     => logicent\fleet\Module::class,
+    // 'nonprofit'=> logicent\nonprofit\Module::class,
+    'production'=> logicent\production\Module::class,
+    // 'property'  => logicent\property\Module::class,
+
+    // custom modules
 ];

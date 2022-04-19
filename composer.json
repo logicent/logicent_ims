@@ -57,8 +57,9 @@
     },
     "autoload": {
         "psr-4": {
-            "website\\": "modules/website",
-            "logicent\\": "modules/"
+            "crudle\\": "app/modules",
+            "logicent\\": "modules/",
+            "website\\": "modules/website"
         }
     },
     "config": {

@@ -1,12 +1,12 @@
 <?php
 
-use app\modules\setup\enums\Type_Menu_Group;
+use crudle\setup\enums\Type_Menu_Group;
 
 $this->params['menuGroupClass'] = Type_Menu_Group::class;
 
 return [
     [
-        'route' => '/production/work-order',
+        'route' => '/production/work-order/index',
         'label' => 'Work Order',
         'icon' => 'user',
         'iconPath' => null,

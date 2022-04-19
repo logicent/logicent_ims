@@ -2,7 +2,7 @@
 
 namespace logicent\sales\controllers;
 
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 use logicent\sales\models\Customer;
 use logicent\sales\models\CustomerSearch;
 

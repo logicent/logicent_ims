@@ -15,7 +15,7 @@ use Zelenin\yii\SemanticUI\modules\Checkbox;
         <thead>
             <tr>
             <?php
-            if (!$this->context->isReadonly) : ?>
+            if (!$this->context->isReadonly()) : ?>
                 <th class="select-all-rows" width="8%">
                     <?= Checkbox::widget(['name' => 'select_all_rows', 'options' => ['style' => 'vertical-align: text-top']]) ?>
                     <?= Yii::t('app', 'No.') ?>
@@ -60,7 +60,7 @@ use Zelenin\yii\SemanticUI\modules\Checkbox;
             echo Elements::button('Delete', [
                     'class' => 'compact red small del-row',
                     'data' => [
-                        'modelClass' => $this->context->modelClass . 'Payment'
+                        'modelClass' => $this->context->modelClass() . 'Payment'
                     ],
                     'style' => 'display : none'
                 ]);
@@ -69,7 +69,7 @@ use Zelenin\yii\SemanticUI\modules\Checkbox;
             echo Elements::button('Add Payment', [
                     'class' => 'compact small add-row',
                     'data'  => [
-                        'model-class' => $this->context->modelClass . 'Payment',
+                        'model-class' => $this->context->modelClass() . 'Payment',
                         'form-view' => '/_form_section/payment/_form',
                     ]
                 ]);
@@ -77,5 +77,5 @@ use Zelenin\yii\SemanticUI\modules\Checkbox;
     endif ?>
 </div>
 <div class="ui attached padded segment">
-    <?= $form->field($model, 'terms')->textarea(['rows' => 3, 'readonly' => $this->context->isReadonly]) ?>
+    <?= $form->field($model, 'terms')->textarea(['rows' => 3, 'readonly' => $this->context->isReadonly()]) ?>
 </div>

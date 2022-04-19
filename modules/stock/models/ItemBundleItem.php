@@ -2,7 +2,7 @@
 
 namespace logicent\stock\models;
 
-use app\modules\main\models\base\BaseActiveRecord;
+use crudle\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 

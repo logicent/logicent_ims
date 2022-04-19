@@ -3,11 +3,7 @@
 use app\helpers\SelectableItems;
 use logicent\sales\models\Customer;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\widgets\MaskedInput;
-use Zelenin\yii\SemanticUI\Elements;
 use Zelenin\yii\SemanticUI\helpers\Size;
-use Zelenin\yii\SemanticUI\modules\Accordion;
 use Zelenin\yii\SemanticUI\modules\Modal;
 use Zelenin\yii\SemanticUI\modules\Select;
 
@@ -17,7 +13,7 @@ $modal = Modal::begin([
 ]);
 $modal::end();
 
-$isReadonly = $this->context->isReadonly;
+$isReadonly = $this->context->isReadonly();
 
 echo $form
         ->field($model, 'customer_id')

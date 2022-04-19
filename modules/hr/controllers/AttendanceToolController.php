@@ -3,7 +3,7 @@
 namespace app\controllers\hr;
 
 use app\models\hr\AttendanceTool;
-use app\modules\main\controllers\base\BaseCrudController;
+use crudle\main\controllers\base\BaseCrudController;
 
 class AttendanceToolController extends BaseCrudController
 {
