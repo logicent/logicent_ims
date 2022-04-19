@@ -2,7 +2,7 @@
 
 namespace crudle\main\enums;
 
-// Page
+// Page (non-CRUD) models
 
 // use crudle\main\models\Help;
 use crudle\main\models\auth\People;
