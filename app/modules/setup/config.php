@@ -1,31 +1,15 @@
 <?php
 
-// use yii\web\GroupUrlRule;
-
-// new GroupUrlRule([
-//     'prefix' => 'app',
-//     'rules' => [
-//         'setup' => '/setup',
-//     ],
-// ]);
-
 return [
-    // 'controllerNamespace' => 'app\controllers',
+    // 'controllerNamespace' => 'crudle\setup\controllers',
     // 'params' => [],
-    // 'id' => 'my-application',
-    // 'module' => null,
+    // 'id' => 'setup',
     // 'layout' => 'main',
     // 'controllerMap' => [],
-    'defaultRoute' => 'setup', // !! MUST be set correctly
+    'defaultRoute' => 'setup', // !! MUST be set
 
-    // 'basePath' => '',
-    // 'controllerPath' => '',
-    // 'viewPath' => '',
-    // 'layoutPath' => '',
-
-    // 'name' => 'My Application', // unknown property
-    // 'catchAll' => null, // unknown property
-    // 'charset' => 'UTF-8', // unknown property
-    // 'language' => 'en', // unknown property
-    // 'sourceLanguage' => 'en-US', // unknown property
+    // 'basePath' => '@app_setup',
+    // 'controllerPath' => '@app_setup/controllers'
+    // 'viewPath' => '@app_setup/views',
+    // 'layoutPath' => '@app_main/views/_layouts',
 ];
