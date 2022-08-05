@@ -27,6 +27,8 @@ return [
         // ** end website
         // ** app routes
         'app' => 'main/app/index', // defaultRoute requires this rule
+        // 'app/about' => 'main/main/about',
+        // 'app/keyboard-shortcuts' => 'main/main/keyboard-shortcuts',
         'app/login' => 'main/app/login',
         'app/logout' => 'main/app/logout',
         'app/forgot-password' => 'main/app/request-password-reset',

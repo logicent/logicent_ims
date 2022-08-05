@@ -4,6 +4,7 @@ namespace crudle\main\controllers;
 
 use crudle\main\controllers\base\BaseViewController;
 use crudle\main\enums\Type_View;
+use Yii;
 
 class MainController extends BaseViewController
 {
@@ -14,6 +15,24 @@ class MainController extends BaseViewController
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionAbout()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        // else
+        return $this->render('about');
+    }
+
+    public function actionKeyboardShortcuts()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        // else
+        return $this->render('keyboard-shortcuts');
     }
 
     // ViewInterface
