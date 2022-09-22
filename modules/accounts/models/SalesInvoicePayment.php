@@ -1,13 +1,13 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseTransactionPayment;
+use crudle\ext\accounts\models\base\BaseTransactionPayment;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_invoice_payment".
+ * This is the model class for table "Sales_Invoice_Payment".
  *
  * @property GeneralLedger $account
  * @property GeneralLedger $taxCode
@@ -16,7 +16,7 @@ class SalesInvoicePayment extends BaseTransactionPayment
 {
     public static function tableName()
     {
-        return 'sales_invoice_payment';
+        return 'lgct_Sales_Invoice_Payment';
     }
 
     public function attributeLabels()

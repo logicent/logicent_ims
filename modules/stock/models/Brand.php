@@ -1,14 +1,14 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use app\enums\Status_Active;
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\app\enums\Status_Active;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "brand".
+ * This is the model class for table "Brand".
  *
  * @property Item[] $items
  */
@@ -16,7 +16,7 @@ class Brand extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'brand';
+        return 'lgct_Brand';
     }
 
     public function rules()

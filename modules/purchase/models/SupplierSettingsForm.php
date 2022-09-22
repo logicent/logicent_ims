@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use crudle\setup\models\base\BaseSettingsForm;
+use crudle\app\setup\models\base\BaseSettingsForm;
 use Yii;
 
 class SupplierSettingsForm extends BaseSettingsForm

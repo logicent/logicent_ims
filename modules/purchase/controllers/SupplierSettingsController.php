@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\purchase\controllers;
+namespace crudle\ext\purchase\controllers;
 
-use crudle\setup\controllers\base\BaseSettingsController;
-use logicent\purchase\models\SupplierSettingsForm;
+use crudle\app\setup\controllers\base\BaseSettingsController;
+use crudle\ext\purchase\models\SupplierSettingsForm;
 
 class SupplierSettingsController extends BaseSettingsController
 {

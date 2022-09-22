@@ -1,17 +1,18 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use app\enums\Type_Module;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\setup\models\ListViewSettingsForm;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "quotation".
+ * This is the model class for table "Quotation".
  */
-class Quotation extends BaseActiveRecord
+class Quotation extends BaseTransactionDocument
 {
     const DOC_NUM_PREFIX = 'SQ-';
     
@@ -32,7 +33,7 @@ class Quotation extends BaseActiveRecord
 
     public static function tableName()
     {
-        return 'quotation';
+        return 'lgct_Quotation';
     }
 
     public function rules()

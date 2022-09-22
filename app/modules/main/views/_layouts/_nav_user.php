@@ -1,8 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\collections\Menu;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\collections\Menu;
+use icms\FomanticUI\Elements;
 
 ?>
 <div class="ui dropdown item right">
@@ -22,13 +22,18 @@ use Zelenin\yii\SemanticUI\Elements;
                     ['class' => 'item']) ?>
         <?php
             if ((bool) $layoutSettings->hideWebsiteLink === false) :
-                echo Html::a(Yii::t('app', 'Visit website'), ['/'], ['class' => 'item']);
+                echo Html::a(Yii::t('app', 'Visit website'),
+                            ['/'], [
+                                'class' => 'item',
+                                'target' => '_blank'
+                            ]);
             endif ?>
         <?= Html::tag('div', null, ['class' => 'divider', 'style' => 'margin: 0']) ?>
-        <?= Html::a(Yii::t('app', 'Log out'), ['/app/logout'], [
-                'class' => 'item',
-                'data' => ['method' => 'post']
-            ]) ?>
+        <?= Html::a(Yii::t('app', 'Log out'),
+                    ['/app/logout'], [
+                        'class' => 'item',
+                        'data' => ['method' => 'post']
+                    ]) ?>
     </div><!-- ./menu -->
 </div><!-- ./dropdown item -->
 
@@ -44,7 +49,10 @@ Menu::widget([
                 [
                     'label' => Yii::t('app', 'Visit website'),
                     'url' => ['/'],
-                    'options' => ['class' => 'item']
+                    'options' => [
+                        'class' => 'item',
+                        'target' => '_blank'
+                    ]
                 ],
                 [
                     'label' => Yii::t('app', 'My account'),

@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\FlatpickrAsset;
+use crudle\app\assets\Flatpickr;
 
-FlatpickrAsset::register($this);
+Flatpickr::register($this);
 
 ?>
 

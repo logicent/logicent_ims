@@ -1,28 +1,26 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\auth\Role as AuthRole;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\auth\Role as AuthRole;
 
 class Role extends AuthRole
 {
-    public $id;
-    public $status;
-
-    public function afterFind()
+    public function init()
     {
-        $this->id = $this->name;
-        $this->status = $this->inactive;
-
-        return parent::afterFind();
+        parent::init();
+        $this->listSettings->listIdAttribute = 'name';
     }
 
     // ActiveRecord Interface
     public static function enums()
     {
         return [
-            'status' => Status_Active::class,
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'inactive'
+            ]
         ];
     }
 }

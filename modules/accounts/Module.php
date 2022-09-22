@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\accounts;
+namespace crudle\ext\accounts;
 
 use Yii;
 
 /**
  * accounts module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\accounts\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\accounts\controllers';
 
     /**
      * {@inheritdoc}

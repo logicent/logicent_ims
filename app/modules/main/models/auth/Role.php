@@ -1,8 +1,8 @@
 <?php
 
-namespace crudle\main\models\auth;
+namespace crudle\app\main\models\auth;
 
-use crudle\setup\enums\Type_Permission;
+use crudle\app\setup\enums\Type_Permission;
 
 class Role extends Item
 {
@@ -52,5 +52,4 @@ class Role extends Item
             Type_Permission::Delete => Type_Permission::Delete,
         ];
     }
-
 }

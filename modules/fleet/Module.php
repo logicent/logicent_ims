@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\fleet;
+namespace crudle\ext\fleet;
 
 use Yii;
 
 /**
  * fleet module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\fleet\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\fleet\controllers';
 
     /**
      * {@inheritdoc}

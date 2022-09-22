@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\accounts\controllers\base;
+namespace crudle\ext\accounts\controllers\base;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\Item;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\Item;
 use Yii;
 
 class BaseTransactionController extends BaseCrudController

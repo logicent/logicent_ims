@@ -1,8 +1,8 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\stock\models\Item;
-use logicent\stock\models\ItemUom;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\stock\models\Item;
+use crudle\ext\stock\models\ItemUom;
 use yii\helpers\Html;
 
 $isReadonly = $this->context->isReadonly();

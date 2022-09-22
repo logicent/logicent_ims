@@ -1,9 +1,9 @@
 <?php
 
-use app\helpers\SelectableItems;
+use crudle\app\helpers\SelectableItems;
 use app\models\Item;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
 
 $isReadonly = $this->context->isReadonly();

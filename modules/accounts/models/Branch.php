@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 
 /**
- * This is the model class for table "branch".
+ * This is the model class for table "Branch".
  *
  * @property Item[] $items
  */
@@ -13,7 +13,7 @@ class Branch extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'branch';
+        return 'lgct_Branch';
     }
 
     public function getCustomers()

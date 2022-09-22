@@ -1,11 +1,11 @@
 <?php
 
-use crudle\setup\models\GeneralSettingsForm;
-use crudle\setup\models\Setup;
+use crudle\app\setup\models\GeneralSettingsForm;
+use crudle\app\setup\models\Setup;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
-use Zelenin\yii\SemanticUI\Elements;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use icms\FomanticUI\Elements;
+use icms\FomanticUI\widgets\ActiveForm;
 
 $businessProfile = Setup::getSettings( GeneralSettingsForm::class );
 $this->params['businessLogo'] = $businessProfile->logoPath;
@@ -33,7 +33,7 @@ $form = ActiveForm::begin([
 <?php
     if (!empty($this->params['businessLogo'])) : ?>
     <div class="ui centered row logo">
-        <img class="ui small image" src="<?= Yii::getAlias('@web/uploads/') . $this->params['businessLogo']?>">
+        <img class="ui image" src="<?= Yii::getAlias('@web/uploads/') . $this->params['businessLogo']?>">
     </div>
 <?php
     endif ?>

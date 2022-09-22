@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\StockEntry;
-use logicent\stock\models\StockEntryItem;
-use logicent\stock\models\StockEntrySearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\StockEntry;
+use crudle\ext\stock\models\StockEntryItem;
+use crudle\ext\stock\models\StockEntrySearch;
 
 class StockEntryController extends BaseCrudController
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\enums\Status_Queue;
-use crudle\setup\enums\Type_Role;
-use crudle\setup\enums\Status_User;
-use crudle\main\models\auth\Person;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\models\Setup;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\enums\Status_Queue;
+use crudle\app\setup\enums\Type_Role;
+use crudle\app\setup\enums\Status_User;
+use crudle\app\main\models\auth\Person;
+use crudle\app\main\models\base\BaseActiveRecord;
+use crudle\app\setup\models\Setup;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -20,7 +20,7 @@ class EmailQueue extends BaseActiveRecord
 {
     public static function tableName()
     {
-        return 'email_queue';
+        return '{{%Email_Queue}}';
     }
 
     public function behaviors()
@@ -95,7 +95,10 @@ class EmailQueue extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'status' => Status_Queue::class,
+            'status' => [
+                'class' => Status_Queue::class,
+                'attribute' => 'inactive'
+            ],
         ];
     }
 
@@ -113,7 +116,7 @@ class EmailQueue extends BaseActiveRecord
         $status         = Yii::t('app', 'Status: ') . $sourceModel->status;
         $description    = $sourceModel->description;
 
-        $notifyPerson = Person::find()->innerJoinWith('auth')->where(['user.id' => $sourceModel->{$sourceModel->sendTo()}])->one();
+        $notifyPerson = Person::find()->innerJoinWith('crdl_Auth')->where(['crdl_User.id' => $sourceModel->{$sourceModel->sendTo()}])->one();
         $this->message = Json::encode([
             'salutation' => $notifyPerson->full_name,
             'preamble'  => $preamble,
@@ -140,9 +143,9 @@ class EmailQueue extends BaseActiveRecord
         $cc_recipients = [];
         // check if activity cc recipients are defined
         $cc_recipients = Person::find()->select('email')
-                                    ->innerJoinWith('auth')
-                                    ->where([ 'auth.status' => Status_User::Active ])
-                                    ->andWhere([ 'in', 'user.id', $sourceModel->{$sourceModel->ccIds()} ])
+                                    ->innerJoinWith('crdl_Auth')
+                                    ->where([ 'crdl_Auth.status' => Status_User::Active ])
+                                    ->andWhere([ 'in', 'crdl_User.id', $sourceModel->{$sourceModel->ccIds()} ])
                                     ->column();
 
         // check if organization cc recipients are defined

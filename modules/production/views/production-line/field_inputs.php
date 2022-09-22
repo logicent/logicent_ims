@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use logicent\production\models\ProductionStage;
+use crudle\ext\production\models\ProductionStage;
 
 ?>
 

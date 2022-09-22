@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\DeliveryNote;
-use logicent\stock\models\DeliveryNoteSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\DeliveryNote;
+use crudle\ext\stock\models\DeliveryNoteSearch;
 
 class DeliveryNoteController extends BaseCrudController
 {

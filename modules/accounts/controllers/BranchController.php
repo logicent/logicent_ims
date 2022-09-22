@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\accounts\models\Branch;
-use logicent\accounts\models\BranchSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\accounts\models\Branch;
+use crudle\ext\accounts\models\BranchSearch;
 
 class BranchController extends BaseCrudController
 {

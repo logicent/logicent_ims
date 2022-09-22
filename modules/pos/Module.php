@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\pos;
+namespace crudle\ext\pos;
 
 use Yii;
 
 /**
  * pos module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\pos\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\pos\controllers';
 
     /**
      * {@inheritdoc}

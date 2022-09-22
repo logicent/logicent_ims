@@ -1,12 +1,12 @@
 <?php
 
-use crudle\setup\models\AppMenuHelp;
+use crudle\app\setup\models\AppHelpMenu;
 
-echo $this->render('@app_main/views/_form_section/item', [
-        'model' =>  new AppMenuHelp(),
-        'detailModels' => $this->context->detailModels()['helpMenu'],
+echo $this->render('@appMain/views/_form_section/item', [
+        'model' =>  new AppHelpMenu(),
+        'detailModels' => $this->context->getDetailModels()['helpMenu'],
         'form' => $form,
-        'formView' => '@app_setup/views/_menu/field_inputs',
-        'listColumns' => '@app_setup/views/_menu/list_columns',
+        'formView' => '@appSetup/views/_menu/field_inputs',
+        'listColumns' => '@appSetup/views/_menu/list_columns',
         'listId' => 'help_menu',
     ]) ?>

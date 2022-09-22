@@ -1,24 +1,35 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\enums\Type_Permission;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Permission_Group;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\enums\Type_Field_Input;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\enums\Permission_Group;
 use Yii;
 
 /**
- * This is the model class for table "app_data_model".
+ * This is the model class for table "data_model".
  */
-class DataModel extends BaseActiveRecord
+class DataModel extends ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function init()
+    {
+        parent::init();
+        $this->listSettings->listNameAttribute = 'id';
+    }
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'app_data_model';
+        return '{{%Data_Model}}';
     }
 
     /**
@@ -26,14 +37,15 @@ class DataModel extends BaseActiveRecord
      */
     public function rules()
     {
-        return [
-            [['name', 'module'], 'required'],
-            [['max_attachments', 'hide_copy', 'is_table', 'quick_entry', 'track_changes', 'track_views', 'allow_auto_repeat', 'allow_import'], 'integer'],
+        return array_merge(parent::rules(), [
+            [['id', 'module'], 'required'],
+            [['id'], 'unique'],
+            [['status'], 'default', 'value' => Status_Active::Yes],
+            [['max_attachments'], 'integer'],
+            [['hide_copy', 'is_table', 'quick_entry', 'track_changes', 'track_views', 'allow_auto_repeat', 'allow_import'], 'boolean'],
             [['search_fields'], 'string'],
-            [['created_at', 'updated_at', 'deleted_at'], 'safe'],
-            [['name', 'module', 'title_field', 'image_field', 'sort_field', 'sort_order', 'created_by', 'updated_by'], 'string', 'max' => 140],
-            [['name'], 'unique'],
-        ];
+            [['module', 'title_field', 'image_field', 'sort_field', 'sort_order'], 'string', 'max' => 140],
+        ]);
     }
 
     /**
@@ -41,8 +53,8 @@ class DataModel extends BaseActiveRecord
      */
     public function attributeLabels()
     {
-        return [
-            'name' => Yii::t('app', 'Name'),
+        return array_merge(parent::attributeLabels(), [
+            'id' => Yii::t('app', 'Name'),
             'module' => Yii::t('app', 'Module'),
             'title_field' => Yii::t('app', 'Title Field'),
             'image_field' => Yii::t('app', 'Image Field'),
@@ -57,17 +69,22 @@ class DataModel extends BaseActiveRecord
             'search_fields' => Yii::t('app', 'Search Fields'),
             'sort_field' => Yii::t('app', 'Sort Field'),
             'sort_order' => Yii::t('app', 'Sort Order'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'deleted_at' => Yii::t('app', 'Deleted At'),
+        ]);
+    }
+
+    public static function relations()
+    {
+        return [
+            'dataModelFields'     => [
+                'class' => DataModelField::class,
+                'type' => Type_Relation::ChildModel
+            ],
         ];
     }
 
     public function getDataModelFields()
     {
-        return $this->hasMany(DataModelField::class, [ 'data_model' => 'name' ]);
+        return $this->hasMany(DataModelField::class, [ 'model_name' => 'id' ])->orderBy('col_index');
     }
 
     // Workflow Interface
@@ -87,7 +104,10 @@ class DataModel extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'status' => Status_Transaction::class
+            'status' => [
+                'class' =>Status_Active::class,
+                'attribute' => 'status'
+            ]
         ];
     }
 
@@ -96,30 +116,30 @@ class DataModel extends BaseActiveRecord
         $columns = [];
         // \yii\helpers\VarDumper::dump($this->dataModelFields, 3, true);exit;
         foreach ($this->dataModelFields as $dataModelField) {
-            $columns[$dataModelField->name] = DataModelField::getDbType()[$dataModelField->type];
+            $columns[$dataModelField->field_name] = Type_Field_Input::dbTypes()[$dataModelField->field_type];
 
             if ( !empty($dataModelField->length) ) 
-                $columns[$dataModelField->name] .= '('. $dataModelField->length . ') ';
+                $columns[$dataModelField->field_name] .= '('. $dataModelField->length . ') ';
 
             if ( (bool) $dataModelField->mandatory === true )
-                $columns[$dataModelField->name] .= DataModelField::dbColumnAttributeConstraints()['mandatory'];
+                $columns[$dataModelField->field_name] .= DataModelField::dbColumnAttributeConstraints()['mandatory'];
 
             if ( (bool) $dataModelField->unique == true ) 
-                $columns[$dataModelField->name] .= DataModelField::dbColumnAttributeConstraints()['unique'];
-                
+                $columns[$dataModelField->field_name] .= DataModelField::dbColumnAttributeConstraints()['unique'];
+
             if ( !empty($dataModelField->default ) ) 
-                $columns[$dataModelField->name] .= " DEFAULT " . " '" .$dataModelField->default . "' " ;
-        }       
+                $columns[$dataModelField->field_name] .= " DEFAULT " . " '" .$dataModelField->default . "' " ;
+        }
         // $options = '';
-        return Yii::$app->db->createCommand()->createTable($this->name, $columns)->execute();
+        return Yii::$app->db->createCommand()->createTable($this->id, $columns)->execute();
     }
 
     // public function alterTable()
     // {
     //     $columns = [];
     //     foreach ($this->dataModelFields as $dataModelField)
-    //         $columns[$dataModelField->name] = DataModelField::getDbType()[$dataModelField->type];
+    //         $columns[$dataModelField->field_name] = DataModelField::getDbType()[$dataModelField->type];
     //     // $options = '';
-    //     return Yii::$app->db->createCommand()->createTable($this->name, $columns)->execute();
+    //     return Yii::$app->db->createCommand()->createTable($this->field_name, $columns)->execute();
     // }
 }

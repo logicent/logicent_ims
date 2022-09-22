@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
+use crudle\app\main\controllers\base\BaseCrudController;
 use Yii;
 use yii\helpers\Inflector;
 
@@ -15,7 +15,7 @@ class DefaultController extends BaseCrudController
     {
         parent::init();
 
-        $this->viewPath = Yii::getAlias('@system_modules/accounts/views') . '/' . Inflector::underscore(
+        $this->viewPath = Yii::getAlias('@extModules/accounts/views') . '/' . Inflector::underscore(
             Inflector::id2camel($this->id)
         );
     }

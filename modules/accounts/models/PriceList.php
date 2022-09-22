@@ -1,13 +1,13 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "price_list".
+ * This is the model class for table "Price_List".
  *
  * @property ItemPrice[] $stockItemPrices
  */
@@ -15,7 +15,7 @@ class PriceList extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'price_list';
+        return 'lgct_Price_List';
     }
 
     public function rules()

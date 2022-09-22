@@ -1,19 +1,19 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseTaxCharge;
+use crudle\ext\accounts\models\base\BaseTaxCharge;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_tax_charge".
+ * This is the model class for table "Sales_Tax_Charge".
  */
 class SalesTaxCharge extends BaseTaxCharge
 {
     public static function tableName()
     {
-        return 'sales_tax_charge';
+        return 'lgct_Sales_Tax_Charge';
     }
 
     public function getCustomers()

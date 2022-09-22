@@ -1,19 +1,18 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use logicent\stock\models\ItemWarehouse;
+use crudle\ext\stock\models\ItemWarehouse;
 
 class ItemWarehouseSearch extends ItemWarehouse
 {
     public function rules()
     {
         return [
-            [['id'], 'required'],
-            [['id', 'item_id', 'warehouse_id'], 'string', 'max' => 140],
+            [['item_id', 'warehouse_id'], 'string', 'max' => 140],
             [['qty_in_stock', 'qty_ordered', 'qty_reserved', 'qty_committed'], 'number'],
         ];
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\accounts\enums;
+namespace crudle\ext\accounts\enums;
 
 class Cart_Mode
 {

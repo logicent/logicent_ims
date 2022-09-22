@@ -1,10 +1,10 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\accounts\enums\Type_Sale;
-use logicent\sales\models\Customer;
-use logicent\stock\enums\Item_View;
-use logicent\stock\models\Warehouse;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\enums\Type_Sale;
+use crudle\ext\sales\models\Customer;
+use crudle\ext\stock\enums\Item_View;
+use crudle\ext\stock\models\Warehouse;
 
 $this->title = Yii::t('app', 'POS Profile');
 // clear breadcrumbs to overwrite

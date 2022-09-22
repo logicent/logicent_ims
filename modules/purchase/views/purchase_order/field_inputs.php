@@ -18,10 +18,10 @@ use yii\helpers\Html;
 </div>
 
 <!-- Currency & Price List -->
-<?= $this->render('@system_modules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
 
 <!-- Item table & Document totals -->
-<?= $this->render('@system_modules/accounts/views/_form_section/item', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/item', ['model' => $model, 'form' => $form]) ?>
 
 <!-- Payment table -->
-<?= $this->render('@system_modules/accounts/views/_form_section/payment', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/payment', ['model' => $model, 'form' => $form]) ?>

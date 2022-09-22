@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use logicent\accounts\models\base\BaseTransactionPaymentSearch;
+use crudle\ext\accounts\models\base\BaseTransactionPaymentSearch;
 
 class SalesOrderPaymentSearch extends BaseTransactionPaymentSearch
 {

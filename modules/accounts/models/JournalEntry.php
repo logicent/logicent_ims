@@ -1,16 +1,16 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 
 /**
- * This is the model class for table "journal_entry".
+ * This is the model class for table "Journal_Entry".
  */
-class JournalEntry extends BaseSetupMasterData
+class JournalEntry extends BaseTransactionDocument
 {
     public static function tableName()
     {
-        return 'journal_entry';
+        return 'lgct_Journal_Entry';
     }
 }

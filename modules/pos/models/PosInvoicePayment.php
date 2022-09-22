@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\pos\models;
+namespace crudle\ext\pos\models;
 
-use logicent\accounts\models\SalesInvoicePayment;
+use crudle\ext\accounts\models\SalesInvoicePayment;
 
 class PosInvoicePayment extends SalesInvoicePayment
 {

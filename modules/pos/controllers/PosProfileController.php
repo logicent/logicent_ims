@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\pos\controllers;
+namespace crudle\ext\pos\controllers;
 
-use crudle\setup\controllers\base\BaseSettingsController;
-use logicent\pos\models\PosProfileForm;
+use crudle\app\setup\controllers\base\BaseSettingsController;
+use crudle\ext\pos\models\PosProfileForm;
 
 class PosProfileController extends BaseSettingsController
 {

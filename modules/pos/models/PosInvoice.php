@@ -1,16 +1,16 @@
 <?php
 
-namespace logicent\pos\models;
+namespace crudle\ext\pos\models;
 
-use logicent\accounts\enums\Cart_Mode;
-use app\enums\Status_Transaction;
-use app\enums\Type_Relation;
-use crudle\setup\models\Setup;
-use logicent\accounts\enums\Status_Payment;
-use logicent\accounts\enums\Type_Sale;
-use logicent\pos\models\PosProfileForm;
-use logicent\accounts\models\SalesInvoice;
-use logicent\accounts\models\SalesTaxCharge;
+use crudle\ext\accounts\enums\Cart_Mode;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\setup\models\Setup;
+use crudle\ext\accounts\enums\Status_Payment;
+use crudle\ext\accounts\enums\Type_Sale;
+use crudle\ext\pos\models\PosProfileForm;
+use crudle\ext\accounts\models\SalesInvoice;
+use crudle\ext\accounts\models\SalesTaxCharge;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -28,7 +28,6 @@ class PosInvoice extends SalesInvoice
     public $printReceipt = true;
     public $printDeliveryNote = false;
     public $printCreditNote = false;
-
 
     public function init()
     {

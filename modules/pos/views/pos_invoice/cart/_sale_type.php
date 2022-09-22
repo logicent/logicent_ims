@@ -1,6 +1,6 @@
 <?php
 
-use logicent\accounts\enums\Type_Sale;
+use crudle\ext\accounts\enums\Type_Sale;
 use yii\helpers\Html;
 ?>
 

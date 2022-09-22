@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
-use crudle\main\models\base\BaseActiveRecordDetail;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\main\models\ActiveRecordDetail;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 
 /**
  * This is the base model class for "_payment".
  */
-class BaseTransactionPayment extends BaseActiveRecordDetail implements PostingInterface
+class BaseTransactionPayment extends ActiveRecordDetail implements PostingInterface
 {
     public function init()
     {

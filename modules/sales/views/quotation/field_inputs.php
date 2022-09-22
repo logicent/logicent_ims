@@ -1,6 +1,6 @@
 <?php
 
-use logicent\sales\enums\Type_Order;
+use crudle\ext\sales\enums\Type_Order;
 ?>
 
 <div class="ui attached padded segment">
@@ -15,10 +15,10 @@ use logicent\sales\enums\Type_Order;
 </div>
 
 <!-- Currency & Price list -->
-<?= $this->render('@system_modules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
 
 <!-- Item table & Document totals -->
-<?= $this->render('@system_modules/accounts/views/_form_section/item', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/item', ['model' => $model, 'form' => $form]) ?>
 
 <div class="ui attached padded segment">
     <?= $form->field($model, 'terms')->textarea(['rows' => 3]) ?>

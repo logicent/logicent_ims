@@ -1,13 +1,13 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
-use crudle\main\models\base\BaseActiveRecordDetail;
-use crudle\setup\models\ListViewSettingsForm;
-use logicent\stock\models\Item;
+use crudle\app\main\models\ActiveRecordDetail;
+use crudle\app\setup\models\ListViewSettingsForm;
+use crudle\ext\stock\models\Item;
 use Yii;
 
-class BaseTransactionItem extends BaseActiveRecordDetail implements PostingInterface
+class BaseTransactionItem extends ActiveRecordDetail implements PostingInterface
 {
     public function init()
     {

@@ -1,20 +1,22 @@
 <?php
 
-namespace app\enums;
+namespace crudle\app\enums;
 
 // Core Modules
 class Type_Module
 {
-    const Main          = 'Main';
-    const Setup         = 'Setup';
-    const Website       = 'Website';
+    const Main      = 'main';
+    const Setup     = 'setup';
+    const WebCMS    = 'web_cms';
+    const Kit       = 'codegen';
 
     public static function enums()
     {
         return [
             self::Main      => self::Main,
             self::Setup     => self::Setup,
-            self::Website   => self::Website,
+            self::WebCMS    => self::WebCMS,
+            self::Kit       => self::Kit,
         ];
     }
 }

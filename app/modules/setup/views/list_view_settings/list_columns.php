@@ -1,8 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
-use Zelenin\yii\SemanticUI\modules\Select;
+use icms\FomanticUI\widgets\ActiveForm;
 
 $this->title = Yii::t('app', 'List View Settings');
 
@@ -14,9 +13,9 @@ $form = ActiveForm::begin([
         ],
     ]) ?>
 
-    <?= $this->render('@app_main/views/_form/_modal_header', ['model' => $model]) ?>
+    <?= $this->render('@appMain/views/_form/_modal_header', ['model' => $model]) ?>
 
-    <div class="ui attached segment">
+    <div class="ui segment">
         <?= Html::activeHiddenInput($model, 'listModelClass') ?>
         <?= Html::activeHiddenInput($model, 'listNameAttribute') ?>
         <?= Html::activeHiddenInput($model, 'listIdAttribute') ?>
@@ -44,5 +43,5 @@ $form = ActiveForm::begin([
     </div>
 <?php 
 ActiveForm::end();
-$this->registerJs($this->render('@app_main/views/_form/_submit.js'));
+$this->registerJs($this->render('@appMain/views/_form/_submit.js'));
 ?>

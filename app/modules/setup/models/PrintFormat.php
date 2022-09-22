@@ -1,12 +1,12 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use crudle\setup\enums\Status_Transaction;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\main\models\base\BaseActiveRecord;
+use crudle\app\setup\enums\Permission_Group;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -17,13 +17,13 @@ class PrintFormat extends BaseActiveRecord
 {
     public function init()
     {
-        $this->listSettings = new ListViewSettingsForm();
-        $this->listSettings->listNameAttribute = 'id'; // override in view index
+        parent::init();
+        $this->listSettings->listNameAttribute = 'id';
     }
 
     public static function tableName()
     {
-        return 'print_format';
+        return '{{%Print_Format}}';
     }
 
     public function rules()
@@ -67,10 +67,14 @@ class PrintFormat extends BaseActiveRecord
         );
     }
 
+    // ActiveRecord Interface
     public static function enums()
     {
         return [
-            'status' => Status_Transaction::class
+            'status' => [
+                'class' => Status_Transaction::class,
+                'attribute' => 'status'
+            ],
         ];
     }
 

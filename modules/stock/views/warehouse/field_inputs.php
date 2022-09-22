@@ -1,8 +1,8 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\accounts\models\Branch;
-use logicent\stock\models\Warehouse;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\models\Branch;
+use crudle\ext\stock\models\Warehouse;
 use yii\helpers\Html;
 use yii\jui\Selectable;
 use yii\widgets\MaskedInput;

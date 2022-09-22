@@ -1,13 +1,13 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "payment_method".
+ * This is the model class for table "Payment_Method".
  */
 class PaymentMethod extends BaseSetupMasterData
 {
@@ -16,7 +16,7 @@ class PaymentMethod extends BaseSetupMasterData
 
     public static function tableName()
     {
-        return 'payment_method';
+        return 'lgct_Payment_Method';
     }
 
     public function rules()

@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use app\enums\Type_Module;
-use logicent\accounts\enums\Type_Party;
-use logicent\accounts\models\base\BasePartyDocument;
-use logicent\accounts\models\PurchaseInvoice;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\ext\accounts\enums\Type_Party;
+use crudle\ext\accounts\models\base\BasePartyDocument;
+use crudle\ext\accounts\models\PurchaseInvoice;
 use Yii;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
@@ -31,7 +31,7 @@ class Supplier extends BasePartyDocument
 
     public static function tableName()
     {
-        return 'supplier';
+        return 'lgct_Supplier';
     }
 
     // public function rules()

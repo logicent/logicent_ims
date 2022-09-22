@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\fleet\models;
+namespace crudle\ext\fleet\models;
 
 use Yii;
 use yii\base\Model;

@@ -3,12 +3,12 @@
 use yii\helpers\Html;
 use yii\helpers\Inflector;
 use yii\helpers\Url;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 $isReadonly = $this->context->action->id == 'read' || $this->context->action->id == 'print-preview';
 ?>
 
-<div class="eight wide field required">
+<div class="field required">
 <?php
 if ($isReadonly) :
     echo $form->field ( $model, 'id' )->textInput( ['maxlength' => true, 'readonly' => true] );
@@ -31,10 +31,8 @@ endif ?>
 
 <?php
 $this->registerJs(<<<JS
-    $('.get-id').on('click', function ()
-    {
-        if ( $('#source_id').val() == '' || $('#source_id').val() == ' ' )
-        {
+    $('.get-id').on('click', function () {
+        if ( $('#source_id').val() == '' || $('#source_id').val() == ' ' ) {
             // $('#source_id').focus();
             labelText = $('#source_id').parent('div').siblings('label').text();
             // replace with SweetAlert
@@ -49,12 +47,10 @@ $this->registerJs(<<<JS
                 url: $(this).data('url'),
                 type: 'post',
                 data: form.serializeArray(),
-                success: function( response )
-                {
+                success: function( response ) {
                     fieldId.val( response );
                 },
-                error: function( jqXhr, textStatus, errorThrown )
-                {
+                error: function( jqXhr, textStatus, errorThrown ) {
                     console.log( errorThrown );
                 }
             });

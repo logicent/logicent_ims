@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use crudle\setup\models\base\BaseSettingsForm;
+use crudle\app\setup\models\base\BaseSettingsForm;
 use Yii;
 
 class StockSettingsForm extends BaseSettingsForm

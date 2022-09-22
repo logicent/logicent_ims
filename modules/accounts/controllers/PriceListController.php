@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\accounts\models\PriceList;
-use logicent\accounts\models\PriceListSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\accounts\models\PriceList;
+use crudle\ext\accounts\models\PriceListSearch;
 
 class PriceListController extends BaseCrudController
 {

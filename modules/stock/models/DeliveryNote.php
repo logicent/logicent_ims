@@ -1,16 +1,19 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use logicent\accounts\models\base\BaseTransactionDocument;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
+/**
+ * This is the model class for table "Delivery_Note".
+ */
 class DeliveryNote extends BaseTransactionDocument
 {
     public static function tableName()
     {
-        return 'delivery_note';
+        return 'lgct_Delivery_Note';
     }
 
     public function rules()

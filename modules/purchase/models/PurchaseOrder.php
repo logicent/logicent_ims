@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use app\enums\Type_Module;
-use logicent\accounts\models\base\BaseTransactionDocument;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -32,7 +32,7 @@ class PurchaseOrder extends BaseTransactionDocument
 
     public static function tableName()
     {
-        return 'purchase_order';
+        return 'lgct_Purchase_Order';
     }
 
     public function rules()

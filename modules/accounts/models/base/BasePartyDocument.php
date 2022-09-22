@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
-use crudle\main\models\base\AutoincrementIdInterface;
-use logicent\accounts\enums\Status_Party;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\main\models\base\AutoincrementIdInterface;
+use crudle\ext\accounts\enums\Status_Party;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-abstract class BasePartyDocument extends BaseActiveRecord implements AutoincrementIdInterface, PartyInterface
+abstract class BasePartyDocument extends ActiveRecord implements AutoincrementIdInterface, PartyInterface
 {
     public $status;
 
@@ -62,7 +62,10 @@ abstract class BasePartyDocument extends BaseActiveRecord implements Autoincreme
     public static function enums()
     {
         return [
-            'status' => Status_Party::class
+            'status' => [
+                'class' => Status_Party::class,
+                'attribute' => 'inactive'
+            ]
         ];
     }
 

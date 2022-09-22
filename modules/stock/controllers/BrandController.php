@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\Brand;
-use logicent\stock\models\BrandSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\Brand;
+use crudle\ext\stock\models\BrandSearch;
 
 class BrandController extends BaseCrudController
 {

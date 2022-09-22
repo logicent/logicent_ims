@@ -1,8 +1,8 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\helpers\StringHelper;
 
@@ -10,7 +10,7 @@ class Settings extends BaseActiveRecord
 {
     public static function tableName()
     {
-        return 'settings';
+        return '{{%Settings}}';
     }
 
     public static function primaryKey()

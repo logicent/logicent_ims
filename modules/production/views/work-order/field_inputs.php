@@ -1,8 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use logicent\sales\models\Customer;
-use logicent\stock\models\Item;
+use crudle\ext\sales\models\Customer;
+use crudle\ext\stock\models\Item;
 ?>
 
 <div class="ui attached padded segment">

@@ -1,19 +1,20 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
+use crudle\ext\stock\models\Item;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "purchase_invoice_payment".
+ * This is the model class for table "Purchase_Invoice_Payment".
  */
-class PurchaseInvoicePayment extends BaseActiveRecord
+class PurchaseInvoicePayment extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'purchase_invoice_payment';
+        return 'lgct_Purchase_Invoice_Payment';
     }
 
     public function rules()

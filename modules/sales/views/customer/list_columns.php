@@ -1,6 +1,6 @@
 <?php
 
-use logicent\accounts\enums\Type_Party_Sub_Type;
+use crudle\ext\accounts\enums\Type_Party_Sub_Type;
 
 return [
     [

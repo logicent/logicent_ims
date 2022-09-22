@@ -1,11 +1,11 @@
 <?php
 
-use app\helpers\App;
+use crudle\app\helpers\App;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
-use Zelenin\yii\SemanticUI\helpers\Size;
-use Zelenin\yii\SemanticUI\modules\Checkbox;
-use Zelenin\yii\SemanticUI\modules\Modal;
+use icms\FomanticUI\Elements;
+use icms\FomanticUI\helpers\Size;
+use icms\FomanticUI\modules\Checkbox;
+use icms\FomanticUI\modules\Modal;
 
 
 $modal = Modal::begin([
@@ -14,14 +14,14 @@ $modal = Modal::begin([
 ]);
 $modal::end();
 
-$hideSelectAllCheckbox = empty($this->context->detailModels()) ? 'none' : '';
+$hideSelectAllCheckbox = empty($this->context->getDetailModels()) ? 'none' : '';
 ?>
 
 <div id="<?= $listId ?>">
     <table class="in-form ui celled table">
         <thead>
             <tr style="font-size: 110%">
-                <th class="select-all-rows" width="10%">
+                <th class="center aligned select-all-rows" width="7%">
                     <?= Checkbox::widget([
                             'name' => 'select_all_rows',
                             'options' => [
@@ -32,7 +32,7 @@ $hideSelectAllCheckbox = empty($this->context->detailModels()) ? 'none' : '';
                 </th>
                 <?php
                     foreach ($columnHeaders as $columnHeader) :
-                        echo Html::tag('th', $model->getAttributeLabel($columnHeader), ['width' => '20%']);
+                        echo Html::tag('th', $model->getAttributeLabel($columnHeader['name']), ['class' => $columnHeader['width'] . ' wide']);
                     endforeach;
                 ?>
                 <th class="one wide center aligned">
@@ -65,7 +65,7 @@ $hideSelectAllCheckbox = empty($this->context->detailModels()) ? 'none' : '';
             ],
             'style' => 'display : none'
         ]);
-    echo Elements::button('Add Item', [
+    echo Elements::button('Add row', [
             'class' => 'compact small add-row',
             'data'  => [
                 'model-class' => App::className($model),

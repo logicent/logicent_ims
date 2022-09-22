@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
 /**
  * This is the model class for report "Accounts Receivable".

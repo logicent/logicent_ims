@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -13,7 +13,7 @@ class SupplierGroup extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'supplier_group';
+        return 'lgct_Supplier_Group';
     }
 
     public function rules()

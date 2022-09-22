@@ -1,12 +1,18 @@
 <?php
 
-namespace crudle\main\controllers;
+namespace crudle\app\main\controllers;
 
-use crudle\main\controllers\base\BaseViewController;
-use crudle\main\enums\Type_View;
+use crudle\app\main\controllers\base\BaseViewController;
+use crudle\app\main\enums\Type_View;
 
 class HomeController extends BaseViewController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     /**
      * Renders the index view for the module
      * @return string
@@ -17,7 +23,7 @@ class HomeController extends BaseViewController
     }
 
     // ViewInterface
-    public function currentViewType()
+    public function defaultActionViewType()
     {
         return Type_View::Workspace;
     }

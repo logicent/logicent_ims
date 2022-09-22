@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
 use Yii;
 use yii\base\Model;

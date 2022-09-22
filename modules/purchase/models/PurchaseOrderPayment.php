@@ -1,8 +1,9 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use logicent\accounts\models\base\BaseTransactionPayment;
+use crudle\ext\accounts\models\base\BaseTransactionPayment;
+use crudle\ext\stock\models\Item;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -13,7 +14,7 @@ class PurchaseOrderPayment extends BaseTransactionPayment
 {
     public static function tableName()
     {
-        return 'purchase_order_payment';
+        return 'lgct_Purchase_Order_Payment';
     }
 
     public function attributeLabels()

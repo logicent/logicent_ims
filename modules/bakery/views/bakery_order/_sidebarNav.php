@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use app\models\SalesOrder;
 use app\models\SalesOrderItem;
 use app\models\StockItem;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 use app\assets\ChartjsAsset;
 

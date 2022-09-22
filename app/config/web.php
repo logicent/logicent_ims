@@ -1,25 +1,20 @@
 <?php
 
-require_once __DIR__ . '/../helpers/App.php';
-
-use app\helpers\App;
-use crudle\main\models\auth\User;
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
-$dotenv->load();
+use crudle\app\helpers\App;
+use crudle\app\main\models\auth\User;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-$url = require __DIR__ . '/url.php';
+$routes = require __DIR__ . '/web/routes.php';
 $modules = require __DIR__ . '/modules.php';
 
 $config = [
-    'id' => 'logicent-web',
-    'name' => App::env('APP_NAME'),
-    'runtimePath' => dirname( dirname( __DIR__ ) ) . '/storage/runtime',
-    'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
+    'id' => 'yii2-crudle-web',
+    'name' => App::env('CRUDLE_APP_NAME'),
+    'runtimePath' => '@storage/runtime',
+    'vendorPath' => '@crudle/vendor',
     'basePath' => dirname( __DIR__ ),
-    'layoutPath' =>  '@app_main/views/_layouts',
+    'layoutPath' =>  '@appMain/views/_layouts',
 
     'bootstrap' => ['log'],
 
@@ -47,6 +42,10 @@ $config = [
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+            'assignmentTable' => '{{%Auth_Assignment}}',
+            'itemTable' => '{{%Auth_Item}}',
+            'itemChildTable' => '{{%Auth_Item_Child}}',
+            'ruleTable' => '{{%Auth_Rule}}',
         ],
         'user' => [
             'identityClass' => User::class,
@@ -61,11 +60,11 @@ $config = [
             'useFileTransport' => false, // set true if testing or debugging to send locally to file
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => App::env('MAIL_HOST'),
-                'port' => App::env('MAIL_PORT'),
-                'encryption' => App::env('MAIL_ENCRYPTION'),
-                'username' => App::env('MAIL_USERNAME'),
-                'password' => App::env('MAIL_PASSWORD'),
+                'host' => App::env('CRUDLE_MAIL_HOST'),
+                'port' => App::env('CRUDLE_MAIL_PORT'),
+                'encryption' => App::env('CRUDLE_MAIL_ENCRYPTION'),
+                'username' => App::env('CRUDLE_MAIL_USERNAME'),
+                'password' => App::env('CRUDLE_MAIL_PASSWORD'),
             ],
         ],
         'log' => [
@@ -78,7 +77,12 @@ $config = [
             ],
         ],
         'db' => $db,
-        'urlManager' => $url,
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            // 'enableStrictParsing' => true,
+            'showScriptName' => false,
+            'rules' => $routes,
+        ],
         'formatter' => [
             'defaultTimeZone' => 'Africa/Nairobi',
         ],
@@ -86,6 +90,11 @@ $config = [
     'modules' => $modules,
     'params' => $params,
 ];
+
+// dynamically append rules via Module bootstrap($app)
+foreach ($modules as $id => $class) {
+    $config['bootstrap'][] = $id;
+}
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
@@ -98,6 +107,12 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'allowedIPs' => ['192.168.*.*', '172.16.*.*', '10.*.*.*', '127.0.0.1', '::1'],
+    ];
+
+    $config['bootstrap'][] = 'kit';
+    $config['modules']['kit'] = [
+        'class' => 'crudle\kit\Module',
         'allowedIPs' => ['192.168.*.*', '172.16.*.*', '10.*.*.*', '127.0.0.1', '::1'],
     ];
 }

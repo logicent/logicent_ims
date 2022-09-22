@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use logicent\bakery\models\Product;
-use logicent\bakery\models\ProductSearch;
-use logicent\stock\controllers\ItemController;
+use crudle\ext\bakery\models\Product;
+use crudle\ext\bakery\models\ProductSearch;
+use crudle\ext\stock\controllers\ItemController;
 
 class ProductController extends ItemController
 {

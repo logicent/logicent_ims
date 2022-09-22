@@ -1,23 +1,26 @@
 <?php
 
-require_once __DIR__ . '/../helpers/App.php';
-
-use app\helpers\App;
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
-$dotenv->load();
+use crudle\app\helpers\App;
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'yii2-crudle-cli',
-    'runtimePath' => dirname( dirname( __DIR__ ) ) . '/storage/runtime',
-    'vendorPath' => dirname( dirname( __DIR__ ) ) . '/vendor',
+    'runtimePath' => '@storage/runtime',
+    'vendorPath' => '@crudle/vendor',
     'basePath' => dirname( __DIR__ ),
     'bootstrap' => ['log'],
     'timeZone' => 'Africa/Nairobi',
-    'controllerNamespace' => 'crudle\setup\commands',
+    'controllerNamespace' => 'crudle\app\setup\commands',
+    // 'controllerMap' => [
+    //     'batch' => [
+    //         'class' => 'schmunk42\giiant\commands\BatchController',
+    //         'overwrite' => true,
+    //         'modelNamespace' => 'app\\modules\\crud\\models',
+    //         'crudTidyOutput' => true,
+    //     ]
+    // ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -39,15 +42,19 @@ $config = [
             'useFileTransport' => false, // set true if testing or debugging to send locally to file
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => App::env('MAIL_HOST'),
-                'port' => App::env('MAIL_PORT'),
-                'encryption' => App::env('MAIL_ENCRYPTION'),
-                'username' => App::env('MAIL_USERNAME'),
-                'password' => App::env('MAIL_PASSWORD'),
+                'host' => App::env('CRUDLE_MAIL_HOST'),
+                'port' => App::env('CRUDLE_MAIL_PORT'),
+                'encryption' => App::env('CRUDLE_MAIL_ENCRYPTION'),
+                'username' => App::env('CRUDLE_MAIL_USERNAME'),
+                'password' => App::env('CRUDLE_MAIL_PASSWORD'),
             ],
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+            'assignmentTable' => '{{%Auth_Assignment}}',
+            'itemTable' => '{{%Auth_Item}}',
+            'itemChildTable' => '{{%Auth_Item_Child}}',
+            'ruleTable' => '{{%Auth_Rule}}',
         ],
         'db' => $db,
     ],
@@ -68,6 +75,13 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'allowedIPs' => ['192.168.*.*', '172.16.*.*', '10.*.*.*', '127.0.0.1', '::1'],
+    ];
+
+    $config['bootstrap'][] = 'kit';
+    $config['modules']['kit'] = [
+        'class' => 'crudle\kit\Module',
+        'allowedIPs' => ['192.168.*.*', '172.16.*.*', '10.*.*.*', '127.0.0.1', '::1'],
     ];
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-use logicent\hr\models\SalaryStructure;
+use crudle\ext\hr\models\SalaryStructure;
 
 use app\assets\FlatpickrAsset;
 FlatpickrAsset::register($this);

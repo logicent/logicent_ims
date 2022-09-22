@@ -1,19 +1,19 @@
 <?php
 
-namespace logicent\hr\models;
+namespace crudle\ext\hr\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii2tech\filedb\Query as FileDbQuery;
 
-class Employee extends BaseActiveRecord
+class Employee extends ActiveRecord
 {
     public $full_name;
 
     public static function tableName()
     {
-        return 'employee';
+        return 'lgct_Employee';
     }
 
     public function rules()

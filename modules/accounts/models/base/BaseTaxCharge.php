@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -13,7 +13,7 @@ class BaseTaxCharge extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'tax_charge';
+        return 'lgct_Tax_Charge';
     }
 
     public function rules()

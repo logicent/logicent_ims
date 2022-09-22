@@ -1,11 +1,11 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\sales\models\Customer;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\sales\models\Customer;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\helpers\Size;
-use Zelenin\yii\SemanticUI\modules\Modal;
-use Zelenin\yii\SemanticUI\modules\Select;
+use icms\FomanticUI\helpers\Size;
+use icms\FomanticUI\modules\Modal;
+use icms\FomanticUI\modules\Select;
 
 $modal = Modal::begin([
     'id' => 'customer_modal',

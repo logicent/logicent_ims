@@ -1,12 +1,12 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
 use app\enums\Person_Status;
 use Yii;
 use yii\helpers\ArrayHelper;
 use app\models\BakeryCost;
-use logicent\stock\models\Item;
+use crudle\ext\stock\models\Item;
 
 /**
  * This is the model class for table "stock_item".

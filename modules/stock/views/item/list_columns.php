@@ -1,6 +1,6 @@
 <?php
 
-use logicent\stock\models\ItemGroup;
+use crudle\ext\stock\models\ItemGroup;
 use yii\helpers\ArrayHelper;
 
 return [

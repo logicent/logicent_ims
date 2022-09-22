@@ -1,8 +1,8 @@
 <?php
 
-use logicent\accounts\enums\Type_Sale;
+use crudle\ext\accounts\enums\Type_Sale;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 ?>
 <?= Html::activeHiddenInput($pos_receipt, 'saleType', [

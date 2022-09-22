@@ -1,8 +1,8 @@
 <?php
 
-namespace crudle\main\models\auth;
+namespace crudle\app\main\models\auth;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\base\BaseActiveRecord;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -16,7 +16,7 @@ class Item extends BaseActiveRecord
 
     public static function tableName()
     {
-        return 'auth_item';
+        return '{{%Auth_Item}}';
     }
 
     public function behaviors()
@@ -38,7 +38,7 @@ class Item extends BaseActiveRecord
     public function rules()
     {
         return [
-            [['name', 'type'], 'required'],
+            [['name', 'type', 'inactive'], 'required'],
             // [['name'], 'trim'], // TODO: Check if this messes up existing assignments
             ['name', 'unique', 'message' => Yii::t('app', 'This role already exists') ],
             [['type', 'created_at', 'updated_at'], 'integer'],

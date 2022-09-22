@@ -1,13 +1,13 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "customer_group".
+ * This is the model class for table "Customer_Group".
  *
  * @property Customer[] $customers
  */
@@ -15,7 +15,7 @@ class CustomerGroup extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'customer_group';
+        return 'lgct_Customer_Group';
     }
 
     public function rules()

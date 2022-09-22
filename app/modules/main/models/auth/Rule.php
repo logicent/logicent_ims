@@ -1,6 +1,6 @@
 <?php
 
-namespace crudle\main\models\auth;
+namespace crudle\app\main\models\auth;
 
 use Yii;
 
@@ -11,7 +11,7 @@ class Rule extends \yii\db\ActiveRecord
 {
     public static function tableName()
     {
-        return 'auth_rule';
+        return '{{%Auth_Rule}}';
     }
 
     public function rules()

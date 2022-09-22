@@ -1,18 +1,17 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
-use app\enums\Status_Active;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\enums\Status_Active;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
  * This is the base model class for setup models.
  */
-class BaseSetupMasterData extends BaseActiveRecord
+class BaseSetupMasterData extends \crudle\app\main\models\ActiveRecord
 {
     public function init()
     {

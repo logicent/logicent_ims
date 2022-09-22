@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use logicent\stock\models\Warehouse;
+use crudle\ext\stock\models\Warehouse;
 
 class WarehouseSearch extends Warehouse
 {

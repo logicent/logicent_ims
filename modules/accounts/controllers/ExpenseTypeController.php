@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\accounts\models\ExpenseType;
-use logicent\accounts\models\ExpenseTypeSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\accounts\models\ExpenseType;
+use crudle\ext\accounts\models\ExpenseTypeSearch;
 
 class ExpenseTypeController extends BaseCrudController
 {

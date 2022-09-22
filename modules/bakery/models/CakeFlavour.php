@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
 use Yii;
 
@@ -37,7 +37,7 @@ class CakeFlavour extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'cake_flavour';
+        return 'lgct_Cake_Flavour';
     }
 
     /**

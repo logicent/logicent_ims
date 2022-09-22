@@ -1,8 +1,8 @@
 <?php
 
-use logicent\stock\enums\Item_View;
+use crudle\ext\stock\enums\Item_View;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 ?>
 <div id="item_view" class="ui basic buttons">

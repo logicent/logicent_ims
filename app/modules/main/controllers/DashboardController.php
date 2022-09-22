@@ -1,38 +1,20 @@
 <?php
 
-namespace crudle\main\controllers;
+namespace crudle\app\main\controllers;
 
-use crudle\main\controllers\base\BaseViewController;
-use crudle\main\enums\Type_View;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\main\models\Dashboard;
+use crudle\app\main\models\search\DashboardSearch;
 
-class DashboardController extends BaseViewController
+class DashboardController extends BaseCrudController
 {
-    /**
-     * Renders the index view for the controller
-     * @return string
-     */
-    public function actionIndex()
+    public function modelClass(): string
     {
-        $stats = [];
-
-        return $this->render('index', [
-            'stats' => $stats
-        ]);
+        return Dashboard::class;
     }
 
-    // ViewInterface
-    public function currentViewType()
+    public function searchModelClass(): string
     {
-        return Type_View::Dashboard;
-    }
-
-    public function showViewHeader(): bool
-    {
-        return false;
-    }
-
-    public function showViewSidebar(): bool
-    {
-        return false;
+        return DashboardSearch::class;
     }
 }

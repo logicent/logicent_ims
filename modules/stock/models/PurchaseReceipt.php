@@ -1,18 +1,21 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use logicent\accounts\models\base\BaseTransactionDocument;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
+/**
+ * This is the model class for table "Purchase_Receipt".
+ */
 class PurchaseReceipt extends BaseTransactionDocument
 {
     // Goods Receipt
     // Goods Return?
     public static function tableName()
     {
-        return 'purchase_receipt';
+        return 'lgct_Purchase_Receipt';
     }
 
     public function rules()

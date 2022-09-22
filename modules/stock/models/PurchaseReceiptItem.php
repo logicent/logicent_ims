@@ -1,15 +1,18 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use crudle\main\models\base\BaseActiveRecordDetail;
+use crudle\app\main\models\ActiveRecordDetail;
 use Yii;
 
-class PurchaseReceiptItem extends BaseActiveRecordDetail
+/**
+ * This is the model class for table "Purchase_Receipt_Item".
+ */
+class PurchaseReceiptItem extends ActiveRecordDetail
 {
     public static function tableName()
     {
-        return 'purchase_receipt_item';
+        return 'lgct_Purchase_Receipt_Item';
     }
 
     public function rules()

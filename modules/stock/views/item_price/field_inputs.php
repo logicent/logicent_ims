@@ -1,6 +1,6 @@
 <?php
 
-use app\helpers\SelectableItems;
+use crudle\app\helpers\SelectableItems;
 use app\models\Item;
 use app\models\PriceList;
 use yii\helpers\ArrayHelper;

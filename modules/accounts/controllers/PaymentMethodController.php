@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\accounts\models\PaymentMethod;
-use logicent\accounts\models\PaymentMethodSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\accounts\models\PaymentMethod;
+use crudle\ext\accounts\models\PaymentMethodSearch;
 
 class PaymentMethodController extends BaseCrudController
 {

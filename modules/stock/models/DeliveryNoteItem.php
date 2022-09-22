@@ -1,15 +1,18 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use crudle\customize\models\DocType;
+use crudle\ext\accounts\models\base\BaseTransactionItem;
 use Yii;
 
-class DeliveryNoteItem extends DocType
+/**
+ * This is the model class for table "Delivery_Note_Item".
+ */
+class DeliveryNoteItem extends BaseTransactionItem
 {
     public static function tableName()
     {
-        return 'delivery_note_item';
+        return 'lgct_Delivery_Note_Item';
     }
 
     public function rules()

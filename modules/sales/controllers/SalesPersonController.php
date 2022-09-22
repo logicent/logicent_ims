@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\sales\controllers;
+namespace crudle\ext\sales\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\sales\models\SalesPerson;
-use logicent\sales\models\SalesPersonSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\sales\models\SalesPerson;
+use crudle\ext\sales\models\SalesPersonSearch;
 
 class SalesPersonController extends BaseCrudController
 {

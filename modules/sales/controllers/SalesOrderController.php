@@ -1,12 +1,12 @@
 <?php
 
-namespace logicent\sales\controllers;
+namespace crudle\ext\sales\controllers;
 
-use logicent\sales\models\SalesOrder;
-use logicent\sales\models\SalesOrderItem;
-use logicent\sales\models\SalesOrderPayment;
-use logicent\sales\models\SalesOrderSearch;
-use logicent\accounts\controllers\base\BaseTransactionController;
+use crudle\ext\sales\models\SalesOrder;
+use crudle\ext\sales\models\SalesOrderItem;
+use crudle\ext\sales\models\SalesOrderPayment;
+use crudle\ext\sales\models\SalesOrderSearch;
+use crudle\ext\accounts\controllers\base\BaseTransactionController;
 
 class SalesOrderController extends BaseTransactionController
 {

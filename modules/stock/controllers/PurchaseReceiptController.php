@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\PurchaseReceipt;
-use logicent\stock\models\PurchaseReceiptSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\PurchaseReceipt;
+use crudle\ext\stock\models\PurchaseReceiptSearch;
 
 class PurchaseReceiptController extends BaseCrudController
 {

@@ -1,17 +1,17 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
-class BakeryIngredient extends BaseActiveRecord
+class BakeryIngredient extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'bakery_ingredient';
+        return 'lgct_Bakery_Ingredient';
     }
 
     public function behaviors()

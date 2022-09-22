@@ -1,18 +1,18 @@
 <?php
 
-namespace crudle\main\controllers;
+namespace crudle\app\main\controllers;
 
-use app\enums\Status_Active;
-use crudle\main\controllers\base\BaseViewController;
-use crudle\main\models\auth\LoginForm;
-use crudle\main\models\auth\PasswordResetRequestForm;
-use crudle\main\models\auth\ResetPasswordForm;
-use crudle\main\models\auth\Auth;
-use crudle\main\models\auth\User;
-use crudle\main\models\auth\UserLog;
-use crudle\setup\models\EmailQueue;
-use crudle\setup\models\Setup;
-use crudle\setup\models\SmtpSettingsForm;
+use crudle\app\enums\Status_Active;
+use crudle\app\helpers\Mailer;
+use crudle\app\main\controllers\base\BaseViewController;
+use crudle\app\main\enums\Type_View;
+use crudle\app\main\models\auth\LoginForm;
+use crudle\app\main\models\auth\PasswordResetRequestForm;
+use crudle\app\main\models\auth\ResetPasswordForm;
+use crudle\app\main\models\auth\Auth;
+use crudle\app\main\models\auth\User;
+use crudle\app\main\models\auth\UserLog;
+use crudle\app\setup\models\EmailQueue;
 use Yii;
 use yii\helpers\Html;
 use yii\filters\AccessControl;
@@ -20,7 +20,7 @@ use yii\filters\VerbFilter;
 
 class AppController extends BaseViewController
 {
-    public $layout = '@app_main/views/_layouts/site';
+    public $layout = '@appMain/views/_layouts/site';
 
     public function behaviors()
     {
@@ -146,7 +146,7 @@ class AppController extends BaseViewController
                     $msg->message = Html::tag('p', $salutation);
                     $msg->message .= Html::tag('p', $resetLink);
 
-                    if ($this->sendMail($msg)) {
+                    if (Mailer::send($msg)) {
                         Yii::$app->session->setFlash('success', Yii::t('app', Html::encode('Check your email for further instructions.')));
                         return $this->goHome();
                     }
@@ -187,48 +187,9 @@ class AppController extends BaseViewController
         ]);
     }
 
-    public function sendMail($msg, $from_support = false, $addAttachments = NULL)
+    public function defaultActionViewType()
     {
-        $mailer = $this->getMailer();
-
-        $message = $mailer->compose()
-                        ->setFrom($msg->from)
-                        ->setTo($msg->to)
-                        ->setSubject($msg->subject)
-                        ->setHtmlBody($msg->message);
-        try {  
-            $mailer->send($message);
-        }
-        catch (\Swift_SwiftException $e) {
-            // display error encountered
-            echo $e->getMessage();
-        }
-    }
-
-    public function getMailer()
-    {
-        $model = Setup::getSettings(SmtpSettingsForm::class);
-
-        $config = [
-                    'class' => 'yii\swiftmailer\Mailer',
-                    'viewPath' => '@app_main/views/_mail',
-                    'useFileTransport' => false,
-                    'transport' => [
-                        'class' => 'Swift_SmtpTransport',
-                        'host' => $model->smtp_host,
-                        'username' => $model->smtp_username,
-                        'password' => $model->smtp_password,
-                        'port' => $model->smtp_port,
-                        'encryption' => $model->smtp_encryption,
-                    ],
-                ];
-
-        return Yii::createObject($config);
-    }
-
-    public function pageNavbar(): string
-    {
-        return '_site_navbar';
+        return Type_View::Workspace;
     }
 
     public function showViewHeader(): bool

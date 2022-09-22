@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\setup\controllers\base\BaseSettingsController;
-use logicent\stock\models\StockSettingsForm;
+use crudle\app\setup\controllers\base\BaseSettingsController;
+use crudle\ext\stock\models\StockSettingsForm;
 
 class StockSettingsController extends BaseSettingsController
 {

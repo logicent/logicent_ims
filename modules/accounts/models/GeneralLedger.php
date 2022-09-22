@@ -1,16 +1,16 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 
 /**
- * This is the model class for table "general_ledger".
+ * This is the model class for table "General_Ledger".
  */
 class GeneralLedger extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'general_ledger';
+        return 'lgct_General_Ledger';
     }
 }

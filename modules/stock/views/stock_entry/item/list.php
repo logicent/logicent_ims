@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 ?>
 <div class="ui attached padded segment">
@@ -40,7 +40,7 @@ use Zelenin\yii\SemanticUI\Elements;
                                     ]);
                 endforeach;
             else : // $model->isNewRecord
-                echo $this->render('@system_modules/accounts/views/_form_section/_no_data');
+                echo $this->render('@extModules/accounts/views/_form_section/_no_data');
             endif ?>
         </tbody>
     <?php 

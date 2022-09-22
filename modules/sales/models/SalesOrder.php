@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use app\enums\Type_Module;
-use crudle\setup\models\ListViewSettingsForm;
-use logicent\accounts\models\base\BaseTransactionDocument;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\app\setup\models\ListViewSettingsForm;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_order".
+ * This is the model class for table "Sales_Order".
  */
 class SalesOrder extends BaseTransactionDocument
 {
@@ -32,7 +32,7 @@ class SalesOrder extends BaseTransactionDocument
 
     public static function tableName()
     {
-        return 'sales_order';
+        return 'lgct_Sales_Order';
     }
 
     public function rules()

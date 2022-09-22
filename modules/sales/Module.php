@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\sales;
+namespace crudle\ext\sales;
 
 use Yii;
 
 /**
  * sales module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\sales\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\sales\controllers';
 
     /**
      * {@inheritdoc}

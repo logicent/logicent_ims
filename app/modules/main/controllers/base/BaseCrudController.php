@@ -1,23 +1,42 @@
 <?php
 
-namespace crudle\main\controllers\base;
+namespace crudle\app\main\controllers\base;
 
-use crudle\main\enums\Type_Comment;
-use crudle\main\enums\Type_Relation;
-use crudle\main\models\CommentForm;
-use crudle\main\models\Model;
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\enums\Type_Permission;
+use crudle\app\helpers\Uploader;
+use crudle\app\main\controllers\action\AddRow;
+use crudle\app\main\controllers\action\Amend;
+use crudle\app\main\controllers\action\AutoSuggestId;
+use crudle\app\main\controllers\action\Cancel;
+use crudle\app\main\controllers\action\Create;
+use crudle\app\main\controllers\action\DeleteMany;
+use crudle\app\main\controllers\action\DeleteRow;
+use crudle\app\main\controllers\action\EditRow;
+use crudle\app\main\controllers\action\FindItem;
+use crudle\app\main\controllers\action\Index;
+use crudle\app\main\controllers\action\LoadAttributesByModel;
+use crudle\app\main\controllers\action\LoadModelsByModule;
+use crudle\app\main\controllers\action\Read;
+use crudle\app\main\controllers\action\SaveComment;
+use crudle\app\main\controllers\action\ShowCommentModal;
+use crudle\app\main\controllers\action\ShowRelatedText;
+use crudle\app\main\controllers\action\Submit;
+use crudle\app\main\controllers\action\Update;
+use crudle\app\main\controllers\action\UpdateStatus;
+use crudle\app\main\enums\Type_Comment;
+use crudle\app\main\enums\Type_Form_View;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\main\enums\Type_View;
+use crudle\app\main\models\CommentForm;
+use crudle\app\main\models\Model;
+use crudle\app\setup\enums\Type_Permission;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use yii\helpers\Json;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
-use yii\web\UploadedFile;
 
 abstract class BaseCrudController extends BaseViewController implements CrudInterface
 {
@@ -36,12 +55,12 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
                     [
                         'actions' => ['read'], // view
                         'allow' => true,
-                        'roles' => [ Type_Permission::Read .' '. $this->viewName() ],
+                        // 'roles' => [ Type_Permission::Read .' '. $this->viewName() ],
                     ],
                     [
                         'actions' => ['update'], // edit
                         'allow' => true,
-                        'roles' => [ Type_Permission::Update .' '. $this->viewName() ],
+                        // 'roles' => [ Type_Permission::Update .' '. $this->viewName() ],
                         // 'roleParams' => function() {
                         //     return ['model' => Person::findOne(Yii::$app->request->get('id'))];
                         // },
@@ -54,17 +73,17 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
                     [
                         'actions' => ['create'], // addNew
                         'allow' => true,
-                        'roles' => [ Type_Permission::Create .' '. $this->viewName() ],
+                        // 'roles' => [ Type_Permission::Create .' '. $this->viewName() ],
                     ],
                     [
-                        'actions' => ['delete', 'delete-multiple'],
+                        'actions' => ['delete', 'delete-many'],
                         'allow' => true,
-                        'roles' => [ Type_Permission::Delete .' '. $this->viewName() ],
+                        // 'roles' => [ Type_Permission::Delete .' '. $this->viewName() ],
                     ],
                     [
                         'actions' => ['cancel'],
                         'allow' => true,
-                        'roles' => [ Type_Permission::Cancel .' '. $this->viewName() ],
+                        // 'roles' => [ Type_Permission::Cancel .' '. $this->viewName() ],
                     ],
                 ],
             ],
@@ -72,147 +91,60 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                    'delete-many' => ['POST'],
                     'cancel' => ['POST'],
                 ],
             ],
         ];
     }
 
-    public function getModel()
+    public function showQuickEntry(): bool
     {
-        return $this->model;
+        return false;
     }
 
-    public function actionIndex()
+    public function formViewType()
     {
-        $searchModelClass = $this->searchModelClass();
-        $searchClassname = StringHelper::basename($searchModelClass);
-        // filter out the (soft) deleted data
-        $prefilter = [
-            $searchClassname => [
-                'deleted_at' => null
-            ]
-        ];
-
-        // check if global search is used to fetch result
-        if (!empty(Yii::$app->request->get('GlobalSearch')))
-        {
-            $globalSearchTerm = [
-                $searchClassname => [
-                    $searchModelClass::listNameAttribute() => Yii::$app->request->get('GlobalSearch')['gs_term'],
-                ],
-            ];
-            $userFilters = $globalSearchTerm;
-        }
-        else
-            $userFilters = Yii::$app->request->queryParams;
-
-        $listFilters = ArrayHelper::merge($prefilter, $userFilters);
-        $searchModel = new $searchModelClass;
-        $dataProvider = $searchModel->search($listFilters);
-
-        // $this->sidebar = false;
-
-        if (Yii::$app->request->isAjax)
-            return $this->renderAjax('@app_main/views/_list/index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
-        else
-            return $this->render('@app_main/views/_list/index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
-            ]);
+        return Type_Form_View::Multiple;
     }
 
-    public function actionRead( $id )
+    public function showLinkedData(): bool
     {
-        // 1. create models use public variables
-        // a. main model instance
-        $this->model = $this->findModel( $id );
-        // b. detail models instances
-        $this->detailModels = $this->model->links();
-
-        // 2. render view by request type
-        if ( Yii::$app->request->isAjax )
-            return $this->renderAjax('@app_main/views/_crud/index');
-
-        return $this->render('@app_main/views/_crud/index', [
-                'model' => $this->model
-            ]);
+        return true;
     }
 
-    public function actionSubmit($id)
+    public function showComments(): bool
     {
-        $this->model = $this->findModel($id);
-        $this->model->status = Status_Transaction::Submitted;
-        $this->model->save(false);
-
-        return $this->redirect(['index']);
+        return true;
     }
 
-    public function actionCancel($id)
+    public function actions()
     {
-        $this->model = $this->findModel($id);
-        $this->model->status = Status_Transaction::Canceled;
-        $this->model->save(false);
-
-        return $this->redirect(['index']);
+        return ArrayHelper::merge(parent::actions(), [
+            'read'          => Read::class,
+            'create'        => Create::class,
+            'update'        => Update::class,
+            'submit'        => Submit::class,
+            'cancel'        => Cancel::class,
+            'amend'         => Amend::class,
+            'delete'        => Delete::class,
+            'delete-many'   => DeleteMany::class,
+            'add-row'       => AddRow::class,
+            'edit-row'      => EditRow::class,
+            'find-item'      => FindItem::class,
+            'delete-row'        => DeleteRow::class,
+            'auto-suggest-id'   => AutoSuggestId::class,
+            'delete-many'           => DeleteMany::class,
+            'save-comment'          => SaveComment::class,
+            'show-comment-modal'    => ShowCommentModal::class,
+            'show-related-text'     => ShowRelatedText::class,
+            'load-models-by-module'     => LoadModelsByModule::class,
+            'load-attributes-by-model'  => LoadAttributesByModel::class,
+            'update-status'         => UpdateStatus::class,
+        ]);
     }
 
-    public function actionCreate( $id = null )
-    {
-        // Yii::$app->request->isGet && $id
-        if ( $id ) {
-            // 1a. duplicate model on get request if id != null
-            // 1b. get related models if loading forms
-            $this->copyModel( $id );
-        }
-        // Yii::$app->request->isPost || Yii::$app->request->isGet && !$id
-        else {
-            // 1a. create model instance and initialize detailModels
-            $modelClass = $this->modelClass();
-            $this->model = new $modelClass();
-            // 1b. set the FK if applicable
-            if ( Yii::$app->request->isGet ) {
-                // check for additional query params via Ajax request
-                if ( !empty(Yii::$app->request->queryParams) )
-                    $this->model->attributes = Yii::$app->request->queryParams;
-
-                if ( !empty( $this->model->foreignKeyAttribute() ))
-                    $this->model->{ $this->model->foreignKeyAttribute() } = Yii::$app->request->get( $this->model->foreignKeyAttribute() );
-            }
-        }
-        // 1c. autosuggest id value if applicable
-        if ( $this->model->autoSuggestIdValue() )
-            $this->model->{$this->model->autoSuggestAttribute()} = $this->model->autoSuggestId();
-
-        // 2. save if request is via post
-        if ( Yii::$app->request->isPost )
-            return $this->saveModel(); // store data
-
-        // 3. load the view response
-        return $this->loadView(); // show view
-    }
-
-    public function actionUpdate( $id )
-    {
-        // 1a. create model instance
-        $this->model = $this->findModel( $id );
-
-        // 2. save if request is via post
-        if ( Yii::$app->request->isPost )
-            return $this->saveModel(); // store data
-
-        // 3. get related models if loading forms
-        if ( Yii::$app->request->isGet )
-            $this->detailModels = $this->model->links();
-
-        // 4. load the view response
-        return $this->loadView(); // show view
-    }
-
-    protected function saveModel()
+    public function saveModel()
     {
         $isNewRecord = $this->model->isNewRecord;
 
@@ -226,7 +158,7 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
             // 2b. check if file upload is supported in model
             if ( $this->model->allowFileUpload() && isset( $this->model->{ $this->model->fileAttribute } ))
             {
-                $filePath = $this->uploadFile( $this->model );
+                $filePath = Uploader::getFile( $this->model );
                 if ( $filePath )
                     $this->model->{ $this->model->fileAttribute } = $filePath;
             }
@@ -331,11 +263,11 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
         return $this->loadView();
     }
 
-    protected function loadView()
+    public function loadView()
     {
         // 1. load default values for form
         $this->model->loadDefaultValues();
-        // $this->loadDetailModelsDefaultValues();
+        // !! To-Do: implement $this->loadDetailModelsDefaultValues();
 
         // 2. render view by request type and action id
         $data = [
@@ -343,22 +275,9 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
             'modelDetails' => $this->detailModels,
         ];
         if ( Yii::$app->request->isAjax )
-            return $this->renderAjax( '@app_main/views/_crud/index', $data );
+            return $this->renderAjax( $this->formView(), $data );
         // else
-        return $this->render( '@app_main/views/_crud/index', $data );
-    }
-
-    protected function copyModel( $id, $includeDetails = true )
-    {
-        $sourceModel = $this->findModel( $id );
-        $sourceDetailModels = $sourceModel->links();
-
-        $this->model = new $this->modelClass();
-        $this->model = $this->modelClass::loadDuplicateValues( $sourceModel, $this->model );
-        $this->model->isCopyRecord = true;
-
-        if ( $includeDetails )
-            $this->model->copyDetailModels = $sourceDetailModels;
+        return $this->render( $this->formView(), $data );
     }
 
     protected function loadDetailModels( $relationClass, $detailForms )
@@ -379,17 +298,20 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
             if ( $this->model->allowFileUpload() )
                 if ( isset( $detailModel->{ $detailModel->fileAttribute } ))
                 {   // !! assumes multiple uploads in multiple lines
-                    $fileNames = $this->uploadAttachments( $detailModel, $i );
+                    $fileNames = Uploader::getFiles( $detailModel, $i );
                     if ( $fileNames )
                         $detailModel->{ $detailModel->fileAttribute } = $fileNames;
                 }
             // TODO: use a helper with DTO to check and collect changed values if any
             if ( $detailModel->valuesChanged() )
-                $this->model->detailValuesChanged .= ' '. $detailModel->getChangedValues();
+                $this->model->detailValuesChanged .= ' ' . $detailModel->getChangedValues();
 
             if ( $detailModel->isNewRecord || $detailModel->valuesChanged() )
+            {
                 $this->detailModels[$formName][] = $detailModel;
+            }
         }
+        return !empty($this->detailModels) ? true : false;
     }
 
     protected function validateDetailModels()
@@ -397,92 +319,14 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
         $valid = true;
         foreach ( $this->detailModels as $modelId => $detailModels )
         {
-            $valid = Model::validateMultiple( $detailModels ) && $valid;
-            if (! $valid )
+            $valid = Model::validateMultiple( $detailModels );
+            if ($valid === false) {
                 $this->validationErrors = Model::$errors;
+                return false;
+            }
         }
 
         return $valid;
-    }
-
-    protected function deleteModels( $id )
-    {
-        $this->model = $this->findModel( $id );
-        $this->detailModels = $this->model->links();
-        $messages = [];
-
-        foreach ( $this->detailModels as $details )
-        {
-            // delete sibling model or one-to-one
-            if ( !is_array( $details ))
-            {
-                // soft delete
-                $details->deleted_at = date('Y-m-d H:i:s');
-                $details->save(false);
-                // hard delete
-                // if ( $details->delete() !== false )
-                //     $messages['success'][$details->id] = $details->id . ' has been deleted successfully';
-                // else
-                //     $messages['error'][$details->id] = $details->id . ' could not be deleted';
-            }
-            // delete child model or one-to-many
-            foreach ( $details as $detailModel )
-            {
-                // soft delete
-                if (property_exists($detailModel, 'deleted_at'))
-                {
-                    $detailModel->deleted_at = date('Y-m-d H:i:s');
-                    $detailModel->save(false);
-                }
-                // hard delete
-                // if ( $detailModel->delete() !== false )
-                //     $messages['success'][$detailModel->id] = $detailModel->id . ' has been deleted successfully';
-                // else
-                //     $messages['error'][$detailModel->id] = $detailModel->id . ' could not be deleted';
-            }
-        }
-        // soft delete
-        $this->model->deleted_at = date('Y-m-d H:i:s');
-        $this->model->save(); // false
-        // hard delete
-        // if ( $this->model->delete() !== false )
-        // {
-        //     // $messages['success'][$this->model->id] = $this->model->id . ' has been deleted permanently';
-        //     Yii::$app->session->setFlash( 'success', 
-        //         Yii::t('app', $this->viewName() .' '. $this->model->id . ' has been deleted permanently') );
-        // }
-        // else
-        //     // $messages['error'][$this->model->id] = $this->model->id . ' could not be deleted';
-        //     Yii::$app->session->setFlash( 'error', 
-        //         Yii::t('app', $this->viewName() .' '. $this->model->id . ' could not be deleted') );
-    }
-
-    public function actionDelete( $id )
-    {
-        $this->deleteModels( $id );
-        return $this->redirect(['index']);
-    }
-
-    public function actionDeleteMultiple()
-    {
-        $result = $errors = $messages = null;
-        $id_list = Json::decode( Yii::$app->request->post('id_list') );
-
-        foreach ( $id_list as $id )
-        {
-            $this->deleteModels( $id );
-        }
-
-        // if ( !empty( $result ) )
-        //     $messages[] = $result . ' rows have been deleted.';
-
-        // if ( !empty( $errors ) )
-        //     $messages[] = $errors . ' rows could not be deleted';
-
-        if (Yii::$app->request->isAjax)
-            return $this->asJson( ['success' => true] );
-        else
-            return $this->redirect(['index']);
     }
 
     protected function findModel( $id )
@@ -496,101 +340,6 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
                 );
     }
 
-    public function actionAddRow()
-    {
-        if ( Yii::$app->request->isAjax )
-        {
-            $modelClass = Yii::$app->request->get('modelClass');
-            $model = new $modelClass();
-            // check for additional query params in get request
-            if ( !empty(Yii::$app->request->queryParams) )
-                $model->attributes = Yii::$app->request->queryParams;
-
-            if ( !empty( $model->foreignKeyAttribute() ))
-                $model->{ $model->foreignKeyAttribute() } = Yii::$app->request->get( $model->foreignKeyAttribute() );
-
-            $formView = Yii::$app->request->get('formView');
-            $itemModelClass = Yii::$app->request->get('itemModelClass');
-            return $this->renderPartial($formView, [
-                                        'itemModelClass' => !empty($itemModelClass) ? $itemModelClass : null,
-                                        'rowId' => Yii::$app->request->get('nextRowId'),
-                                        'model' => $model,
-                                        'formData' => null
-                                    ]);
-        }
-        // else
-        Yii::$app->end();
-    }
-
-    public function actionGetItem($id)
-    {
-        if ( Yii::$app->request->isAjax )
-        {
-            $modelClass = Yii::$app->request->get('modelClass');
-            $modelId = Yii::$app->request->get('modelId');
-            $model = $modelClass::findOne($modelId);
-            if (!$model)
-                $model = new $modelClass();
-
-            return $this->asJson([]);
-        }
-        // else
-        Yii::$app->end();
-    }
-
-    public function actionEditRow($id)
-    {
-        if ( Yii::$app->request->isAjax )
-        {
-            $modelClass = Yii::$app->request->get('modelClass');
-            $modelId = Yii::$app->request->get('modelId');
-            $model = $modelClass::findOne($modelId);
-            if (!$model)
-                $model = new $modelClass();
-
-            $formData = Yii::$app->request->get('formData');
-            $formData = ArrayHelper::map($formData, 'name', 'value');
-            $formView = Yii::$app->request->get('formView');
-            return $this->renderAjax($formView, [
-                        'model' => $model,
-                        'modelClass' => StringHelper::basename($modelClass),
-                        'formData' => $formData,
-                        'rowId' => trim(Yii::$app->request->get('rowId')),
-                    ]);
-        }
-        // else
-        Yii::$app->end();
-    }
-
-    public function actionDeleteRow($id)
-    {
-        if ( Yii::$app->request->isAjax )
-        {
-            $modelClass = $this->modelClass . Yii::$app->request->post('modelType');
-            $model = $modelClass::findOne(Yii::$app->request->post('modelId'));
-            if ( !$model )
-                return Json::encode(['exists' => false]);
-
-            if ($model->delete() > 0)
-            {
-                // if ( $model->allowFileUpload() && isset( $model->{ $model->fileAttribute } ))
-                //     $files = explode(',', $model->{ $model->fileAttribute });
-                //     if ( !empty($files) )
-                //         if ( is_array( $files ))
-                //             foreach ( $files as $file )
-                //                 FileHelper::unlink( Yii::getAlias('@webroot/uploads/') . $file );
-                //         else
-                //             FileHelper::unlink( Yii::getAlias('@webroot/uploads/') . $this->model->{ $model->fileAttribute } );
-                // Yii session success message
-                return Json::encode(['succeeded' => true]);
-            }
-            // Yii session failed message
-            return Json::encode(['failed' => true]);
-        }
-        // else
-        Yii::$app->end();
-    }
-
     private function autoSuggestId( $filters = [] )
     {
         $query = $this->modelClass::find();
@@ -600,88 +349,13 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
         return $count += 1;
     }
 
-    public function actionAutoSuggestId()
+    // ViewInterface
+    public function defaultActionViewType()
     {
-        if (Yii::$app->request->isAjax)
-        {
-            $this->model = new $this->modelClass();
-            return $this->model->autoSuggestId();
-        }
-        // else
-        Yii::$app->end();
-    }
-
-    protected function uploadAttachments( &$model, $index )
-    {
-        $model->uploadForm->file_uploads = UploadedFile::getInstances(
-                                            $model->uploadForm, "[$index]file_uploads"
-                                        );
-        if ( $model->uploadForm->file_uploads )
-            return $model->uploadForm->uploads(); // fileNames
-
-        return false;
-    }
-
-    public function actionShowRelatedText()
-    {
-        if (Yii::$app->request->isAjax) {
-            $modelClass = Yii::$app->request->get('model_class');
-            $model = $modelClass::findOne(Yii::$app->request->get('field_id'));
-            $attribute = Yii::$app->request->get('text_col');
-            return $model->$attribute;
-        }
-        // else
-        Yii::$app->end();
-    }
-
-    public function actionShowCommentModal()
-    {
-        if (Yii::$app->request->isAjax); {
-            return $this->renderAjax('@app_main/views/_form/_comment_modal', [
-                'url'   => Yii::$app->request->get('url'),
-                'new_status' => Yii::$app->request->get('new_status'),
-                'require_comment' => Yii::$app->request->get('require_comment')
-            ]);
-        }
-        // else
-        Yii::$app->end();
-    }
-
-    public function actionSaveComment($model_id)
-    {
-        if (Yii::$app->request->isAjax); {
-            $model = $this->modelClass::findOne($model_id);
-
-            $comment = new CommentForm;
-            $comment->comment = Yii::$app->request->post('comment_text');
-            $comment->save($model, false, Type_Comment::UserNote);
-
-            $model->refresh(); // !! MUST do this to get an array in comments
-            return $this->renderPartial('@app_main/views/_layouts/_comments', ['comments' => $model->comments]);
-        }
-        // else
-        Yii::$app->end();
+        return Type_View::List;
     }
 
     // CrudInterface
-    public function modelClass(): string
-    {
-        return '';
-    }
-
-    public function searchModelClass(): string
-    {
-        return '';
-    }
-
-    public function detailModelClass(): array
-    {
-        return [];
-    }
-
-    public function redirectTo(string $action)
-    {}
-
     public function redirectOnCreate()
     {
         return $this->redirect(['update']);
@@ -707,23 +381,7 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
         return $this->redirect(['index']);
     }
 
-    public function model()
-    {}
-
-    public function searchModel()
-    {}
-
     public function linkedModels(): array
-    {
-        return [];
-    }
-
-    public function detailModels(): array
-    {
-        return [];
-    }
-
-    public function validationErrors(): array
     {
         return [];
     }
@@ -733,54 +391,13 @@ abstract class BaseCrudController extends BaseViewController implements CrudInte
         return $this->action->id == 'read';
     }
 
-    public function actionUpdateStatus($id)
+    public function formView(string $action = null, string $path = null)
     {
-        $this->model = $this->findModel($id);
-
-        if (Yii::$app->request->isAjax) {
-            $oldStatus = $this->model->status;
-            $this->model->status = Yii::$app->request->post('new_status');
-
-            if ($this->model->save()) {
-                // add a comment for this status change
-                $comment = new CommentForm;
-                $comment->comment = "Changed the $this->viewName() status from <b> $oldStatus </b> to <b> {$this->model->status} </b>";
-                $comment->save($this->model, true, Type_Comment::ChangeLog);
-
-                // add message to email queue if applicable
-                if ($this->model->allowSendEmail())
-                    $this->model->sendNotificationIf($this->model, Url::to(['read', 'id' => $this->model->id]));
-
-                // add a user comment if required for this status change
-                // TODO: check from model not post ??
-                if (Yii::$app->request->post('require_comment') == 'true') {
-                    $comment = new CommentForm;
-                    $comment->comment = Yii::$app->request->post('comment_text');
-                    $comment->save($this->model, true, Type_Comment::UserNote);
-                }
-                Yii::$app->session->setFlash(
-                    'success',
-                    Yii::t('app', 'New status was changed successfully')
-                );
-                // TODO: show flash message and update sidebar via ajax - Turbolinks ?
-                return $this->redirect(['update', 'id' => $this->model->id]);
-                // It works but will not update the sidebar or show the flash message
-                // maybe use window.location.reload() after ajax succeeded?
-                $this->model->refresh();
-                // Try render and update the whole page
-                return $this->renderAjax('_form', [
-                    'model' => $this->model,
-                ]);
-            }
-            // else
-            return $this->asJson(['failed' => true, 'errors' => $this->model->errors]);
-        }
-        Yii::$app->end();
+        return '@appMain/views/crud/index';
     }
 
-    public function actionAmend($id)
-    {}
-
-    public function actionBatch()
-    {}
+    public function commentView(): string
+    {
+        return '@appMain/views/_layouts/_comments';
+    }
 }

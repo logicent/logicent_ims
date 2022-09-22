@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\bakery;
+namespace crudle\ext\bakery;
 
 use Yii;
 
 /**
  * bakery module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\bakery\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\bakery\controllers';
 
     /**
      * {@inheritdoc}

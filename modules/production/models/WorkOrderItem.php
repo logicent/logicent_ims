@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\production\models;
+namespace crudle\ext\production\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 
-class WorkOrderItem extends BaseActiveRecord
+class WorkOrderItem extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'work_order_item';
+        return 'lgct_Work_Order_Item';
     }
 
     public function rules()

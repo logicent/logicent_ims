@@ -2,11 +2,11 @@
 
 namespace app\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use crudle\main\models\auth\Person;
-use logicent\bakery\models\BakeryOrder;
-use logicent\bakery\models\BakeryOrderSearch;
-use logicent\sales\models\SalesOrderItem;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\main\models\auth\Person;
+use crudle\ext\bakery\models\BakeryOrder;
+use crudle\ext\bakery\models\BakeryOrderSearch;
+use crudle\ext\sales\models\SalesOrderItem;
 use Yii;
 use yii\data\ArrayDataProvider;
 

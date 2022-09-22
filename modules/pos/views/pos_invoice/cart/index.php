@@ -1,13 +1,13 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\sales\models\Customer;
-use logicent\sales\models\SalesPerson;
-use logicent\stock\models\Warehouse;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\sales\models\Customer;
+use crudle\ext\sales\models\SalesPerson;
+use crudle\ext\stock\models\Warehouse;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
-use Zelenin\yii\SemanticUI\modules\Select;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use icms\FomanticUI\Elements;
+use icms\FomanticUI\modules\Select;
+use icms\FomanticUI\widgets\ActiveForm;
 
 
 $form = ActiveForm::begin([

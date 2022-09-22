@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\hr;
+namespace crudle\ext\hr;
 
 use Yii;
 
 /**
  * hr module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\hr\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\hr\controllers';
 
     /**
      * {@inheritdoc}

@@ -1,20 +1,25 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\auth\UserLog as AuthUserLog;
-use crudle\setup\enums\Type_Permission;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\main\models\auth\UserLog as AuthUserLog;
+use crudle\app\setup\enums\Type_Permission;
+use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "user_log".
  */
 class UserLog extends AuthUserLog
 {
+    public $username;
+
     public function init()
     {
-        $this->listSettings = new ListViewSettingsForm();
-        $this->listSettings->listNameAttribute = 'id'; // override in view index
+        parent::init();
+        $this->listSettings->listNameAttribute = 'username';
     }
 
     // public function rules()
@@ -25,19 +30,24 @@ class UserLog extends AuthUserLog
     //     ], $rules);
     // }
 
-    // public function attributeLabels()
-    // {
-    //     $attributeLabels = parent::attributeLabels();
+    public function attributeLabels()
+    {
+        $attributeLabels = parent::attributeLabels();
 
-    //     return ArrayHelper::merge([
-    //     ], $attributeLabels);
-    // }
+        return ArrayHelper::merge($attributeLabels, [
+            'user_id' => Yii::t('app', 'User name'),
+            // 'status' => Yii::t('app', 'Inactive'),
+        ]);
+    }
 
     // ActiveRecord Interface
     public static function enums()
     {
         return [
-            'status' => Status_Active::class,
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'status'
+            ]
         ];
     }
 
@@ -49,4 +59,34 @@ class UserLog extends AuthUserLog
         ];
     }
 
+    public static function relations()
+    {
+        return [
+            'user'  => [
+                'class' => User::class,
+                'type' => Type_Relation::ParentModel
+            ],
+        ];
+    }
+
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function afterFind()
+    {
+        $this->username = $this->getUser()->one()->username;
+
+        return parent::afterFind();
+    }
+
+    // public function fields()
+    // {
+    //     return [
+    //         'username' => function () {
+    //             return $this->getUser()->username;
+    //         }
+    //     ];
+    // }
 }

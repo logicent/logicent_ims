@@ -1,15 +1,15 @@
 <?php
 
 return [
-    // 'controllerNamespace' => 'crudle\setup\controllers',
+    // 'controllerNamespace' => 'crudle\app\setup\controllers',
     // 'params' => [],
     // 'id' => 'setup',
     // 'layout' => 'main',
     // 'controllerMap' => [],
     'defaultRoute' => 'setup', // !! MUST be set
 
-    // 'basePath' => '@app_setup',
-    // 'controllerPath' => '@app_setup/controllers'
-    // 'viewPath' => '@app_setup/views',
-    // 'layoutPath' => '@app_main/views/_layouts',
+    // 'basePath' => '@appSetup',
+    // 'controllerPath' => '@appSetup/controllers'
+    // 'viewPath' => '@appSetup/views',
+    // 'layoutPath' => '@appMain/views/_layouts',
 ];

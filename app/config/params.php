@@ -1,10 +1,6 @@
 <?php
-require_once __DIR__ . '/../helpers/App.php';
 
-use app\helpers\App;
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../..');
-$dotenv->load();
+use crudle\app\helpers\App;
 
 return [
     'adminEmail' => 'admin@example.com',
@@ -12,9 +8,9 @@ return [
 
     'user.passwordResetTokenExpire' => 3600,
 
-    'appName' => App::env('APP_NAME'),
+    'appName' => App::env('CRUDLE_APP_NAME'),
     'appShortName' => '',
-    'appDescription' => 'Enterprise application software for small businesses and non-profits',
+    'appDescription' => 'Enterprise app modules for businesses and non-profits',
     'appWebsite' => 'https://github.com/logicent/logicent',
     'appCopyright' => '&copy; 2020 Appsoft',
 

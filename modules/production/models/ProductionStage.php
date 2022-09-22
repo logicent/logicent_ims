@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\production\models;
+namespace crudle\ext\production\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 
-class ProductionStage extends BaseActiveRecord
+class ProductionStage extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'production_stage';
+        return 'lgct_Production_Stage';
     }
 
     public function rules()

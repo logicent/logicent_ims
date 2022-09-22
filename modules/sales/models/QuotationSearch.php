@@ -1,5 +1,5 @@
 <?php
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
 use Yii;
 use yii\base\Model;

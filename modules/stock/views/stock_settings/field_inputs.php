@@ -1,12 +1,12 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\stock\models\ItemGroup;
-use logicent\stock\models\ItemUom;
-use logicent\stock\models\Warehouse;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\stock\models\ItemGroup;
+use crudle\ext\stock\models\ItemUom;
+use crudle\ext\stock\models\Warehouse;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
-use Zelenin\yii\SemanticUI\modules\Select;
+use icms\FomanticUI\widgets\ActiveForm;
+use icms\FomanticUI\modules\Select;
 ?>
 
 <div class="ui attached padded segment">

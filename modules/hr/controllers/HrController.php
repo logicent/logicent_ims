@@ -1,22 +1,28 @@
 <?php
 
-namespace logicent\hr\controllers;
+namespace crudle\ext\hr\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use crudle\main\enums\Type_View;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\main\enums\Type_View;
 
 /**
  * Hr controller for the `hr` module
  */
 class HrController extends BaseCrudController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
     // ViewInterface
-    public function currentViewType()
+    public function defaultActionViewType()
     {
         return Type_View::Workspace;
     }

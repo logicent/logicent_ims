@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\hr\models;
+namespace crudle\ext\hr\models;
 
 use Yii;
 
@@ -24,7 +24,7 @@ class ExpenseClaim extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'expense_claim';
+        return 'lgct_Expense_Claim';
     }
 
     /**

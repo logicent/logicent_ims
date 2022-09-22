@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use app\assets\AppAsset;
-use crudle\setup\models\LayoutSettingsForm;
-use crudle\setup\models\Setup;
+use crudle\app\assets\AppAsset;
+use crudle\app\setup\models\LayoutSettingsForm;
+use crudle\app\setup\models\Setup;
 
 AppAsset::register($this);
 
@@ -30,15 +30,17 @@ $this->beginPage() ?>
     <div id="header_wrapper">
     <?php
         $controller = $this->context;
-        $layoutPath = '@app_main/views/_layouts/';
-        $navbarView = $layoutPath . $controller->pageNavbar();
+        // $layoutPath = '@appMain/views/_layouts/';
+        // $navbarView = $layoutPath . $controller->pageNavbar();
+        $navbarView = $controller->pageNavbar();
         // load navbar in memory
         echo $this->render($navbarView, ['layoutSettings' => $layoutSettings]);
         // render navbar loaded above
         echo $this->blocks[$controller->pageNavbar()];
         // load view header if used
         if ($controller->showViewHeader()) :
-            echo $this->render($layoutPath . '_view_header');
+            // echo $this->render($layoutPath . '_view_header');
+            echo $this->render('@appMain/views/_layouts/_view_header');
         endif ?>
     </div>
 

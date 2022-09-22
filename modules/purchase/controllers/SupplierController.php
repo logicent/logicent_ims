@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\purchase\controllers;
+namespace crudle\ext\purchase\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\purchase\models\Supplier;
-use logicent\purchase\models\SupplierSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\purchase\models\Supplier;
+use crudle\ext\purchase\models\SupplierSearch;
 
 class SupplierController extends BaseCrudController
 {

@@ -1,19 +1,20 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use logicent\accounts\models\base\BaseTransactionPayment;
+use crudle\ext\accounts\models\base\BaseTransactionPayment;
+use crudle\ext\stock\models\Item;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_order_payment".
+ * This is the model class for table "Sales_Order_Payment".
  */
 class SalesOrderPayment extends BaseTransactionPayment
 {
     public static function tableName()
     {
-        return 'sales_order_payment';
+        return 'lgct_Sales_Order_Payment';
     }
 
     public function attributeLabels()

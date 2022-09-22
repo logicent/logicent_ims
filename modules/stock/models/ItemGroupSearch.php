@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use logicent\stock\models\ItemGroup;
+use crudle\ext\stock\models\ItemGroup;
 
 class ItemGroupSearch extends ItemGroup
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 
 /**
- * This is the model class for table "expense_type".
+ * This is the model class for table "Expense_Type".
  *
  * @property Expense[] $expenses
  */
@@ -13,7 +13,7 @@ class ExpenseType extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'expense_type';
+        return 'lgct_Expense_Type';
     }
 
     public function getExpenses()

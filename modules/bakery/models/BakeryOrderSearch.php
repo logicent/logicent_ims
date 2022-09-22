@@ -1,12 +1,12 @@
 <?php
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
-use logicent\sales\models\SalesOrder;
+use crudle\ext\sales\models\SalesOrder;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
-use logicent\sales\models\SalesOrderItem;
+use crudle\ext\sales\models\SalesOrderItem;
 
 class BakeryOrderSearch extends SalesOrderItem
 {

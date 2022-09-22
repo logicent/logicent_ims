@@ -1,12 +1,12 @@
 <?php
 
-use crudle\setup\models\AppMenuShortcut;
+use crudle\app\setup\models\AppShortcutMenu;
 
-echo $this->render('@app_main/views/_form_section/item', [
-        'model' =>  new AppMenuShortcut(),
-        'detailModels' => $this->context->detailModels()['shortcutMenu'],
+echo $this->render('@appMain/views/_form_section/item', [
+        'model' =>  new AppShortcutMenu(),
+        'detailModels' => $this->context->getDetailModels()['shortcutMenu'],
         'form' => $form,
-        'formView' => '@app_setup/views/_menu/field_inputs',
-        'listColumns' => '@app_setup/views/_menu/list_columns',
+        'formView' => '@appSetup/views/_menu/field_inputs',
+        'listColumns' => '@appSetup/views/_menu/list_columns',
         'listId' => 'shortcut_menu',
     ]) ?>

@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\production;
+namespace crudle\ext\production;
 
 use Yii;
 
 /**
  * production module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\production\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\production\controllers';
 
     /**
      * {@inheritdoc}

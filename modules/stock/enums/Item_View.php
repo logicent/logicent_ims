@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\stock\enums;
+namespace crudle\ext\stock\enums;
 
 use Yii;
 

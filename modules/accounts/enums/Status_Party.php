@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\accounts\enums;
+namespace crudle\ext\accounts\enums;
 
-use app\enums\Status_Active;
+use crudle\app\enums\Status_Active;
 
 class Status_Party extends Status_Active
 {

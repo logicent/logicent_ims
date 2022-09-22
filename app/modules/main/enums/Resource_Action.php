@@ -1,6 +1,7 @@
 <?php
 
-namespace crudle\main\enums;
+namespace crudle\app\main\enums;
+
 
 class Resource_Action extends Rule_Scenario
 {

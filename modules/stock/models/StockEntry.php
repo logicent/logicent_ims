@@ -1,22 +1,22 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use app\enums\Type_Module;
-use crudle\main\enums\Type_Relation;
-use crudle\main\models\base\AutoincrementIdInterface;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\enums\Type_Permission;
-use logicent\accounts\models\base\PostingInterface;
-use crudle\setup\models\ListViewSettingsForm;
+// use crudle\ext\accounts\enums\Type_Module;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\main\models\base\AutoincrementIdInterface;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\ext\accounts\models\base\PostingInterface;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "stock_entry".
+ * This is the model class for table "Stock_Entry".
  */
-class StockEntry extends BaseActiveRecord implements PostingInterface, AutoincrementIdInterface
+class StockEntry extends ActiveRecord implements PostingInterface, AutoincrementIdInterface
 {
     // (Item Movement)
     const DOC_NUM_PREFIX = 'STE-';
@@ -31,14 +31,14 @@ class StockEntry extends BaseActiveRecord implements PostingInterface, Autoincre
         $this->listSettings->listIdAttribute = 'id'; // override in view index
     }
 
-    public static function moduleType()
-    {
-        return Type_Module::Stock;
-    }
+    // public static function moduleType()
+    // {
+    //     return Type_Module::Stock;
+    // }
 
     public static function tableName()
     {
-        return 'stock_entry';
+        return 'lgct_Stock_Entry';
     }
 
     public function rules()
@@ -101,7 +101,10 @@ class StockEntry extends BaseActiveRecord implements PostingInterface, Autoincre
     public static function enums()
     {
         return [
-            'status' => Status_Transaction::class
+            'status' => [
+                'class' => Status_Transaction::class,
+                'attribute' => 'status'
+            ]
         ];
     }
 

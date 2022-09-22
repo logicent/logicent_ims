@@ -1,11 +1,11 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\base\BaseActiveRecord;
+use crudle\app\setup\enums\Permission_Group;
+use crudle\app\setup\enums\Type_Permission;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -15,7 +15,7 @@ class EmailTemplate extends BaseActiveRecord
 {
     public static function tableName()
     {
-        return 'email_template';
+        return '{{%Email_Template}}';
     }
 
     public function rules()
@@ -44,7 +44,10 @@ class EmailTemplate extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'status' => Status_Active::class,
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'inactive'
+            ],
         ];
     }
 }

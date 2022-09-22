@@ -1,15 +1,17 @@
 <?php
 
-namespace crudle\setup\controllers;
+namespace crudle\app\setup\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use app\enums\Status_Active;
-use crudle\main\enums\Type_Form_View;
-use crudle\setup\enums\Status_User;
-use crudle\main\models\auth\Auth;
-use crudle\main\models\auth\Person;
-use crudle\setup\models\User;
-use crudle\setup\models\UserSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\controllers\action\Index;
+use crudle\app\main\enums\Type_Form_View;
+use crudle\app\setup\enums\Status_User;
+use crudle\app\main\models\auth\Auth;
+use crudle\app\main\models\auth\Person;
+// use crudle\app\setup\models\User;
+use crudle\app\setup\models\search\UserSearch;
+// use crudle\app\setup\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\helpers\Html;
@@ -22,12 +24,19 @@ class UserController extends BaseCrudController
 
     public function modelClass(): string
     {
-        return User::class;
+        return Person::class;
     }
 
     public function searchModelClass(): string
     {
         return UserSearch::class;
+    }
+
+    public function actions()
+    {
+        return [
+            'index' => Index::class,
+        ];
     }
 
     public function actionRead($id)
@@ -47,12 +56,12 @@ class UserController extends BaseCrudController
         $this->model = $person;
 
         if (Yii::$app->request->isAjax)
-            return $this->renderAjax('@app_main/views/_crud/index', [
+            return $this->renderAjax('@appMain/views/crud/index', [
                 // 'auth' => $this->auth,
                 'model' => $person,
             ]);
         else
-            return $this->render('@app_main/views/_crud/index', [
+            return $this->render('@appMain/views/crud/index', [
                 // 'auth' => $this->auth,
                 'model' => $person,
             ]);
@@ -125,12 +134,12 @@ class UserController extends BaseCrudController
         $this->model = $person;
 
         if (Yii::$app->request->isAjax)
-            return $this->renderAjax('@app_main/views/_crud/index', [
+            return $this->renderAjax('@appMain/views/crud/index', [
                 // 'auth' => $this->auth,
                 'model' => $person,
             ]);
         else
-            return $this->render('@app_main/views/_crud/index', [
+            return $this->render('@appMain/views/crud/index', [
                 // 'auth' => $this->auth,
                 'model' => $person,
             ]);
@@ -175,12 +184,12 @@ class UserController extends BaseCrudController
         $this->model = $person;
 
         if (Yii::$app->request->isAjax)
-            return $this->renderAjax('@app_main/views/_crud/index', [
+            return $this->renderAjax('@appMain/views/crud/index', [
                 // 'auth' => $this->auth,
                 'model' => $person,
             ]);
         else
-            return $this->render('@app_main/views/_crud/index', [
+            return $this->render('@appMain/views/crud/index', [
                 // 'auth' => $this->auth,
                 'model' => $person,
             ]);
@@ -198,6 +207,7 @@ class UserController extends BaseCrudController
         $this->auth = Auth::findOne( $id );
         $person = Person::findOne( $this->auth->id );
 
+        // add a comment
         if ($this->auth) {
             $this->auth->status = Auth::STATUS_DELETED;
             $this->auth->save(false);
@@ -205,7 +215,7 @@ class UserController extends BaseCrudController
 
         if ($person) {
             $person->status = Status_Active::No;
-            $person->deleted_at = date('Y-m-d H:i:s');
+            // $person->update_at = date('Y-m-d H:i:s');
             $person->save(false);
         }
 
@@ -229,7 +239,7 @@ class UserController extends BaseCrudController
 
             if ($person) {
                 $person->status = Status_Active::No;
-                $person->deleted_at = date('Y-m-d H:i:s');
+                // $person->updated_at = date('Y-m-d H:i:s');
                 $person->save(false);
             }
         }
@@ -269,7 +279,7 @@ class UserController extends BaseCrudController
             }
         }
 
-        $this->formViewType = Type_Form_View::Single;
+        // $this->formViewType = Type_Form_View::Single;
 
         return $this->renderAjax('_change_pwd', ['model' => $this->auth]);
     }

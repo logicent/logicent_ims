@@ -4,7 +4,7 @@ namespace app\controllers\fleet;
 
 use app\models\fleet\VehicleService;
 use app\models\fleet\VehicleServiceSearch;
-use crudle\main\controllers\base\BaseCrudController;
+use crudle\app\main\controllers\base\BaseCrudController;
 
 class VehicleServiceController extends BaseCrudController
 {

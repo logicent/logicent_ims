@@ -1,6 +1,6 @@
 <?php
 
-namespace crudle\main\controllers\base;
+namespace crudle\app\main\controllers\base;
 
 interface ViewInterface
 {
@@ -9,8 +9,8 @@ interface ViewInterface
     // tabs support - multiple views of type
     public function showTabbedViews(): bool;
 
-    public function actionSwitchViewType(string $name);
-    public function currentViewType(); // enum
+    public function mapActionViewType();
+    public function defaultActionViewType();
 
     public function showViewTypeSwitcher(): bool;
     public function showViewFilterButton(): bool;
@@ -22,4 +22,31 @@ interface ViewInterface
 
     public function showQuickReportMenu(): bool;
     public function quickReportMenu(): array;
+
+    // view search model class
+    public function searchModelClass(): string;
+
+    // view search model
+    public function searchModel();
+
+    // primary view model class
+    public function modelClass(): string;
+
+    // primary view model
+    public function getModel();
+
+    // primary view model
+    public function setModel($model);
+
+    // related view model class(es)
+    public function detailModelClass(): array;
+
+    // related child or sibling models
+    public function getDetailModels(): array;
+
+    // redirect to (url) after action
+    public function redirectTo(string $action = null);
+
+    // model(s) validation errors
+    public function validationErrors(): array;
 }

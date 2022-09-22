@@ -1,10 +1,10 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\accounts\enums\Type_Module;
-use logicent\accounts\models\PriceList;
-use logicent\purchase\models\Supplier;
-use logicent\stock\models\Warehouse;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\ext\accounts\models\PriceList;
+use crudle\ext\purchase\models\Supplier;
+use crudle\ext\stock\models\Warehouse;
 ?>
 
 <div class="ui attached padded segment">

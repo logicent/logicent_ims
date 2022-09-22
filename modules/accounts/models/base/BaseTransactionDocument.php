@@ -1,16 +1,16 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
-use crudle\main\models\base\AutoincrementIdInterface;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\main\models\base\AutoincrementIdInterface;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
-abstract class BaseTransactionDocument extends BaseActiveRecord implements PostingInterface, AutoincrementIdInterface
+abstract class BaseTransactionDocument extends ActiveRecord implements PostingInterface, AutoincrementIdInterface
 {
     public function init()
     {
@@ -92,7 +92,10 @@ abstract class BaseTransactionDocument extends BaseActiveRecord implements Posti
     public static function enums()
     {
         return [
-            'status' => Status_Transaction::class
+            'status' => [
+                'class' => Status_Transaction::class,
+                'attribute' => 'status'
+            ]
         ];
     }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\pos\models;
+namespace crudle\ext\pos\models;
 
-use logicent\stock\enums\Item_View;
-use logicent\accounts\enums\Type_Sale;
-use crudle\setup\models\base\BaseSettingsForm;
+use crudle\ext\stock\enums\Item_View;
+use crudle\ext\accounts\enums\Type_Sale;
+use crudle\app\setup\models\base\BaseSettingsForm;
 use Yii;
 
 class PosProfileForm extends BaseSettingsForm

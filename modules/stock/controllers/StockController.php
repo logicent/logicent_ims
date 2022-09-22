@@ -1,24 +1,28 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use crudle\main\enums\Type_View;
-use Yii;
-use yii\helpers\Inflector;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\main\enums\Type_View;
 
 /**
  * Stock controller for the `stock` module
  */
 class StockController extends BaseCrudController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
     // ViewInterface
-    public function currentViewType()
+    public function defaultActionViewType()
     {
         return Type_View::Workspace;
     }

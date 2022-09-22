@@ -1,11 +1,11 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\purchase\models\Supplier;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\purchase\models\Supplier;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\helpers\Size;
-use Zelenin\yii\SemanticUI\modules\Modal;
-use Zelenin\yii\SemanticUI\modules\Select;
+use icms\FomanticUI\helpers\Size;
+use icms\FomanticUI\modules\Modal;
+use icms\FomanticUI\modules\Select;
 
 $modal = Modal::begin([
     'id' => 'supplier_modal',

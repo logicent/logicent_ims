@@ -1,12 +1,12 @@
 <?php
 
-use crudle\setup\models\AppMenuUser;
+use crudle\app\setup\models\AppUserMenu;
 
-echo $this->render('@app_main/views/_form_section/item', [
-        'model' =>  new AppMenuUser(),
-        'detailModels' => $this->context->detailModels()['userMenu'],
+echo $this->render('@appMain/views/_form_section/item', [
+        'model' =>  new AppUserMenu(),
+        'detailModels' => $this->context->getDetailModels()['userMenu'],
         'form' => $form,
-        'formView' => '@app_setup/views/_menu/field_inputs',
-        'listColumns' => '@app_setup/views/_menu/list_columns',
+        'formView' => '@appSetup/views/_menu/field_inputs',
+        'listColumns' => '@appSetup/views/_menu/list_columns',
         'listId' => 'user_menu',
     ]) ?>

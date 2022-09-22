@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 $count_SO = $model->getSalesOrder()->count();
 $sumTotalAmount_SO = $model->getSalesOrder()->sum('total_amount');

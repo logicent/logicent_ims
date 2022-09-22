@@ -1,6 +1,6 @@
 <?php
 
-namespace crudle\main\models\base;
+namespace crudle\app\main\models\base;
 
 use yii\db\ActiveRecord;
 use yii\helpers\Json;
@@ -11,7 +11,7 @@ use yii\helpers\Json;
 abstract class BaseActiveRecordDetail extends ActiveRecord
 {
     public $listSettings;
-    // public $uploadForm, $fileAttribute = null;
+    public $uploadForm, $fileAttribute = null;
     private $_changedValues;
 
     public function beforeSave( $insert )

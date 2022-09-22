@@ -1,16 +1,17 @@
 <?php
 
-use crudle\main\enums\Type_Model;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
-use crudle\main\models\auth\RolePermission;
+use crudle\app\setup\enums\Type_Model;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\main\models\auth\RolePermission;
 use yii\helpers\Html;
 use yii\helpers\Inflector;
-use app\assets\DataTableAsset;
+use crudle\app\assets\DataTable;
+use crudle\app\helpers\App;
+use yii\helpers\ArrayHelper;
 use yii\helpers\StringHelper;
-use Zelenin\yii\SemanticUI\modules\Checkbox;
+use icms\FomanticUI\modules\Checkbox;
 
-DataTableAsset::register($this);
+DataTable::register($this);
 ?>
 
 <div class="ui one column grid">
@@ -37,18 +38,17 @@ DataTableAsset::register($this);
     </thead>
     <tbody>
     <?php
-        foreach ( Type_Model::modelClasses() as $modelClass ) :
-            $resource = Inflector::camel2words(StringHelper::basename( $modelClass ));
-        ?>
+        $models = App::getAllModels();
+        foreach ( $models as $modelClass => $modelName ) : ?>
             <tr>
-                <td style="background: #f5f7fa;"><?= $resource ?></td>
+                <td style="background: #f5f7fa;"><?= $modelName ?></td>
             <?php
                 foreach ( Type_Permission::enums() as $operation ) :
                     if (! in_array( $operation, $modelClass::permissions() )) :
                         echo Html::tag( 'td', null, ['style' => 'background: #f9fafb;'] );
                         continue;
                     endif;
-                    $permission = $operation . ' ' . $resource;
+                    $permission = $operation . ' ' . $modelName;
                     echo Html::tag( 'td',
                             Checkbox::widget([
                                 'name' => 'Permission[' . $permission . ']',

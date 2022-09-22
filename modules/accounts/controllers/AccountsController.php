@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use crudle\main\enums\Type_View;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\main\enums\Type_View;
 use Yii;
 use yii\helpers\Inflector;
 
@@ -12,13 +12,19 @@ use yii\helpers\Inflector;
  */
 class AccountsController extends BaseCrudController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
     // ViewInterface
-    public function currentViewType()
+    public function defaultActionViewType()
     {
         return Type_View::Workspace;
     }

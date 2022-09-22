@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\purchase;
+namespace crudle\ext\purchase;
 
 use Yii;
 
 /**
  * purchase module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\purchase\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\purchase\controllers';
 
     /**
      * {@inheritdoc}

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 ?>
 
@@ -29,7 +29,7 @@ use Zelenin\yii\SemanticUI\Elements;
         <tbody>
         <?php
             if ($model->isNewRecord || empty($model->items)) :
-                echo $this->render('@system_modules/accounts/views/_form_section/_no_data');
+                echo $this->render('@extModules/accounts/views/_form_section/_no_data');
             else :
                 foreach ($model->items as $id => $item)
                     echo $this->render('_form', [

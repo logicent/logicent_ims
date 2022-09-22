@@ -1,6 +1,6 @@
 <?php
 
-use logicent\accounts\enums\Type_Module;
+use crudle\ext\accounts\enums\Type_Module;
 ?>
 
 <div class="ui bottom attached padded segment">

@@ -1,20 +1,20 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use crudle\main\models\base\AutoincrementIdInterface;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\main\models\base\AutoincrementIdInterface;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "expense".
+ * This is the model class for table "Expense".
  *
  * @property ExpenseType[] $expenseType
  */
-class Expense extends BaseActiveRecord implements AutoincrementIdInterface
+class Expense extends ActiveRecord implements AutoincrementIdInterface
 {
     // Petty Cash Vouchers
     const DOC_NUM_PREFIX = 'EXP-';
@@ -27,7 +27,7 @@ class Expense extends BaseActiveRecord implements AutoincrementIdInterface
 
     public static function tableName()
     {
-        return 'expense';
+        return 'lgct_Expense';
     }
 
     public function rules()

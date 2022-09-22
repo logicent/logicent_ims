@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
-use logicent\stock\models\Item;
+use crudle\ext\stock\models\Item;
 
 /**
  * This is the model sub class of class "StockItem".

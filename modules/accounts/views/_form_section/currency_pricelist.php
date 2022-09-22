@@ -1,11 +1,11 @@
 <?php
 
-use app\enums\Type_Module;
-use logicent\accounts\enums\Type_Party;
-use app\helpers\SelectableItems;
-use logicent\accounts\models\Currency;
-use logicent\accounts\models\PriceList;
-use Zelenin\yii\SemanticUI\modules\Select;
+use crudle\app\enums\Type_Module;
+use crudle\ext\accounts\enums\Type_Party;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\models\Currency;
+use crudle\ext\accounts\models\PriceList;
+use icms\FomanticUI\modules\Select;
 
 if (in_array('currency', array_keys($model->attributes))) :
     $currencyAttribute = 'currency';

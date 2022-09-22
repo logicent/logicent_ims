@@ -1,19 +1,19 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_person".
+ * This is the model class for table "Sales_Person".
  */
 class SalesPerson extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'sales_person';
+        return 'lgct_Sales_Person';
     }
 
     public function rules()

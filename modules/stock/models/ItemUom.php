@@ -1,19 +1,19 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "item_uom".
+ * This is the model class for table "Item_Uom".
  */
 class ItemUom extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'item_uom';
+        return 'lgct_Item_Uom';
     }
 
     public function rules()

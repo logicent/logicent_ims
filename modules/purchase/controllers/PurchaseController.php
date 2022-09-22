@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\purchase\controllers;
+namespace crudle\ext\purchase\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use crudle\main\enums\Type_View;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\app\main\enums\Type_View;
 use Yii;
 use yii\helpers\Inflector;
 
@@ -12,9 +12,15 @@ use yii\helpers\Inflector;
  */
 class PurchaseController extends BaseCrudController
 {
-    public function actionIndex()
+    public function actions()
     {
-        return $this->render('index');
+        return [
+        ];
+    }
+
+    public function defaultActionViewType()
+    {
+        return Type_View::Workspace;
     }
 
     // ViewInterface

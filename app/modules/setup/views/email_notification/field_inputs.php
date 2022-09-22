@@ -1,11 +1,10 @@
 <?php
 
-use crudle\main\enums\Type_Model;
-use Zelenin\yii\SemanticUI\modules\Select;
-
+use crudle\app\main\enums\Type_Model;
+use icms\FomanticUI\modules\Select;
 ?>
 
-<div class="ui attached padded segment">
+<div class="ui padded segment">
     <div class="two fields">
         <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
         <?= $form->field($model, 'inactive')->checkbox()->label('&nbsp;') ?>

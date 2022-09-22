@@ -1,12 +1,12 @@
 <?php
 
-namespace logicent\purchase\controllers;
+namespace crudle\ext\purchase\controllers;
 
-use logicent\accounts\controllers\base\BaseTransactionController;
-use logicent\purchase\models\PurchaseOrder;
-use logicent\purchase\models\PurchaseOrderItem;
-use logicent\purchase\models\PurchaseOrderPayment;
-use logicent\purchase\models\PurchaseOrderSearch;
+use crudle\ext\accounts\controllers\base\BaseTransactionController;
+use crudle\ext\purchase\models\PurchaseOrder;
+use crudle\ext\purchase\models\PurchaseOrderItem;
+use crudle\ext\purchase\models\PurchaseOrderPayment;
+use crudle\ext\purchase\models\PurchaseOrderSearch;
 
 class PurchaseOrderController extends BaseTransactionController
 {

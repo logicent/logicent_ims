@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\sales\controllers;
+namespace crudle\ext\sales\controllers;
 
-use crudle\setup\controllers\base\BaseSettingsController;
-use logicent\sales\models\CustomerSettingsForm;
+use crudle\app\setup\controllers\base\BaseSettingsController;
+use crudle\ext\sales\models\CustomerSettingsForm;
 
 class CustomerSettingsController extends BaseSettingsController
 {

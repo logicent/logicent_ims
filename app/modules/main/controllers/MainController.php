@@ -1,13 +1,18 @@
 <?php
 
-namespace crudle\main\controllers;
+namespace crudle\app\main\controllers;
 
-use crudle\main\controllers\base\BaseViewController;
-use crudle\main\enums\Type_View;
-use Yii;
+use crudle\app\main\controllers\base\BaseViewController;
+use crudle\app\main\enums\Type_View;
 
 class MainController extends BaseViewController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     /**
      * Renders the index view for the module
      * @return string
@@ -17,26 +22,8 @@ class MainController extends BaseViewController
         return $this->render('index');
     }
 
-    public function actionAbout()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        // else
-        return $this->render('about');
-    }
-
-    public function actionKeyboardShortcuts()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        // else
-        return $this->render('keyboard-shortcuts');
-    }
-
     // ViewInterface
-    public function currentViewType()
+    public function defaultActionViewType()
     {
         return Type_View::Workspace;
     }

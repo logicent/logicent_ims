@@ -1,6 +1,6 @@
 <?php
 
-use crudle\setup\enums\Type_Menu_Group;
+use crudle\app\main\enums\Type_Menu_Group;
 
 $this->params['menuGroupClass'] = Type_Menu_Group::class;
 

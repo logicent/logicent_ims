@@ -1,8 +1,8 @@
 <?php
 
-use logicent\accounts\enums\Type_Party_Sub_Type;
-use app\helpers\SelectableItems;
-use logicent\sales\models\CustomerGroup;
+use crudle\ext\accounts\enums\Type_Party_Sub_Type;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\sales\models\CustomerGroup;
 use yii\widgets\MaskedInput;
 ?>
 <div class="ui attached padded segment">
@@ -39,6 +39,6 @@ use yii\widgets\MaskedInput;
 </div>
 
 <!-- Currency & Price List -->
-<?= $this->render('@system_modules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
 <!-- Credit Limit -->
-<?= $this->render('@system_modules/accounts/views/_form_field/credit_limit', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_field/credit_limit', ['model' => $model, 'form' => $form]) ?>

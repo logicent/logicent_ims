@@ -1,14 +1,16 @@
 <?php
 
-namespace crudle\setup\commands;
+namespace crudle\app\setup\commands;
 
-use crudle\main\enums\Type_Model;
-use crudle\main\models\auth\Auth;
-use crudle\main\models\auth\Role;
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\enums\Type_Role;
+use crudle\app\helpers\App;
+use crudle\app\main\models\auth\Auth;
+use crudle\app\main\models\auth\Role;
+use crudle\app\setup\enums\Type_Model;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\enums\Type_Role;
 use Yii;
 use yii\console\Controller;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 
@@ -90,12 +92,14 @@ class RbacController extends Controller
     private function loadDefaultPermissions()
     {
         try {
-            $createPermissions = $listPermissions = $readPermissions = $updatePermissions = $deletePermissions 
-                = $exportPermissions = $importPermissions = $printPermissions = $sharePermissions = $emailPermissions 
-                = $submitPermissions = $cancelPermissions = $amendPermissions = [];
-            foreach ( Type_Model::modelClasses() as $modelClass )
+            $createPermissions = $listPermissions = $readPermissions = $updatePermissions = 
+            $deletePermissions = $exportPermissions = $importPermissions = $printPermissions = 
+            $sharePermissions = $emailPermissions = $submitPermissions = $cancelPermissions = 
+            $amendPermissions = [];
+
+            $models = App::getAllModels();
+            foreach ( $models as $modelClass => $modelName )
             {
-                $modelName = Inflector::camel2words(StringHelper::basename($modelClass));
                 foreach ( $modelClass::permissions() as $operation )
                 {
                     // add "Resource Name" item permission

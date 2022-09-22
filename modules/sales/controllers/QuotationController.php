@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\sales\controllers;
+namespace crudle\ext\sales\controllers;
 
-use logicent\sales\models\Quotation;
-use logicent\sales\models\QuotationItem;
-use logicent\sales\models\QuotationSearch;
-use logicent\accounts\controllers\base\BaseTransactionController;
+use crudle\ext\sales\models\Quotation;
+use crudle\ext\sales\models\QuotationItem;
+use crudle\ext\sales\models\QuotationSearch;
+use crudle\ext\accounts\controllers\base\BaseTransactionController;
 
 class QuotationController extends BaseTransactionController
 {

@@ -2,16 +2,16 @@
 
 namespace app\models\accounts;
 
-use crudle\customize\models\DocType;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 use Yii;
 
-class PaymentEntry extends DocType
+class PaymentEntry extends BaseTransactionDocument
 {
     // (Incoming/Outgoing)
     // Sales/Purchase Invoice Payment
     public static function tableName()
     {
-        return 'payment_entry';
+        return 'lgct_Payment_Entry';
     }
 
     public function rules()

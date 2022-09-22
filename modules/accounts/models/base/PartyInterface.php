@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\accounts\models\base;
+namespace crudle\ext\accounts\models\base;
 
 interface PartyInterface
 {

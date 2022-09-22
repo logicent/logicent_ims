@@ -1,14 +1,15 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 
-class BakeryCost extends \yii\db\ActiveRecord
+class BakeryCost extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'bakery_cost';
+        return 'lgct_Bakery_Cost';
     }
 
     public function rules()

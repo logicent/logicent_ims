@@ -1,15 +1,14 @@
 <?php
 
-namespace crudle\setup\controllers\base;
+namespace crudle\app\setup\controllers\base;
 
-use app\helpers\App;
-use crudle\main\controllers\base\BaseFormController;
-use crudle\main\enums\Type_Form_View;
-use crudle\main\enums\Type_View;
-use crudle\setup\models\Settings;
-use crudle\setup\models\Setup;
+use crudle\app\helpers\App;
+use crudle\app\main\controllers\base\BaseFormController;
+use crudle\app\main\enums\Type_Form_View;
+use crudle\app\main\enums\Type_View;
+use crudle\app\setup\models\Settings;
+use crudle\app\setup\models\Setup;
 use Yii;
-use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Json;
@@ -18,6 +17,12 @@ use yii\helpers\StringHelper;
 
 abstract class BaseSettingsController extends BaseFormController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     public function actionIndex()
     {
         $this->model = Setup::getSettings( $this->modelClass() );
@@ -48,7 +53,7 @@ abstract class BaseSettingsController extends BaseFormController
                 if ( Yii::$app->request->isAjax )
                     return $this->asJson([ 'success' => true ]);
                 else
-                    return $this->redirect([ '/setup' ]);
+                    return $this->redirectTo();
             }
             else {
                 $result = [];
@@ -60,10 +65,10 @@ abstract class BaseSettingsController extends BaseFormController
             }
         }
 
-        return $this->render('@app_setup/views/_settings/index');
+        return $this->render('@appSetup/views/_settings/index');
     }
 
-    public function actionAddItem()
+    public function actionAddRow()
     {
         if ( Yii::$app->request->isAjax )
         {
@@ -76,16 +81,16 @@ abstract class BaseSettingsController extends BaseFormController
             $formView = Yii::$app->request->get('formView');
 
             return $this->renderPartial($formView, [
-                            'rowId' => Yii::$app->request->get('nextRowId'),
-                            'model' => $model,
-                            'formData' => null
-                        ]);
+                        'rowId' => Yii::$app->request->get('nextRowId'),
+                        'model' => $model,
+                        'formData' => null
+                    ]);
         }
         // else
         Yii::$app->end();
     }
 
-    public function actionEditItem()
+    public function actionEditRow()
     {
         if ( Yii::$app->request->isAjax )
         {
@@ -108,7 +113,7 @@ abstract class BaseSettingsController extends BaseFormController
         Yii::$app->end();
     }
 
-    public function actionDeleteItem()
+    public function actionDeleteRow()
     {
         if ( Yii::$app->request->isAjax )
         {
@@ -137,8 +142,13 @@ abstract class BaseSettingsController extends BaseFormController
         Yii::$app->end();
     }
 
-    // LayoutInterface
-    public function currentViewType()
+    // ViewInterface
+    public function redirectTo(string $action = null)
+    {
+        return $this->redirect([ '/setup' ]);
+    }
+
+    public function defaultActionViewType()
     {
         return Type_View::Form;
     }

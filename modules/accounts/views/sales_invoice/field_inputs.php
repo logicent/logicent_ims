@@ -15,7 +15,7 @@ $isReadonly = $this->context->isReadonly();
                     ],
                     ['maxlength' => true, 'disabled' => $isReadonly]
                 ) ?>
-            <?= $this->render('@system_modules/sales/views/_form_field/customer', ['model' => $model, 'form' => $form]) ?>
+            <?= $this->render('@extModules/sales/views/_form_field/customer', ['model' => $model, 'form' => $form]) ?>
             <?= $form->field($model, 'po_no')->textInput(['maxlength' => true, 'readonly' => $isReadonly]) ?>
             <?= $form->field($model, 'is_pos')->checkbox(['class' => $isReadonly ? 'read-only' : '']) ?>
             <?php /*= $this->render('@app_main/views/dropdown', [
@@ -45,10 +45,10 @@ $isReadonly = $this->context->isReadonly();
 </div>
 
 <!-- Currency & Price List -->
-<?= $this->render('@system_modules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/currency_pricelist', ['model' => $model, 'form' => $form]) ?>
 
 <!-- Item table & Document totals -->
-<?= $this->render('@system_modules/accounts/views/_form_section/item', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/item', ['model' => $model, 'form' => $form]) ?>
 
 <!-- Payment table -->
-<?= $this->render('@system_modules/accounts/views/_form_section/payment', ['model' => $model, 'form' => $form]) ?>
+<?= $this->render('@extModules/accounts/views/_form_section/payment', ['model' => $model, 'form' => $form]) ?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace crudle\main\models\base;
+namespace crudle\app\main\models\base;
 
 use yii\base\Model;
 
@@ -24,9 +24,10 @@ abstract class BaseModel extends Model
         $valid = true;
         /* @var $model Model */
         foreach ($models as $model) {
-            $valid = $model->validate($attributeNames) && $valid;
-            if (!$valid)
+            if (!$model->validate($attributeNames)) {
                 self::$errors = $model->errors;
+                return false;
+            }
         }
 
         return $valid;

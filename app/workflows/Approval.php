@@ -1,14 +1,15 @@
 <?php
 
-namespace app\workflows;
+namespace crudle\app\workflows;
 
 class Approval
 {
-    // Single vs Multiple - Sequential i.e. Multi-level or Parallel
+    // type enums
     const TypeSingle = 'Single';
     const TypeMultiple = 'Multiple';
 
-    const MultipleSequential = 'Sequential';
+    // sub type enums
+    const MultipleSequential = 'Sequential'; // i.e. Multi-level
     const MultipleParallel = 'Parallel';
 
     private $_type;

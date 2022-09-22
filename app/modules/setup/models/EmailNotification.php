@@ -1,12 +1,12 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\models\ListViewSettingsForm;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\base\BaseActiveRecord;
+use crudle\app\setup\enums\Permission_Group;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\models\ListViewSettingsForm;
 use Yii;
 
 class EmailNotification extends BaseActiveRecord
@@ -14,12 +14,12 @@ class EmailNotification extends BaseActiveRecord
     public function init()
     {
         $this->listSettings = new ListViewSettingsForm();
-        $this->listSettings->listNameAttribute = 'id'; // override in view index
+        $this->listSettings->listNameAttribute = 'id';
     }
 
     public static function tableName()
     {
-        return 'email_notification';
+        return '{{%Email_Notification}}';
     }
 
     public function rules()
@@ -71,10 +71,14 @@ class EmailNotification extends BaseActiveRecord
         );
     }
 
+    // ActiveRecord Interface
     public static function enums()
     {
         return [
-            'inactive' => Status_Active::class
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'inactive'
+            ],
         ];
     }
 

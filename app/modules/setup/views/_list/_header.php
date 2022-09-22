@@ -1,9 +1,9 @@
 <?php
 
-use crudle\setup\enums\Type_Role;
+use crudle\app\setup\enums\Type_Role;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\helpers\Size;
-use Zelenin\yii\SemanticUI\modules\Modal;
+use icms\FomanticUI\helpers\Size;
+use icms\FomanticUI\modules\Modal;
 
 ?>
 
@@ -24,7 +24,7 @@ use Zelenin\yii\SemanticUI\modules\Modal;
             endif;
 
             if ( Yii::$app->user->can('Delete ' . $this->context->viewName()) ) :
-                echo Html::a(Yii::t('app', 'Delete'), ['delete-multiple'], [
+                echo Html::a(Yii::t('app', 'Delete'), ['delete-many'], [
                     'id' => 'delete_btn',
                     'class' => 'compact ui primary button',
                     'data' => [

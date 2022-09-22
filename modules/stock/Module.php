@@ -1,18 +1,22 @@
 <?php
 
-namespace logicent\stock;
+namespace crudle\ext\stock;
 
 use Yii;
 
 /**
  * stock module definition class
  */
-class Module extends \yii\base\Module
+class Module extends \crudle\ext\Module
 {
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'logicent\stock\controllers';
+    public $isActivated = true; // will be loaded in app run
+    /**
+     * {@inheritdoc}
+     */
+    public $controllerNamespace = 'crudle\ext\stock\controllers';
 
     /**
      * {@inheritdoc}

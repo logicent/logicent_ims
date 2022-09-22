@@ -1,8 +1,8 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\accounts\models\PriceList;
-use logicent\sales\models\CustomerGroup;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\models\PriceList;
+use crudle\ext\sales\models\CustomerGroup;
 ?>
 
 <div class="ui attached padded segment">

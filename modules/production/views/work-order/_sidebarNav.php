@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use app\models\production\WorkOrder;
 use app\models\production\WorkOrderItem;
 use app\models\stock\Item;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 use app\assets\ChartjsAsset;
 

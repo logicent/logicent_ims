@@ -1,6 +1,6 @@
 <?php
 
-namespace crudle\main\models\auth;
+namespace crudle\app\main\models\auth;
 
 use Yii;
 
@@ -11,7 +11,7 @@ class Assignment extends \yii\db\ActiveRecord
 {
     public static function tableName()
     {
-        return 'auth_assignment';
+        return '{{%Auth_Assignment}}';
     }
 
     public function rules()

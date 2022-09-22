@@ -1,18 +1,19 @@
 <?php
 
-namespace logicent\pos\controllers;
+namespace crudle\ext\pos\controllers;
 
-use logicent\accounts\controllers\base\BaseTransactionController;
-use crudle\setup\enums\Status_Transaction;
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\models\Setup;
-use logicent\stock\models\Item;
-use logicent\stock\models\ItemWarehouse;
-use logicent\pos\models\PosProfileForm;
-use logicent\pos\models\PosInvoice;
-use logicent\pos\models\PosInvoiceItem;
-use logicent\pos\models\PosInvoicePayment;
-use logicent\accounts\models\SalesInvoice;
+use crudle\ext\accounts\controllers\base\BaseTransactionController;
+use crudle\app\setup\enums\Status_Transaction;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\models\Setup;
+use crudle\ext\stock\models\Item;
+use crudle\ext\stock\models\ItemWarehouse;
+use crudle\ext\pos\models\PosProfileForm;
+use crudle\ext\pos\models\PosInvoice;
+use crudle\ext\pos\models\PosInvoiceItem;
+use crudle\ext\pos\models\PosInvoicePayment;
+use crudle\ext\accounts\models\SalesInvoice;
+use crudle\ext\accounts\models\SalesInvoiceSearch;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -60,6 +61,12 @@ class PosInvoiceController extends BaseTransactionController
                     'cancel-sale' => ['POST'],
                 ],
             ],
+        ];
+    }
+
+    public function actions()
+    {
+        return [
         ];
     }
 

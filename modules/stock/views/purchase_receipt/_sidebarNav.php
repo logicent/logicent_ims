@@ -4,7 +4,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\Menu;
 // use Zelenin\yii\SemanticUI\collections\Menu;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 use app\models\sales\SalesOrder;
 
 use app\assets\ChartjsAsset;

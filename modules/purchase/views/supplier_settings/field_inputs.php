@@ -1,8 +1,8 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\sales\models\CustomerGroup;
-use logicent\accounts\models\PriceList;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\sales\models\CustomerGroup;
+use crudle\ext\accounts\models\PriceList;
 
 $this->title = Yii::t('app', 'Supplier Settings');
 ?>

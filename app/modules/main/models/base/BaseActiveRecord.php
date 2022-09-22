@@ -1,21 +1,21 @@
 <?php
 
-namespace crudle\main\models\base;
+namespace crudle\app\main\models\base;
 
-use app\helpers\App;
-use crudle\main\enums\Type_Comment;
-use crudle\main\enums\Type_Link;
-use crudle\main\enums\Type_Mixed_Value;
-use crudle\main\enums\Type_Model_Id;
-use crudle\main\enums\Type_Relation;
-use crudle\main\enums\Type_View;
-use crudle\main\models\auth\Person;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
-use crudle\setup\models\LayoutSettingsForm;
-use crudle\setup\models\ListViewSettingsForm;
-use crudle\setup\models\Setup;
-use app\workflows\WorkflowInterface;
+use crudle\app\helpers\App;
+use crudle\app\main\enums\Type_Comment;
+use crudle\app\main\enums\Type_Link;
+use crudle\app\main\enums\Type_Mixed_Value;
+use crudle\app\main\enums\Type_Model_Id;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\main\enums\Type_View;
+use crudle\app\main\models\auth\Person;
+use crudle\app\setup\enums\Permission_Group;
+use crudle\app\setup\enums\Type_Permission;
+use crudle\app\setup\models\LayoutSettingsForm;
+use crudle\app\setup\models\ListViewSettingsForm;
+use crudle\app\setup\models\Setup;
+use crudle\app\workflows\WorkflowInterface;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\BlameableBehavior;
@@ -44,9 +44,9 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
 
     public function init()
     {
+        parent::init();
         $this->listSettings = new ListViewSettingsForm();
-
-        return parent::init();
+        $this->listSettings->listIdAttribute = 'id';
     }
 
     public static function dbTableSchema()
@@ -95,9 +95,8 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
                 'tags',
                 'created_at', // YYYY-MM-DD HH:MM:SS
                 'updated_at', // YYYY-MM-DD HH:MM:SS
-                'deleted_at'
             ], 'safe'],
-            [['created_by', 'updated_by'], 'string', 'max' => 140],
+            [['id', 'created_by', 'updated_by'], 'string', 'max' => 140],
         ];
     }
 
@@ -113,7 +112,6 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
             'created_by' => Yii::t('app', 'Created By'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'updated_by' => Yii::t('app', 'Updated By'),
-            'deleted_at' => Yii::t('app', 'Deleted At'),
         ];
     }
 
@@ -146,7 +144,6 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
             'created_by',
             'updated_at',
             'updated_by',
-            'deleted_at',
         ];
 
         foreach ($fromModel->attributes as $attribute => $value) {
@@ -344,9 +341,9 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
                     $link = $relationId;
                     $models = $this->$link;
             }
-            $formName = StringHelper::basename($relationDetail['class']);
+            // $formName = StringHelper::basename($relationDetail['class']);
             if (!empty($models) || (empty($models) && $includeEmpty))
-                $relations[$formName] = $models;
+                $relations[$relationId] = $models;
         }
 
         return $relations;
@@ -412,6 +409,10 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
                 // TODO: sorting does not work since column data type is varchar
                 $model = $query->orderBy($this->autoSuggestAttribute() . ' DESC')->one();
                 return $model->{$this->autoSuggestAttribute()} + 1;
+
+            case Type_Model_Id::GeneratedUuid:
+                $uuid = \thamtech\uuid\helpers\UuidHelper::uuid();
+                return $uuid;
 
             default:
                 return null; // ?
@@ -549,7 +550,6 @@ abstract class BaseActiveRecord extends ActiveRecord implements ActiveRecordInte
             'created_by',
             'updated_at',
             'updated_by',
-            'deleted_at',
         ];
     }
 

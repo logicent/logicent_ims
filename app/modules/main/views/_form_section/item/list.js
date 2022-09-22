@@ -16,12 +16,13 @@ $('.ui.modals').on('click', '.update-row',
         $('#' + modal_id).parents('.ui.modal').modal('hide');
     });
 
-$('table.in-form').on('click', '.edit-item--btn',
+$('table.in-form').on('click', '.edit-row',
     function (e) {
         edit_btn = $(this);
         table_row = edit_btn.closest('tr');
         row_inputs = table_row.children('td').children('input');
-        // row_checkbox = table_row.children('td').children('div').children('input[type="hidden"]');
+        row_selects = table_row.children('td').children('select');
+
         modal_id = table_row.parents('table').parent('div').attr('id') + '__modal';
 
         row_fields = [];
@@ -29,9 +30,13 @@ $('table.in-form').on('click', '.edit-item--btn',
             field = { 'name': $(this).data('name'), 'value': $(this).val()};
             row_fields.push(field);
         });
+        row_selects.each(function(){
+            field = { 'name': $(this).data('name'), 'value': $(this).val()};
+            row_fields.push(field);
+        });
 
         $.ajax({
-            url: itemRow.editItemUrl,
+            url: tableRow.editUrl,
             type: 'get',
             data: {
                 'modelClass': $(this).data('model-class'),
@@ -75,7 +80,7 @@ $('table.in-form tbody').on('change', 'select.list-option',
         table_row = $(this).closest('tr');
 
         $.ajax({
-            url: itemRow.getItemUrl,
+            url: tableRow.getUrl,
             type: 'get',
             data: {
                 'item_id': $(this).val()
@@ -130,7 +135,7 @@ $('.add-row').on('click',
         el_table_body = el_table.find('tbody');
 
         $.ajax({
-            url: itemRow.addItemUrl,
+            url: tableRow.addUrl,
             type: 'get',
             data: {
                 'modelClass': $(this).data('model-class'),

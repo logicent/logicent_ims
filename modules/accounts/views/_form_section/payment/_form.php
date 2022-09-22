@@ -1,10 +1,10 @@
 <?php
 
-use app\helpers\SelectableItems;
+use crudle\app\helpers\SelectableItems;
 use app\models\PaymentMethod;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
 use app\assets\FlatpickrAsset;
 

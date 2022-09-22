@@ -1,11 +1,11 @@
 <?php
 
-use logicent\stock\modelsPurchaseInvoiceItem;
-use logicent\stock\modelsPurchaseOrderItem;
-use logicent\stock\modelsSalesInvoiceItem;
-use logicent\stock\modelsSalesOrderItem;
+use crudle\ext\stock\modelsPurchaseInvoiceItem;
+use crudle\ext\stock\modelsPurchaseOrderItem;
+use crudle\ext\stock\modelsSalesInvoiceItem;
+use crudle\ext\stock\modelsSalesOrderItem;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 
 $salesOrderTotalAmountSum = $model->getDocumentItem(SalesOrderItem::class)->sum('total_amount');

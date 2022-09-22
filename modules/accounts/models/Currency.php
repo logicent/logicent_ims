@@ -1,17 +1,17 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 
 /**
- * This is the model class for table "currency".
+ * This is the model class for table "Currency".
  */
-class Currency extends BaseActiveRecord
+class Currency extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'currency';
+        return 'lgct_Currency';
     }
 
     // public function rules()

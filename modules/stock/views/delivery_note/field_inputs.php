@@ -1,8 +1,8 @@
 <?php
 
 use app\assets\FlatpickrAsset;
-use app\helpers\SelectableItems;
-use logicent\stock\models\Customer;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\stock\models\Customer;
 ?>
 
 <div class="ui attached padded segment">
@@ -21,7 +21,7 @@ use logicent\stock\models\Customer;
 </div>
 
 <!-- Item table -->
-    <?= $this->render('@system_modules/accounts/views/_form_section/item/list', ['model' => $model, 'form' => $form]) ?>
+    <?= $this->render('@extModules/accounts/views/_form_section/item/list', ['model' => $model, 'form' => $form]) ?>
 
     <div class="ui two column stackable grid">
         <div class="ui transparent input column">

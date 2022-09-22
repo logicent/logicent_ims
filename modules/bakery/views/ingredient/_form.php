@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\CheckboxList;
-use Zelenin\yii\SemanticUI\modules\Select;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use icms\FomanticUI\modules\Select;
+use icms\FomanticUI\widgets\ActiveForm;
 
 use app\models\StockItemGroup;
 

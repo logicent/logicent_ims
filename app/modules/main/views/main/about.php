@@ -1,9 +1,3 @@
-<?php
-
-$this->title = Yii::t('app', 'About');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Main'), 'url' => ['/main']];
-?>
-
 <div class="ui header"><?= Yii::$app->params['appName'] ?></div>
 
 <p><?= Yii::$app->params['appDescription'] ?></p>

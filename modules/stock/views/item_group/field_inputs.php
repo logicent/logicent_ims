@@ -1,7 +1,7 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\stock\models\ItemGroup;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\stock\models\ItemGroup;
 ?>
 
 <div class="ui attached padded segment">

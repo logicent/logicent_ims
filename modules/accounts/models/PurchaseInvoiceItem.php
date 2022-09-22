@@ -1,20 +1,20 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseTransactionItem;
-use logicent\stock\models\ItemWarehouse;
+use crudle\ext\accounts\models\base\BaseTransactionItem;
+use crudle\ext\stock\models\ItemWarehouse;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "purchase_invoice_item".
+ * This is the model class for table "Purchase_Invoice_Item".
  */
 class PurchaseInvoiceItem extends BaseTransactionItem
 {
     public static function tableName()
     {
-        return 'purchase_invoice_item';
+        return 'lgct_Purchase_Invoice_Item';
     }
 
     public function attributeLabels()

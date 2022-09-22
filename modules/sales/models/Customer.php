@@ -1,16 +1,16 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use app\enums\Type_Module;
-use logicent\accounts\enums\Type_Party;
-use logicent\accounts\models\base\BasePartyDocument;
-use logicent\accounts\models\SalesInvoice;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\ext\accounts\enums\Type_Party;
+use crudle\ext\accounts\models\base\BasePartyDocument;
+use crudle\ext\accounts\models\SalesInvoice;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "customer".
+ * This is the model class for table "Customer".
  */
 class Customer extends BasePartyDocument
 {
@@ -28,7 +28,7 @@ class Customer extends BasePartyDocument
 
     public static function tableName()
     {
-        return 'customer';
+        return 'lgct_Customer';
     }
 
     public function rules()

@@ -1,9 +1,9 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseTransactionItemSearch;
-use logicent\accounts\receivable\SalesInvoicePayment;
+use crudle\ext\accounts\models\base\BaseTransactionItemSearch;
+use crudle\ext\accounts\receivable\SalesInvoicePayment;
 
 class SalesInvoicePaymentSearch extends BaseTransactionItemSearch
 {

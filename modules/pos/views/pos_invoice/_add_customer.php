@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Url;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Accordion;
 ?>
 

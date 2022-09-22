@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\bakery\models;
+namespace crudle\ext\bakery\models;
 
-use logicent\sales\models\SalesOrderItem;
+use crudle\ext\sales\models\SalesOrderItem;
 
 class BakeryOrder extends SalesOrderItem
 {

@@ -1,21 +1,21 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "item_bundle_item".
+ * This is the model class for table "Item_Bundle_Item".
  *
  * @property Item $item
  */
-class ItemBundleItem extends BaseActiveRecord
+class ItemBundleItem extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'item_bundle_item';
+        return 'lgct_Item_Bundle_Item';
     }
 
     public function rules()

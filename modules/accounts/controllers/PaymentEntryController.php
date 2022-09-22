@@ -2,9 +2,9 @@
 
 namespace app\controllers\accounts;
 
-use logicent\accounts\models\accounts\PaymentEntry;
-use logicent\accounts\models\accounts\PaymentEntrySearch;
-use logicent\accounts\controllers\base\BaseTransactionController;
+use crudle\ext\accounts\models\accounts\PaymentEntry;
+use crudle\ext\accounts\models\accounts\PaymentEntrySearch;
+use crudle\ext\accounts\controllers\base\BaseTransactionController;
 
 class PaymentEntryController extends BaseTransactionController
 {

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
 
 ?>

@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\hr\models;
+namespace crudle\ext\hr\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 
-class LeaveApplication extends BaseActiveRecord
+class LeaveApplication extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'hr_leave_application';
+        return 'lgct_Hr_Leave_Application';
     }
 
     public function rules()

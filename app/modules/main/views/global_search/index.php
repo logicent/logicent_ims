@@ -1,9 +1,9 @@
 <?php
 
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
-use crudle\main\models\setup\GeneralSettingsForm;
+use icms\FomanticUI\widgets\ActiveForm;
+use crudle\app\main\models\setup\GeneralSettingsForm;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 $this->title = Yii::t('app', 'General Settings');
 
@@ -34,7 +34,7 @@ $form = ActiveForm::begin([
 
                 <div class="ui hidden divider"></div>
 
-                <?= $this->render('/_form_field/file_input', [
+                <?= $this->render('@appMain/views/_form_field/file_input', [
                                         'allowMultiple' => false,
                                         'fileTypes' => 'image/*',
                                         'form' => $form,

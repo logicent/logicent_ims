@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\accounts\controllers;
+namespace crudle\ext\accounts\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\accounts\models\PurchaseTaxCharge;
-use logicent\accounts\models\PurchaseTaxChargeSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\accounts\models\PurchaseTaxCharge;
+use crudle\ext\accounts\models\PurchaseTaxChargeSearch;
 
 class PurchaseTaxChargeController extends BaseCrudController
 {

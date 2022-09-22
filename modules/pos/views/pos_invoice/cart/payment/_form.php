@@ -1,6 +1,6 @@
 <?php
 
-use logicent\accounts\enums\Status_Payment;
+use crudle\ext\accounts\enums\Status_Payment;
 use yii\helpers\Html;
 
 ?>

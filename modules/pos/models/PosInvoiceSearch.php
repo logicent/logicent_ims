@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\pos\models;
+namespace crudle\ext\pos\models;
 
-use logicent\accounts\models\SalesInvoiceSearch;
+use crudle\ext\accounts\models\SalesInvoiceSearch;
 
 // Search for Draft (On hold sale)
 class PosInvoiceSearch extends SalesInvoiceSearch

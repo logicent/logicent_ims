@@ -1,20 +1,20 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\main\models\base\AutoincrementIdInterface;
-use crudle\main\models\UploadForm;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\ActiveRecord;
+use crudle\app\main\models\base\AutoincrementIdInterface;
+use crudle\app\main\models\UploadForm;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "item".
+ * This is the model class for table "Item".
  *
  * @property ItemGroup $itemGroup
  */
-class Item extends BaseActiveRecord implements AutoincrementIdInterface
+class Item extends ActiveRecord implements AutoincrementIdInterface
 {
     const DOC_NUM_PREFIX = 'ITEM-';
 
@@ -34,7 +34,7 @@ class Item extends BaseActiveRecord implements AutoincrementIdInterface
 
     public static function tableName()
     {
-        return 'item';
+        return 'lgct_Item';
     }
 
     public function rules()
@@ -96,10 +96,14 @@ class Item extends BaseActiveRecord implements AutoincrementIdInterface
         ]);
     }
 
+
     public static function enums()
     {
         return [
-            'status' => Status_Active::class
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'inactive'
+            ]
         ];
     }
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace logicent\fleet\models;
+namespace crudle\ext\fleet\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 
-class Vehicle extends BaseActiveRecord
+class Vehicle extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'vehicle';
+        return 'lgct_Vehicle';
     }
 
     public function rules()

@@ -1,16 +1,16 @@
 <?php
 
-use crudle\setup\enums\Type_Role;
-use crudle\setup\enums\Status_Work;
-use crudle\main\models\auth\Role;
-use app\helpers\SelectableItems;
-use crudle\setup\models\UserGroup;
+use crudle\app\setup\enums\Type_Role;
+use crudle\app\setup\enums\Status_Work;
+use crudle\app\main\models\auth\Role;
+use crudle\app\helpers\SelectableItems;
+use crudle\app\setup\models\UserGroup;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\MaskedInput;
-use Zelenin\yii\SemanticUI\Elements;
-use Zelenin\yii\SemanticUI\helpers\Size;
-use Zelenin\yii\SemanticUI\modules\Modal;
+use icms\FomanticUI\Elements;
+use icms\FomanticUI\helpers\Size;
+use icms\FomanticUI\modules\Modal;
 
 $this->title = $model->full_name;
 
@@ -19,7 +19,7 @@ $isReadonly = $this->context->isReadonly() || $this->context->action->id == 'pri
 
 echo $this->render('_stats', ['model' => $model]) ?>
 
-<div class="ui attached padded segment">
+<div class="ui padded segment">
 <?= Html::activeFileInput( $model->uploadForm, 'file_upload', [
         'accept' => 'image/*', 'style' => 'display: none'
     ]) ?>
@@ -79,7 +79,7 @@ echo $this->render('_stats', ['model' => $model]) ?>
     </div>
 </div>
 
-<div class="ui attached padded segment">
+<div class="ui padded segment">
 <?php
     if ($this->context->auth->isNewRecord) :
         echo $form->field($this->context->auth, 'send_welcome_email')->checkbox();
@@ -101,16 +101,16 @@ echo $this->render('_stats', ['model' => $model]) ?>
     <div class="two fields">
         <div class="eight wide field">
             <?= $form->field($model, 'user_group')->dropDownList(
-                UserGroup::enums(), [
-                    'prompt' => '',
-                    'disabled' => $isReadonly || !Yii::$app->user->can(Type_Role::SystemManager)
-                ]) ?>
+                    UserGroup::enums(), [
+                        'prompt' => '',
+                        'disabled' => $isReadonly || !Yii::$app->user->can(Type_Role::SystemManager)
+                    ]) ?>
         </div>
         <div class="field">
         <?= $form->field($model, 'official_status')->dropDownList(Status_Work::enums(), [
-                    'prompt' => '',
-                    'disabled' => $isReadonly
-                ]) ?>
+                'prompt' => '',
+                'disabled' => $isReadonly
+            ]) ?>
         </div>
     </div><!-- ./two fields -->
 
@@ -140,7 +140,7 @@ echo $this->render('_stats', ['model' => $model]) ?>
     </div>
 </div>
 
-<div class="ui attached padded segment">
+<div class="ui padded segment">
     <?= $form->field($model, 'notes')->textarea([
             'rows' => 3,
             'readonly' => $isReadonly,

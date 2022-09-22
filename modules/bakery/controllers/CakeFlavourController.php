@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
+use crudle\app\main\controllers\base\BaseCrudController;
 use Yii;
 use app\models\CakeFlavour;
 use app\models\CakeFlavourSearch;

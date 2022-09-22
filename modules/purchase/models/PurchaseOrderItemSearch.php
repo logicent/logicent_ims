@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use logicent\accounts\models\base\BaseTransactionItemSearch;
+use crudle\ext\accounts\models\base\BaseTransactionItemSearch;
 
 class PurchaseOrderItemSearch extends BaseTransactionItemSearch
 {

@@ -1,9 +1,9 @@
 <?php
 
-use app\helpers\SelectableItems;
+use crudle\app\helpers\SelectableItems;
 use app\models\ExpenseType;
 use app\models\PaymentMethod;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use icms\FomanticUI\widgets\ActiveForm;
 ?>
 
 <div class="ui attached padded segment">

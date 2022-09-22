@@ -1,10 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\widgets\ActiveForm;
+use icms\FomanticUI\Elements;
 
-use crudle\main\models\GlobalSearch;
+use crudle\app\main\models\GlobalSearch;
 
 $model = new GlobalSearch;
 ?>

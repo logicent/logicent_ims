@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use logicent\purchase\models\Supplier;
-use logicent\hr\models\Employee;
-use logicent\fleet\models\Vehicle;
+use crudle\ext\purchase\models\Supplier;
+use crudle\ext\hr\models\Employee;
+use crudle\ext\fleet\models\Vehicle;
 ?>
 
 <div class="ui bottom attached padded segment">

@@ -1,15 +1,21 @@
 <?php
 
-namespace crudle\setup\controllers;
+namespace crudle\app\setup\controllers;
 
-use crudle\main\controllers\base\BaseViewController;
-use crudle\main\enums\Type_View;
+use crudle\app\main\controllers\base\BaseViewController;
+use crudle\app\main\enums\Type_View;
 
 /**
  * Setup controller for the `setup` module
  */
 class SetupController extends BaseViewController
 {
+    public function actions()
+    {
+        return [
+        ];
+    }
+
     /**
      * Renders the index view for the module
      * @return string
@@ -20,7 +26,7 @@ class SetupController extends BaseViewController
     }
 
     // ViewInterface
-    public function currentViewType()
+    public function defaultActionViewType()
     {
         return Type_View::Workspace;
     }

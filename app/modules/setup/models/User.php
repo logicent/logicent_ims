@@ -1,11 +1,11 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\auth\User as AuthUser;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\auth\User as AuthUser;
+use crudle\app\setup\enums\Permission_Group;
+use crudle\app\setup\enums\Type_Permission;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -13,11 +13,7 @@ use yii\helpers\ArrayHelper;
  */
 class User extends AuthUser
 {
-    public function init()
-    {
-        $this->listSettings = new ListViewSettingsForm();
-        $this->listSettings->listNameAttribute = 'id'; // override in view index
-    }
+    // public $full_name;
 
     // public function rules()
     // {
@@ -39,7 +35,10 @@ class User extends AuthUser
     public static function enums()
     {
         return [
-            'status' => Status_Active::class,
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'status'
+            ]
         ];
     }
 
@@ -50,4 +49,13 @@ class User extends AuthUser
             // Type_Permission::enums(Permission_Group::Data),
         );
     }
+
+    // public function fields()
+    // {
+    //     return [
+    //         'full_name' => function () {
+    //             return $this->first_name .' '. $this->last_name;
+    //         }
+    //     ];
+    // }
 }

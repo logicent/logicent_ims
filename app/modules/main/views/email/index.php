@@ -1,8 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
-use Zelenin\yii\SemanticUI\modules\Select;
+use icms\FomanticUI\widgets\ActiveForm;
+use icms\FomanticUI\modules\Select;
 
 $this->title = Yii::t('app', 'Email');
 
@@ -14,9 +14,9 @@ $form = ActiveForm::begin([
         ],
     ]) ?>
 
-    <?= $this->render('/_form/_modal_header', ['model' => $model]) ?>
+    <?= $this->render('@appMain/views/_modal/header', ['model' => $model]) ?>
 
-    <div class="ui attached padded segment">
+    <div class="ui padded segment">
         <?= $form->field( $model, 'to' )->textInput( ['maxlength' => true] ) ?>
         <?= $form->field( $model, 'cc' )->textInput( ['maxlength' => true] ) ?>
         <?= $form->field( $model, 'bcc' )->textInput( ['maxlength' => true] ) ?>
@@ -42,7 +42,7 @@ $form = ActiveForm::begin([
     </div>
 <?php 
 ActiveForm::end();
-$this->registerJs($this->render('/_form/_submit.js'));
+$this->registerJs($this->render('@appMain/views/_form/_submit.js'));
 
 $this->registerJs(<<<JS
 

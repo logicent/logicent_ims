@@ -1,7 +1,7 @@
 <?php
 
-use logicent\purchase\models\Supplier;
-use logicent\stock\models\PriceList;
+use crudle\ext\purchase\models\Supplier;
+use crudle\ext\stock\models\PriceList;
 
 ?>
 

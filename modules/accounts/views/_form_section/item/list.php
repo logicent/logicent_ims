@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
-use Zelenin\yii\SemanticUI\Elements;
-use Zelenin\yii\SemanticUI\helpers\Size;
+use icms\FomanticUI\Elements;
+use icms\FomanticUI\helpers\Size;
 use Zelenin\yii\SemanticUI\modules\Checkbox;
-use Zelenin\yii\SemanticUI\modules\Modal;
+use icms\FomanticUI\modules\Modal;
 
 
 $modal = Modal::begin([

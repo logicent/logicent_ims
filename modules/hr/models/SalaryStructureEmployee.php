@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\hr\models;
+namespace crudle\ext\hr\models;
 
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 
-class SalaryStructureEmployee extends BaseActiveRecord
+class SalaryStructureEmployee extends ActiveRecord
 {
     public static function tableName()
     {

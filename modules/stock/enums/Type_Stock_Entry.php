@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\enums;
+namespace crudle\ext\enums;
 
 use Yii;
 

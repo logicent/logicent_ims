@@ -1,11 +1,12 @@
 <?php
 
-namespace crudle\setup\models;
+namespace crudle\app\setup\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\base\BaseActiveRecord;
-use crudle\setup\enums\Permission_Group;
-use crudle\setup\enums\Type_Permission;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\base\BaseActiveRecord;
+use crudle\app\setup\enums\Permission_Group;
+use crudle\app\setup\enums\Type_Permission;
+use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -15,13 +16,13 @@ class UserGroup extends BaseActiveRecord
 {
     public function init()
     {
-        $this->listSettings = new ListViewSettingsForm();
-        $this->listSettings->listNameAttribute = 'id'; // override in view index
+        parent::init();
+        $this->listSettings->listNameAttribute = 'id';
     }
 
     public static function tableName()
     {
-        return 'user_group';
+        return '{{%User_Group}}';
     }
 
     public function rules()
@@ -29,12 +30,15 @@ class UserGroup extends BaseActiveRecord
         $rules = parent::rules();
 
         return ArrayHelper::merge([
+            ['id', 'default', 'value' => null]
         ], $rules);
     }
 
     public function attributeLabels()
     {
         return [
+            'id' => Yii::t('app', 'Group name'),
+            // 'status' => Yii::t('app', 'Inactive'),
         ];
     }
 
@@ -50,7 +54,15 @@ class UserGroup extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'status' => Status_Active::class,
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'status'
+            ]
         ];
+    }
+
+    public static function autoSuggestIdValue()
+    {
+        return false;
     }
 }

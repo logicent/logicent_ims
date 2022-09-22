@@ -1,8 +1,8 @@
 <?php
 
-namespace logicent\purchase\models;
+namespace crudle\ext\purchase\models;
 
-use logicent\accounts\models\base\BaseTransactionItem;
+use crudle\ext\accounts\models\base\BaseTransactionItem;
 use Yii;
 use yii\helpers\ArrayHelper;
 
@@ -13,7 +13,7 @@ class PurchaseRequisitionItem extends BaseTransactionItem
 {
     public static function tableName()
     {
-        return 'purchase_requisition_item';
+        return 'lgct_Purchase_Requisition_Item';
     }
 
     public function attributeLabels()

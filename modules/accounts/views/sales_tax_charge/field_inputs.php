@@ -1,6 +1,6 @@
 <?php
 
-use logicent\accounts\enums\Type_Tax;
+use crudle\ext\accounts\enums\Type_Tax;
 ?>
 
 <div class="ui attached padded segment">

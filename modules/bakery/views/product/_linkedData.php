@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
 $sum_quote_amount = $model->getSalesQuoteItem()->sum('total_amount');
 $sum_order_amount = $model->getSalesOrderItem()->sum('total_amount');

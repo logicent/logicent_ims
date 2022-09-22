@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\hr\models;
+namespace crudle\ext\hr\models;
 
 use Yii;
 

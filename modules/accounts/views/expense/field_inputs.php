@@ -1,10 +1,10 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\accounts\models\ExpenseType;
-use logicent\accounts\models\PaymentMethod;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\models\ExpenseType;
+use crudle\ext\accounts\models\PaymentMethod;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\widgets\ActiveForm;
+use icms\FomanticUI\widgets\ActiveForm;
 ?>
 
 <div class="ui attached padded segment">

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\MaskedInput;
-use logicent\hr\models\Employee;
+use crudle\ext\hr\models\Employee;
 
 ?>
 

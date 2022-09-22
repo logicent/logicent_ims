@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\ItemGroup;
-use logicent\stock\models\ItemGroupSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\ItemGroup;
+use crudle\ext\stock\models\ItemGroupSearch;
 
 class ItemGroupController extends BaseCrudController
 {

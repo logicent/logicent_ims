@@ -1,8 +1,8 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\accounts\models\PaymentMethod;
-use logicent\pos\models\PosInvoicePayment;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\accounts\models\PaymentMethod;
+use crudle\ext\pos\models\PosInvoicePayment;
 
 ?>
 

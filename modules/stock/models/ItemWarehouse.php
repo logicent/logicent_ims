@@ -1,20 +1,20 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use app\enums\Status_Active;
-use crudle\main\models\base\BaseActiveRecord;
+use crudle\app\enums\Status_Active;
+use crudle\app\main\models\ActiveRecord;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "item_warehouse".
+ * This is the model class for table "Item_Warehouse".
  */
-class ItemWarehouse extends BaseActiveRecord
+class ItemWarehouse extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'item_warehouse';
+        return 'lgct_Item_Warehouse';
     }
 
     public static function primaryKey()
@@ -27,8 +27,7 @@ class ItemWarehouse extends BaseActiveRecord
         $rules = parent::rules();
 
         return ArrayHelper::merge($rules, [
-            [['id'], 'required'],
-            [['id', 'item_id', 'warehouse_id'], 'string', 'max' => 140],
+            [['item_id', 'warehouse_id'], 'string', 'max' => 140],
             [['qty_in_stock', 'qty_ordered', 'qty_reserved', 'qty_committed'], 'number'],
         ]);
     }
@@ -38,7 +37,6 @@ class ItemWarehouse extends BaseActiveRecord
         $attributeLabels = parent::attributeLabels();
 
         return ArrayHelper::merge($attributeLabels, [
-            'id' => Yii::t('app', 'Name'),
             'item_id' => Yii::t('app', 'Item'),
             'warehouse_id' => Yii::t('app', 'Warehouse'),
             'qty_in_stock' => Yii::t('app', 'Qty in stock'),
@@ -56,7 +54,10 @@ class ItemWarehouse extends BaseActiveRecord
     public static function enums()
     {
         return [
-            'inactive' => Status_Active::class
+            'status' => [
+                'class' => Status_Active::class,
+                'attribute' => 'inactive'
+            ]
         ];
     }
 }

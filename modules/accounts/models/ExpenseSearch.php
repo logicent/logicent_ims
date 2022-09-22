@@ -1,6 +1,6 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
 use Yii;
 use yii\base\Model;

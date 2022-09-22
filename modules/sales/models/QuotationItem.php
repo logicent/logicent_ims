@@ -1,19 +1,19 @@
 <?php
 
-namespace logicent\sales\models;
+namespace crudle\ext\sales\models;
 
-use logicent\accounts\models\base\BaseTransactionItem;
+use crudle\ext\accounts\models\base\BaseTransactionItem;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "sales_quote_item".
+ * This is the model class for table "Quotation_Item".
  */
 class QuotationItem extends BaseTransactionItem
 {
     public static function tableName()
     {
-        return 'sales_quote_item';
+        return 'lgct_Quotation_Item';
     }
 
     public function getDocument()

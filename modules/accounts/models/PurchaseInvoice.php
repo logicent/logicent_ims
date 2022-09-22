@@ -1,14 +1,14 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use app\enums\Type_Module;
-use logicent\accounts\models\base\BaseTransactionDocument;
+use crudle\ext\accounts\enums\Type_Module;
+use crudle\ext\accounts\models\base\BaseTransactionDocument;
 use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "purchase_invoice".
+ * This is the model class for table "Purchase_Invoice".
  */
 class PurchaseInvoice extends BaseTransactionDocument
 {
@@ -23,7 +23,7 @@ class PurchaseInvoice extends BaseTransactionDocument
 
     public static function tableName()
     {
-        return 'purchase_invoice';
+        return 'lgct_Purchase_Invoice';
     }
 
     public function rules()

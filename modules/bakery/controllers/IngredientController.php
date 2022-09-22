@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use logicent\bakery\models\BakeryIngredient;
-use logicent\stock\controllers\ItemController;
+use crudle\ext\bakery\models\BakeryIngredient;
+use crudle\ext\stock\controllers\ItemController;
 
 class IngredientController extends ItemController
 {

@@ -1,9 +1,9 @@
 <?php
 
-use app\helpers\SelectableItems;
-use logicent\stock\models\Warehouse;
+use crudle\app\helpers\SelectableItems;
+use crudle\ext\stock\models\Warehouse;
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\modules\Select;
+use icms\FomanticUI\modules\Select;
 ?>
 
 <div class="ui attached padded segment">

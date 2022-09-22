@@ -1,5 +1,3 @@
-<?php
+<div class="ui header">Introduction</div>
 
-$this->title = Yii::t('app', 'Help');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Main'), 'url' => ['/main']];
-?>
+<p></p>

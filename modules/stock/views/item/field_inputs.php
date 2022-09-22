@@ -1,13 +1,13 @@
 <?php
 
-use app\helpers\SelectableItems;
+use crudle\app\helpers\SelectableItems;
 use yii\helpers\Html;
 
-use logicent\stock\models\ItemGroup;
-use logicent\stock\models\ItemUom;
-use logicent\stock\models\Warehouse;
-use logicent\purchase\models\Supplier;
-use logicent\accounts\models\SalesTaxCharge;
+use crudle\ext\stock\models\ItemGroup;
+use crudle\ext\stock\models\ItemUom;
+use crudle\ext\stock\models\Warehouse;
+use crudle\ext\purchase\models\Supplier;
+use crudle\ext\accounts\models\SalesTaxCharge;
 
 $isReadonly = $this->context->isReadonly();
 ?>

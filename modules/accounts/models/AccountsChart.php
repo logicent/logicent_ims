@@ -1,11 +1,11 @@
 <?php
 
-namespace logicent\accounts\models;
+namespace crudle\ext\accounts\models;
 
-use logicent\accounts\models\base\BaseSetupMasterData;
+use crudle\ext\accounts\models\base\BaseSetupMasterData;
 
 /**
- * This is the model class for table "account_chart".
+ * This is the model class for table "Account_Chart".
  *
  * @property GeneralLedger[] $accounts
  */
@@ -13,7 +13,7 @@ class AccountChart extends BaseSetupMasterData
 {
     public static function tableName()
     {
-        return 'account_chart';
+        return 'lgct_Account_Chart';
     }
 
     public function getGeneralLedger()

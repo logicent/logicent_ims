@@ -1,9 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use Zelenin\yii\SemanticUI\Elements;
+use icms\FomanticUI\Elements;
 
-echo Html::tag('div', $model->file_attachment, ['class' => 'file-preview small']);
+echo Html::tag('div', $model->$attribute, ['class' => 'file-preview small']);
 
 echo Html::activeFileInput($model->uploadForm, "[$rowId]file_uploads[]", [
         'class' => 'file-uploads',

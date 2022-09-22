@@ -1,16 +1,19 @@
 <?php
 
-namespace logicent\stock\models;
+namespace crudle\ext\stock\models;
 
-use app\enums\Type_Relation;
-use crudle\main\models\base\BaseActiveRecordDetail;
+use crudle\app\main\enums\Type_Relation;
+use crudle\app\main\models\ActiveRecordDetail;
 use Yii;
 
-class StockEntryItem extends BaseActiveRecordDetail
+/**
+ * This is the model class for table "Stock_Entry_Item".
+ */
+class StockEntryItem extends ActiveRecordDetail
 {
     public static function tableName()
     {
-        return 'stock_entry_item';
+        return 'lgct_Stock_Entry_Item';
     }
 
     public function rules()

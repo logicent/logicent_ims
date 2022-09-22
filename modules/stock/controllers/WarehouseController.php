@@ -1,10 +1,10 @@
 <?php
 
-namespace logicent\stock\controllers;
+namespace crudle\ext\stock\controllers;
 
-use crudle\main\controllers\base\BaseCrudController;
-use logicent\stock\models\Warehouse;
-use logicent\stock\models\WarehouseSearch;
+use crudle\app\main\controllers\base\BaseCrudController;
+use crudle\ext\stock\models\Warehouse;
+use crudle\ext\stock\models\WarehouseSearch;
 
 class WarehouseController extends BaseCrudController
 {
